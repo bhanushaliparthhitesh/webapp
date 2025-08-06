@@ -1,0 +1,3035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big4India - Get Maximum Tax Refund</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Feather Icons for UI elements -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <script>
+        // Custom Tailwind CSS Configuration
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                'b-orange': '#F97316',
+                'b-blue': '#4F46E5',
+                'b-lblue': '#F0F5FF',
+                'b-gray': '#F3F4F6',
+              }
+            }
+          }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            padding-top: 80px; /* Account for fixed header */
+        }
+        
+        @media (max-width: 1023px) {
+            body {
+                padding-top: 72px; /* Mobile header height */
+            }
+        }
+        /* --- New Elastic Loading Animation --- */
+        .reveal-elastic {
+            /* The cubic-bezier function creates the elastic "overshoot" effect */
+            transition: opacity 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition-delay: var(--delay);
+        }
+
+        /* Initial state of elements before they animate in */
+        .is-loading .reveal-elastic {
+            opacity: 0;
+            transform: scale(0.9) translateY(20px);
+        }
+        /* --- End of New Animation Styles --- */
+
+        .hero {
+            background-color: #F9FAFB;
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .b-logo {
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        .b-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        /* Animation for the hero illustration */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+        .h-anim {
+            animation: float 6s ease-in-out infinite;
+        }
+        /* Enhanced Message Popup Styles */
+        .msg-pop {
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: translateY(30px) scale(0.8) rotate(-2deg);
+            position: absolute;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            padding: 1.25rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            font-size: 0.875rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            max-width: 280px;
+            z-index: 10;
+        }
+        
+
+        
+        .msg-pop::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 2rem;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid #ffffff;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+        
+        .msg-pop.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotate(0deg);
+        }
+        
+        .msg-pop.hide {
+            opacity: 0;
+            transform: translateY(-20px) scale(0.9) rotate(2deg);
+        }
+        
+        /* Message popup content styles */
+        .msg-pop-content {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .msg-pop-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.25rem;
+        }
+        
+        .msg-pop-text {
+            flex: 1;
+        }
+        
+        .msg-pop-title {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+            font-size: 0.875rem;
+        }
+        
+        .msg-pop-subtitle {
+            color: #6b7280;
+            font-size: 0.75rem;
+            line-height: 1.3;
+        }
+        
+        /* Message popup types */
+        .msg-pop.success .msg-pop-icon {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+        
+        .msg-pop.info .msg-pop-icon {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+        }
+        
+        .msg-pop.warning .msg-pop-icon {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+        }
+        
+        .msg-pop.complete .msg-pop-icon {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+        }
+        /* Scroll animation styles */
+         .slide-in {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .slide-in.active {
+            opacity: 1;
+            transform: translateX(0);}
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .product-card .content {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.3s ease-in-out;
+        }
+        .product-card:hover .content {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .product-card:hover .footer {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        .Indian-c{width: 8rem;height: 7rem;}
+        .four-card{padding-left: 40px;padding-right: 40px;}
+        .mobile{
+            padding-left: 100px;
+            padding-right: 20px;
+            
+        }
+        /* --- Infinite Image Slider Styles --- */
+        .slider-container {
+            padding: 4rem 0;
+            background-color: #F9FAFB;
+            overflow-x: hidden; /* Use overflow-x to prevent horizontal scrollbars */
+        }
+
+        .infinite-slider-row {
+            white-space: nowrap;
+            display: block;
+        }
+
+        .infinite-slider-row:last-child {
+            margin-top: 1rem;
+        }
+
+        .slide-content {
+            display: inline-block;
+            font-size: clamp(1rem, 4vw, 3rem); /* Responsive font size */
+            font-weight: 700;
+            color: #757575; /* gray-700 */
+            
+            animation-duration: 90s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        .infinite-slider-row:first-child .slide-content {
+            color: #00C853;
+        }
+
+        .infinite-slider-row:last-child .slide-content {
+            color: #D50000;
+        }
+
+        .slide-content span {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .animate-slide-left {
+            animation-name: slide-left;
+        }
+
+        .animate-slide-right {
+            animation-name: slide-right;
+        }
+
+        @keyframes slide-left {
+            from { transform: translateX(0%); }
+            to { transform: translateX(-100%); }
+        }
+
+        @keyframes slide-right {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0%); }
+        }
+        .hero{
+            padding-bottom: 10px;
+            padding-top: 30px;
+        }
+        /* --- Enhanced Navigation Styles --- */
+        /* Prevent layout shift and ensure smooth transitions */
+        * {
+            box-sizing: border-box;
+        }
+        
+        /* Header container with fixed height to prevent layout shift */
+        .header-container {
+            height: 80px; /* Fixed height for desktop */
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        /* Mobile header height */
+        @media (max-width: 1023px) {
+            .header-container {
+                height: 72px;
+                min-height: 72px;
+            }
+        }
+        
+        /* --- Steps to Get Started Animation Styles --- */
+        .step-card {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .step-card:nth-child(1) { transition-delay: 0.1s; }
+        .step-card:nth-child(2) { transition-delay: 0.2s; }
+        .step-card:nth-child(3) { transition-delay: 0.3s; }
+        .step-card:nth-child(4) { transition-delay: 0.4s; }
+
+        .step-card.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Connection line animation */
+        .connection-line {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .connection-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+            animation: slide-line 2s ease-in-out infinite;
+        }
+
+        @keyframes slide-line {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Step number badge pulse animation */
+        .step-card:hover .absolute.-top-4.-right-4 {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+                transform: scale(1.05);
+            }
+        }
+
+        /* Image hover effects */
+        .step-card .relative.h-48 img {
+            transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .step-card:hover .relative.h-48 img {
+            transform: scale(1.1) rotate(2deg);
+        }
+
+        /* Icon overlay animation */
+        .step-card .absolute.top-4.left-4 {
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover .absolute.top-4.left-4 {
+            transform: rotate(360deg) scale(1.1);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Feature list item animation */
+        .step-card ul li {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .step-card.active ul li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .step-card.active ul li:nth-child(1) { transition-delay: 0.1s; }
+        .step-card.active ul li:nth-child(2) { transition-delay: 0.2s; }
+        .step-card.active ul li:nth-child(3) { transition-delay: 0.3s; }
+
+        /* CTA button hover effects */
+        .step-card button {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-card button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .step-card button:hover::before {
+            left: 100%;
+        }
+
+        /* Bottom CTA section animation */
+        .bottom-cta {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition-delay: 0.5s;
+        }
+
+        .bottom-cta.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1023px) {
+            .step-card {
+                margin-bottom: 2rem;
+            }
+            
+            .connection-line {
+                display: none;
+            }
+        }
+        
+        /* Smooth header transitions */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform, background-color, box-shadow;
+            transform: translateZ(0); /* Force hardware acceleration */
+        }
+        
+        /* Header scroll effect with smooth transitions */
+        .header.header-scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        /* Navigation link styles with consistent spacing */
+        .nav-link {
+            color: #4B5563;
+            font-weight: 500;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .nav-link:hover {
+            color: #F97316;
+            background-color: rgba(249, 115, 22, 0.05);
+        }
+        
+        /* Dropdown container with stable positioning */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Mega menu with improved stability */
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            transform: translateY(8px);
+            opacity: 0;
+            visibility: hidden;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            padding: 2rem;
+            width: 800px;
+            max-width: 90vw;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform, opacity, visibility;
+            z-index: 1001;
+        }
+        
+        .mega-menu.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        /* Standard dropdown menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            transform: translateY(8px);
+            opacity: 0;
+            visibility: hidden;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            min-width: 320px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform, opacity, visibility;
+            z-index: 1001;
+        }
+        
+        .dropdown-menu.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        /* Mobile dropdown styles with smooth animations */
+        .mobile-dropdown-btn {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .mobile-dropdown-btn.active i {
+            transform: rotate(180deg);
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .mobile-dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .mobile-dropdown-content.open {
+            max-height: 500px; /* Adjust based on content */
+        }
+        
+        /* Logo with stable dimensions */
+        .logo-container {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-image {
+            height: 48px;
+            width: auto;
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        @media (min-width: 1024px) {
+            .logo-image {
+                height: 64px;
+            }
+        }
+        
+        .logo-container:hover .logo-image {
+            transform: scale(1.05);
+        }
+        
+        /* Search bar with stable dimensions */
+        .search-container {
+            position: relative;
+            width: 256px;
+            flex-shrink: 0;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 0.5rem 2.5rem 0.5rem 2.5rem;
+            background-color: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #F97316;
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+            background-color: #FFFFFF;
+        }
+        
+        /* Button styles with consistent sizing */
+        .btn-primary {
+            background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+            color: white;
+            font-weight: 600;
+            font-size: 0.875rem;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.3);
+        }
+        
+        /* Mobile menu with smooth transitions */
+        .mobile-menu {
+            position: fixed;
+            top: 72px; /* Match header height */
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(229, 231, 235, 0.8);
+            transform: translateY(-100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 999;
+            max-height: calc(100vh - 72px);
+            overflow-y: auto;
+        }
+        
+        .mobile-menu.open {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Prevent body scroll when mobile menu is open */
+        body.menu-open {
+            overflow: hidden;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1023px) {
+            .search-container {
+                width: 100%;
+            }
+            
+            .mega-menu {
+                width: calc(100vw - 2rem);
+                max-width: none;
+                left: 1rem;
+                right: 1rem;
+                transform: translateY(8px);
+                padding: 1.5rem;
+            }
+            
+            .mega-menu.open {
+                transform: translateY(0);
+            }
+            
+            .mega-menu .grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+        
+        /* Ensure mega menu doesn't go off-screen on medium screens */
+        @media (max-width: 1200px) {
+            .mega-menu {
+                width: 600px;
+                max-width: calc(100vw - 2rem);
+            }
+        }
+        
+        /* --- Products Slider Styles --- */
+        .slider-viewport {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .slider-viewport::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100px;
+            z-index: 5;
+            pointer-events: none;
+            right: 0;
+            background: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 50%, transparent 100%);
+        }
+        
+        .service-card {
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .service-card:hover::before {
+            left: 100%;
+        }
+        
+        .service-card.active {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .service-card.inactive {
+            opacity: 0.7;
+            transform: scale(0.95);
+            filter: grayscale(20%);
+        }
+        
+        .dot-indicator.active {
+            background-color: #F97316;
+            transform: scale(1.2);
+        }
+        
+        /* Responsive adjustments for slider */
+        @media (max-width: 1024px) {
+            .slider-viewport {
+                max-width: 900px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .slider-viewport {
+                max-width: 600px;
+            }
+            .service-card {
+                width: 280px;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .slider-viewport {
+                max-width: 320px;
+            }
+        }
+
+        /* --- Steps to Get Started Animation Styles --- */
+        .step-card {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .step-card:nth-child(1) { transition-delay: 0.1s; }
+        .step-card:nth-child(2) { transition-delay: 0.2s; }
+        .step-card:nth-child(3) { transition-delay: 0.3s; }
+        .step-card:nth-child(4) { transition-delay: 0.4s; }
+
+        .step-card.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Connection line animation */
+        .connection-line {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .connection-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+            animation: slide-line 2s ease-in-out infinite;
+        }
+
+        @keyframes slide-line {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Step number badge pulse animation */
+        .step-card:hover .absolute.-top-4.-right-4 {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+                transform: scale(1.05);
+            }
+        }
+
+        /* Image hover effects */
+        .step-card .relative.h-48 img {
+            transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .step-card:hover .relative.h-48 img {
+            transform: scale(1.1) rotate(2deg);
+        }
+
+        /* Icon overlay animation */
+        .step-card .absolute.top-4.left-4 {
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover .absolute.top-4.left-4 {
+            transform: rotate(360deg) scale(1.1);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Feature list item animation */
+        .step-card ul li {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .step-card.active ul li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .step-card.active ul li:nth-child(1) { transition-delay: 0.1s; }
+        .step-card.active ul li:nth-child(2) { transition-delay: 0.2s; }
+        .step-card.active ul li:nth-child(3) { transition-delay: 0.3s; }
+
+        /* CTA button hover effects */
+        .step-card button {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-card button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .step-card button:hover::before {
+            left: 100%;
+        }
+
+        /* Bottom CTA section animation */
+        .bottom-cta {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition-delay: 0.5s;
+        }
+
+        .bottom-cta.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1023px) {
+            .step-card {
+                margin-bottom: 2rem;
+            }
+            
+            .connection-line {
+                display: none;
+            }
+        }
+
+        /* Wave Path Specific Styles */
+        .step-wave-item {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .step-wave-item:nth-child(1) { transition-delay: 0.1s; }
+        .step-wave-item:nth-child(2) { transition-delay: 0.2s; }
+        .step-wave-item:nth-child(3) { transition-delay: 0.3s; }
+        .step-wave-item:nth-child(4) { transition-delay: 0.4s; }
+
+        .step-wave-item.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Enhanced Wave connection points animation */
+        .step-wave-item .absolute.-left-12,
+        .step-wave-item .absolute.-right-12 {
+            opacity: 0;
+            transform: scale(0.5) rotate(180deg);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .step-wave-item.active .absolute.-left-12,
+        .step-wave-item.active .absolute.-right-12 {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        /* Connection lines animation */
+        .step-wave-item .absolute.-left-12 + div,
+        .step-wave-item .absolute.-right-12 + div {
+            opacity: 0;
+            transform: scaleX(0);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition-delay: 0.3s;
+        }
+
+        .step-wave-item.active .absolute.-left-12 + div,
+        .step-wave-item.active .absolute.-right-12 + div {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+
+        /* Enhanced Wave path line animation */
+        .bg-gradient-to-b.animate-pulse {
+            animation: wave-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes wave-pulse {
+            0%, 100% { 
+                opacity: 0.4;
+                transform: scaleY(1);
+            }
+            50% { 
+                opacity: 0.8;
+                transform: scaleY(1.2);
+            }
+        }
+
+        /* Connection point glow animation */
+        .step-wave-item .absolute.-left-12 .absolute,
+        .step-wave-item .absolute.-right-12 .absolute {
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% { 
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.6;
+                transform: scale(1.1);
+            }
+        }
+
+        /* Step card hover effects */
+        .step-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Image hover effects with enhanced animation */
+        .step-wave-item .relative.h-72 img,
+        .step-wave-item .relative.h-96 img {
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .step-wave-item:hover .relative.h-72 img,
+        .step-wave-item:hover .relative.h-96 img {
+            transform: scale(1.08) rotate(2deg);
+        }
+
+        /* Image container hover effects for wave design */
+        .step-wave-item .relative.h-72 img,
+        .step-wave-item .relative.h-96 img {
+            transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .step-wave-item:hover .relative.h-72 img,
+        .step-wave-item:hover .relative.h-96 img {
+            transform: scale(1.05) rotate(1deg);
+        }
+
+        /* Ensure step cards are visible by default */
+        .step-card {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Ensure step wave items are visible by default */
+        .step-wave-item {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Animation classes for when they should animate in */
+        .step-card.animate-in {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .step-card.animate-in.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .step-wave-item.animate-in {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .step-wave-item.animate-in.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        
+    </style>
+</head>
+<body class="is-loading">
+
+    <!-- Header Section -->
+    <header class="header" id="header">
+        <div class="container mx-auto px-4">
+            <nav class="header-container">
+                <!-- Left Section: Logo and Navigation -->
+                <div class="flex items-center space-x-8">
+                    <!-- Logo Section -->
+                    <div class="logo-container">
+                        <a href="home.html" class="group">
+                            <img src="/images/big4india_no_bg7.png" alt="Big4India Logo" class="logo-image" onerror="this.onerror=null; this.src='https://placehold.co/150x64/4F46E5/ffffff?text=Big4India';">
+                        </a>
+                    </div>
+                    
+                    <!-- Desktop Navigation -->
+                    <div class="hidden lg:flex items-center space-x-6">
+                        <!-- Products Dropdown -->
+                        <div class="dropdown relative group">
+                            <a href="#" class="nav-link">
+                                <span>Products</span>
+                                <i data-feather="chevron-down" class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"></i>
+                            </a>
+                            <div class="mega-menu">
+                                <div class="grid grid-cols-3 gap-8">
+                                    <!-- Business Services Card -->
+                                    <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 flex flex-col items-start hover:shadow-lg transition-all duration-300">
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mr-3">
+                                                <i data-feather="briefcase" class="w-5 h-5 text-white"></i>
+                                            </div>
+                                            <h4 class="text-lg font-bold text-gray-800">Business Services</h4>
+                                        </div>
+                                        <ul class="space-y-3 w-full">
+                                            <li>
+                                                <a href="business-incorporation.html" class="flex items-center group hover:bg-green-50 rounded-lg p-2 transition">
+                                                    <div class="w-8 h-8 bg-green-100 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                                        <i data-feather="users" class="w-4 h-4 text-green-600"></i>
+                                                    </div>
+                                                    <span class="font-medium text-gray-700">Business Incorporation</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="registration-services.html" class="flex items-center group hover:bg-blue-50 rounded-lg p-2 transition">
+                                                    <div class="w-8 h-8 bg-blue-100 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                                        <i data-feather="file-plus" class="w-4 h-4 text-blue-600"></i>
+                                                    </div>
+                                                    <span class="font-medium text-gray-700">Registration Services</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="trademark.html" class="flex items-center group hover:bg-purple-50 rounded-lg p-2 transition">
+                                                    <div class="w-8 h-8 bg-purple-100 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                                        <i data-feather="shield" class="w-4 h-4 text-purple-600"></i>
+                                                    </div>
+                                                    <span class="font-medium text-gray-700">Trademark</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- Tax Services Card -->
+                                    <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 flex flex-col items-start hover:shadow-lg transition-all duration-300">
+                                        <div class="flex items-center mb-4">
+                                            <!-- Updated icon background for better visual balance -->
+                                            <div class="w-10 h-10 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center mr-3">
+                                                <i data-feather="file-text" class="w-5 h-5 text-white"></i>
+                                            </div>
+                                            <h4 class="text-lg font-bold text-gray-800">Tax Services</h4>
+                                        </div>
+                                        <ul class="space-y-3 w-full">
+                                            <li>
+                                                <a href="gst.html" class="flex items-center group hover:bg-orange-50 rounded-lg p-2 transition">
+                                                    <div class="w-8 h-8 bg-orange-100 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                                        <i data-feather="file" class="w-4 h-4 text-orange-600"></i>
+                                                    </div>
+                                                    <span class="font-medium text-gray-700">GST Services</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="Income-Taxes.html" class="flex items-center group hover:bg-red-50 rounded-lg p-2 transition">
+                                                    <div class="w-8 h-8 bg-red-100 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                                        <i data-feather="file-text" class="w-4 h-4 text-red-600"></i>
+                                                    </div>
+                                                    <span class="font-medium text-gray-700">Income Tax</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="mca.html" class="flex items-center group hover:bg-teal-50 rounded-lg p-2 transition">
+                                                    <div class="w-8 h-8 bg-teal-100 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                                        <i data-feather="database" class="w-4 h-4 text-teal-600"></i>
+                                                    </div>
+                                                    <span class="font-medium text-gray-700">MCA Services</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- Compliance Card -->
+                                    <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 flex flex-col items-start hover:shadow-lg transition-all duration-300">
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-10 h-10 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
+                                                <i data-feather="check-circle" class="w-5 h-5 text-white"></i>
+                                            </div>
+                                            <h4 class="text-lg font-bold text-gray-800">Compliance</h4>
+                                        </div>
+                                        <ul class="space-y-3 w-full">
+                                            <li>
+                                                <a href="compliance.html" class="flex items-center group hover:bg-indigo-50 rounded-lg p-2 transition">
+                                                    <div class="w-8 h-8 bg-indigo-100 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                                        <i data-feather="check-circle" class="w-4 h-4 text-indigo-600"></i>
+                                                    </div>
+                                                    <span class="font-medium text-gray-700">Regulatory Compliance</span>
+                                                </a>
+                                            </li>
+                                            
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Featured Section -->
+                                <div class="mt-8 pt-6 border-t border-gray-100">
+                                    <div class="bg-gradient-to-r from-orange-50 to-red-50 rounded-xl p-6 flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-600 rounded-lg flex items-center justify-center mr-4">
+                                                <i data-feather="star" class="w-6 h-6 text-white"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-gray-800 mb-1">Complete Business Package</h4>
+                                                <p class="text-sm text-gray-600 mb-3">Everything you need to start your business journey</p>
+                                                <a href="#" class="inline-flex items-center text-orange-600 font-semibold text-sm hover:text-orange-700 transition-colors">
+                                                    Get Started
+                                                    <i data-feather="arrow-right" class="w-4 h-4 ml-1"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-2xl font-bold text-orange-600">₹4,999</div>
+                                            <div class="text-sm text-gray-500">One-time setup</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Resources Dropdown -->
+                        <div class="dropdown relative group">
+                            <a href="#" class="nav-link flex items-center space-x-1 py-2">
+                                <span>Resources</span>
+                                <i data-feather="chevron-down" class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="space-y-4">
+                                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="book-open" class="w-5 h-5 text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Blog & Articles</div>
+                                            <div class="text-sm text-gray-500">Latest insights and updates</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="file-text" class="w-5 h-5 text-green-600"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Tax Guides</div>
+                                            <div class="text-sm text-gray-500">Comprehensive tax guides</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="calculator" class="w-5 h-5 text-purple-600"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Calculators</div>
+                                            <div class="text-sm text-gray-500">Tax & business calculators</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="play" class="w-5 h-5 text-b-orange"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Video Tutorials</div>
+                                            <div class="text-sm text-gray-500">Step-by-step guides</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Company Dropdown -->
+                        <div class="dropdown relative group">
+                            <a href="#" class="nav-link flex items-center space-x-1 py-2">
+                                <span>Company</span>
+                                <i data-feather="chevron-down" class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="space-y-4">
+                                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="users" class="w-5 h-5 text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">About Us</div>
+                                            <div class="text-sm text-gray-500">Our story and mission</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="briefcase" class="w-5 h-5 text-green-600"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Careers</div>
+                                            <div class="text-sm text-gray-500">Join our team</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="phone" class="w-5 h-5 text-purple-600"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Contact Us</div>
+                                            <div class="text-sm text-gray-500">Get in touch</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="award" class="w-5 h-5 text-b-orange"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Awards & Recognition</div>
+                                            <div class="text-sm text-gray-500">Our achievements</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pricing Link -->
+                        <a href="#" class="nav-link py-2">Pricing</a>
+                    </div>
+                </div>
+
+                <!-- Right Section -->
+                <div class="hidden lg:flex items-center space-x-6">
+                    <!-- Search Bar -->
+                    <div class="search-container">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-10">
+                            <i data-feather="search" class="w-5 h-5 text-gray-400 group-focus-within:text-b-orange transition-colors"></i>
+                        </div>
+                        <input type="text" placeholder="Search services..." class="search-input">
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <kbd class="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">⌘K</kbd>
+                        </div>
+                    </div>
+
+                    <!-- Language Selector -->
+                    <div class="relative group">
+                        <button class="nav-link">
+                            <i data-feather="globe" class="w-4 h-4"></i>
+                            <span>EN</span>
+                            <i data-feather="chevron-down" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+
+                    <!-- Login Button -->
+                    <a href="#" class="nav-link">Login</a>
+                    <a href="#" class="nav-link">Sign-up</a>
+                    
+                    <!-- Sign Up Button -->
+                    <a href="#" class="btn-primary">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden">
+                    <button id="m-btn" class="text-gray-700 hover:text-b-orange transition-colors p-2">
+                        <i data-feather="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="m-menu" class="mobile-menu">
+            <div class="px-4 py-6 space-y-4">
+                <!-- Mobile Search -->
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i data-feather="search" class="w-5 h-5 text-gray-400"></i>
+                    </div>
+                    <input type="text" placeholder="Search services..." class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-b-orange/50">
+                </div>
+
+                <!-- Mobile Navigation Links -->
+                <div class="space-y-2">
+                    <div class="mobile-dropdown">
+                        <button class="mobile-dropdown-btn w-full flex items-center justify-between p-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+                            <span class="font-medium">Products</span>
+                            <i data-feather="chevron-down" class="w-5 h-5 transition-transform"></i>
+                        </button>
+                        <div class="mobile-dropdown-content hidden pl-4 space-y-2 mt-2">
+                            <a href="business-incorporation.html" class="block p-2 text-gray-600 hover:text-b-orange">Business Incorporation</a>
+                            <a href="business-incorporation.html" class="block p-2 text-gray-600 hover:text-b-orange">Registration Services</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">GST Services</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Income Tax</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Trademark</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">MCA Services</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Compliance</a>
+                        </div>
+                    </div>
+
+                    <div class="mobile-dropdown">
+                        <button class="mobile-dropdown-btn w-full flex items-center justify-between p-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+                            <span class="font-medium">Resources</span>
+                            <i data-feather="chevron-down" class="w-5 h-5 transition-transform"></i>
+                        </button>
+                        <div class="mobile-dropdown-content hidden pl-4 space-y-2 mt-2">
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Blog</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Tax Guides</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Calculators</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Video Tutorials</a>
+                        </div>
+                    </div>
+
+                    <div class="mobile-dropdown">
+                        <button class="mobile-dropdown-btn w-full flex items-center justify-between p-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+                            <span class="font-medium">Company</span>
+                            <i data-feather="chevron-down" class="w-5 h-5 transition-transform"></i>
+                        </button>
+                        <div class="mobile-dropdown-content hidden pl-4 space-y-2 mt-2">
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">About Us</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Careers</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Contact Us</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Awards</a>
+                        </div>
+                    </div>
+
+                    <a href="#" class="block p-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">Pricing</a>
+                </div>
+
+                <!-- Mobile CTA -->
+                <div class="pt-4 border-t border-gray-200 space-y-3">
+                    <a href="#" class="block text-center text-gray-600 hover:text-b-orange font-medium">Login</a>
+                    <a href="#" class="block text-center bg-gradient-to-r from-b-orange to-orange-600 text-white font-semibold py-3 px-6 rounded-lg hover:shadow-lg transition-all duration-300">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container mx-auto px-4">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="reveal-elastic text-center lg:text-left" style="--delay: 0.2s;">
+                        <div class="inline-block bg-orange-100 text-b-orange font-semibold px-4 py-2 rounded-full text-sm mb-4">
+                            Dream Big, Go Big4India
+                        </div>
+                        <h1 class="text-4xl lg:text-6xl font-extrabold text-gray-800 leading-tight">India's Top Pathways, One Platform</h1>
+                        <div class="mt-10 grid sm:grid-cols-2 gap-6">
+                            <div class="reveal-elastic bg-white p-6 rounded-2xl shadow-lg border border-gray-100 card hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 h-[320px] flex flex-col" style="--delay: 0.3s;">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
+                                        <i data-feather="book-open" class="w-6 h-6 text-orange-600"></i>
+                                    </div>
+                                    <span class="text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded-full font-semibold">Free</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">Stay Informed</h3>
+                                <p class="text-gray-600 text-sm mb-4 flex-grow">Get the latest tax updates, compliance alerts, and expert insights delivered to your inbox.</p>
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="flex text-yellow-400">
+                                            <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                            <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                            <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                            <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                            <i data-feather="star" class="w-4 h-4"></i>
+                                        </div>
+                                        <span class="text-sm text-gray-500">(2.8k)</span>
+                                    </div>
+                                </div>
+                                <button class="w-full bg-orange-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-orange-700 transition-all duration-300 transform hover:scale-105">
+                                    Subscribe Now
+                                </button>
+                            </div>
+                            <div class="reveal-elastic bg-white p-6 rounded-2xl shadow-lg border border-gray-100 card hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 h-[320px] flex flex-col" style="--delay: 0.4s;">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center">
+                                        <i data-feather="users" class="w-6 h-6 text-teal-600"></i>
+                                    </div>
+                                    <span class="text-xs bg-teal-100 text-teal-700 px-2 py-1 rounded-full font-semibold">Popular</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">Hire an Expert</h3>
+                                <p class="text-gray-600 text-sm mb-4 flex-grow">Connect with certified tax professionals for personalized guidance and maximum refunds.</p>
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="flex text-yellow-400">
+                                            <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                            <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                            <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                            <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                            <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        </div>
+                                        <span class="text-sm text-gray-500">(4.2k)</span>
+                                    </div>
+                                </div>
+                                <button class="w-full bg-teal-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-teal-700 transition-all duration-300 transform hover:scale-105">
+                                    Book Expert
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal-elastic hidden lg:flex items-center justify-center" style="--delay: 0.3s;">
+                        <div class="relative h-anim">
+                            <img src="/images/model.png" alt="Tax Refund Illustration" class="rounded-full shadow-xl w-[400px] h-[500px] object-cover">
+                            
+                            <!-- Enhanced Animated Message Popups -->
+                            <div id="popups" class="absolute inset-0">
+                                <!-- Success Message -->
+                                <div class="msg-pop success absolute top-8 -left-32">
+                                    <div class="msg-pop-content">
+                                        <div class="msg-pop-icon">🎉</div>
+                                        <div class="msg-pop-text">
+                                            <div class="msg-pop-title">Company Registration Complete!</div>
+                                            <div class="msg-pop-subtitle">Your business is now officially registered</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Info Message -->
+                                <div class="msg-pop info absolute top-32 -right-36">
+                                    <div class="msg-pop-content">
+                                        <div class="msg-pop-icon">✅</div>
+                                        <div class="msg-pop-text">
+                                            <div class="msg-pop-title">GST Registration Successful</div>
+                                            <div class="msg-pop-subtitle">You can now start filing GST returns</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Warning Message -->
+                                <div class="msg-pop warning absolute bottom-24 -left-36">
+                                    <div class="msg-pop-content">
+                                        <div class="msg-pop-icon">📋</div>
+                                        <div class="msg-pop-text">
+                                            <div class="msg-pop-title">Income Tax Filed</div>
+                                            <div class="msg-pop-subtitle">Maximum refund processed successfully</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Complete Message -->
+                                <div class="msg-pop complete absolute bottom-8 -right-32">
+                                    <div class="msg-pop-content">
+                                        <div class="msg-pop-icon">🏆</div>
+                                        <div class="msg-pop-text">
+                                            <div class="msg-pop-title">All Services Complete</div>
+                                            <div class="msg-pop-subtitle">Your business is fully compliant</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Trademark Message -->
+                                <div class="msg-pop success absolute top-16 left-8">
+                                    <div class="msg-pop-content">
+                                        <div class="msg-pop-icon">🛡️</div>
+                                        <div class="msg-pop-text">
+                                            <div class="msg-pop-title">Trademark Protected</div>
+                                            <div class="msg-pop-subtitle">Your brand is now legally secured</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Infinite Image Slider -->
+        <section class="reveal-elastic slider-container" style="--delay: 0.4s;">
+            <div class="infinite-slider-row">
+                <div class="slide-content animate-slide-left">
+                    <span><span style="color: #28a745;">Finance Made Easy</span>, <span style="color: #dc3545;"> Dreams Made Big.</span></span>
+                    <span><span style="color: #28a745;">Finance Made Easy</span>, <span style="color: #dc3545;"> Dreams Made Big.</span></span>
+                </div>
+                <div class="slide-content animate-slide-left">
+                    <span><span style="color: #28a745;">Finance Made Easy</span>, <span style="color: #dc3545;"> Dreams Made Big.</span></span>
+                    <span><span style="color: #28a745;">Finance Made Easy</span>, <span style="color: #dc3545;"> Dreams Made Big.</span></span>
+                </div>
+            </div>
+            <div class="infinite-slider-row">
+                <div class="slide-content animate-slide-right">
+                    <span>, <span style="color: #dc3545;">Dreams Made Big.</span> <span style="color: #28a745;">Finance Made Easy</span></span>
+                    <span>, <span style="color: #dc3545;">Dreams Made Big.</span> <span style="color: #28a745;">Finance Made Easy</span></span>
+                </div>
+                <div class="slide-content animate-slide-right">
+                    <span>, <span style="color: #dc3545;">Dreams Made Big.</span> <span style="color: #28a745;">Finance Made Easy</span></span>
+                    <span>, <span style="color: #dc3545;">Dreams Made Big.</span> <span style="color: #28a745;">Finance Made Easy</span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Slider Section -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <!-- Section Header -->
+                <div class="text-center mb-12 reveal-elastic" style="--delay: 0.2s;">
+                    <div class="inline-block bg-blue-100 text-b-blue font-semibold px-4 py-2 rounded-full text-sm mb-4">
+                        Our Services
+                    </div>
+                    <h2 class="text-3xl lg:text-5xl font-bold text-gray-800 mb-4">Complete Business Solutions</h2>
+                    <p class="text-gray-600 text-lg max-w-2xl mx-auto">From tax filing to business registration, we provide comprehensive services to help your business grow.</p>
+                </div>
+
+                <!-- Slider Container -->
+                <div class="relative">
+                    <!-- Navigation Arrows -->
+                    <button id="prevBtn" class="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white border border-gray-200 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+                        <i data-feather="chevron-left" class="w-6 h-6 text-gray-600"></i>
+                    </button>
+                    <button id="nextBtn" class="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white border border-gray-200 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+                        <i data-feather="chevron-right" class="w-6 h-6 text-gray-600"></i>
+                    </button>
+
+                    <!-- Slider Viewport -->
+                    <div class="slider-viewport overflow-hidden">
+                        <!-- Slider Track -->
+                        <div id="sliderTrack" class="flex gap-6 transition-transform duration-500 ease-in-out">
+                        <!-- Service Card 1 -->
+                        <div class="service-card flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                                    <i data-feather="users" class="w-6 h-6 text-green-600"></i>
+                                </div>
+                                <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">Fast</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Business Incorporation</h3>
+                            <p class="text-gray-600 text-sm mb-4">Incorporate your business in 24 hours with complete legal compliance support.</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="flex text-yellow-400">
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-500">(3.2k reviews)</span>
+                                </div>
+                                <span class="text-2xl font-bold text-green-600">₹1,999</span>
+                            </div>
+                            <a href="business-incorporation.html">
+                            <button class="w-full bg-green-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-green-700 transition-colors duration-300">
+                                Start Business
+                            </button>
+                        </a>
+                        </div>
+
+                        <!-- Service Card 2 -->
+                        <div class="service-card flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                                    <i data-feather="file-plus" class="w-6 h-6 text-b-blue"></i>
+                                </div>
+                                <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full">Essential</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Registration Services</h3>
+                            <p class="text-gray-600 text-sm mb-4">Complete registration services for all types of business entities and licenses.</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="flex text-yellow-400">
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-500">(2.1k reviews)</span>
+                                </div>
+                                <span class="text-2xl font-bold text-b-blue">₹1,499</span>
+                            </div>
+                            <a href="/html/registration-services.html" class="w-full bg-b-blue text-white font-semibold py-3 px-4 rounded-lg hover:bg-indigo-600 transition-colors duration-300 block text-center">
+                                Register Now
+                            </a>
+                        </div>
+
+                        <!-- Service Card 3 -->
+                        <div class="service-card flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                                    <i data-feather="shield" class="w-6 h-6 text-purple-600"></i>
+                                </div>
+                                <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full">Secure</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Trademark</h3>
+                            <p class="text-gray-600 text-sm mb-4">Protect your brand with comprehensive trademark registration and monitoring.</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="flex text-yellow-400">
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-500">(956 reviews)</span>
+                                </div>
+                                <span class="text-2xl font-bold text-purple-600">₹4,999</span>
+                            </div>
+                            <a href="/trademark.html">
+                            <button class="w-full bg-purple-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-purple-700 transition-colors duration-300">
+                                Protect Brand
+                            </button>
+                            </a>
+                        </div>
+
+                        <!-- Service Card 4 -->
+                        <div class="service-card flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
+                                    <i data-feather="file" class="w-6 h-6 text-b-orange"></i>
+                                </div>
+                                <span class="text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded-full">Popular</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Goods and Services Tax (GST)</h3>
+                            <p class="text-gray-600 text-sm mb-4">Complete GST registration, filing, and compliance services for your business.</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="flex text-yellow-400">
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-500">(1.8k reviews)</span>
+                                </div>
+                                <span class="text-2xl font-bold text-b-orange">₹999</span>
+                            </div>
+                            <a href="/gst.html">
+                            <button class="w-full bg-b-orange text-white font-semibold py-3 px-4 rounded-lg hover:bg-orange-600 transition-colors duration-300">
+                                Get GST
+                            </button>
+                            </a>
+                        </div>
+
+                        <!-- Service Card 5 -->
+                        <div class="service-card flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">
+                                    <i data-feather="file-text" class="w-6 h-6 text-red-600"></i>
+                                </div>
+                                <span class="text-xs bg-red-100 text-red-700 px-2 py-1 rounded-full">Essential</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Income Tax (IT)</h3>
+                            <p class="text-gray-600 text-sm mb-4">File your Income Tax Returns with 100% accuracy and maximum refund guarantee.</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="flex text-yellow-400">
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-500">(2.5k reviews)</span>
+                                </div>
+                                <span class="text-2xl font-bold text-red-600">₹499</span>
+                            </div>
+                            <a href="/income-tax.html">
+                            <button class="w-full bg-red-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-red-700 transition-colors duration-300">
+                                File ITR
+                            </button>
+                            </a>
+                        </div>
+
+                        <!-- Service Card 6 -->
+                        <div class="service-card flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center">
+                                    <i data-feather="database" class="w-6 h-6 text-teal-600"></i>
+                                </div>
+                                <span class="text-xs bg-teal-100 text-teal-700 px-2 py-1 rounded-full">Advanced</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">MCA</h3>
+                            <p class="text-gray-600 text-sm mb-4">Complete MCA filing and compliance services for companies and LLPs.</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="flex text-yellow-400">
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-500">(892 reviews)</span>
+                                </div>
+                                <span class="text-2xl font-bold text-teal-600">₹3,999</span>
+                            </div>
+                            <a href="/mca.html">
+                            <button class="w-full bg-teal-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-teal-700 transition-colors duration-300">
+                                File MCA
+                            </button>
+                            </a>
+                        </div>
+
+                        <!-- Service Card 7 -->
+                        <div class="service-card flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center">
+                                    <i data-feather="check-circle" class="w-6 h-6 text-indigo-600"></i>
+                                </div>
+                                <span class="text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full">Compliance</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Compliance</h3>
+                            <p class="text-gray-600 text-sm mb-4">Stay compliant with all regulatory requirements and avoid penalties.</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="flex text-yellow-400">
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-500">(1.5k reviews)</span>
+                                </div>
+                                <span class="text-2xl font-bold text-indigo-600">₹2,499</span>
+                            </div>
+                            <a href="/compliance.html">
+                            <button class="w-full bg-indigo-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-indigo-700 transition-colors duration-300">
+                                Stay Compliant
+                            </button>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Dots Indicator -->
+                    <div class="flex justify-center mt-8 space-x-2">
+                        <button class="dot-indicator w-3 h-3 bg-gray-300 rounded-full transition-all duration-300 active:bg-b-orange" data-index="0"></button>
+                        <button class="dot-indicator w-3 h-3 bg-gray-300 rounded-full transition-all duration-300" data-index="1"></button>
+                        <button class="dot-indicator w-3 h-3 bg-gray-300 rounded-full transition-all duration-300" data-index="2"></button>
+                        <button class="dot-indicator w-3 h-3 bg-gray-300 rounded-full transition-all duration-300" data-index="3"></button>
+                        <button class="dot-indicator w-3 h-3 bg-gray-300 rounded-full transition-all duration-300" data-index="4"></button>
+                     </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="text-center mt-12 reveal-elastic" style="--delay: 0.6s;">
+                    <button class="bg-gradient-to-r from-b-orange to-orange-600 text-white font-semibold px-8 py-3 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                        Talk to Our Experts
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="py-20 bg-b-lblue reveal-elastic" style="--delay: 0.5s;">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <div class="inline-block bg-b-orange/10 text-b-orange font-semibold px-4 py-2 rounded-full text-sm mb-4">
+                        Why Choose Big4India?
+                    </div>
+                    <h2 class="text-3xl lg:text-5xl font-bold text-gray-800 mb-4">Your Trusted Financial Partner</h2>
+                    <p class="text-gray-600 text-lg max-w-2xl mx-auto">Discover what sets us apart and why thousands trust us for their business and tax needs.</p>
+                </div>
+                <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-8">
+                    <!-- Point 1: Trusted Experts -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition-all duration-300">
+                        <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                            <i data-feather="shield" class="w-7 h-7 text-green-600"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-gray-800 mb-2">Trusted Experts</h4>
+                        <p class="text-gray-600 text-sm">Certified professionals with years of experience in finance and compliance.</p>
+                    </div>
+                    <!-- Point 2: Secure & Private -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition-all duration-300">
+                        <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                            <i data-feather="lock" class="w-7 h-7 text-b-blue"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-gray-800 mb-2">Secure & Private</h4>
+                        <p class="text-gray-600 text-sm">Bank-grade encryption and strict confidentiality for all your data and documents.</p>
+                    </div>
+                    <!-- Point 3: Fast Technology -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition-all duration-300">
+                        <div class="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+                            <i data-feather="cpu" class="w-7 h-7 text-b-orange"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-gray-800 mb-2">Cutting-Edge Tech</h4>
+                        <p class="text-gray-600 text-sm">Automated processes and smart tools for faster, error-free filings and registrations.</p>
+                    </div>
+                    <!-- Point 4: Transparent Pricing -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition-all duration-300">
+                        <div class="w-14 h-14 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
+                            <i data-feather="credit-card" class="w-7 h-7 text-yellow-500"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-gray-800 mb-2">Transparent Pricing</h4>
+                        <p class="text-gray-600 text-sm">Clear, upfront pricing with no hidden fees. Pay only for what you need.</p>
+                    </div>
+                    <!-- Point 5: 24/7 Support -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition-all duration-300">
+                        <div class="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                            <i data-feather="headphones" class="w-7 h-7 text-purple-600"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-gray-800 mb-2">24/7 Support</h4>
+                        <p class="text-gray-600 text-sm">Friendly experts available round-the-clock to answer your questions and provide assistance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden reveal-elastic" style="--delay: 0.4s;">
+            <!-- Background Decorative Elements -->
+            <div class="absolute inset-0">
+                <div class="absolute top-20 left-10 w-40 h-40 bg-gradient-to-r from-b-orange/20 to-orange-400/20 rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute bottom-20 right-10 w-60 h-60 bg-gradient-to-r from-b-blue/15 to-indigo-400/15 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-purple-400/10 to-pink-400/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 4s;"></div>
+                
+                <!-- Grid Pattern Overlay -->
+                <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle at 1px 1px, rgba(79, 70, 229, 0.3) 1px, transparent 0); background-size: 30px 30px;"></div>
+            </div>
+            
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="text-center mb-16">
+                    <div class="inline-block bg-gradient-to-r from-b-orange to-orange-500 text-white font-bold px-8 py-4 rounded-full text-lg mb-8 shadow-xl transform hover:scale-105 transition-all duration-300">
+                        ❓ Frequently Asked Questions
+                    </div>
+                    <h2 class="text-4xl lg:text-6xl font-bold text-gray-800 mb-8 leading-tight">
+                        Got Questions? We've Got 
+                        <span class="bg-gradient-to-r from-b-orange to-orange-500 bg-clip-text text-transparent">Answers</span>
+                    </h2>
+                    <p class="text-gray-600 text-xl max-w-4xl mx-auto leading-relaxed">
+                        Everything you need to know about our services, processes, and how we can help your business grow.
+                    </p>
+                </div>
+
+                <!-- FAQ Accordion -->
+                <div class="max-w-4xl mx-auto space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300">
+                        <button class="faq-question w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300">
+                            <h3 class="text-xl font-semibold text-gray-800">How long does it take to register my business with Big4India?</h3>
+                            <svg class="faq-icon w-6 h-6 text-b-orange transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer px-8 pb-6 hidden">
+                            <p class="text-gray-600 leading-relaxed">
+                                Business registration typically takes 7-15 working days, depending on the type of business structure you choose. For Private Limited Companies, it takes about 10-15 days, while LLP registration can be completed in 7-10 days. We handle all the paperwork and government procedures on your behalf, so you can focus on your business.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300">
+                        <button class="faq-question w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300">
+                            <h3 class="text-xl font-semibold text-gray-800">What documents do I need for GST registration?</h3>
+                            <svg class="faq-icon w-6 h-6 text-b-orange transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer px-8 pb-6 hidden">
+                            <p class="text-gray-600 leading-relaxed mb-4">
+                                For GST registration, you'll need:
+                            </p>
+                            <ul class="text-gray-600 leading-relaxed space-y-2">
+                                <li class="flex items-start">
+                                    <span class="w-2 h-2 bg-b-orange rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                    PAN card and Aadhaar card of the business owner
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="w-2 h-2 bg-b-orange rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                    Business address proof (rent agreement or ownership documents)
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="w-2 h-2 bg-b-orange rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                    Bank account details and cancelled cheque
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="w-2 h-2 bg-b-orange rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                    Digital signature certificate (for companies)
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300">
+                        <button class="faq-question w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300">
+                            <h3 class="text-xl font-semibold text-gray-800">Is it mandatory to file income tax returns even if I have no income?</h3>
+                            <svg class="faq-icon w-6 h-6 text-b-orange transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer px-8 pb-6 hidden">
+                            <p class="text-gray-600 leading-relaxed">
+                                No, it's not mandatory to file income tax returns if your total income is below the basic exemption limit (₹2.5 lakhs for FY 2023-24). However, filing returns is recommended even with zero income as it helps establish your tax compliance history and may be required for various purposes like loan applications, visa processing, or future business ventures.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300">
+                        <button class="faq-question w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300">
+                            <h3 class="text-xl font-semibold text-gray-800">What are the penalties for late GST filing?</h3>
+                            <svg class="faq-icon w-6 h-6 text-b-orange transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer px-8 pb-6 hidden">
+                            <p class="text-gray-600 leading-relaxed mb-4">
+                                Late GST filing attracts the following penalties:
+                            </p>
+                            <ul class="text-gray-600 leading-relaxed space-y-2">
+                                <li class="flex items-start">
+                                    <span class="w-2 h-2 bg-b-orange rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                    <strong>Late fee:</strong> ₹50 per day (₹25 CGST + ₹25 SGST) up to a maximum of ₹10,000
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="w-2 h-2 bg-b-orange rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                    <strong>Interest:</strong> 18% per annum on the tax amount due
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="w-2 h-2 bg-b-orange rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                    <strong>Additional consequences:</strong> Input tax credit may be denied for delayed filings
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 5 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300">
+                        <button class="faq-question w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300">
+                            <h3 class="text-xl font-semibold text-gray-800">Can I register a trademark for my business name myself?</h3>
+                            <svg class="faq-icon w-6 h-6 text-b-orange transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer px-8 pb-6 hidden">
+                            <p class="text-gray-600 leading-relaxed">
+                                While you can technically file a trademark application yourself, it's highly recommended to use professional services like Big4India. Our experts help you conduct thorough searches to avoid conflicts, prepare proper documentation, handle objections, and ensure your application has the best chance of approval. The trademark registration process can take 18-24 months, and professional guidance can save you time and money in the long run.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 6 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300">
+                        <button class="faq-question w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300">
+                            <h3 class="text-xl font-semibold text-gray-800">What is MCA compliance and why is it important?</h3>
+                            <svg class="faq-icon w-6 h-6 text-b-orange transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer px-8 pb-6 hidden">
+                            <p class="text-gray-600 leading-relaxed mb-4">
+                                MCA (Ministry of Corporate Affairs) compliance involves filing various returns and maintaining statutory records for companies and LLPs. It's crucial because:
+                            </p>
+                            <ul class="text-gray-600 leading-relaxed space-y-2">
+                                <li class="flex items-start">
+                                    <span class="w-2 h-2 bg-b-orange rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                    <strong>Legal requirement:</strong> Non-compliance can lead to penalties and even company strike-off
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="w-2 h-2 bg-b-orange rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                    <strong>Business credibility:</strong> Proper compliance enhances your business reputation
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="w-2 h-2 bg-b-orange rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                    <strong>Funding opportunities:</strong> Investors and lenders prefer compliant companies
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 7 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300">
+                        <button class="faq-question w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300">
+                            <h3 class="text-xl font-semibold text-gray-800">How much can I save on taxes with proper tax planning?</h3>
+                            <svg class="faq-icon w-6 h-6 text-b-orange transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer px-8 pb-6 hidden">
+                            <p class="text-gray-600 leading-relaxed">
+                                Tax savings vary based on your income level and business structure. With proper tax planning, individuals can save 15-30% of their tax liability through legitimate deductions and exemptions. For businesses, savings can be even higher (20-40%) through strategic planning of expenses, depreciation, and business structure optimization. Our experts analyze your specific situation to maximize savings while ensuring full compliance with tax laws.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 8 -->
+                    <div class="faq-item bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300">
+                        <button class="faq-question w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300">
+                            <h3 class="text-xl font-semibold text-gray-800">What support do you provide after service completion?</h3>
+                            <svg class="faq-icon w-6 h-6 text-b-orange transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer px-8 pb-6 hidden">
+                            <p class="text-gray-600 leading-relaxed mb-4">
+                                Our relationship doesn't end after service completion. We provide:
+                            </p>
+                            <ul class="text-gray-600 leading-relaxed space-y-2">
+                                <li class="flex items-start">
+                                    <span class="w-2 h-2 bg-b-orange rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                    <strong>24/7 customer support</strong> for any queries or issues
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="w-2 h-2 bg-b-orange rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                    <strong>Regular compliance reminders</strong> for upcoming deadlines
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="w-2 h-2 bg-b-orange rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                    <strong>Free consultation</strong> for future business decisions
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="w-2 h-2 bg-b-orange rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                    <strong>Document storage</strong> and easy access to your records
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="text-center mt-16">
+                    <div class="bg-white rounded-3xl shadow-xl p-12 lg:p-16 max-w-4xl mx-auto border border-gray-100">
+                        <h3 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">
+                            Still Have Questions?
+                        </h3>
+                        <p class="text-gray-600 text-xl mb-8 max-w-2xl mx-auto leading-relaxed">
+                            Our expert team is here to help you with any specific questions about your business needs.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                            <button class="bg-gradient-to-r from-b-orange to-orange-500 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-10 py-5 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg">
+                                Chat with Expert
+                            </button>
+                            <button class="border-2 border-gray-300 hover:border-b-orange text-gray-700 hover:text-b-orange font-bold px-10 py-5 rounded-xl transition-all duration-300 transform hover:scale-105 text-lg">
+                                Schedule Call
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modern Footer Section -->
+    <footer class="relative bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-0 w-full h-full opacity-5">
+                <div class="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-b-orange to-yellow-400 rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full blur-3xl animate-pulse" style="animation-delay: 4s;"></div>
+                    </div>
+            <!-- Grid Pattern -->
+            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0); background-size: 20px 20px;"></div>
+                </div>
+
+        <div class="relative z-10">
+            <!-- Main Footer Content -->
+            <div class="container mx-auto px-6 py-16">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <!-- Brand Section -->
+                    <div class="lg:col-span-4">
+                        <div class="mb-8">
+                            <div class="flex items-center mb-6">
+                                <img src="/images/big4india_no_bg7.png" alt="Big4India Logo" class="h-14 bg-white rounded-xl p-2 shadow-2xl transform hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/180x50/ffffff/3A86FF?text=Big4India';">
+                        </div>
+                            <p class="text-slate-300 leading-relaxed mb-6 text-lg">
+                                Your trusted partner for maximizing tax refunds and business growth. We help individuals and businesses navigate complex regulations with expert guidance.
+                            </p>
+                            
+                            <!-- Trust Indicators -->
+                            <div class="flex items-center space-x-6 mb-8">
+                                <div class="flex items-center space-x-2 text-sm text-green-400">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"/>
+                                    </svg>
+                                    <span>SSL Secured</span>
+                    </div>
+                                <div class="flex items-center space-x-2 text-sm text-blue-400">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+                                    </svg>
+                                    <span>ISO Certified</span>
+                        </div>
+                    </div>
+                        </div>
+                        
+                        <!-- Social Media -->
+                        <div class="mb-8">
+                            <h5 class="text-lg font-semibold mb-4 text-b-orange">Connect With Us</h5>
+                            <div class="flex space-x-4">
+                                <a href="#" class="group w-12 h-12 bg-white/10 hover:bg-b-orange backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-b-orange/25">
+                                    <svg class="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="group w-12 h-12 bg-white/10 hover:bg-b-orange backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-b-orange/25">
+                                    <svg class="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="group w-12 h-12 bg-white/10 hover:bg-b-orange backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-b-orange/25">
+                                    <svg class="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="group w-12 h-12 bg-white/10 hover:bg-b-orange backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-b-orange/25">
+                                    <svg class="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+                                    </svg>
+                                </a>
+                    </div>
+                        </div>
+                        
+                        <!-- Newsletter -->
+                        <div>
+                            <h5 class="text-lg font-semibold mb-4 text-b-orange">Stay Updated</h5>
+                            <p class="text-slate-300 text-sm mb-4">Get the latest tax tips and business insights delivered to your inbox.</p>
+                            <form class="space-y-3">
+                                <div class="relative">
+                                    <input type="email" placeholder="Enter your email" class="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-b-orange focus:border-b-orange transition-all duration-300" required>
+                                    <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                        <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path>
+                                        </svg>
+                    </div>
+                </div>
+                                <button type="submit" class="w-full bg-gradient-to-r from-b-orange to-orange-500 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-orange-500/25 flex items-center justify-center space-x-2">
+                                    <span>Subscribe Now</span>
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                    </svg>
+                                </button>
+                            </form>
+            </div>
+                    </div>
+                    
+                    <!-- Services & Links -->
+                    <div class="lg:col-span-8">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            
+                            <!-- Services -->
+                    <div>
+                                <h5 class="text-lg font-semibold mb-6 text-b-orange flex items-center">
+                                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"/>
+                                    </svg>
+                                    Our Services
+                                </h5>
+                                <ul class="space-y-3">
+                                    <li><a href="/html/business-incorporation.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                        <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
+                                        Business Incorporation
+                                    </a></li>
+                                    <li><a href="/html/gst.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                        <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
+                                        GST Services
+                                    </a></li>
+                                    <li><a href="/html/Income-Taxes.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                        <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
+                                        Income Tax Planning
+                                    </a></li>
+                                    <li><a href="/html/registration-services.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                        <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
+                                        Registration Services
+                                    </a></li>
+                                    <li><a href="/html/compliance.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                        <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
+                                        Compliance
+                                    </a></li>
+                                    <li><a href="/html/mca.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                        <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
+                                        MCA Services
+                                    </a></li>
+                                    <li><a href="/html/trademark.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                        <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
+                                        Trademark Services
+                                    </a></li>
+                        </ul>
+                    </div>
+                            
+                            <!-- Quick Links -->
+                    <div>
+                                <h5 class="text-lg font-semibold mb-6 text-b-orange flex items-center">
+                                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M3.9,12C3.9,10.29 5.29,8.9 7,8.9H11V7H7C4.24,7 2,9.24 2,12C2,14.76 4.24,17 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12M8,13H16V11H8V13M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.71 18.71,15.1 17,15.1H13V17H17C19.76,17 22,14.76 22,12C22,9.24 19.76,7 17,7Z"/>
+                                    </svg>
+                                    Quick Links
+                                </h5>
+                                <ul class="space-y-3">
+                                    <li><a href="about-us.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                        <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
+                                        About Us
+                                    </a></li>
+                                    <li><a href="#" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                        <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
+                                        How It Works
+                                    </a></li>
+                                    <li><a href="#" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                        <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
+                                        Pricing Plans
+                                    </a></li>
+                                    <li><a href="#faq-item" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                        <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
+                                        FAQ
+                                    </a></li>
+                                    <li><a href="#" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                        <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
+                                        Blog & Resources
+                                    </a></li>
+                        </ul>
+                    </div>
+                            
+                            <!-- Contact Info -->
+                    <div>
+                                <h5 class="text-lg font-semibold mb-6 text-b-orange flex items-center">
+                                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+                                    </svg>
+                                    Get In Touch
+                                </h5>
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-3 group">
+                                        <div class="w-6 h-6 text-b-orange mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                            </svg>
+                    </div>
+                    <div>
+                                            <p class="text-slate-300 text-sm leading-relaxed">
+                                                123 Business District,<br>
+                                                Mumbai, Maharashtra 400001
+                                            </p>
+                    </div>
+                </div>
+                                    
+                                    <div class="flex items-center space-x-3 group">
+                                        <div class="w-6 h-6 text-b-orange flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                                            </svg>
+                </div>
+                                        <p class="text-slate-300 text-sm">+91 98765 43210</p>
+            </div>
+                                    
+                                    <div class="flex items-center space-x-3 group">
+                                        <div class="w-6 h-6 text-b-orange flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                            </svg>
+                                        </div>
+                                        <p class="text-slate-300 text-sm">hello@big4india.com</p>
+                                    </div>
+                                    
+                                    <div class="flex items-center space-x-3 group">
+                                        <div class="w-6 h-6 text-b-orange flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+                                                <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                                            </svg>
+                                        </div>
+                                        <p class="text-slate-300 text-sm">Mon - Fri: 9:00 AM - 6:00 PM</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- CTA Button -->
+                                <div class="mt-6">
+                                    <a href="#" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-b-orange to-orange-500 hover:from-orange-600 hover:to-orange-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-orange-500/25 group">
+                                        <span>Get Free Consultation</span>
+                                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Section -->
+            <div class="border-t border-white/10">
+                <div class="container mx-auto px-6 py-6">
+                    <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+                        <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6 text-sm text-slate-300">
+                            <p>&copy; 2024 Big4India. All rights reserved.</p>
+                            <div class="flex items-center space-x-4">
+                                <a href="#" class="hover:text-b-orange transition-colors duration-300">Privacy Policy</a>
+                                <span class="text-slate-400">•</span>
+                                <a href="#" class="hover:text-b-orange transition-colors duration-300">Terms of Service</a>
+                                <span class="text-slate-400">•</span>
+                                <a href="#" class="hover:text-b-orange transition-colors duration-300">Cookie Policy</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Trust Badges -->
+                        <div class="flex items-center space-x-6">
+                            <div class="flex items-center space-x-2 text-xs text-slate-300">
+                                <div class="w-4 h-4 text-green-400">
+                                    <svg fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"/>
+                                    </svg>
+                                </div>
+                                <span>SSL Secured</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-xs text-slate-300">
+                                <div class="w-4 h-4 text-cyan-400">
+                                    <svg fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+                                    </svg>
+                                </div>
+                                <span>Verified Business</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-xs text-slate-300">
+                                <div class="w-4 h-4 text-blue-400">
+                                    <svg fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+                                    </svg>
+                                </div>
+                                <span>ISO 27001</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+         // --- New Simplified Script for Elastic Loading ---
+        // This function will run once all page content (images, etc.) is fully loaded.
+        window.onload = () => {
+            // Removing this class triggers the CSS transition for the reveal animation.
+            document.body.classList.remove('is-loading');
+        };
+
+
+             // Feather Icons initialization
+        feather.replace();
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('m-btn');
+        const mobileMenu = document.getElementById('m-menu');
+        if(mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Enhanced Message Popup Animation
+        const popupsContainer = document.getElementById('popups');
+        if (popupsContainer) {
+            const popups = Array.from(popupsContainer.children);
+            let currentPopup = 0;
+            let isAnimating = false;
+            
+            if (popups.length > 0) {
+                // Initialize popups
+                popups.forEach((popup, index) => {
+                    popup.style.zIndex = 10 - index; // Stack order
+                });
+                
+                // Start popup animation after the main page has loaded
+                setTimeout(() => {
+                    const heroImage = document.querySelector('.h-anim');
+                    if (heroImage) {
+                        heroImage.classList.add('active');
+                    }
+                    
+                    // Show first popup
+                    showPopup(currentPopup);
+                    
+                    // Start the rotation
+                    setInterval(() => {
+                        if (!isAnimating) {
+                            hidePopup(currentPopup);
+                            currentPopup = (currentPopup + 1) % popups.length;
+                            setTimeout(() => {
+                                showPopup(currentPopup);
+                            }, 300);
+                        }
+                    }, 3500);
+                }, 1500); // Delay popups from starting immediately
+                
+                // Functions to show/hide popups with smooth transitions
+                function showPopup(index) {
+                    isAnimating = true;
+                    const popup = popups[index];
+                    
+                    // Reset any previous states
+                    popup.classList.remove('hide');
+                    
+                    // Add entrance animation
+                    popup.classList.add('visible');
+                    
+                    // Add subtle bounce effect
+                    setTimeout(() => {
+                        popup.style.transform = 'translateY(-5px) scale(1.02) rotate(0deg)';
+                        setTimeout(() => {
+                            popup.style.transform = 'translateY(0) scale(1) rotate(0deg)';
+                            isAnimating = false;
+                        }, 200);
+                    }, 100);
+                }
+                
+                function hidePopup(index) {
+                    isAnimating = true;
+                    const popup = popups[index];
+                    
+                    // Add exit animation
+                    popup.classList.add('hide');
+                    
+                    setTimeout(() => {
+                        popup.classList.remove('visible', 'hide');
+                        isAnimating = false;
+                    }, 300);
+                }
+                
+                // Add hover effects for better interactivity
+                popups.forEach(popup => {
+                    popup.addEventListener('mouseenter', () => {
+                        if (popup.classList.contains('visible')) {
+                            popup.style.transform = 'translateY(-2px) scale(1.02) rotate(0deg)';
+                            popup.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+                        }
+                    });
+                    
+                    popup.addEventListener('mouseleave', () => {
+                        if (popup.classList.contains('visible')) {
+                            popup.style.transform = 'translateY(0) scale(1) rotate(0deg)';
+                            popup.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
+                        }
+                    });
+                });
+            }
+        }
+        
+
+        // Scroll Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const revealElements = document.querySelectorAll('.slide-in, .reveal-elastic');
+        if (revealElements.length > 0) {
+            revealElements.forEach(el => observer.observe(el));
+        }
+
+        // Enhanced Navigation Functionality
+        const header = document.getElementById('header');
+        
+        // Throttled scroll handler for smooth performance
+        let ticking = false;
+        function updateHeaderOnScroll() {
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+            ticking = false;
+        }
+        
+        // Header scroll effect with throttling
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateHeaderOnScroll);
+                ticking = true;
+            }
+        });
+        
+        // Dropdown Menu Logic with improved stability
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+            let timeout;
+            const menu = dropdown.querySelector('.mega-menu, .dropdown-menu');
+            
+            if (!menu) return;
+
+            dropdown.addEventListener('mouseenter', () => {
+                clearTimeout(timeout);
+                // Close all other dropdowns first
+                dropdowns.forEach(otherDropdown => {
+                    if (otherDropdown !== dropdown) {
+                        const otherMenu = otherDropdown.querySelector('.mega-menu, .dropdown-menu');
+                        if (otherMenu) {
+                            otherMenu.classList.remove('open');
+                        }
+                    }
+                });
+                menu.classList.add('open');
+            });
+
+            dropdown.addEventListener('mouseleave', () => {
+                timeout = setTimeout(() => {
+                    menu.classList.remove('open');
+                }, 150); // Reduced delay for better UX
+            });
+        });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) {
+                dropdowns.forEach(dropdown => {
+                    const menu = dropdown.querySelector('.mega-menu, .dropdown-menu');
+                    if (menu) {
+                        menu.classList.remove('open');
+                    }
+                });
+            }
+        });
+
+        // Mobile Menu Toggle with smooth animations
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.contains('open');
+                
+                if (isOpen) {
+                    mobileMenu.classList.remove('open');
+                    document.body.classList.remove('menu-open');
+                } else {
+                    mobileMenu.classList.add('open');
+                    document.body.classList.add('menu-open');
+                }
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('#m-menu') && !e.target.closest('#m-btn')) {
+                    mobileMenu.classList.remove('open');
+                    document.body.classList.remove('menu-open');
+                }
+            });
+        }
+
+        // Mobile Dropdown Toggle with improved animations
+        const mobileDropdownBtns = document.querySelectorAll('.mobile-dropdown-btn');
+        mobileDropdownBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('i');
+                
+                btn.classList.toggle('active');
+                
+                if (content.classList.contains('open')) {
+                    content.classList.remove('open');
+                } else {
+                    // Close other mobile dropdowns first
+                    mobileDropdownBtns.forEach(otherBtn => {
+                        if (otherBtn !== btn) {
+                            otherBtn.classList.remove('active');
+                            const otherContent = otherBtn.nextElementSibling;
+                            otherContent.classList.remove('open');
+                        }
+                    });
+                    content.classList.add('open');
+                }
+            });
+        });
+
+        // Search functionality with improved focus handling
+        const searchInput = document.querySelector('.search-input');
+        if (searchInput) {
+            // Keyboard shortcut for search
+            document.addEventListener('keydown', (e) => {
+                if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                    e.preventDefault();
+                    searchInput.focus();
+                }
+            });
+            
+            // Focus search on mobile menu open
+            if (mobileMenu) {
+                const mobileSearchInput = mobileMenu.querySelector('input[placeholder*="Search"]');
+                if (mobileSearchInput) {
+                    mobileMenu.addEventListener('transitionend', () => {
+                        if (mobileMenu.classList.contains('open')) {
+                            mobileSearchInput.focus();
+                        }
+                    });
+                }
+            }
+        }
+        
+        // Prevent layout shift by preloading images
+        const logoImage = document.querySelector('.logo-image');
+        if (logoImage) {
+            logoImage.addEventListener('load', () => {
+                logoImage.style.opacity = '1';
+            });
+        }
+        
+        // Smooth resize handling
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                // Close mobile menu on large screens
+                if (window.innerWidth >= 1024) {
+                    mobileMenu.classList.remove('open');
+                    document.body.classList.remove('menu-open');
+                }
+            }, 250);
+        });
+
+        // --- Products Slider Functionality ---
+        const sliderTrack = document.getElementById('sliderTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotIndicators = document.querySelectorAll('.dot-indicator');
+        const serviceCards = document.querySelectorAll('.service-card');
+        
+        let currentSlide = 0;
+        const cardWidth = 320; // 320px (card width) + 24px (gap)
+        const maxSlides = 7; // Updated to 7 services
+        const cardsPerView = 3; // Show 3 cards at once
+        
+        // Initialize slider
+        function initSlider() {
+            updateDots();
+            updateNavigationButtons();
+        }
+        
+        // Update dot indicators
+        function updateDots() {
+            dotIndicators.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        // Update navigation buttons
+        function updateNavigationButtons() {
+            prevBtn.style.opacity = currentSlide === 0 ? '0.5' : '1';
+            nextBtn.style.opacity = currentSlide >= maxSlides - cardsPerView ? '0.5' : '1';
+        }
+        
+        // Update card states (active/inactive)
+        function updateCardStates() {
+            serviceCards.forEach((card, index) => {
+                if (index >= currentSlide && index < currentSlide + cardsPerView) {
+                    card.classList.add('active');
+                    card.classList.remove('inactive');
+                } else {
+                    card.classList.remove('active');
+                    card.classList.add('inactive');
+                }
+            });
+        }
+        
+        // Slide to specific index
+        function slideTo(index) {
+            currentSlide = Math.max(0, Math.min(index, maxSlides - cardsPerView));
+            const translateX = -currentSlide * cardWidth;
+            sliderTrack.style.transform = `translateX(${translateX}px)`;
+            updateDots();
+            updateNavigationButtons();
+            updateCardStates();
+        }
+        
+        // Next slide
+        function nextSlide() {
+            if (currentSlide < maxSlides - cardsPerView) {
+                slideTo(currentSlide + 1);
+            }
+        }
+        
+        // Previous slide
+        function prevSlide() {
+            if (currentSlide > 0) {
+                slideTo(currentSlide - 1);
+            }
+        }
+        
+        // Event listeners
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+        }
+        
+        // Dot indicator clicks
+        dotIndicators.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                slideTo(index);
+            });
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+            }
+        });
+        
+        // Touch/swipe support for mobile
+        let startX = 0;
+        let endX = 0;
+        
+        if (sliderTrack) {
+            sliderTrack.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+            
+            sliderTrack.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+                
+                if (Math.abs(diff) > 50) { // Minimum swipe distance
+                    if (diff > 0) {
+                        nextSlide(); // Swipe left
+                    } else {
+                        prevSlide(); // Swipe right
+                    }
+                }
+            });
+        }
+        
+        // Auto-play functionality (optional)
+        let autoPlayInterval;
+        
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                if (currentSlide < maxSlides - cardsPerView) {
+                    nextSlide();
+                } else {
+                    slideTo(0); // Reset to first slide
+                }
+            }, 5000); // Change slide every 5 seconds
+        }
+        
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+        
+        // Pause auto-play on hover
+        if (sliderTrack) {
+            sliderTrack.addEventListener('mouseenter', stopAutoPlay);
+            sliderTrack.addEventListener('mouseleave', startAutoPlay);
+        }
+        
+        // Initialize slider when page loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                initSlider();
+                updateCardStates(); // Initialize card states
+            }, 1000); // Delay to ensure all elements are loaded
+            startAutoPlay();
+            
+            // Ensure steps section elements are visible
+            const stepWaveItems = document.querySelectorAll('.step-wave-item');
+            const stepCards = document.querySelectorAll('.step-card');
+            const bottomCTA = document.querySelector('.bottom-cta');
+            
+            stepWaveItems.forEach(item => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0) scale(1)';
+            });
+            
+            stepCards.forEach(card => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+            
+            if (bottomCTA) {
+                bottomCTA.style.opacity = '1';
+                bottomCTA.style.transform = 'translateY(0)';
+            }
+        });
+
+        // --- Steps to Get Started Animation ---
+        const stepsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add active class to step wave items with staggered delay
+                    const stepWaveItems = entry.target.querySelectorAll('.step-wave-item');
+                    stepWaveItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('active');
+                            
+                            // Add active class to step cards within each wave item
+                            const stepCard = item.querySelector('.step-card');
+                            if (stepCard) {
+                                setTimeout(() => {
+                                    stepCard.classList.add('active');
+                                }, 200);
+                            }
+                        }, index * 300); // 300ms delay between each wave item
+                    });
+
+                    // Add active class to bottom CTA section
+                    const bottomCTA = entry.target.querySelector('.bottom-cta');
+                    if (bottomCTA) {
+                        setTimeout(() => {
+                            bottomCTA.classList.add('active');
+                        }, 1500); // Delay after all wave items are animated
+                    }
+
+                    // Add wave path line animation class
+                    const wavePathLine = entry.target.querySelector('.bg-gradient-to-b.animate-pulse');
+                    if (wavePathLine) {
+                        wavePathLine.style.animation = 'wave-pulse 2s ease-in-out infinite';
+                    }
+
+                    // Stop observing after animation is triggered
+                    stepsObserver.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.1, // Trigger when 10% of the section is visible
+            rootMargin: '0px 0px -50px 0px' // Trigger earlier
+        });
+
+        // Observe the steps section
+        const stepsSection = document.querySelector('.py-24.bg-gradient-to-br');
+        if (stepsSection) {
+            stepsObserver.observe(stepsSection);
+        }
+
+        // Fallback: Ensure elements are visible if observer doesn't trigger
+        setTimeout(() => {
+            const stepWaveItems = document.querySelectorAll('.step-wave-item');
+            const stepCards = document.querySelectorAll('.step-card');
+            const bottomCTA = document.querySelector('.bottom-cta');
+            
+            // Make sure all elements are visible
+            stepWaveItems.forEach(item => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0) scale(1)';
+            });
+            
+            stepCards.forEach(card => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+            
+            if (bottomCTA) {
+                bottomCTA.style.opacity = '1';
+                bottomCTA.style.transform = 'translateY(0)';
+            }
+        }, 2000); // Fallback after 2 seconds
+
+        // Add hover effects for step cards
+        const stepCards = document.querySelectorAll('.step-card');
+        stepCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Add subtle glow effect
+                card.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                // Remove glow effect
+                card.style.boxShadow = '';
+            });
+        });
+
+        // Add click handlers for CTA buttons
+        const ctaButtons = document.querySelectorAll('.step-card button');
+        ctaButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Add ripple effect
+                const ripple = document.createElement('span');
+                const rect = button.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                button.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple effect CSS dynamically
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.3);
+                transform: scale(0);
+                animation: ripple-animation 0.6s linear;
+                pointer-events: none;
+            }
+            
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+
+        // FAQ Accordion Functionality
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.closest('.faq-item');
+                const answer = faqItem.querySelector('.faq-answer');
+                const icon = faqItem.querySelector('.faq-icon');
+                
+                // Close all other FAQ items
+                faqQuestions.forEach(otherQuestion => {
+                    if (otherQuestion !== question) {
+                        const otherItem = otherQuestion.closest('.faq-item');
+                        const otherAnswer = otherItem.querySelector('.faq-answer');
+                        const otherIcon = otherItem.querySelector('.faq-icon');
+                        
+                        otherAnswer.classList.add('hidden');
+                        otherIcon.style.transform = 'rotate(0deg)';
+                        otherItem.classList.remove('ring-2', 'ring-b-orange/20');
+                    }
+                });
+                
+                // Toggle current FAQ item
+                answer.classList.toggle('hidden');
+                icon.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+                faqItem.classList.toggle('ring-2', 'ring-b-orange/20');
+            });
+        });
+
+        // Add smooth scroll for FAQ CTA buttons
+        const faqCTAButtons = document.querySelectorAll('.faq-item button, .faq-section button');
+        faqCTAButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Add ripple effect
+                const ripple = document.createElement('span');
+                const rect = button.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                button.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+                
+                // Scroll to contact section or trigger contact modal
+                const contactSection = document.querySelector('#contact') || document.querySelector('.contact-section');
+                if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+
+</body>
+</html>
