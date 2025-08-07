@@ -66,6 +66,30 @@
         .header.header-scrolled {
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
+        
+        /* --- Enhanced Navigation Styles --- */
+        /* Prevent layout shift and ensure smooth transitions */
+        * {
+            box-sizing: border-box;
+        }
+        
+        /* Header container with fixed height to prevent layout shift */
+        .header-container {
+            height: 80px; /* Fixed height for desktop */
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        /* Mobile header height */
+        @media (max-width: 1023px) {
+            .header-container {
+                height: 72px;
+                min-height: 72px;
+            }
+        }
+        
         .nav-link {
             color: #4B5563;
             font-weight: 500;
@@ -74,11 +98,125 @@
             padding: 0.5rem 0.75rem;
             border-radius: 0.375rem;
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
         }
         .nav-link:hover {
             color: #F97316;
             background-color: rgba(249, 115, 22, 0.05);
         }
+        
+        /* Mega menu with improved stability */
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            transform: translateY(8px);
+            opacity: 0;
+            visibility: hidden;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            padding: 2rem;
+            width: 800px;
+            max-width: 90vw;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform, opacity, visibility;
+            z-index: 1001;
+        }
+        
+        .mega-menu.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .group:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        /* Standard dropdown menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            transform: translateY(8px);
+            opacity: 0;
+            visibility: hidden;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            min-width: 320px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform, opacity, visibility;
+            z-index: 1001;
+        }
+        
+        .dropdown-menu.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        /* Logo with stable dimensions */
+        .logo-container {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-image {
+            height: 48px;
+            width: auto;
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        @media (min-width: 1024px) {
+            .logo-image {
+                height: 64px;
+            }
+        }
+        
+        .logo-container:hover .logo-image {
+            transform: scale(1.05);
+        }
+        
+        /* Search bar with stable dimensions */
+        .search-container {
+            position: relative;
+            width: 256px;
+            flex-shrink: 0;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 0.5rem 2.5rem 0.5rem 2.5rem;
+            background-color: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #F97316;
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+            background-color: #FFFFFF;
+        }
+        
         .btn-primary {
             background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
             color: white;
@@ -86,11 +224,99 @@
             font-size: 0.875rem;
             padding: 0.5rem 1.5rem;
             border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
         .btn-primary:hover {
             transform: translateY(-1px);
             box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.3);
+        }
+        
+        /* Mobile menu with smooth transitions */
+        .mobile-menu {
+            position: fixed;
+            top: 72px; /* Match header height */
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(229, 231, 235, 0.8);
+            transform: translateY(-100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 999;
+            max-height: calc(100vh - 72px);
+            overflow-y: auto;
+        }
+        
+        .mobile-menu.open {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Mobile dropdown styles with smooth animations */
+        .mobile-dropdown-btn {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .mobile-dropdown-btn.active i {
+            transform: rotate(180deg);
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .mobile-dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .mobile-dropdown-content.open {
+            max-height: 500px; /* Adjust based on content */
+        }
+        
+        /* Prevent body scroll when mobile menu is open */
+        body.menu-open {
+            overflow: hidden;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1023px) {
+            .search-container {
+                width: 100%;
+            }
+            
+            .mega-menu {
+                width: calc(100vw - 2rem);
+                max-width: none;
+                left: 1rem;
+                right: 1rem;
+                transform: translateY(8px);
+                padding: 1.5rem;
+            }
+            
+            .mega-menu.open {
+                transform: translateY(0);
+            }
+            
+            .mega-menu .grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+        
+        /* Ensure mega menu doesn't go off-screen on medium screens */
+        @media (max-width: 1200px) {
+            .mega-menu {
+                width: 600px;
+                max-width: calc(100vw - 2rem);
+            }
         }
     </style>
 </head>
@@ -105,7 +331,7 @@
                     <!-- Logo Section -->
                     <div class="logo-container">
                         <a href="home.html" class="group">
-                            <img src="/images/big4india_no_bg7.png" alt="Big4India Logo" class="logo-image h-16" >
+                            <img src="/images/big4india_no_bg7.png" alt="Big4India Logo" class="logo-image" onerror="this.onerror=null; this.src='https://placehold.co/150x64/4F46E5/ffffff?text=Big4India';">
                         </a>
                     </div>
                     
@@ -117,10 +343,10 @@
                                 <span>Products</span>
                                 <i data-feather="chevron-down" class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"></i>
                             </a>
-                            <div class="mega-menu absolute top-full left-0 z-50 w-max max-w-4xl mt-2 p-8 bg-white shadow-2xl rounded-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0">
+                            <div class="mega-menu">
                                 <div class="grid grid-cols-3 gap-8">
                                     <!-- Business Services Card -->
-                                    <div class="bg-white rounded-xl p-6 flex flex-col items-start hover:shadow-lg transition-all duration-300">
+                                    <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 flex flex-col items-start hover:shadow-lg transition-all duration-300">
                                         <div class="flex items-center mb-4">
                                             <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mr-3">
                                                 <i data-feather="briefcase" class="w-5 h-5 text-white"></i>
@@ -155,8 +381,9 @@
                                         </ul>
                                     </div>
                                     <!-- Tax Services Card -->
-                                    <div class="bg-white rounded-xl p-6 flex flex-col items-start hover:shadow-lg transition-all duration-300">
+                                    <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 flex flex-col items-start hover:shadow-lg transition-all duration-300">
                                         <div class="flex items-center mb-4">
+                                            <!-- Updated icon background for better visual balance -->
                                             <div class="w-10 h-10 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center mr-3">
                                                 <i data-feather="file-text" class="w-5 h-5 text-white"></i>
                                             </div>
@@ -190,7 +417,7 @@
                                         </ul>
                                     </div>
                                     <!-- Compliance Card -->
-                                    <div class="bg-white rounded-xl p-6 flex flex-col items-start hover:shadow-lg transition-all duration-300">
+                                    <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 flex flex-col items-start hover:shadow-lg transition-all duration-300">
                                         <div class="flex items-center mb-4">
                                             <div class="w-10 h-10 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
                                                 <i data-feather="check-circle" class="w-5 h-5 text-white"></i>
@@ -209,18 +436,162 @@
                                         </ul>
                                     </div>
                                 </div>
+                                <!-- Featured Section -->
+                                <div class="mt-8 pt-6 border-t border-gray-100">
+                                    <div class="bg-gradient-to-r from-orange-50 to-red-50 rounded-xl p-6 flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-600 rounded-lg flex items-center justify-center mr-4">
+                                                <i data-feather="star" class="w-6 h-6 text-white"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-gray-800 mb-1">Complete Business Package</h4>
+                                                <p class="text-sm text-gray-600 mb-3">Everything you need to start your business journey</p>
+                                                <a href="#" class="inline-flex items-center text-orange-600 font-semibold text-sm hover:text-orange-700 transition-colors">
+                                                    Get Started
+                                                    <i data-feather="arrow-right" class="w-4 h-4 ml-1"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-2xl font-bold text-orange-600">₹4,999</div>
+                                            <div class="text-sm text-gray-500">One-time setup</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <a href="about-us.html" class="nav-link">About Us</a>
-                        <a href="carrer.html" class="nav-link">Careers</a>
-                        <a href="contactus.html" class="nav-link">Contact Us</a>
+                        <!-- Resources Dropdown -->
+                        <div class="dropdown relative group">
+                            <a href="#" class="nav-link flex items-center space-x-1 py-2">
+                                <span>Resources</span>
+                                <i data-feather="chevron-down" class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="space-y-4">
+                                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="book-open" class="w-5 h-5 text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Blog & Articles</div>
+                                            <div class="text-sm text-gray-500">Latest insights and updates</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="file-text" class="w-5 h-5 text-green-600"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Tax Guides</div>
+                                            <div class="text-sm text-gray-500">Comprehensive tax guides</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="calculator" class="w-5 h-5 text-purple-600"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Calculators</div>
+                                            <div class="text-sm text-gray-500">Tax & business calculators</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="play" class="w-5 h-5 text-b-orange"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Video Tutorials</div>
+                                            <div class="text-sm text-gray-500">Step-by-step guides</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Company Dropdown -->
+                        <div class="dropdown relative group">
+                            <a href="#" class="nav-link flex items-center space-x-1 py-2">
+                                <span>Company</span>
+                                <i data-feather="chevron-down" class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="space-y-4">
+                                    <a href="about-us.html" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="users" class="w-5 h-5 text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">About Us</div>
+                                            <div class="text-sm text-gray-500">Our story and mission</div>
+                                        </div>
+                                    </a>
+                                    <a href="carrer.html" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="briefcase" class="w-5 h-5 text-green-600"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Careers</div>
+                                            <div class="text-sm text-gray-500">Join our team</div>
+                                        </div>
+                                    </a>
+                                    <a href="contactus.html" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="phone" class="w-5 h-5 text-purple-600"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Contact Us</div>
+                                            <div class="text-sm text-gray-500">Get in touch</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="award" class="w-5 h-5 text-b-orange"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Awards & Recognition</div>
+                                            <div class="text-sm text-gray-500">Our achievements</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pricing Link -->
+                        <a href="#" class="nav-link py-2">Pricing</a>
                     </div>
                 </div>
 
                 <!-- Right Section -->
                 <div class="hidden lg:flex items-center space-x-6">
-                    <a href="#" class="btn-primary">Get Started</a>
+                    <!-- Search Bar -->
+                    <div class="search-container">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-10">
+                            <i data-feather="search" class="w-5 h-5 text-gray-400 group-focus-within:text-b-orange transition-colors"></i>
+                        </div>
+                        <input type="text" placeholder="Search services..." class="search-input">
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <kbd class="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">⌘K</kbd>
+                        </div>
+                    </div>
+
+                    <!-- Language Selector -->
+                    <div class="relative group">
+                        <button class="nav-link">
+                            <i data-feather="globe" class="w-4 h-4"></i>
+                            <span>EN</span>
+                            <i data-feather="chevron-down" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+
+                    <!-- Login Button -->
+                    <a href="#" class="nav-link">Login</a>
+                    <a href="#" class="nav-link">Sign-up</a>
+                    
+                    <!-- Sign Up Button -->
+                    <a href="#" class="btn-primary">
+                        Get Started
+                    </a>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -230,6 +601,72 @@
                     </button>
                 </div>
             </nav>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="m-menu" class="mobile-menu">
+            <div class="px-4 py-6 space-y-4">
+                <!-- Mobile Search -->
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i data-feather="search" class="w-5 h-5 text-gray-400"></i>
+                    </div>
+                    <input type="text" placeholder="Search services..." class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-b-orange/50">
+                </div>
+
+                <!-- Mobile Navigation Links -->
+                <div class="space-y-2">
+                    <div class="mobile-dropdown">
+                        <button class="mobile-dropdown-btn w-full flex items-center justify-between p-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+                            <span class="font-medium">Products</span>
+                            <i data-feather="chevron-down" class="w-5 h-5 transition-transform"></i>
+                        </button>
+                        <div class="mobile-dropdown-content hidden pl-4 space-y-2 mt-2">
+                            <a href="business-incorporation.html" class="block p-2 text-gray-600 hover:text-b-orange">Business Incorporation</a>
+                            <a href="registration-services.html" class="block p-2 text-gray-600 hover:text-b-orange">Registration Services</a>
+                            <a href="gst.html" class="block p-2 text-gray-600 hover:text-b-orange">GST Services</a>
+                            <a href="Income-Taxes.html" class="block p-2 text-gray-600 hover:text-b-orange">Income Tax</a>
+                            <a href="trademark.html" class="block p-2 text-gray-600 hover:text-b-orange">Trademark</a>
+                            <a href="mca.html" class="block p-2 text-gray-600 hover:text-b-orange">MCA Services</a>
+                            <a href="compliance.html" class="block p-2 text-gray-600 hover:text-b-orange">Compliance</a>
+                        </div>
+                    </div>
+
+                    <div class="mobile-dropdown">
+                        <button class="mobile-dropdown-btn w-full flex items-center justify-between p-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+                            <span class="font-medium">Resources</span>
+                            <i data-feather="chevron-down" class="w-5 h-5 transition-transform"></i>
+                        </button>
+                        <div class="mobile-dropdown-content hidden pl-4 space-y-2 mt-2">
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Blog</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Tax Guides</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Calculators</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Video Tutorials</a>
+                        </div>
+                    </div>
+
+                    <div class="mobile-dropdown">
+                        <button class="mobile-dropdown-btn w-full flex items-center justify-between p-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+                            <span class="font-medium">Company</span>
+                            <i data-feather="chevron-down" class="w-5 h-5 transition-transform"></i>
+                        </button>
+                        <div class="mobile-dropdown-content hidden pl-4 space-y-2 mt-2">
+                            <a href="about-us.html" class="block p-2 text-gray-600 hover:text-b-orange">About Us</a>
+                            <a href="carrer.html" class="block p-2 text-gray-600 hover:text-b-orange">Careers</a>
+                            <a href="contactus.html" class="block p-2 text-gray-600 hover:text-b-orange">Contact Us</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Awards</a>
+                        </div>
+                    </div>
+
+                    <a href="#" class="block p-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">Pricing</a>
+                </div>
+
+                <!-- Mobile CTA -->
+                <div class="pt-4 border-t border-gray-200 space-y-3">
+                    <a href="#" class="block w-full text-center py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">Login</a>
+                    <a href="#" class="block w-full text-center py-3 bg-gradient-to-r from-b-orange to-red-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300">Get Started</a>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -875,6 +1312,143 @@
             } else {
                 header.classList.remove('header-scrolled');
             }
+        });
+
+        // Enhanced Navigation JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality
+            const mobileMenuBtn = document.getElementById('m-btn');
+            const mobileMenu = document.getElementById('m-menu');
+            const body = document.body;
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('open');
+                    body.classList.toggle('menu-open');
+                });
+            }
+
+            // Mobile dropdown functionality
+            const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+            mobileDropdowns.forEach(dropdown => {
+                const btn = dropdown.querySelector('.mobile-dropdown-btn');
+                const content = dropdown.querySelector('.mobile-dropdown-content');
+                
+                if (btn && content) {
+                    btn.addEventListener('click', function() {
+                        const isOpen = content.classList.contains('open');
+                        
+                        // Close all other dropdowns
+                        mobileDropdowns.forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                const otherContent = otherDropdown.querySelector('.mobile-dropdown-content');
+                                const otherBtn = otherDropdown.querySelector('.mobile-dropdown-btn');
+                                if (otherContent && otherBtn) {
+                                    otherContent.classList.remove('open');
+                                    otherBtn.classList.remove('active');
+                                }
+                            }
+                        });
+                        
+                        // Toggle current dropdown
+                        content.classList.toggle('open');
+                        btn.classList.toggle('active');
+                    });
+                }
+            });
+
+            // Desktop dropdown functionality
+            const desktopDropdowns = document.querySelectorAll('.dropdown');
+            desktopDropdowns.forEach(dropdown => {
+                const menu = dropdown.querySelector('.mega-menu, .dropdown-menu');
+                let timeout;
+
+                if (menu) {
+                    dropdown.addEventListener('mouseenter', function() {
+                        clearTimeout(timeout);
+                        // Close all other dropdowns
+                        desktopDropdowns.forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                const otherMenu = otherDropdown.querySelector('.mega-menu, .dropdown-menu');
+                                if (otherMenu) {
+                                    otherMenu.classList.remove('open');
+                                }
+                            }
+                        });
+                        
+                        menu.classList.add('open');
+                    });
+
+                    dropdown.addEventListener('mouseleave', function() {
+                        timeout = setTimeout(() => {
+                            menu.classList.remove('open');
+                        }, 100);
+                    });
+                }
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (mobileMenu && mobileMenu.classList.contains('open') && 
+                    !mobileMenu.contains(e.target) && 
+                    !mobileMenuBtn.contains(e.target)) {
+                    mobileMenu.classList.remove('open');
+                    body.classList.remove('menu-open');
+                }
+            });
+
+            // Close dropdown menus when clicking outside
+            document.addEventListener('click', function(e) {
+                desktopDropdowns.forEach(dropdown => {
+                    const menu = dropdown.querySelector('.mega-menu, .dropdown-menu');
+                    if (menu && menu.classList.contains('open') && 
+                        !dropdown.contains(e.target)) {
+                        menu.classList.remove('open');
+                    }
+                });
+            });
+
+            // Handle keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    // Close mobile menu
+                    if (mobileMenu && mobileMenu.classList.contains('open')) {
+                        mobileMenu.classList.remove('open');
+                        body.classList.remove('menu-open');
+                    }
+                    
+                    // Close desktop dropdowns
+                    desktopDropdowns.forEach(dropdown => {
+                        const menu = dropdown.querySelector('.mega-menu, .dropdown-menu');
+                        if (menu && menu.classList.contains('open')) {
+                            menu.classList.remove('open');
+                        }
+                    });
+                }
+            });
+
+            // Search functionality (placeholder)
+            const searchInputs = document.querySelectorAll('.search-input, input[placeholder="Search services..."]');
+            searchInputs.forEach(input => {
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        console.log('Search for:', input.value);
+                        // Implement actual search functionality here
+                    }
+                });
+            });
+
+            // Keyboard shortcut for search (Cmd/Ctrl + K)
+            document.addEventListener('keydown', function(e) {
+                if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                    e.preventDefault();
+                    const searchInput = document.querySelector('.search-input');
+                    if (searchInput) {
+                        searchInput.focus();
+                    }
+                }
+            });
         });
     </script>
 
