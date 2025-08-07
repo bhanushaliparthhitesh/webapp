@@ -63,6 +63,188 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
 
+        /* Navigation Container */
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        @media (max-width: 1023px) {
+            .header-container {
+                height: 72px;
+            }
+        }
+
+        /* Mega Menu Styles */
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            max-width: 90vw;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            padding: 32px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-50%) translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 50;
+        }
+
+        .dropdown:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Dropdown Menu Styles */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 320px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            padding: 24px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 50;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Logo Container */
+        .logo-container {
+            flex-shrink: 0;
+        }
+
+        .logo-image {
+            height: 48px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container:hover .logo-image {
+            transform: scale(1.05);
+        }
+
+        /* Navigation Links */
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            color: #374151;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link:hover {
+            color: #F97316;
+            background-color: rgba(249, 115, 22, 0.05);
+        }
+
+        /* Search Container */
+        .search-container {
+            position: relative;
+            width: 280px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px 12px 44px;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            background: #F9FAFB;
+            font-size: 14px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #F97316;
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+            color: white;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: white;
+            transform: translateY(-100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 999;
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (max-width: 1023px) {
+            .mobile-menu {
+                top: 72px;
+                max-height: calc(100vh - 72px);
+            }
+        }
+
+        .mobile-dropdown-btn {
+            transition: all 0.2s ease;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-btn i {
+            transform: rotate(180deg);
+        }
+
+        .mobile-dropdown-content {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-content {
+            display: block !important;
+        }
+
         /* Sub-navigation bar */
         .sub-nav {
             position: sticky;
@@ -111,26 +293,353 @@
     </style>
 </head>
 <body>
-    <!-- Header Section (from gst.html) -->
+    <!-- Header Section -->
     <header class="header" id="header">
         <div class="container mx-auto px-4">
-            <nav class="flex items-center justify-between h-20">
-                <a href="home.html"><img src="/images/big4india_no_bg7.png" alt="Big4India Logo" class="h-10"></a>
-                <div class="hidden lg:flex items-center space-x-8">
-                    <a href="business-incorporation.html" class="text-gray-600 hover:text-b-orange font-medium">Business Setup</a>
-                    <a href="gst.html" class="text-gray-600 hover:text-b-orange font-medium">GST</a>
-                    <a href="Income-Taxes.html" class="text-gray-600 hover:text-b-orange font-medium">Income Tax</a>
-                    <a href="compliance.html" class="text-b-orange font-semibold">Compliance</a>
-                    <a href="#" class="text-gray-600 hover:text-b-orange font-medium">Resources</a>
+            <nav class="header-container">
+                <!-- Left Section: Logo and Navigation -->
+                <div class="flex items-center space-x-8">
+                    <!-- Logo Section -->
+                    <div class="logo-container">
+                        <a href="home.html" class="group">
+                            <img src="/images/big4india_no_bg7.png" alt="Big4India Logo" class="logo-image" onerror="this.onerror=null; this.src='https://placehold.co/150x64/4F46E5/ffffff?text=Big4India';">
+                        </a>
+                    </div>
+                    
+                    <!-- Desktop Navigation -->
+                    <div class="hidden lg:flex items-center space-x-6">
+                        <!-- Products Dropdown -->
+                        <div class="dropdown relative group">
+                            <a href="#" class="nav-link">
+                                <span>Products</span>
+                                <i data-feather="chevron-down" class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"></i>
+                            </a>
+                            <div class="mega-menu">
+                                <div class="grid grid-cols-3 gap-8">
+                                    <!-- Business Services Card -->
+                                    <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 flex flex-col items-start hover:shadow-lg transition-all duration-300">
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mr-3">
+                                                <i data-feather="briefcase" class="w-5 h-5 text-white"></i>
+                                            </div>
+                                            <h4 class="text-lg font-bold text-gray-800">Business Services</h4>
+                                        </div>
+                                        <ul class="space-y-3 w-full">
+                                            <li>
+                                                <a href="business-incorporation.html" class="flex items-center group hover:bg-green-50 rounded-lg p-2 transition">
+                                                    <div class="w-8 h-8 bg-green-100 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                                        <i data-feather="users" class="w-4 h-4 text-green-600"></i>
+                                                    </div>
+                                                    <span class="font-medium text-gray-700">Business Incorporation</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="registration-services.html" class="flex items-center group hover:bg-blue-50 rounded-lg p-2 transition">
+                                                    <div class="w-8 h-8 bg-blue-100 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                                        <i data-feather="file-plus" class="w-4 h-4 text-blue-600"></i>
+                                                    </div>
+                                                    <span class="font-medium text-gray-700">Registration Services</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="trademark.html" class="flex items-center group hover:bg-purple-50 rounded-lg p-2 transition">
+                                                    <div class="w-8 h-8 bg-purple-100 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                                        <i data-feather="shield" class="w-4 h-4 text-purple-600"></i>
+                                                    </div>
+                                                    <span class="font-medium text-gray-700">Trademark</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- Tax Services Card -->
+                                    <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 flex flex-col items-start hover:shadow-lg transition-all duration-300">
+                                        <div class="flex items-center mb-4">
+                                            <!-- Updated icon background for better visual balance -->
+                                            <div class="w-10 h-10 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center mr-3">
+                                                <i data-feather="file-text" class="w-5 h-5 text-white"></i>
+                                            </div>
+                                            <h4 class="text-lg font-bold text-gray-800">Tax Services</h4>
+                                        </div>
+                                        <ul class="space-y-3 w-full">
+                                            <li>
+                                                <a href="gst.html" class="flex items-center group hover:bg-orange-50 rounded-lg p-2 transition">
+                                                    <div class="w-8 h-8 bg-orange-100 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                                        <i data-feather="file" class="w-4 h-4 text-orange-600"></i>
+                                                    </div>
+                                                    <span class="font-medium text-gray-700">GST Services</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="Income-Taxes.html" class="flex items-center group hover:bg-red-50 rounded-lg p-2 transition">
+                                                    <div class="w-8 h-8 bg-red-100 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                                        <i data-feather="file-text" class="w-4 h-4 text-red-600"></i>
+                                                    </div>
+                                                    <span class="font-medium text-gray-700">Income Tax</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="mca.html" class="flex items-center group hover:bg-teal-50 rounded-lg p-2 transition">
+                                                    <div class="w-8 h-8 bg-teal-100 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                                        <i data-feather="database" class="w-4 h-4 text-teal-600"></i>
+                                                    </div>
+                                                    <span class="font-medium text-gray-700">MCA Services</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- Compliance Card -->
+                                    <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 flex flex-col items-start hover:shadow-lg transition-all duration-300">
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-10 h-10 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
+                                                <i data-feather="check-circle" class="w-5 h-5 text-white"></i>
+                                            </div>
+                                            <h4 class="text-lg font-bold text-gray-800">Compliance</h4>
+                                        </div>
+                                        <ul class="space-y-3 w-full">
+                                            <li>
+                                                <a href="compliance.html" class="flex items-center group hover:bg-indigo-50 rounded-lg p-2 transition bg-indigo-50 border-indigo-200 border">
+                                                    <div class="w-8 h-8 bg-indigo-100 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                                        <i data-feather="check-circle" class="w-4 h-4 text-indigo-600"></i>
+                                                    </div>
+                                                    <span class="font-medium text-indigo-700">Regulatory Compliance</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Featured Section -->
+                                <div class="mt-8 pt-6 border-t border-gray-100">
+                                    <div class="bg-gradient-to-r from-orange-50 to-red-50 rounded-xl p-6 flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-600 rounded-lg flex items-center justify-center mr-4">
+                                                <i data-feather="star" class="w-6 h-6 text-white"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-gray-800 mb-1">Complete Business Package</h4>
+                                                <p class="text-sm text-gray-600 mb-3">Everything you need to start your business journey</p>
+                                                <a href="#" class="inline-flex items-center text-orange-600 font-semibold text-sm hover:text-orange-700 transition-colors">
+                                                    Get Started
+                                                    <i data-feather="arrow-right" class="w-4 h-4 ml-1"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-2xl font-bold text-orange-600">₹4,999</div>
+                                            <div class="text-sm text-gray-500">One-time setup</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Resources Dropdown -->
+                        <div class="dropdown relative group">
+                            <a href="#" class="nav-link flex items-center space-x-1 py-2">
+                                <span>Resources</span>
+                                <i data-feather="chevron-down" class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="space-y-4">
+                                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="book-open" class="w-5 h-5 text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Blog & Articles</div>
+                                            <div class="text-sm text-gray-500">Latest insights and updates</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="file-text" class="w-5 h-5 text-green-600"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Tax Guides</div>
+                                            <div class="text-sm text-gray-500">Comprehensive tax guides</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="calculator" class="w-5 h-5 text-purple-600"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Calculators</div>
+                                            <div class="text-sm text-gray-500">Tax & business calculators</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="play" class="w-5 h-5 text-b-orange"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Video Tutorials</div>
+                                            <div class="text-sm text-gray-500">Step-by-step guides</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Company Dropdown -->
+                        <div class="dropdown relative group">
+                            <a href="#" class="nav-link flex items-center space-x-1 py-2">
+                                <span>Company</span>
+                                <i data-feather="chevron-down" class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="space-y-4">
+                                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="users" class="w-5 h-5 text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">About Us</div>
+                                            <div class="text-sm text-gray-500">Our story and mission</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="briefcase" class="w-5 h-5 text-green-600"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Careers</div>
+                                            <div class="text-sm text-gray-500">Join our team</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="phone" class="w-5 h-5 text-purple-600"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Contact Us</div>
+                                            <div class="text-sm text-gray-500">Get in touch</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
+                                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                            <i data-feather="award" class="w-5 h-5 text-b-orange"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Awards & Recognition</div>
+                                            <div class="text-sm text-gray-500">Our achievements</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pricing Link -->
+                        <a href="#pricing" class="nav-link py-2">Pricing</a>
+                    </div>
                 </div>
-                <div class="hidden lg:flex items-center space-x-4">
-                    <a href="#" class="text-gray-600 hover:text-b-orange font-medium">Login</a>
-                    <a href="home.html#contact" class="bg-gradient-to-r from-b-orange to-orange-600 text-white font-bold px-6 py-2 rounded-lg hover:shadow-lg transition-all">Get Started</a>
+
+                <!-- Right Section -->
+                <div class="hidden lg:flex items-center space-x-6">
+                    <!-- Search Bar -->
+                    <div class="search-container">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-10">
+                            <i data-feather="search" class="w-5 h-5 text-gray-400 group-focus-within:text-b-orange transition-colors"></i>
+                        </div>
+                        <input type="text" placeholder="Search services..." class="search-input">
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <kbd class="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">⌘K</kbd>
+                        </div>
+                    </div>
+
+                    <!-- Language Selector -->
+                    <div class="relative group">
+                        <button class="nav-link">
+                            <i data-feather="globe" class="w-4 h-4"></i>
+                            <span>EN</span>
+                            <i data-feather="chevron-down" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+
+                    <!-- Login Button -->
+                    <a href="#" class="nav-link">Login</a>
+                    <a href="#" class="nav-link">Sign-up</a>
+                    
+                    <!-- Sign Up Button -->
+                    <a href="home.html#contact" class="btn-primary">
+                        Get Started
+                    </a>
                 </div>
+
+                <!-- Mobile Menu Button -->
                 <div class="lg:hidden">
-                    <button id="m-btn" class="text-gray-700"><i data-feather="menu" class="w-6 h-6"></i></button>
+                    <button id="m-btn" class="text-gray-700 hover:text-b-orange transition-colors p-2">
+                        <i data-feather="menu" class="w-6 h-6"></i>
+                    </button>
                 </div>
             </nav>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="m-menu" class="mobile-menu">
+            <div class="px-4 py-6 space-y-4">
+                <!-- Mobile Search -->
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i data-feather="search" class="w-5 h-5 text-gray-400"></i>
+                    </div>
+                    <input type="text" placeholder="Search services..." class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-b-orange/50">
+                </div>
+
+                <!-- Mobile Navigation Links -->
+                <div class="space-y-2">
+                    <div class="mobile-dropdown">
+                        <button class="mobile-dropdown-btn w-full flex items-center justify-between p-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+                            <span class="font-medium">Products</span>
+                            <i data-feather="chevron-down" class="w-5 h-5 transition-transform"></i>
+                        </button>
+                        <div class="mobile-dropdown-content hidden pl-4 space-y-2 mt-2">
+                            <a href="business-incorporation.html" class="block p-2 text-gray-600 hover:text-b-orange">Business Incorporation</a>
+                            <a href="registration-services.html" class="block p-2 text-gray-600 hover:text-b-orange">Registration Services</a>
+                            <a href="gst.html" class="block p-2 text-gray-600 hover:text-b-orange">GST Services</a>
+                            <a href="Income-Taxes.html" class="block p-2 text-gray-600 hover:text-b-orange">Income Tax</a>
+                            <a href="trademark.html" class="block p-2 text-gray-600 hover:text-b-orange">Trademark</a>
+                            <a href="mca.html" class="block p-2 text-gray-600 hover:text-b-orange">MCA Services</a>
+                            <a href="compliance.html" class="block p-2 text-b-orange font-semibold">Regulatory Compliance</a>
+                        </div>
+                    </div>
+
+                    <div class="mobile-dropdown">
+                        <button class="mobile-dropdown-btn w-full flex items-center justify-between p-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+                            <span class="font-medium">Resources</span>
+                            <i data-feather="chevron-down" class="w-5 h-5 transition-transform"></i>
+                        </button>
+                        <div class="mobile-dropdown-content hidden pl-4 space-y-2 mt-2">
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Blog</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Tax Guides</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Calculators</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Video Tutorials</a>
+                        </div>
+                    </div>
+
+                    <div class="mobile-dropdown">
+                        <button class="mobile-dropdown-btn w-full flex items-center justify-between p-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+                            <span class="font-medium">Company</span>
+                            <i data-feather="chevron-down" class="w-5 h-5 transition-transform"></i>
+                        </button>
+                        <div class="mobile-dropdown-content hidden pl-4 space-y-2 mt-2">
+                            <a href="about-us.html" class="block p-2 text-gray-600 hover:text-b-orange">About Us</a>
+                            <a href="carrer.html" class="block p-2 text-gray-600 hover:text-b-orange">Careers</a>
+                            <a href="contactus.html" class="block p-2 text-gray-600 hover:text-b-orange">Contact Us</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Awards</a>
+                        </div>
+                    </div>
+
+                    <a href="#pricing" class="block p-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">Pricing</a>
+                </div>
+
+                <!-- Mobile CTA -->
+                <div class="pt-4 border-t border-gray-200 space-y-3">
+                    <a href="#" class="block text-center text-gray-600 hover:text-b-orange font-medium">Login</a>
+                    <a href="home.html#contact" class="block text-center bg-gradient-to-r from-b-orange to-orange-600 text-white font-semibold py-3 px-6 rounded-lg hover:shadow-lg transition-all duration-300">
+                        Get Started
+                    </a>
+                </div>
+            </div>
         </div>
     </header>
 
