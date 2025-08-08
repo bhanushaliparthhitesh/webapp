@@ -15,10 +15,18 @@
           theme: {
             extend: {
               colors: {
-                'b-orange': '#F97316',
-                'b-blue': '#4F46E5',
-                'b-lblue': '#F0F5FF',
-                'b-gray': '#F3F4F6',
+                // Modern Professional Color Palette
+                'primary': '#0F766E',      // Teal-700 - Primary brand color
+                'primary-light': '#14B8A6', // Teal-500 - Lighter primary
+                'primary-dark': '#134E4A',  // Teal-800 - Darker primary
+                'accent': '#F97316',        // Orange-500 - Accent color (kept for continuity)
+                'accent-light': '#FB923C',  // Orange-400 - Light accent
+                'secondary': '#1E293B',     // Slate-800 - Dark secondary
+                'secondary-light': '#475569', // Slate-600 - Light secondary
+                'surface': '#F8FAFC',       // Slate-50 - Light surface
+                'surface-dark': '#F1F5F9',  // Slate-100 - Darker surface
+                'neutral': '#64748B',       // Slate-500 - Neutral text
+                'neutral-light': '#94A3B8', // Slate-400 - Light neutral
               }
             }
           }
@@ -39,11 +47,22 @@
             }
         }
 
-        .gradient-text { background: linear-gradient(135deg, #F97316 0%, #EA580C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-text { 
+            background: linear-gradient(135deg, #0F766E 0%, #14B8A6 100%); 
+            background-clip: text;
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+        .accent-gradient-text { 
+            background: linear-gradient(135deg, #F97316 0%, #FB923C 100%); 
+            background-clip: text;
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
         .card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
         .feature-list li { position: relative; padding-left: 1.5rem; }
-        .feature-list li::before { content: "✓"; position: absolute; left: 0; color: #F97316; font-weight: bold; }
+        .feature-list li::before { content: "✓"; position: absolute; left: 0; color: #0F766E; font-weight: bold; }
         
         /* Enhanced Navigation Styles */
         /* Prevent layout shift and ensure smooth transitions */
@@ -77,7 +96,6 @@
             z-index: 1000;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(229, 231, 235, 0.8);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             will-change: transform, background-color, box-shadow;
             transform: translateZ(0); /* Force hardware acceleration */
@@ -92,7 +110,7 @@
         
         /* Navigation link styles with consistent spacing */
         .nav-link {
-            color: #4B5563;
+            color: #475569;
             font-weight: 500;
             font-size: 0.875rem;
             line-height: 1.25rem;
@@ -107,8 +125,8 @@
         }
         
         .nav-link:hover {
-            color: #F97316;
-            background-color: rgba(249, 115, 22, 0.05);
+            color: #0F766E;
+            background-color: rgba(15, 118, 110, 0.05);
         }
         
         /* Dropdown container with stable positioning */
@@ -232,14 +250,14 @@
         
         .search-input:focus {
             outline: none;
-            border-color: #F97316;
-            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+            border-color: #0F766E;
+            box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.1);
             background-color: #FFFFFF;
         }
         
         /* Button styles with consistent sizing */
         .btn-primary {
-            background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+            background: linear-gradient(135deg, #0F766E 0%, #14B8A6 100%);
             color: white;
             font-weight: 600;
             font-size: 0.875rem;
@@ -256,7 +274,7 @@
         
         .btn-primary:hover {
             transform: translateY(-1px);
-            box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.3);
+            box-shadow: 0 10px 15px -3px rgba(15, 118, 110, 0.3);
         }
         
         /* Mobile menu with smooth transitions */
@@ -308,12 +326,12 @@
             transition: all 0.3s ease;
         }
         .sub-nav-link:hover {
-            color: #F97316;
-            border-bottom-color: #F97316;
+            color: #0F766E;
+            border-bottom-color: #0F766E;
         }
         .sub-nav-link.active {
-            color: #F97316;
-            border-bottom-color: #F97316;
+            color: #0F766E;
+            border-bottom-color: #0F766E;
         }
 
         /* FAQ Accordion */
@@ -361,34 +379,34 @@
                                     <!-- Business Services Card -->
                                     <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 flex flex-col items-start hover:shadow-lg transition-all duration-300">
                                         <div class="flex items-center mb-4">
-                                            <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mr-3">
+                                            <div class="w-10 h-10 bg-gradient-to-r from-primary to-primary-light rounded-lg flex items-center justify-center mr-3">
                                                 <i data-feather="briefcase" class="w-5 h-5 text-white"></i>
                                             </div>
-                                            <h4 class="text-lg font-bold text-gray-800">Business Services</h4>
+                                            <h4 class="text-lg font-bold text-secondary">Business Services</h4>
                                         </div>
                                         <ul class="space-y-3 w-full">
                                             <li>
-                                                <a href="business-incorporation.html" class="flex items-center group hover:bg-green-50 rounded-lg p-2 transition">
-                                                    <div class="w-8 h-8 bg-green-100 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
-                                                        <i data-feather="users" class="w-4 h-4 text-green-600"></i>
+                                                <a href="business-incorporation.html" class="flex items-center group hover:bg-teal-50 rounded-lg p-2 transition">
+                                                    <div class="w-8 h-8 bg-teal-100 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                                        <i data-feather="users" class="w-4 h-4 text-primary"></i>
                                                     </div>
-                                                    <span class="font-medium text-gray-700">Business Incorporation</span>
+                                                    <span class="font-medium text-neutral">Business Incorporation</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="registration-services.html" class="flex items-center group hover:bg-blue-50 rounded-lg p-2 transition">
-                                                    <div class="w-8 h-8 bg-blue-100 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
-                                                        <i data-feather="file-plus" class="w-4 h-4 text-blue-600"></i>
+                                                <a href="registration-services.html" class="flex items-center group hover:bg-teal-50 rounded-lg p-2 transition">
+                                                    <div class="w-8 h-8 bg-primary-light/20 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                                        <i data-feather="file-plus" class="w-4 h-4 text-primary"></i>
                                                     </div>
-                                                    <span class="font-medium text-gray-700">Registration Services</span>
+                                                    <span class="font-medium text-neutral">Registration Services</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="trademark.html" class="flex items-center group hover:bg-purple-50 rounded-lg p-2 transition">
-                                                    <div class="w-8 h-8 bg-purple-100 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
-                                                        <i data-feather="shield" class="w-4 h-4 text-purple-600"></i>
+                                                <a href="trademark.html" class="flex items-center group hover:bg-slate-50 rounded-lg p-2 transition">
+                                                    <div class="w-8 h-8 bg-slate-100 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                                        <i data-feather="shield" class="w-4 h-4 text-secondary"></i>
                                                     </div>
-                                                    <span class="font-medium text-gray-700">Trademark</span>
+                                                    <span class="font-medium text-neutral">Trademark</span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -396,16 +414,16 @@
                                     <!-- Tax Services Card -->
                                     <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 flex flex-col items-start hover:shadow-lg transition-all duration-300">
                                         <div class="flex items-center mb-4">
-                                            <div class="w-10 h-10 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center mr-3">
+                                            <div class="w-10 h-10 bg-gradient-to-r from-accent-light to-accent rounded-lg flex items-center justify-center mr-3">
                                                 <i data-feather="file-text" class="w-5 h-5 text-white"></i>
                                             </div>
                                             <h4 class="text-lg font-bold text-gray-800">Tax Services</h4>
                                         </div>
                                         <ul class="space-y-3 w-full">
                                             <li>
-                                                <a href="gst.html" class="flex items-center group hover:bg-orange-50 rounded-lg p-2 transition">
-                                                    <div class="w-8 h-8 bg-orange-100 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
-                                                        <i data-feather="file" class="w-4 h-4 text-orange-600"></i>
+                                                <a href="gst.html" class="flex items-center group hover:bg-accent/10 rounded-lg p-2 transition">
+                                                    <div class="w-8 h-8 bg-accent/20 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                                        <i data-feather="file" class="w-4 h-4 text-accent"></i>
                                                     </div>
                                                     <span class="font-medium text-gray-700">GST Services</span>
                                                 </a>
@@ -450,23 +468,23 @@
                                 </div>
                                 <!-- Featured Section -->
                                 <div class="mt-8 pt-6 border-t border-gray-100">
-                                    <div class="bg-gradient-to-r from-orange-50 to-red-50 rounded-xl p-6 flex items-center justify-between">
+                                    <div class="bg-gradient-to-r from-accent/10 to-primary/10 rounded-xl p-6 flex items-center justify-between">
                                         <div class="flex items-center">
-                                            <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-600 rounded-lg flex items-center justify-center mr-4">
+                                            <div class="w-12 h-12 bg-gradient-to-r from-accent to-primary rounded-lg flex items-center justify-center mr-4">
                                                 <i data-feather="star" class="w-6 h-6 text-white"></i>
                                             </div>
                                             <div>
-                                                <h4 class="font-bold text-gray-800 mb-1">Complete Business Package</h4>
-                                                <p class="text-sm text-gray-600 mb-3">Everything you need to start your business journey</p>
-                                                <a href="#" class="inline-flex items-center text-orange-600 font-semibold text-sm hover:text-orange-700 transition-colors">
+                                                <h4 class="font-bold text-secondary mb-1">Complete Business Package</h4>
+                                                <p class="text-sm text-neutral mb-3">Everything you need to start your business journey</p>
+                                                <a href="#" class="inline-flex items-center text-accent font-semibold text-sm hover:text-accent-light transition-colors">
                                                     Get Started
                                                     <i data-feather="arrow-right" class="w-4 h-4 ml-1"></i>
                                                 </a>
                                             </div>
                                         </div>
                                         <div class="text-right">
-                                            <div class="text-2xl font-bold text-orange-600">₹4,999</div>
-                                            <div class="text-sm text-gray-500">One-time setup</div>
+                                            <div class="text-2xl font-bold text-accent">₹4,999</div>
+                                            <div class="text-sm text-neutral-light">One-time setup</div>
                                         </div>
                                     </div>
                                 </div>
@@ -510,7 +528,7 @@
                                     </a>
                                     <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
                                         <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
-                                            <i data-feather="play" class="w-5 h-5 text-b-orange"></i>
+                                            <i data-feather="play" class="w-5 h-5 text-accent"></i>
                                         </div>
                                         <div>
                                             <div class="font-semibold text-gray-800">Video Tutorials</div>
@@ -558,7 +576,7 @@
                                     </a>
                                     <a href="#" class="flex items-center p-3 rounded-lg hover:bg-orange-50 transition-all duration-200 group">
                                         <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
-                                            <i data-feather="award" class="w-5 h-5 text-b-orange"></i>
+                                            <i data-feather="award" class="w-5 h-5 text-accent"></i>
                                         </div>
                                         <div>
                                             <div class="font-semibold text-gray-800">Awards & Recognition</div>
@@ -579,7 +597,7 @@
                     <!-- Search Bar -->
                     <div class="search-container">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-10">
-                            <i data-feather="search" class="w-5 h-5 text-gray-400 group-focus-within:text-b-orange transition-colors"></i>
+                            <i data-feather="search" class="w-5 h-5 text-gray-400 group-focus-within:text-primary transition-colors"></i>
                         </div>
                         <input type="text" placeholder="Search services..." class="search-input">
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
@@ -608,7 +626,7 @@
 
                 <!-- Mobile Menu Button -->
                 <div class="lg:hidden">
-                    <button id="m-btn" class="text-gray-700 hover:text-b-orange transition-colors p-2">
+                    <button id="m-btn" class="text-neutral hover:text-primary transition-colors p-2">
                         <i data-feather="menu" class="w-6 h-6"></i>
                     </button>
                 </div>
@@ -623,7 +641,7 @@
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <i data-feather="search" class="w-5 h-5 text-gray-400"></i>
                     </div>
-                    <input type="text" placeholder="Search services..." class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-b-orange/50">
+                    <input type="text" placeholder="Search services..." class="w-full pl-10 pr-4 py-3 bg-surface border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50">
                 </div>
 
                 <!-- Mobile Navigation Links -->
@@ -634,13 +652,13 @@
                             <i data-feather="chevron-down" class="w-5 h-5 transition-transform"></i>
                         </button>
                         <div class="mobile-dropdown-content hidden pl-4 space-y-2 mt-2">
-                            <a href="business-incorporation.html" class="block p-2 text-gray-600 hover:text-b-orange">Business Incorporation</a>
-                            <a href="business-incorporation.html" class="block p-2 text-gray-600 hover:text-b-orange">Registration Services</a>
-                            <a href="gst.html" class="block p-2 text-gray-600 hover:text-b-orange">GST Services</a>
-                            <a href="Income-Taxes.html" class="block p-2 text-gray-600 hover:text-b-orange">Income Tax</a>
-                            <a href="trademark.html" class="block p-2 text-gray-600 hover:text-b-orange">Trademark</a>
-                            <a href="mca.html" class="block p-2 text-gray-600 hover:text-b-orange">MCA Services</a>
-                            <a href="compliance.html" class="block p-2 text-gray-600 hover:text-b-orange">Compliance</a>
+                            <a href="business-incorporation.html" class="block p-2 text-neutral hover:text-primary">Business Incorporation</a>
+                            <a href="business-incorporation.html" class="block p-2 text-neutral hover:text-primary">Registration Services</a>
+                            <a href="gst.html" class="block p-2 text-neutral hover:text-primary">GST Services</a>
+                            <a href="Income-Taxes.html" class="block p-2 text-neutral hover:text-primary">Income Tax</a>
+                            <a href="trademark.html" class="block p-2 text-neutral hover:text-primary">Trademark</a>
+                            <a href="mca.html" class="block p-2 text-neutral hover:text-primary">MCA Services</a>
+                            <a href="compliance.html" class="block p-2 text-neutral hover:text-primary">Compliance</a>
                         </div>
                     </div>
 
@@ -663,20 +681,20 @@
                             <i data-feather="chevron-down" class="w-5 h-5 transition-transform"></i>
                         </button>
                         <div class="mobile-dropdown-content hidden pl-4 space-y-2 mt-2">
-                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">About Us</a>
-                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Careers</a>
-                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Contact Us</a>
-                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Awards</a>
+                            <a href="#" class="block p-2 text-neutral hover:text-primary">About Us</a>
+                            <a href="#" class="block p-2 text-neutral hover:text-primary">Careers</a>
+                            <a href="#" class="block p-2 text-neutral hover:text-primary">Contact Us</a>
+                            <a href="#" class="block p-2 text-neutral hover:text-primary">Awards</a>
                         </div>
                     </div>
 
-                    <a href="#" class="block p-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">Pricing</a>
+                    <a href="#" class="block p-3 text-neutral hover:bg-surface rounded-lg transition-colors font-medium">Pricing</a>
                 </div>
 
                 <!-- Mobile CTA -->
                 <div class="pt-4 border-t border-gray-200 space-y-3">
-                    <a href="#" class="block text-center text-gray-600 hover:text-b-orange font-medium">Login</a>
-                    <a href="#" class="block text-center bg-gradient-to-r from-b-orange to-orange-600 text-white font-semibold py-3 px-6 rounded-lg hover:shadow-lg transition-all duration-300">
+                    <a href="#" class="block text-center text-neutral hover:text-primary font-medium">Login</a>
+                    <a href="#" class="block text-center bg-gradient-to-r from-primary to-primary-light text-white font-semibold py-3 px-6 rounded-lg hover:shadow-lg transition-all duration-300">
                         Get Started
                     </a>
                 </div>
@@ -685,33 +703,30 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="py-20 lg:py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
+    <section class="py-20 lg:py-24 bg-gradient-to-br from-surface via-surface-dark to-primary/5 relative overflow-hidden">
         <div class="container mx-auto px-4 relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
-                    <div class="inline-block bg-gradient-to-r from-b-orange to-orange-500 text-white font-bold px-6 py-3 rounded-full text-sm mb-6 shadow-lg">
-                        🏢 Start Your Business Right
+                    <div class="inline-block bg-gradient-to-r from-primary to-primary-light text-white font-bold px-6 py-3 rounded-full text-sm mb-6 shadow-lg">
+                        🏢 Professional Business Incorporation
                     </div>
-                    <h1 class="text-4xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">
-                        Launch Your Dream Business, <span class="gradient-text">Hassle-Free</span>
+                    <h1 class="text-4xl lg:text-6xl font-bold text-secondary mb-6 leading-tight">
+                        Start Your Business, <span class="gradient-text">Legally & Efficiently</span>
                     </h1>
-                    <p class="text-gray-600 text-lg lg:text-xl mb-8 leading-relaxed">
-                        From Private Limited Company to LLP, we provide end-to-end business incorporation services to get you started quickly and compliantly.
+                    <p class="text-neutral text-lg lg:text-xl mb-8 leading-relaxed">
+                        From company registration to compliance management, our comprehensive business incorporation services help you establish your venture with complete legal backing.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="home.html#contact" class="bg-gradient-to-r from-b-orange to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg inline-block">
-                            Register Your Business
+                        <a href="home.html#contact" class="bg-gradient-to-r from-primary to-primary-light hover:from-primary-dark hover:to-primary text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg inline-block">
+                            Start Your Business Today
                         </a>
-                        <a href="#pricing" class="border-2 border-gray-300 hover:border-b-orange text-gray-700 hover:text-b-orange font-bold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 text-lg inline-block">
-                            View Pricing Plans
+                        <a href="#pricing" class="border-2 border-primary/30 hover:border-primary text-secondary hover:text-primary font-bold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 text-lg inline-block">
+                            View Service Pricing
                         </a>
                     </div>
                 </div>
-                <div class="flex justify-center">
-                    <video autoplay muted loop playsinline class="w-full max-w-xl mx-auto object-cover rounded-2xl" style="height: 400px;">
-                        <source src="/video/BC.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                <div>
+                    <video src="/video/BC.mp4" autoplay loop muted class="w-[600px] h-[600px] object-cover mx-auto rounded-2xl shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/600x600/4F46E5/ffffff?text=Business+Incorporation+Services';"></video>
                 </div>
             </div>
         </div>
@@ -726,7 +741,7 @@
                 <a href="#llp" class="sub-nav-link">LLP</a>
                 <a href="#partnership" class="sub-nav-link">Partnership</a>
                 <a href="#proprietorship" class="sub-nav-link">Proprietorship</a>
-            </div>
+             </div>
         </div>
     </nav>
 
@@ -734,48 +749,48 @@
     <section class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl lg:text-5xl font-bold text-gray-800 mb-6">
+                <h2 class="text-3xl lg:text-5xl font-bold text-secondary mb-6">
                     Choose the Right <span class="gradient-text">Business Structure</span>
                 </h2>
-                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                <p class="text-neutral text-lg max-w-3xl mx-auto">
                     We offer comprehensive incorporation services for all major business types in India.
                 </p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Private Limited Company Card -->
-                <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-b-orange to-orange-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="building" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Private Limited Company</h3>
-                    <p class="text-gray-600 mb-6">The most popular choice for startups, offering limited liability and a separate legal entity.</p>
-                    <a href="#pvt-ltd" class="font-semibold text-b-orange hover:underline">Learn More &rarr;</a>
+                <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:border-primary/20">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary to-primary-light rounded-2xl flex items-center justify-center mb-6"><i data-feather="building" class="w-8 h-8 text-white"></i></div>
+                    <h3 class="text-xl font-bold text-secondary mb-4">Private Limited Company</h3>
+                    <p class="text-neutral mb-6">The most popular choice for startups, offering limited liability and a separate legal entity.</p>
+                    <a href="#pvt-ltd" class="font-semibold text-primary hover:text-primary-dark hover:underline">Learn More &rarr;</a>
                 </div>
                 <!-- One Person Company Card -->
-                <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="user" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">One Person Company (OPC)</h3>
-                    <p class="text-gray-600 mb-6">Ideal for solo entrepreneurs who want the benefits of a company structure.</p>
-                    <a href="#opc" class="font-semibold text-green-600 hover:underline">Learn More &rarr;</a>
+                <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:border-accent/20">
+                    <div class="w-16 h-16 bg-gradient-to-r from-accent to-accent-light rounded-2xl flex items-center justify-center mb-6"><i data-feather="user" class="w-8 h-8 text-white"></i></div>
+                    <h3 class="text-xl font-bold text-secondary mb-4">One Person Company (OPC)</h3>
+                    <p class="text-neutral mb-6">Ideal for solo entrepreneurs who want the benefits of a company structure.</p>
+                    <a href="#opc" class="font-semibold text-accent hover:text-accent-light hover:underline">Learn More &rarr;</a>
                 </div>
                 <!-- LLP Card -->
-                <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-b-blue to-indigo-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="users" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Limited Liability Partnership (LLP)</h3>
-                    <p class="text-gray-600 mb-6">Combines the flexibility of a partnership with the benefits of limited liability.</p>
-                    <a href="#llp" class="font-semibold text-b-blue hover:underline">Learn More &rarr;</a>
+                <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:border-secondary/20">
+                    <div class="w-16 h-16 bg-gradient-to-r from-secondary to-secondary-light rounded-2xl flex items-center justify-center mb-6"><i data-feather="users" class="w-8 h-8 text-white"></i></div>
+                    <h3 class="text-xl font-bold text-secondary mb-4">Limited Liability Partnership (LLP)</h3>
+                    <p class="text-neutral mb-6">Combines the flexibility of a partnership with the benefits of limited liability.</p>
+                    <a href="#llp" class="font-semibold text-secondary hover:text-secondary-light hover:underline">Learn More &rarr;</a>
                 </div>
                 <!-- Partnership Firm Card -->
-                <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="briefcase" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Partnership Firm</h3>
-                    <p class="text-gray-600 mb-6">A traditional business structure for two or more individuals to run a business.</p>
-                    <a href="#partnership" class="font-semibold text-purple-600 hover:underline">Learn More &rarr;</a>
+                <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:border-primary-light/30">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary-light to-primary rounded-2xl flex items-center justify-center mb-6"><i data-feather="briefcase" class="w-8 h-8 text-white"></i></div>
+                    <h3 class="text-xl font-bold text-secondary mb-4">Partnership Firm</h3>
+                    <p class="text-neutral mb-6">A traditional business structure for two or more individuals to run a business.</p>
+                    <a href="#partnership" class="font-semibold text-primary-light hover:text-primary hover:underline">Learn More &rarr;</a>
                 </div>
                 <!-- Sole Proprietorship Card -->
-                <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="user-check" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Sole Proprietorship</h3>
-                    <p class="text-gray-600 mb-6">The simplest business form, owned and run by one individual with no legal distinction.</p>
-                    <a href="#proprietorship" class="font-semibold text-yellow-600 hover:underline">Learn More &rarr;</a>
+                <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:border-accent-light/30">
+                    <div class="w-16 h-16 bg-gradient-to-r from-accent-light to-accent rounded-2xl flex items-center justify-center mb-6"><i data-feather="user-check" class="w-8 h-8 text-white"></i></div>
+                    <h3 class="text-xl font-bold text-secondary mb-4">Sole Proprietorship</h3>
+                    <p class="text-neutral mb-6">The simplest business form, owned and run by one individual with no legal distinction.</p>
+                    <a href="#proprietorship" class="font-semibold text-accent-light hover:text-accent hover:underline">Learn More &rarr;</a>
                 </div>
             </div>
         </div>
@@ -783,18 +798,18 @@
 
     <!-- Detailed Service Sections -->
     <div id="pvt-ltd" class="pt-20">
-        <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <section class="py-20 bg-gradient-to-br from-surface to-primary/5">
             <div class="container mx-auto px-4">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">Private Limited Company</h2>
-                        <p class="text-gray-600 text-lg mb-8">A Private Limited Company is a privately-held business entity. It offers limited liability to its owners (shareholders) and has a separate legal existence from them. It's the most popular corporate structure for new businesses in India.</p>
-                        <ul class="space-y-4 text-gray-700">
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Limited liability protection for owners.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Separate legal entity status.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Easier to raise funds and attract investors.</li>
+                        <h2 class="text-3xl lg:text-4xl font-bold text-secondary mb-6">Private Limited Company</h2>
+                        <p class="text-neutral text-lg mb-8">A Private Limited Company is a privately-held business entity. It offers limited liability to its owners (shareholders) and has a separate legal existence from them. It's the most popular corporate structure for new businesses in India.</p>
+                        <ul class="space-y-4 text-neutral">
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-primary mr-3"></i>Limited liability protection for owners.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-primary mr-3"></i>Separate legal entity status.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-primary mr-3"></i>Easier to raise funds and attract investors.</li>
                         </ul>
-                        <a href="home.html#contact" class="mt-8 inline-block bg-gradient-to-r from-b-orange to-orange-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Register a Pvt. Ltd.</a>
+                        <a href="home.html#contact" class="mt-8 inline-block bg-gradient-to-r from-primary to-primary-light text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Register a Pvt. Ltd.</a>
                     </div>
                     <img src="/images/b-1.png" alt="Private Limited Company" class="w-full h-auto rounded-2xl shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F97316/ffffff?text=Pvt+Ltd';">
                 </div>
@@ -802,7 +817,7 @@
         </section>
     </div>
 
-    <div id="opc" class="pt-20">
+   <div id="opc" class="pt-20">
         <section class="py-20 bg-white">
             <div class="container mx-auto px-4">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -817,6 +832,26 @@
                         </ul>
                         <a href="home.html#contact" class="mt-8 inline-block bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Register an OPC</a>
                     </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="gst-annual" class="pt-20">
+        <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+            <div class="container mx-auto px-4">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">GST Annual Return (GSTR-9)</h2>
+                        <p class="text-gray-600 text-lg mb-8">GSTR-9 is an annual return to be filed by all registered taxpayers. It's a consolidation of all your monthly/quarterly returns. For larger businesses, GSTR-9C (a reconciliation statement) is also required. We provide expert assistance in preparing and filing these complex annual returns accurately.</p>
+                        <ul class="space-y-4 text-gray-700">
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Mandatory for taxpayers with turnover above ₹2 Crore.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Detailed reconciliation of your entire year's financial data.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Preparation and certification of GSTR-9C by a professional.</li>
+                        </ul>
+                        <a href="home.html#contact" class="mt-8 inline-block bg-gradient-to-r from-b-blue to-indigo-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">File GSTR-9 / 9C</a>
+                    </div>
+                    <img src="/images/GST Annual Return (GSTR- 9).png" alt="GST Annual Return" class="w-full h-auto rounded-2xl shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/600x400/4F46E5/ffffff?text=GSTR-9+Filing';">
                 </div>
             </div>
         </section>
@@ -883,63 +918,60 @@
     </div>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="py-20 bg-white">
+    <section id="pricing" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl lg:text-5xl font-bold text-gray-800 mb-6">
-                    Transparent <span class="gradient-text">Pricing Plans</span>
+                    Transparent <span class="gradient-text">Pricing for GST Services</span>
                 </h2>
                 <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-                    Choose a plan that fits your needs. All-inclusive pricing with no hidden charges.
+                    Choose the specific service you need. No hidden fees, just straightforward pricing for expert work.
                 </p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Basic Plan -->
+                <!-- Registration Plan -->
                 <div class="card bg-white rounded-3xl shadow-lg p-8 border border-gray-100 flex flex-col">
                     <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Basic</h3>
-                        <div class="text-4xl font-bold text-b-orange mb-2">₹1,999</div>
-                        <p class="text-gray-600">For Proprietorships</p>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">GST Registration</h3>
+                        <div class="text-4xl font-bold text-b-orange mb-2">₹1,499</div>
+                        <p class="text-gray-600">One-time fee</p>
                     </div>
                     <ul class="feature-list space-y-4 mb-8 flex-grow">
-                        <li>Business Registration</li>
-                        <li>GST Registration</li>
-                        <li>Bank Account Opening Support</li>
+                        <li>New GSTIN Application</li>
+                        <li>Document Verification</li>
+                        <li>Application Tracking</li>
                     </ul>
                     <a href="home.html#contact" class="w-full bg-gray-100 text-gray-700 font-semibold py-3 rounded-xl hover:bg-gray-200 transition-all duration-300 block text-center">Get Started</a>
                 </div>
-                <!-- Standard Plan -->
+                <!-- Filing Plan -->
                 <div class="card bg-gradient-to-br from-b-orange to-orange-600 text-white rounded-3xl shadow-xl p-8 border-4 border-orange-200 relative flex flex-col">
                     <div class="absolute -top-4 left-1/2 transform -translate-x-1/2"><span class="bg-gradient-to-r from-b-orange to-orange-500 text-white px-6 py-2 rounded-full text-sm font-semibold">Most Popular</span></div>
                     <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold mb-4">Standard</h3>
-                        <div class="text-4xl font-bold mb-2">₹4,999</div>
-                        <p>For Pvt. Ltd. & LLP</p>
+                        <h3 class="text-2xl font-bold mb-4">GST Return Filing</h3>
+                        <div class="text-4xl font-bold mb-2">₹999</div>
+                        <p>per month</p>
                     </div>
                     <ul class="feature-list space-y-4 mb-8 flex-grow text-white">
-                        <li>Company/LLP Registration</li>
-                        <li>2 Digital Signatures (DSC)</li>
-                        <li>Director Identification Number (DIN)</li>
-                        <li>PAN & TAN Application</li>
-                        <li>GST Registration</li>
+                        <li>GSTR-1 & GSTR-3B Filing</li>
+                        <li>ITC Reconciliation Advice</li>
+                        <li>Compliance Reminders</li>
                         <li>Dedicated Support</li>
                     </ul>
-                    <a href="home.html#contact" class="w-full bg-white text-b-orange font-semibold py-3 rounded-xl hover:bg-gray-50 transition-all duration-300 block text-center">Choose Standard</a>
+                    <a href="home.html#contact" class="w-full bg-white text-b-orange font-semibold py-3 rounded-xl hover:bg-gray-50 transition-all duration-300 block text-center">Choose Filing</a>
                 </div>
-                <!-- Premium Plan -->
+                <!-- Annual Return Plan -->
                 <div class="card bg-white rounded-3xl shadow-lg p-8 border border-gray-100 flex flex-col">
                     <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Premium</h3>
-                        <div class="text-4xl font-bold text-b-orange mb-2">₹9,999</div>
-                        <p>Complete Business Suite</p>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Annual Return (GSTR-9)</h3>
+                        <div class="text-4xl font-bold text-b-orange mb-2">₹4,999</div>
+                        <p>Starting price</p>
                     </div>
                     <ul class="feature-list space-y-4 mb-8 flex-grow">
-                        <li>Everything in Standard Plan</li>
-                        <li>Trademark Registration</li>
-                        <li>1 Year Compliance Package</li>
-                        <li>Business Plan Advisory</li>
+                        <li>GSTR-9 Preparation</li>
+                        <li>Full-Year Data Reconciliation</li>
+                        <li>GSTR-9C Support (if applicable)</li>
                     </ul>
-                    <a href="home.html#contact" class="w-full bg-gray-100 text-gray-700 font-semibold py-3 rounded-xl hover:bg-gray-200 transition-all duration-300 block text-center">Choose Premium</a>
+                    <a href="home.html#contact" class="w-full bg-gray-100 text-gray-700 font-semibold py-3 rounded-xl hover:bg-gray-200 transition-all duration-300 block text-center">File Annual Return</a>
                 </div>
             </div>
         </div>
@@ -953,7 +985,7 @@
                     Frequently Asked <span class="gradient-text">Questions</span>
                 </h2>
                 <p class="text-gray-600 text-lg">
-                    Find answers to common questions about business incorporation.
+                    Find answers to common questions about our GST services.
                 </p>
             </div>
             <div id="faq-container">
@@ -965,9 +997,9 @@
     <!-- CTA Section -->
     <section class="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl lg:text-5xl font-bold mb-6">Ready to Start Your Business?</h2>
-            <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">Let our experts handle the complexities of business registration so you can focus on what you do best—growing your business.</p>
-            <a href="home.html#contact" class="bg-gradient-to-r from-b-orange to-orange-500 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-10 py-5 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg inline-block">Talk to an Expert Today</a>
+            <h2 class="text-3xl lg:text-5xl font-bold mb-6">Ready to Master Your GST Compliance?</h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">Let our experts handle the complexities of GST so you can focus on what you do best—growing your business.</p>
+            <a href="home.html#contact" class="bg-gradient-to-r from-b-orange to-orange-500 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-10 py-5 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg inline-block">Talk to a GST Expert Today</a>
         </div>
     </section>
 
@@ -1079,23 +1111,23 @@
                                     Our Services
                                 </h5>
                                 <ul class="space-y-3">
-                                    <li><a href="Income-Taxes.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                    <li><a href="#" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
                                         Income Tax Returns
                                     </a></li>
                                     <li><a href="gst.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
-                                        GST Services
+                                        GST Registration
                                     </a></li>
-                                    <li><a href="trademark.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                    <li><a href="#" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
-                                        Trademark Services
+                                        Tax Planning
                                     </a></li>
                                     <li><a href="business-incorporation.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
                                         Business Registration
                                     </a></li>
-                                    <li><a href="compliance.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                    <li><a href="#" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
                                         Audit & Compliance
                                     </a></li>
@@ -1252,133 +1284,179 @@
     <script>
         feather.replace();
 
-        // Enhanced Header scroll functionality
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('m-btn');
+        const mobileMenu = document.getElementById('m-menu');
+        if(mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // Enhanced Navigation Functionality
         const header = document.getElementById('header');
-        let lastScrollTop = 0;
         
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > 50) {
+        // Throttled scroll handler for smooth performance
+        let ticking = false;
+        function updateHeaderOnScroll() {
+            if (window.scrollY > 50) {
                 header.classList.add('header-scrolled');
             } else {
                 header.classList.remove('header-scrolled');
             }
-            
-            // Hide/show header on scroll
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                header.style.transform = 'translateY(-100%)';
-            } else {
-                header.style.transform = 'translateY(0)';
+            ticking = false;
+        }
+        
+        // Header scroll effect with throttling
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateHeaderOnScroll);
+                ticking = true;
             }
-            lastScrollTop = scrollTop;
         });
-
-        // Enhanced Navigation Dropdown functionality
+        
+        // Dropdown Menu Logic with improved stability
         const dropdowns = document.querySelectorAll('.dropdown');
-        
         dropdowns.forEach(dropdown => {
+            let timeout;
             const menu = dropdown.querySelector('.mega-menu, .dropdown-menu');
-            let timeoutId;
             
+            if (!menu) return;
+
             dropdown.addEventListener('mouseenter', () => {
-                clearTimeout(timeoutId);
-                menu.classList.remove('opacity-0', 'invisible');
-                menu.classList.add('opacity-100', 'visible');
+                clearTimeout(timeout);
+                // Close all other dropdowns first
+                dropdowns.forEach(otherDropdown => {
+                    if (otherDropdown !== dropdown) {
+                        const otherMenu = otherDropdown.querySelector('.mega-menu, .dropdown-menu');
+                        if (otherMenu) {
+                            otherMenu.classList.remove('open');
+                        }
+                    }
+                });
+                menu.classList.add('open');
             });
-            
+
             dropdown.addEventListener('mouseleave', () => {
-                timeoutId = setTimeout(() => {
-                    menu.classList.remove('opacity-100', 'visible');
-                    menu.classList.add('opacity-0', 'invisible');
-                }, 150);
+                timeout = setTimeout(() => {
+                    menu.classList.remove('open');
+                }, 150); // Reduced delay for better UX
             });
         });
-
-        // Mobile menu functionality
-        const mobileMenuBtn = document.getElementById('m-btn');
-        const mobileMenu = document.getElementById('m-menu');
         
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('active');
-                const icon = mobileMenuBtn.querySelector('[data-feather]');
-                if (mobileMenu.classList.contains('active')) {
-                    icon.setAttribute('data-feather', 'x');
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) {
+                dropdowns.forEach(dropdown => {
+                    const menu = dropdown.querySelector('.mega-menu, .dropdown-menu');
+                    if (menu) {
+                        menu.classList.remove('open');
+                    }
+                });
+            }
+        });
+
+        // Mobile Menu Toggle with smooth animations
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.contains('open');
+                
+                if (isOpen) {
+                    mobileMenu.classList.remove('open');
+                    document.body.classList.remove('menu-open');
                 } else {
-                    icon.setAttribute('data-feather', 'menu');
+                    mobileMenu.classList.add('open');
+                    document.body.classList.add('menu-open');
                 }
-                feather.replace();
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('#m-menu') && !e.target.closest('#m-btn')) {
+                    mobileMenu.classList.remove('open');
+                    document.body.classList.remove('menu-open');
+                }
             });
         }
 
-        // Mobile dropdown functionality
-        const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
-        mobileDropdowns.forEach(dropdown => {
-            const btn = dropdown.querySelector('.mobile-dropdown-btn');
-            const content = dropdown.querySelector('.mobile-dropdown-content');
-            const icon = btn.querySelector('[data-feather="chevron-down"]');
-            
+        // Mobile Dropdown Toggle with improved animations
+        const mobileDropdownBtns = document.querySelectorAll('.mobile-dropdown-btn');
+        mobileDropdownBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                const isOpen = !content.classList.contains('hidden');
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('i');
                 
-                // Close all other dropdowns
-                mobileDropdowns.forEach(otherDropdown => {
-                    const otherContent = otherDropdown.querySelector('.mobile-dropdown-content');
-                    const otherIcon = otherDropdown.querySelector('[data-feather="chevron-down"]');
-                    otherContent.classList.add('hidden');
-                    otherIcon.style.transform = 'rotate(0deg)';
-                });
+                btn.classList.toggle('active');
                 
-                // Toggle current dropdown
-                if (isOpen) {
-                    content.classList.add('hidden');
-                    icon.style.transform = 'rotate(0deg)';
+                if (content.classList.contains('open')) {
+                    content.classList.remove('open');
                 } else {
-                    content.classList.remove('hidden');
-                    icon.style.transform = 'rotate(180deg)';
+                    // Close other mobile dropdowns first
+                    mobileDropdownBtns.forEach(otherBtn => {
+                        if (otherBtn !== btn) {
+                            otherBtn.classList.remove('active');
+                            const otherContent = otherBtn.nextElementSibling;
+                            otherContent.classList.remove('open');
+                        }
+                    });
+                    content.classList.add('open');
                 }
             });
         });
 
-        // Search functionality
-        const searchInputs = document.querySelectorAll('input[type="text"]');
-        searchInputs.forEach(input => {
-            if (input.placeholder.includes('Search')) {
-                input.addEventListener('focus', () => {
-                    input.parentElement.classList.add('search-focus');
-                });
-                
-                input.addEventListener('blur', () => {
-                    input.parentElement.classList.remove('search-focus');
-                });
-            }
-        });
-
-        // Keyboard shortcuts
-        document.addEventListener('keydown', (e) => {
-            // Cmd/Ctrl + K to focus search
-            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-                e.preventDefault();
-                const searchInput = document.querySelector('.search-input');
-                if (searchInput) {
+        // Search functionality with improved focus handling
+        const searchInput = document.querySelector('.search-input');
+        if (searchInput) {
+            // Keyboard shortcut for search
+            document.addEventListener('keydown', (e) => {
+                if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                    e.preventDefault();
                     searchInput.focus();
                 }
-            }
+            });
             
-            // Escape to close mobile menu
-            if (e.key === 'Escape') {
-                if (mobileMenu && mobileMenu.classList.contains('active')) {
-                    mobileMenu.classList.remove('active');
-                    const icon = mobileMenuBtn.querySelector('[data-feather]');
-                    icon.setAttribute('data-feather', 'menu');
-                    feather.replace();
+            // Focus search on mobile menu open
+            if (mobileMenu) {
+                const mobileSearchInput = mobileMenu.querySelector('input[placeholder*="Search"]');
+                if (mobileSearchInput) {
+                    mobileMenu.addEventListener('transitionend', () => {
+                        if (mobileMenu.classList.contains('open')) {
+                            mobileSearchInput.focus();
+                        }
+                    });
                 }
             }
+        }
+        
+        // Prevent layout shift by preloading images
+        const logoImage = document.querySelector('.logo-image');
+        if (logoImage) {
+            logoImage.addEventListener('load', () => {
+                logoImage.style.opacity = '1';
+            });
+        }
+        
+        // Smooth resize handling
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                // Close mobile menu on large screens
+                if (window.innerWidth >= 1024) {
+                    mobileMenu.classList.remove('open');
+                    document.body.classList.remove('menu-open');
+                }
+            }, 250);
         });
 
         // Sub-nav active state on scroll
-        const sections = document.querySelectorAll('div[id]');
+        const sections = document.querySelectorAll('div[id^="gst-"]');
         const navLinks = document.querySelectorAll('.sub-nav-link');
         window.addEventListener('scroll', () => {
             let current = '';
@@ -1398,87 +1476,45 @@
 
         // FAQ Data
         const faqs = [
-            { q: "What is the best business structure for a startup?", a: "A Private Limited Company is generally the best structure for startups that plan to raise funding, as it offers limited liability, a separate legal entity, and is favored by investors." },
-            { q: "How long does it take to register a company in India?", a: "The process typically takes between 7 to 15 working days, depending on the type of company and the processing time at the Registrar of Companies." },
-            { q: "What is a Director Identification Number (DIN)?", a: "A DIN is a unique 8-digit identification number that is required for any existing or proposed director of a company. It is mandatory for all directors." },
-            { q: "Can a foreign national be a director in an Indian company?", a: "Yes, a foreign national can be a director in an Indian company. They must obtain a Director Identification Number (DIN)." },
-            { q: "What documents are required for company registration?", a: "Commonly required documents include PAN card, address proof (like Aadhaar card, passport, or utility bill), and identity proof of all directors/partners, along with proof of the registered office address." }
+            { q: "Who needs to register for GST?", a: "Any business providing goods with a turnover of over ₹40 lakhs or services with a turnover of over ₹20 lakhs is required to register for GST. It is also mandatory for e-commerce sellers, businesses making interstate sales, and casual taxable persons." },
+            { q: "What are the different types of GST returns?", a: "The most common returns are GSTR-1 (for outward supplies), GSTR-3B (a monthly summary return), and GSTR-9 (the annual return). Businesses under the QRMP scheme file returns quarterly." },
+            { q: "What happens if I miss a GST filing deadline?", a: "Missing a GST filing deadline results in a late fee of ₹50 per day (₹20 for nil returns) per return, up to a maximum of ₹10,000. Interest at 18% per annum is also levied on the outstanding tax amount." },
+            { q: "What is GST e-invoicing?", a: "e-Invoicing is a system where B2B invoices are electronically authenticated by the GST Network (GSTN). It is mandatory for businesses with an aggregate turnover exceeding ₹5 crores in any preceding financial year." },
+            { q: "When can I cancel my GST registration?", a: "You can apply for GST cancellation if your business has been discontinued, transferred, or if your turnover falls below the threshold limit and you are no longer required to be registered." }
         ];
 
         // FAQ Accordion functionality
         const faqContainer = document.getElementById('faq-container');
-        if (faqContainer) {
-            faqs.forEach((faq, index) => {
-                const faqItem = document.createElement('div');
-                faqItem.className = 'faq-item';
-                faqItem.innerHTML = `
-                    <div class="faq-question">
-                        <h4 class="text-lg font-semibold text-gray-800">${faq.q}</h4>
-                        <i data-feather="chevron-down" class="w-6 h-6 text-b-orange transition-transform duration-300"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p class="text-gray-600 pb-6">${faq.a}</p>
-                    </div>
-                `;
-                faqContainer.appendChild(faqItem);
-            });
-
-            document.querySelectorAll('.faq-question').forEach(item => {
-                item.addEventListener('click', event => {
-                    const answer = item.nextElementSibling;
-                    const icon = item.querySelector('i');
-                    
-                    if (answer.style.maxHeight) {
-                        answer.style.maxHeight = null;
-                        answer.style.paddingBottom = '0px';
-                        icon.style.transform = 'rotate(0deg)';
-                    } else {
-                        // Close other open FAQs
-                        document.querySelectorAll('.faq-answer').forEach(ans => {
-                            ans.style.maxHeight = null;
-                            ans.style.paddingBottom = '0px';
-                            ans.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
-                        });
-                        
-                        answer.style.maxHeight = answer.scrollHeight + "px";
-                        answer.style.paddingBottom = '1.5rem';
-                        icon.style.transform = 'rotate(180deg)';
-                    } 
-                });
-            });
-        }
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+        faqs.forEach((faq, index) => {
+            const faqItem = document.createElement('div');
+            faqItem.className = 'faq-item';
+            faqItem.innerHTML = `
+                <div class="faq-question">
+                    <h4 class="text-lg font-semibold text-gray-800">${faq.q}</h4>
+                    <i data-feather="chevron-down" class="w-6 h-6 text-b-orange transition-transform duration-300"></i>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-gray-600 pb-6">${faq.a}</p>
+                </div>
+            `;
+            faqContainer.appendChild(faqItem);
         });
 
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                }
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const answer = item.nextElementSibling;
+                const icon = item.querySelector('i');
+                
+                if (answer.style.maxHeight) {
+                    answer.style.maxHeight = null;
+                    answer.style.paddingBottom = '0px';
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                    answer.style.paddingBottom = '1.5rem';
+                    icon.style.transform = 'rotate(180deg)';
+                } 
             });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.querySelectorAll('.card, .feature-card, .step-card').forEach(el => {
-            observer.observe(el);
         });
     </script>
 </body>
