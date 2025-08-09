@@ -314,9 +314,27 @@
             z-index: 900;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             transition: top 0.3s;
+            border-bottom: 1px solid #E5E7EB;
         }
         @media (max-width: 1023px) {
             .sub-nav { top: 72px; }
+        }
+        .sub-nav-container {
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
+        }
+        .sub-nav-container::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+        @media (max-width: 768px) {
+            .sub-nav-container {
+                justify-content: flex-start;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
         }
         .sub-nav-link {
             color: #475569;
@@ -326,14 +344,34 @@
             transition: all 0.3s ease;
             white-space: nowrap;
             display: inline-block;
+            text-decoration: none;
+            min-width: max-content;
+            position: relative;
+            --pseudo-bg: transparent;
+        }
+        .sub-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: var(--pseudo-bg, transparent);
+            transition: background-color 0.3s ease;
         }
         .sub-nav-link:hover {
             color: #0F766E;
             border-bottom-color: #0F766E;
+            --pseudo-bg: #0F766E;
+        }
+        .sub-nav-link:hover::after,
+        .sub-nav-link.active::after {
+            background-color: #0F766E;
         }
         .sub-nav-link.active {
             color: #0F766E;
             border-bottom-color: #0F766E;
+            --pseudo-bg: #0F766E;
         }
 
         /* FAQ Accordion */
@@ -737,9 +775,9 @@
     <!-- Sub-navigation Bar -->
     <nav class="sub-nav">
         <div class="container mx-auto px-4">
-            <div class="flex justify-center overflow-x-auto">
-                <a href="#pvt-ltd" class="sub-nav-link">Private Limited</a>
-                <a href="#opc" class="sub-nav-link">One Person Company</a>
+            <div class="sub-nav-container">
+                <a href="#pvt-ltd" class="sub-nav-link">Pvt Ltd</a>
+                <a href="#opc" class="sub-nav-link">OPC</a>
                 <a href="#llp" class="sub-nav-link">LLP</a>
                 <a href="#partnership" class="sub-nav-link">Partnership</a>
                 <a href="#proprietorship" class="sub-nav-link">Proprietorship</a>
@@ -1457,23 +1495,85 @@
             }, 250);
         });
 
-        // Sub-nav active state on scroll
-        const sections = document.querySelectorAll('div[id^="gst-"]');
-        const navLinks = document.querySelectorAll('.sub-nav-link');
+        // Enhanced Sub-nav active state on scroll with dual-border functionality
+        const businessSections = document.querySelectorAll('[id="pvt-ltd"], [id="opc"], [id="llp"], [id="partnership"], [id="proprietorship"]');
+        const subNavLinks = document.querySelectorAll('.sub-nav-link');
+        
+        // Smooth scroll behavior for sub-nav links
+        subNavLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    // Remove active class from all links
+                    subNavLinks.forEach(navLink => {
+                        navLink.classList.remove('active');
+                        // Reset dual-border styling
+                        navLink.style.borderBottomColor = 'transparent';
+                    });
+                    
+                    // Add active class and dual-border to clicked link
+                    link.classList.add('active');
+                    link.style.borderBottomColor = '#0F766E';
+                    
+                    // Smooth scroll to target section
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const subNavHeight = document.querySelector('.sub-nav').offsetHeight;
+                    const offsetTop = targetSection.offsetTop - headerHeight - subNavHeight - 20;
+                    
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll spy for active state detection
         window.addEventListener('scroll', () => {
             let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 150) {
+            const scrollPosition = window.pageYOffset;
+            const headerHeight = document.querySelector('.header').offsetHeight;
+            const subNavHeight = document.querySelector('.sub-nav').offsetHeight;
+            const offset = headerHeight + subNavHeight + 100;
+
+            businessSections.forEach(section => {
+                const sectionTop = section.offsetTop - offset;
+                const sectionHeight = section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                     current = section.getAttribute('id');
                 }
             });
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
+
+            // Update active states with dual-border effect
+            subNavLinks.forEach(link => {
+                const href = link.getAttribute('href').substring(1);
+                
+                if (href === current) {
+                    // Activate dual-border
                     link.classList.add('active');
+                    link.style.borderBottomColor = '#0F766E';
+                    
+                    // Animate pseudo-element (handled by CSS)
+                    link.style.setProperty('--pseudo-bg', '#0F766E');
+                } else {
+                    // Deactivate dual-border
+                    link.classList.remove('active');
+                    link.style.borderBottomColor = 'transparent';
+                    link.style.setProperty('--pseudo-bg', 'transparent');
                 }
             });
+        });
+
+        // Initialize first section as active on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            if (subNavLinks.length > 0) {
+                subNavLinks[0].classList.add('active');
+                subNavLinks[0].style.borderBottomColor = '#0F766E';
+            }
         });
 
         // FAQ Data
