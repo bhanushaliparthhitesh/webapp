@@ -241,6 +241,23 @@
     </header>
 
     <main>
+        <!-- Promo Banner (dismissible) -->
+        <section id="promo-banner" class="bg-gradient-to-r from-b-orange to-orange-600 text-white">
+            <div class="container mx-auto px-4 py-4 flex items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/20">
+                        <i data-feather="percent" class="w-4 h-4"></i>
+                    </span>
+                    <p class="font-semibold">Limited-time: Get 20% OFF on Pvt Ltd Incorporation. Use code <span class="underline">B4I20</span></p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="#contact-form" class="bg-white text-b-orange font-bold px-4 py-2 rounded-lg hover:bg-gray-100 transition">Claim Offer</a>
+                    <button id="promo-close" aria-label="Close banner" class="bg-white/10 hover:bg-white/20 rounded-lg p-2">
+                        <i data-feather="x" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
         <!-- Blog Navigation & Breadcrumbs -->
         <section class="bg-gray-50 py-4 border-b">
             <div class="container mx-auto px-4">
@@ -255,7 +272,7 @@
         </section>
 
         <!-- Blog Header -->
-        <section class="py-16 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white relative overflow-hidden">
+    <section class="py-16 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white relative overflow-hidden">
             <div class="absolute inset-0 opacity-10">
                 <div class="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-b-orange to-yellow-400 rounded-full blur-3xl animate-pulse"></div>
                 <div class="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
@@ -289,6 +306,19 @@
                             <span>By BIG4INDIA Expert Team</span>
                         </div>
                     </div>
+
+                    <!-- Share near title (desktop) -->
+                    <div class="hidden md:flex justify-center gap-3 -mt-4 mb-6">
+                        <button class="flex items-center bg-blue-600 text-white px-3 py-1.5 rounded-md text-sm hover:bg-blue-700 transition">
+                            <i data-feather="facebook" class="w-4 h-4 mr-1.5"></i>Share
+                        </button>
+                        <button class="flex items-center bg-blue-400 text-white px-3 py-1.5 rounded-md text-sm hover:bg-blue-500 transition">
+                            <i data-feather="twitter" class="w-4 h-4 mr-1.5"></i>Tweet
+                        </button>
+                        <button class="flex items-center bg-blue-700 text-white px-3 py-1.5 rounded-md text-sm hover:bg-blue-800 transition">
+                            <i data-feather="linkedin" class="w-4 h-4 mr-1.5"></i>Share
+                        </button>
+                    </div>
                     
                     <!-- Blog Excerpt -->
                     <p class="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
@@ -307,8 +337,43 @@
             </div>
         </section>
 
+        <!-- Sticky Sidebars (desktop only) -->
+        <section class="hidden lg:block" aria-label="Sticky sidebars">
+            <!-- Left TOC -->
+            <nav id="sticky-toc" class="fixed left-6 top-32 w-64 bg-white/80 backdrop-blur border border-gray-200 rounded-2xl p-4 shadow-lg z-30">
+                <div class="text-sm font-semibold text-gray-700 mb-3">Index</div>
+                <ul class="space-y-1">
+                    <li><a data-toc href="#what-is-pvt-ltd" class="block px-3 py-2 rounded-lg text-gray-700 hover:text-b-orange hover:bg-orange-50">Definition & Scope</a></li>
+                    <li><a data-toc href="#benefits" class="block px-3 py-2 rounded-lg text-gray-700 hover:text-b-orange hover:bg-orange-50">Key Benefits</a></li>
+                    <li><a data-toc href="#documents" class="block px-3 py-2 rounded-lg text-gray-700 hover:text-b-orange hover:bg-orange-50">Required Documents</a></li>
+                    <li><a data-toc href="#process" class="block px-3 py-2 rounded-lg text-gray-700 hover:text-b-orange hover:bg-orange-50">Registration Process</a></li>
+                    <li><a data-toc href="#pricing" class="block px-3 py-2 rounded-lg text-gray-700 hover:text-b-orange hover:bg-orange-50">Costs & Pricing</a></li>
+                    <li><a data-toc href="#compliance" class="block px-3 py-2 rounded-lg text-gray-700 hover:text-b-orange hover:bg-orange-50">Annual Compliance</a></li>
+                    <li><a data-toc href="#faq" class="block px-3 py-2 rounded-lg text-gray-700 hover:text-b-orange hover:bg-orange-50">FAQs</a></li>
+                    <li><a data-toc href="#contact-form" class="block px-3 py-2 rounded-lg text-gray-700 hover:text-b-orange hover:bg-orange-50">Get Expert Help</a></li>
+                </ul>
+            </nav>
+
+            <!-- Right CTA -->
+            <aside class="fixed right-6 top-32 w-80 z-30">
+                <div class="bg-white/90 backdrop-blur border border-gray-200 rounded-2xl shadow-xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-b-orange to-orange-600 text-white p-5">
+                        <h3 class="text-xl font-bold">Incorporate Your Pvt Ltd Company</h3>
+                        <p class="text-white/90 text-sm mt-1">Fast, compliant, end-to-end assistance</p>
+                    </div>
+                    <div class="p-5 space-y-3 text-sm text-gray-700">
+                        <div class="flex items-start gap-2"><i data-feather="check-circle" class="w-4 h-4 text-green-600 mt-0.5"></i><span>DSC, DIN, Name Approval, Incorporation</span></div>
+                        <div class="flex items-start gap-2"><i data-feather="check-circle" class="w-4 h-4 text-green-600 mt-0.5"></i><span>Transparent pricing. No hidden fees</span></div>
+                        <div class="flex items-start gap-2"><i data-feather="check-circle" class="w-4 h-4 text-green-600 mt-0.5"></i><span>Dedicated compliance support</span></div>
+                        <a href="#contact-form" class="block text-center bg-b-orange text-white font-semibold px-4 py-3 rounded-lg hover:bg-orange-700 transition">Get Free Consultation</a>
+                        <div class="border-t pt-3 text-xs text-gray-500">99.9% success • MCA registered filings • 24/7 support</div>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
         <!-- Table of Contents -->
-        <section class="py-12 bg-white border-b">
+    <section class="py-12 bg-white border-b lg:hidden">
             <div class="container mx-auto px-4">
                 <div class="max-w-4xl mx-auto">
                     <div class="bg-gray-50 rounded-2xl p-8">
@@ -318,37 +383,37 @@
                         </h2>
                         <div class="grid md:grid-cols-2 gap-4">
                             <div class="space-y-3">
-                                <a href="#what-is-pvt-ltd" class="flex items-center text-gray-700 hover:text-b-orange transition-colors p-2 rounded-lg hover:bg-white">
+                <a data-toc href="#what-is-pvt-ltd" class="flex items-center text-gray-700 hover:text-b-orange transition-colors p-2 rounded-lg hover:bg-white">
                                     <span class="w-6 h-6 bg-b-orange/20 text-b-orange rounded-full flex items-center justify-center text-sm font-bold mr-3">1</span>
                                     What is a Private Limited Company?
                                 </a>
-                                <a href="#benefits" class="flex items-center text-gray-700 hover:text-b-orange transition-colors p-2 rounded-lg hover:bg-white">
+                <a data-toc href="#benefits" class="flex items-center text-gray-700 hover:text-b-orange transition-colors p-2 rounded-lg hover:bg-white">
                                     <span class="w-6 h-6 bg-b-orange/20 text-b-orange rounded-full flex items-center justify-center text-sm font-bold mr-3">2</span>
                                     Key Benefits & Advantages
                                 </a>
-                                <a href="#documents" class="flex items-center text-gray-700 hover:text-b-orange transition-colors p-2 rounded-lg hover:bg-white">
+                <a data-toc href="#documents" class="flex items-center text-gray-700 hover:text-b-orange transition-colors p-2 rounded-lg hover:bg-white">
                                     <span class="w-6 h-6 bg-b-orange/20 text-b-orange rounded-full flex items-center justify-center text-sm font-bold mr-3">3</span>
                                     Required Documents
                                 </a>
-                                <a href="#process" class="flex items-center text-gray-700 hover:text-b-orange transition-colors p-2 rounded-lg hover:bg-white">
+                <a data-toc href="#process" class="flex items-center text-gray-700 hover:text-b-orange transition-colors p-2 rounded-lg hover:bg-white">
                                     <span class="w-6 h-6 bg-b-orange/20 text-b-orange rounded-full flex items-center justify-center text-sm font-bold mr-3">4</span>
                                     Registration Process
                                 </a>
                             </div>
                             <div class="space-y-3">
-                                <a href="#pricing" class="flex items-center text-gray-700 hover:text-b-orange transition-colors p-2 rounded-lg hover:bg-white">
+                <a data-toc href="#pricing" class="flex items-center text-gray-700 hover:text-b-orange transition-colors p-2 rounded-lg hover:bg-white">
                                     <span class="w-6 h-6 bg-b-orange/20 text-b-orange rounded-full flex items-center justify-center text-sm font-bold mr-3">5</span>
                                     Costs & Pricing
                                 </a>
-                                <a href="#compliance" class="flex items-center text-gray-700 hover:text-b-orange transition-colors p-2 rounded-lg hover:bg-white">
+                <a data-toc href="#compliance" class="flex items-center text-gray-700 hover:text-b-orange transition-colors p-2 rounded-lg hover:bg-white">
                                     <span class="w-6 h-6 bg-b-orange/20 text-b-orange rounded-full flex items-center justify-center text-sm font-bold mr-3">6</span>
                                     Annual Compliance
                                 </a>
-                                <a href="#faq" class="flex items-center text-gray-700 hover:text-b-orange transition-colors p-2 rounded-lg hover:bg-white">
+                <a data-toc href="#faq" class="flex items-center text-gray-700 hover:text-b-orange transition-colors p-2 rounded-lg hover:bg-white">
                                     <span class="w-6 h-6 bg-b-orange/20 text-b-orange rounded-full flex items-center justify-center text-sm font-bold mr-3">7</span>
                                     Frequently Asked Questions
                                 </a>
-                                <a href="#contact" class="flex items-center text-gray-700 hover:text-b-orange transition-colors p-2 rounded-lg hover:bg-white">
+                <a data-toc href="#contact-form" class="flex items-center text-gray-700 hover:text-b-orange transition-colors p-2 rounded-lg hover:bg-white">
                                     <span class="w-6 h-6 bg-b-orange/20 text-b-orange rounded-full flex items-center justify-center text-sm font-bold mr-3">8</span>
                                     Get Expert Help
                                 </a>
@@ -497,7 +562,7 @@
                         <p class="text-lg leading-relaxed">
                             While a Private Limited Company offers numerous advantages, it's important to understand the compliance requirements and choose the right business structure based on your specific needs. Our experts can help you make the right decision.
                         </p>
-                        <a href="#contact" class="inline-flex items-center bg-white text-b-orange font-bold px-6 py-3 rounded-lg mt-4 hover:bg-gray-100 transition-colors">
+                        <a href="#contact-form" class="inline-flex items-center bg-white text-b-orange font-bold px-6 py-3 rounded-lg mt-4 hover:bg-gray-100 transition-colors">
                             <i data-feather="phone" class="w-5 h-5 mr-2"></i>
                             Get Free Consultation
                         </a>
@@ -506,8 +571,8 @@
             </div>
         </section>
 
-        <!-- Documents Section -->
-        <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <!-- Documents Section -->
+    <section id="documents" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16 reveal-elastic" style="--delay: 0.1s;">
                     <h2 class="text-3xl lg:text-5xl font-bold text-gray-800 mb-6">
@@ -572,8 +637,8 @@
             </div>
         </section>
 
-        <!-- Process Section -->
-        <section class="py-20 bg-white">
+    <!-- Process Section -->
+    <section id="process" class="py-20 bg-white">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16 reveal-elastic" style="--delay: 0.1s;">
                     <h2 class="text-3xl lg:text-5xl font-bold text-gray-800 mb-6">
@@ -624,7 +689,7 @@
             </div>
         </section>
 
-        <!-- Pricing Section -->
+    <!-- Pricing Section -->
         <section id="pricing" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16 reveal-elastic" style="--delay: 0.1s;">
@@ -697,6 +762,22 @@
                             <a href="#contact-form" class="bg-white text-b-orange font-bold px-10 py-4 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:shadow-xl inline-block">
                                 Get Started Now
                             </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compliance Section (Anchor target for TOC) -->
+        <section id="compliance" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-2xl lg:text-3xl font-bold text-gray-800 mb-4">📌 Annual Compliance</h2>
+                    <p class="text-gray-600 leading-relaxed mb-6">Every Private Limited Company must meet annual compliance requirements with the Ministry of Corporate Affairs (MCA) and the Income Tax Department. Typical filings include AOC-4 (financial statements), MGT-7 (annual return), and ITR. Maintaining statutory registers, holding board meetings, and conducting the AGM are also mandatory.</p>
+                    <div class="bg-orange-50 border border-orange-200 rounded-xl p-5">
+                        <div class="flex items-start gap-3">
+                            <i data-feather="alert-circle" class="w-5 h-5 text-b-orange mt-0.5"></i>
+                            <p class="text-sm text-gray-700">Tip: Missing deadlines can attract penalties. Our compliance team can manage your calendar and filings end-to-end.</p>
                         </div>
                     </div>
                 </div>
@@ -903,8 +984,8 @@
         </div>
     </section>
 
-        <!-- FAQ Section -->
-        <section class="py-20 bg-white">
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-white">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16 reveal-elastic" style="--delay: 0.1s;">
                     <h2 class="text-3xl lg:text-5xl font-bold text-gray-800 mb-6">
@@ -1128,6 +1209,12 @@
                 </div>
             </div>
         </section>
+
+        <!-- Floating Chat/Help Bubble -->
+        <a href="#contact-form" aria-label="Chat with us" class="hidden lg:flex fixed bottom-6 right-6 z-40 items-center gap-3 bg-b-orange text-white px-4 py-3 rounded-full shadow-lg hover:bg-orange-600 transition-colors">
+            <i data-feather="message-circle" class="w-5 h-5"></i>
+            <span class="font-semibold">Chat with us</span>
+        </a>
 
         <!-- Footer -->
         <footer class="bg-gray-900 text-white py-12">
@@ -1435,6 +1522,47 @@
 
             // Initialize progress indicator
             createProgressIndicator();
+
+            // Promo banner dismiss
+            const promoClose = document.getElementById('promo-close');
+            const promoBanner = document.getElementById('promo-banner');
+            if (promoClose && promoBanner) {
+                promoClose.addEventListener('click', () => {
+                    promoBanner.classList.add('hidden');
+                });
+            }
+
+            // Scrollspy for TOC (both sticky and mobile)
+            const tocLinks = Array.from(document.querySelectorAll('a[data-toc]'));
+            const sectionIds = tocLinks.map(a => a.getAttribute('href')).filter(h => h && h.startsWith('#'));
+            const sections = sectionIds
+                .map(id => document.querySelector(id))
+                .filter(Boolean);
+
+            const setActive = (id) => {
+                tocLinks.forEach(link => {
+                    const match = link.getAttribute('href') === id;
+                    link.classList.toggle('text-b-orange', match);
+                    link.classList.toggle('bg-orange-50', match);
+                    link.classList.toggle('font-semibold', match);
+                });
+            };
+
+            if (sections.length) {
+                const tocObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            setActive('#' + entry.target.id);
+                        }
+                    });
+                }, {
+                    root: null,
+                    rootMargin: '0px 0px -70% 0px',
+                    threshold: 0.1
+                });
+
+                sections.forEach(sec => tocObserver.observe(sec));
+            }
         </script>
 </body>
 </html>
