@@ -50,15 +50,202 @@
         }
         
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
+            font-family: 'Times New Roman', 'Georgia', serif;
+            background-color: #f8f6f0;
             padding-top: 80px; /* Account for fixed header */
+            line-height: 1.6;
         }
         
         @media (max-width: 1023px) {
             body {
                 padding-top: 72px; /* Mobile header height */
             }
+        }
+        
+        /* Newspaper Styles */
+        .newspaper-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .newspaper-header {
+            border-bottom: 3px solid #000;
+            padding: 20px;
+            text-align: center;
+            background: #fff;
+        }
+        
+        .newspaper-title {
+            font-family: 'Old English Text MT', 'Times New Roman', serif;
+            font-size: 3rem;
+            font-weight: bold;
+            color: #000;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+        }
+        
+        .newspaper-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            font-style: italic;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+        
+        .newspaper-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: #f0f0f0;
+            border-bottom: 2px solid #000;
+            font-size: 0.9rem;
+        }
+        
+        .newspaper-columns {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            padding: 30px;
+            background: white;
+        }
+        
+        @media (max-width: 768px) {
+            .newspaper-columns {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 15px;
+            }
+        }
+        
+        .main-article {
+            column-count: 2;
+            column-gap: 30px;
+            column-rule: 1px solid #ddd;
+            text-align: justify;
+        }
+        
+        @media (max-width: 768px) {
+            .main-article {
+                column-count: 1;
+            }
+        }
+        
+        .main-article h2 {
+            column-span: all;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 30px 0 20px 0;
+            text-align: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+        }
+        
+        .main-article h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 25px 0 15px 0;
+            color: #000;
+        }
+        
+        .main-article p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: #333;
+            text-indent: 20px;
+        }
+        
+        .sidebar {
+            border-left: 3px solid #000;
+            padding-left: 20px;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+            text-transform: uppercase;
+            border-bottom: 1px solid #000;
+            padding-bottom: 5px;
+        }
+        
+        .newspaper-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .newspaper-list li {
+            padding: 8px 0;
+            border-bottom: 1px dotted #ccc;
+            font-size: 0.95rem;
+        }
+        
+        .newspaper-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .newspaper-box {
+            border: 2px solid #000;
+            padding: 15px;
+            margin: 20px 0;
+            background: #fff;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .newspaper-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+            border-left: 5px solid #000;
+            margin: 25px 0;
+            background: #f0f0f0;
+        }
+        
+        .newspaper-byline {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .newspaper-date {
+            font-family: 'Times New Roman', serif;
+            font-weight: bold;
+        }
+        
+        .classified-section {
+            background: #f5f5f5;
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .classified-title {
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: 1px solid #000;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+        }
+        
+        .weather-box {
+            text-align: center;
+            background: #e8f4f8;
+            border: 2px solid #000;
+            padding: 15px;
+            margin: 20px 0;
         }
 
         .gradient-text {
@@ -241,136 +428,195 @@
     </header>
 
     <main>
-        <!-- Promo Banner (dismissible) -->
-        <section id="promo-banner" class="bg-gradient-to-r from-b-orange to-orange-600 text-white">
-            <div class="container mx-auto px-4 py-4 flex items-center justify-between gap-4">
-                <div class="flex items-center gap-3">
-                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/20">
-                        <i data-feather="percent" class="w-4 h-4"></i>
-                    </span>
-                    <p class="font-semibold">Limited-time: Get 20% OFF on Pvt Ltd Incorporation. Use code <span class="underline">B4I20</span></p>
-                </div>
-                <div class="flex items-center gap-3">
-                    <a href="#contact-form" class="bg-white text-b-orange font-bold px-4 py-2 rounded-lg hover:bg-gray-100 transition">Claim Offer</a>
-                    <button id="promo-close" aria-label="Close banner" class="bg-white/10 hover:bg-white/20 rounded-lg p-2">
-                        <i data-feather="x" class="w-4 h-4"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
-        <!-- Blog Navigation & Breadcrumbs -->
-        <section class="bg-gray-50 py-4 border-b">
-            <div class="container mx-auto px-4">
-                <nav class="flex items-center space-x-2 text-sm text-gray-600">
-                    <a href="../home.html" class="hover:text-b-orange transition-colors">Home</a>
-                    <i data-feather="chevron-right" class="w-4 h-4"></i>
-                    <a href="#" class="hover:text-b-orange transition-colors">Blog</a>
-                    <i data-feather="chevron-right" class="w-4 h-4"></i>
-                    <span class="text-b-orange font-medium">Company Registration</span>
-                </nav>
-            </div>
-        </section>
-
-        <!-- Blog Header -->
-    <section class="py-16 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white relative overflow-hidden">
-            <div class="absolute inset-0 opacity-10">
-                <div class="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-b-orange to-yellow-400 rounded-full blur-3xl animate-pulse"></div>
-                <div class="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+        <!-- Newspaper Layout -->
+        <div class="newspaper-container">
+            <!-- Newspaper Header -->
+            <div class="newspaper-header">
+                <h1 class="newspaper-title">BIG4INDIA BUSINESS DAILY</h1>
+                <div class="newspaper-subtitle">Your Trusted Source for Business Registration & Compliance News</div>
             </div>
             
-            <div class="container mx-auto px-4 relative z-10">
-                <div class="max-w-4xl mx-auto text-center">
-                    <!-- Blog Category -->
-                    <div class="inline-flex items-center bg-b-orange/20 text-b-orange px-4 py-2 rounded-full text-sm font-medium mb-6">
-                        <i data-feather="folder" class="w-4 h-4 mr-2"></i>
-                        Business Registration Guide
+            <!-- Newspaper Meta Info -->
+            <div class="newspaper-meta">
+                <div class="newspaper-date">Sunday, August 11, 2025</div>
+                <div>Volume 1, Issue 1</div>
+                <div>Price: ₹5.00</div>
+            </div>
+            
+            <!-- Main Content in Newspaper Columns -->
+            <div class="newspaper-columns">
+                <!-- Main Article Column -->
+                <div class="main-article">
+                    <h2>Complete Guide to Private Limited Company Registration in India</h2>
+                    
+                    <div class="newspaper-byline">By BIG4INDIA Expert Team | Business Correspondent</div>
+                    
+                    <p><strong>NEW DELHI</strong> - A Private Limited Company (Pvt Ltd) is a business entity incorporated under the Companies Act, 2013, that combines the benefits of both partnership and corporate structures. It's designed to provide entrepreneurs with limited liability protection while maintaining operational flexibility.</p>
+                    
+                    <div class="newspaper-quote">
+                        "Choosing the right business structure is crucial for your entrepreneurial success. Private Limited Company offers the perfect balance of protection and growth opportunities."
                     </div>
                     
-                    <!-- Blog Title -->
-                    <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-                        Complete Guide to <span class="text-b-orange">Private Limited Company</span> Registration in India
-                    </h1>
+                    <h3>Key Characteristics</h3>
+                    <p>The company exists independently of its owners, providing separate legal entity status. Shareholders' liability is limited to their investment, ensuring personal assets remain protected from business debts.</p>
                     
-                    <!-- Blog Meta -->
-                    <div class="flex flex-wrap justify-center items-center gap-6 text-gray-300 mb-8">
-                        <div class="flex items-center">
-                            <i data-feather="calendar" class="w-4 h-4 mr-2"></i>
-                            <span>Published on August 10, 2024</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i data-feather="clock" class="w-4 h-4 mr-2"></i>
-                            <span>15 min read</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i data-feather="user" class="w-4 h-4 mr-2"></i>
-                            <span>By BIG4INDIA Expert Team</span>
-                        </div>
-                    </div>
-
-                    <!-- Share near title (desktop) -->
-                    <div class="hidden md:flex justify-center gap-3 -mt-4 mb-6">
-                        <button class="flex items-center bg-blue-600 text-white px-3 py-1.5 rounded-md text-sm hover:bg-blue-700 transition">
-                            <i data-feather="facebook" class="w-4 h-4 mr-1.5"></i>Share
-                        </button>
-                        <button class="flex items-center bg-blue-400 text-white px-3 py-1.5 rounded-md text-sm hover:bg-blue-500 transition">
-                            <i data-feather="twitter" class="w-4 h-4 mr-1.5"></i>Tweet
-                        </button>
-                        <button class="flex items-center bg-blue-700 text-white px-3 py-1.5 rounded-md text-sm hover:bg-blue-800 transition">
-                            <i data-feather="linkedin" class="w-4 h-4 mr-1.5"></i>Share
-                        </button>
+                    <p>Company continues to exist even if shareholders change, ensuring business continuity. Ownership can be easily transferred with certain restrictions, making it attractive for investors.</p>
+                    
+                    <h3>Major Benefits Unveiled</h3>
+                    <p>Limited liability protection stands as the cornerstone benefit. Your personal assets remain completely safe from business liabilities. Even if the company faces financial difficulties, creditors cannot claim your personal property, savings, or investments.</p>
+                    
+                    <p>The separate legal identity feature allows your company to become a distinct legal entity, separate from its owners. It can own property, enter contracts, sue or be sued in its own name, providing greater business credibility.</p>
+                    
+                    <div class="newspaper-box">
+                        <h4 style="text-align: center; margin-bottom: 15px;">BREAKING: New Registration Process</h4>
+                        <p style="text-align: center; margin: 0;">Government streamlines company registration to just 6 steps with SPICe+ form. Registration now possible in 7 working days.</p>
                     </div>
                     
-                    <!-- Blog Excerpt -->
-                    <p class="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-                        Everything you need to know about registering a Private Limited Company in India. From understanding the benefits to navigating the registration process, this comprehensive guide covers all aspects of company incorporation.
-                    </p>
+                    <h3>Step-by-Step Registration Process</h3>
+                    <p><strong>Step 1:</strong> Obtain Digital Signature Certificates (DSC) for all proposed directors to digitally sign documents.</p>
                     
-                    <!-- Blog Tags -->
-                    <div class="flex flex-wrap justify-center gap-2 mt-8">
-                        <span class="bg-white/10 text-white px-3 py-1 rounded-full text-sm">#CompanyRegistration</span>
-                        <span class="bg-white/10 text-white px-3 py-1 rounded-full text-sm">#PrivateLimited</span>
-                        <span class="bg-white/10 text-white px-3 py-1 rounded-full text-sm">#StartupIndia</span>
-                        <span class="bg-white/10 text-white px-3 py-1 rounded-full text-sm">#BusinessIncorporation</span>
-                        <span class="bg-white/10 text-white px-3 py-1 rounded-full text-sm">#Entrepreneurship</span>
+                    <p><strong>Step 2:</strong> Apply for Director Identification Number (DIN) through the SPICe+ form for all directors.</p>
+                    
+                    <p><strong>Step 3:</strong> Choose and reserve your company name via the MCA portal.</p>
+                    
+                    <p><strong>Step 4:</strong> File incorporation documents online with all required attachments through SPICe+ form.</p>
+                    
+                    <p><strong>Step 5:</strong> Apply concurrently with incorporation for PAN and TAN registrations.</p>
+                    
+                    <p><strong>Step 6:</strong> Receive your official Certificate of Incorporation from the Ministry of Corporate Affairs.</p>
+                    
+                    <h3>Essential Documents Required</h3>
+                    <p>For directors and shareholders, you'll need PAN Card, Aadhaar Card or Passport/Voter ID, passport-sized photographs, and address proof such as utility bills or bank statements.</p>
+                    
+                    <p>For the registered office, electricity bill or rent agreement, No Objection Certificate from property owner, property ownership documents if owned, and utility bill not older than 2 months are mandatory.</p>
+                    
+                    <div class="newspaper-quote">
+                        "Every Private Limited Company must meet annual compliance requirements with MCA and Income Tax Department. Proper planning ensures smooth operations."
+                    </div>
+                    
+                    <h3>Annual Compliance Requirements</h3>
+                    <p>Every Private Limited Company must meet annual compliance requirements with the Ministry of Corporate Affairs (MCA) and the Income Tax Department. Typical filings include AOC-4 (financial statements), MGT-7 (annual return), and ITR.</p>
+                    
+                    <p>Maintaining statutory registers, holding board meetings, and conducting the Annual General Meeting are also mandatory. Missing deadlines can attract penalties, making professional compliance support essential.</p>
+                </div>
+                
+                <!-- Sidebar Column -->
+                <div class="sidebar">
+                    <!-- Quick Facts -->
+                    <div class="sidebar-section">
+                        <h4 class="sidebar-title">Quick Facts</h4>
+                        <ul class="newspaper-list">
+                            <li>Registration Fee: ₹4,999*</li>
+                            <li>Timeline: 7 working days</li>
+                            <li>Minimum Directors: 2</li>
+                            <li>Maximum Shareholders: 200</li>
+                            <li>Minimum Capital: ₹1,00,000</li>
+                            <li>Annual Filings: Mandatory</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Weather Box -->
+                    <div class="weather-box">
+                        <h5 style="margin: 0 0 10px 0;">Business Climate</h5>
+                        <div style="font-size: 2rem; font-weight: bold;">📈</div>
+                        <p style="margin: 5px 0;">Favorable for startups</p>
+                        <small>Government initiatives supporting new businesses</small>
+                    </div>
+                    
+                    <!-- Package Includes -->
+                    <div class="sidebar-section">
+                        <h4 class="sidebar-title">Our Package</h4>
+                        <ul class="newspaper-list">
+                            <li>DSC and DIN for directors</li>
+                            <li>Name approval</li>
+                            <li>Incorporation certificate</li>
+                            <li>PAN and TAN application</li>
+                            <li>MOA & AOA</li>
+                            <li>SPICe+ form filing</li>
+                            <li>Company Master Data</li>
+                            <li>Digital copies</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Classified Section -->
+                    <div class="classified-section">
+                        <div class="classified-title">Services Available</div>
+                        <p style="font-size: 0.9rem; margin: 5px 0;">✓ GST Registration</p>
+                        <p style="font-size: 0.9rem; margin: 5px 0;">✓ MSME Certification</p>
+                        <p style="font-size: 0.9rem; margin: 5px 0;">✓ Bank Account Opening</p>
+                        <p style="font-size: 0.9rem; margin: 5px 0;">✓ Trademark Registration</p>
+                        <div style="text-align: center; margin-top: 10px;">
+                            <a href="#contact-form" style="background: #000; color: white; padding: 8px 16px; text-decoration: none; font-size: 0.9rem;">ENQUIRE NOW</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Trust Indicators -->
+                    <div class="sidebar-section">
+                        <h4 class="sidebar-title">Why Trust Us?</h4>
+                        <ul class="newspaper-list">
+                            <li>👨‍💼 Expert Guidance</li>
+                            <li>₹ Transparent Pricing</li>
+                            <li>🤝 End-to-End Support</li>
+                            <li>😊 99% Success Rate</li>
+                            <li>🏆 10,000+ Customers</li>
+                            <li>📞 24/7 Support</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Contact Box -->
+                    <div class="newspaper-box" style="text-align: center;">
+                        <h4 style="margin: 0 0 10px 0;">GET FREE CONSULTATION</h4>
+                        <p style="margin: 10px 0; font-size: 0.9rem;">Start your business journey today</p>
+                        <a href="#contact-form" style="background: #F97316; color: white; padding: 12px 20px; text-decoration: none; font-weight: bold;">CONTACT US</a>
                     </div>
                 </div>
             </div>
-        </section>
+            
+            <!-- Newspaper Footer -->
+            <div style="background: #000; color: white; text-align: center; padding: 20px; font-size: 0.9rem;">
+                <p style="margin: 0;">© 2025 BIG4INDIA Business Daily | All rights reserved | Published in New Delhi</p>
+                <p style="margin: 5px 0 0 0;">For business inquiries: contact@big4india.com | Phone: +91-XXXXXXXXXX</p>
+            </div>
+        </div>
 
-        <!-- Sticky Sidebars (desktop only) -->
+        
+        <!-- Contact Form Section -->
+        <section class="py-16 bg-white" id="contact-form">
+            <div class="container mx-auto px-4">
+                <div class="max-w-2xl mx-auto newspaper-box" style="padding: 40px;">
+                    <h3 style="text-align: center; font-size: 2rem; margin-bottom: 20px; font-family: 'Times New Roman', serif;">GET FREE CONSULTATION</h3>
+                    <p style="text-align: center; margin-bottom: 30px; font-size: 1.1rem;">Start your Private Limited Company registration today</p>
+                    <form class="space-y-6">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div>
+                                <label style="display: block; font-weight: bold; margin-bottom: 5px;">Full Name *</label>
+                                <input type="text" required style="width: 100%; padding: 12px; border: 2px solid #ccc; font-size: 1rem;">
+                            </div>
+                            <div>
+                                <label style="display: block; font-weight: bold; margin-bottom: 5px;">Email *</label>
+                                <input type="email" required style="width: 100%; padding: 12px; border: 2px solid #ccc; font-size: 1rem;">
+                            </div>
+                        </div>
+                        <div>
+                            <label style="display: block; font-weight: bold; margin-bottom: 5px;">Phone Number *</label>
+                            <input type="tel" required style="width: 100%; padding: 12px; border: 2px solid #ccc; font-size: 1rem;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-weight: bold; margin-bottom: 5px;">Message</label>
+                            <textarea rows="4" placeholder="Tell us about your business plans..." style="width: 100%; padding: 12px; border: 2px solid #ccc; font-size: 1rem; resize: vertical;"></textarea>
+                        </div>
+                        <button type="submit" style="width: 100%; background: #000; color: white; padding: 15px; font-size: 1.1rem; font-weight: bold; border: none; cursor: pointer; text-transform: uppercase;">
+                            Send Inquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+    </main>
         <section class="hidden lg:block" aria-label="Sticky sidebars">
             <!-- Left TOC -->
-            <nav id="sticky-toc" class="fixed left-6 top-32 w-64 bg-white/80 backdrop-blur border border-gray-200 rounded-2xl p-4 shadow-lg z-30">
-                <div class="text-sm font-semibold text-gray-700 mb-3">Index</div>
-                <ul class="space-y-1">
-                    <li><a data-toc href="#what-is-pvt-ltd" class="block px-3 py-2 rounded-lg text-gray-700 hover:text-b-orange hover:bg-orange-50">Definition & Scope</a></li>
-                    <li><a data-toc href="#benefits" class="block px-3 py-2 rounded-lg text-gray-700 hover:text-b-orange hover:bg-orange-50">Key Benefits</a></li>
-                    <li><a data-toc href="#documents" class="block px-3 py-2 rounded-lg text-gray-700 hover:text-b-orange hover:bg-orange-50">Required Documents</a></li>
-                    <li><a data-toc href="#process" class="block px-3 py-2 rounded-lg text-gray-700 hover:text-b-orange hover:bg-orange-50">Registration Process</a></li>
-                    <li><a data-toc href="#pricing" class="block px-3 py-2 rounded-lg text-gray-700 hover:text-b-orange hover:bg-orange-50">Costs & Pricing</a></li>
-                    <li><a data-toc href="#compliance" class="block px-3 py-2 rounded-lg text-gray-700 hover:text-b-orange hover:bg-orange-50">Annual Compliance</a></li>
-                    <li><a data-toc href="#faq" class="block px-3 py-2 rounded-lg text-gray-700 hover:text-b-orange hover:bg-orange-50">FAQs</a></li>
-                    <li><a data-toc href="#contact-form" class="block px-3 py-2 rounded-lg text-gray-700 hover:text-b-orange hover:bg-orange-50">Get Expert Help</a></li>
-                </ul>
-            </nav>
 
-            <!-- Right CTA -->
-            <aside class="fixed right-6 top-32 w-80 z-30">
-                <div class="bg-white/90 backdrop-blur border border-gray-200 rounded-2xl shadow-xl overflow-hidden">
-                    <div class="bg-gradient-to-r from-b-orange to-orange-600 text-white p-5">
-                        <h3 class="text-xl font-bold">Incorporate Your Pvt Ltd Company</h3>
-                        <p class="text-white/90 text-sm mt-1">Fast, compliant, end-to-end assistance</p>
-                    </div>
-                    <div class="p-5 space-y-3 text-sm text-gray-700">
-                        <div class="flex items-start gap-2"><i data-feather="check-circle" class="w-4 h-4 text-green-600 mt-0.5"></i><span>DSC, DIN, Name Approval, Incorporation</span></div>
-                        <div class="flex items-start gap-2"><i data-feather="check-circle" class="w-4 h-4 text-green-600 mt-0.5"></i><span>Transparent pricing. No hidden fees</span></div>
-                        <div class="flex items-start gap-2"><i data-feather="check-circle" class="w-4 h-4 text-green-600 mt-0.5"></i><span>Dedicated compliance support</span></div>
-                        <a href="#contact-form" class="block text-center bg-b-orange text-white font-semibold px-4 py-3 rounded-lg hover:bg-orange-700 transition">Get Free Consultation</a>
-                        <div class="border-t pt-3 text-xs text-gray-500">99.9% success • MCA registered filings • 24/7 support</div>
-                    </div>
-                </div>
-            </aside>
-        </section>
 
         <!-- Table of Contents -->
     <section class="py-12 bg-white border-b lg:hidden">
@@ -1449,6 +1695,56 @@
                     mobileMenu.classList.toggle('hidden');
                 });
             }
+
+            // Sticky sidebars visibility control
+            const stickyToc = document.getElementById('sticky-toc');
+            const stickyCta = document.getElementById('sticky-cta');
+            const headerSection = document.querySelector('header');
+            const pricingSection = document.getElementById('pricing');
+            
+            // Function to show/hide sticky sidebars based on scroll position
+            function handleStickySidebars() {
+                if (!stickyToc || !stickyCta || !headerSection || !pricingSection) return;
+                
+                const headerBottom = headerSection.getBoundingClientRect().bottom + window.scrollY;
+                const pricingTop = pricingSection.getBoundingClientRect().top + window.scrollY;
+                const currentScroll = window.scrollY;
+                
+                // Show sidebars after header section and before pricing section
+                const shouldShow = currentScroll > headerBottom && currentScroll < (pricingTop - 200);
+                
+                if (shouldShow) {
+                    // Show sidebars
+                    stickyToc.classList.remove('opacity-0', 'translate-x-[-100px]', 'pointer-events-none');
+                    stickyToc.classList.add('opacity-100', 'translate-x-0', 'pointer-events-auto');
+                    
+                    stickyCta.classList.remove('opacity-0', 'translate-x-[100px]', 'pointer-events-none');
+                    stickyCta.classList.add('opacity-100', 'translate-x-0', 'pointer-events-auto');
+                } else {
+                    // Hide sidebars
+                    stickyToc.classList.remove('opacity-100', 'translate-x-0', 'pointer-events-auto');
+                    stickyToc.classList.add('opacity-0', 'translate-x-[-100px]', 'pointer-events-none');
+                    
+                    stickyCta.classList.remove('opacity-100', 'translate-x-0', 'pointer-events-auto');
+                    stickyCta.classList.add('opacity-0', 'translate-x-[100px]', 'pointer-events-none');
+                }
+            }
+            
+            // Throttle scroll events for better performance
+            let ticking = false;
+            function requestTick() {
+                if (!ticking) {
+                    requestAnimationFrame(handleStickySidebars);
+                    ticking = true;
+                    setTimeout(() => { ticking = false; }, 16); // ~60fps
+                }
+            }
+            
+            // Add scroll listener
+            window.addEventListener('scroll', requestTick);
+            
+            // Initial check
+            handleStickySidebars();
 
             // Social sharing functionality
             document.addEventListener('DOMContentLoaded', function() {
