@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIG4INDIA - Business Calculators</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .calculators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .calculator-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .calculator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+
+        .calculator-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .calculator-display {
+            width: 100%;
+            height: 80px;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 2rem;
+            text-align: right;
+            padding: 0 20px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .calculator-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .calc-btn {
+            height: 60px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .calc-btn.number {
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .calc-btn.operator {
+            background: #667eea;
+            color: white;
+        }
+
+        .calc-btn.equals {
+            background: #28a745;
+            color: white;
+        }
+
+        .calc-btn.clear {
+            background: #dc3545;
+            color: white;
+        }
+
+        .calc-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .business-calculator {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 15px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .calculate-btn:hover {
+            background: #5a6fd8;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #28a745;
+        }
+
+        .result h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .result p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .tabs {
+            display: flex;
+            background: white;
+            border-radius: 15px;
+            padding: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .tab.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .calculators-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .calculator-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Business Calculators</h1>
+            <p>Professional financial and business calculation tools</p>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('basic')">Basic Calculator</div>
+            <div class="tab" onclick="switchTab('gst')">GST Calculator</div>
+            <div class="tab" onclick="switchTab('income')">Income Tax Calculator</div>
+        </div>
+
+        <!-- Basic Calculator -->
+        <div id="basic" class="tab-content active">
+            <div class="calculators-grid">
+                <div class="calculator-card">
+                    <h2 class="calculator-title">Basic Calculator</h2>
+                    <input type="text" class="calculator-display" id="display" readonly>
+                    <div class="calculator-buttons">
+                        <button class="calc-btn clear" onclick="clearDisplay()">C</button>
+                        <button class="calc-btn clear" onclick="deleteLast()">⌫</button>
+                        <button class="calc-btn operator" onclick="appendToDisplay('/')">/</button>
+                        <button class="calc-btn operator" onclick="appendToDisplay('*')">×</button>
+                        
+                        <button class="calc-btn number" onclick="appendToDisplay('7')">7</button>
+                        <button class="calc-btn number" onclick="appendToDisplay('8')">8</button>
+                        <button class="calc-btn number" onclick="appendToDisplay('9')">9</button>
+                        <button class="calc-btn operator" onclick="appendToDisplay('-')">-</button>
+                        
+                        <button class="calc-btn number" onclick="appendToDisplay('4')">4</button>
+                        <button class="calc-btn number" onclick="appendToDisplay('5')">5</button>
+                        <button class="calc-btn number" onclick="appendToDisplay('6')">6</button>
+                        <button class="calc-btn operator" onclick="appendToDisplay('+')">+</button>
+                        
+                        <button class="calc-btn number" onclick="appendToDisplay('1')">1</button>
+                        <button class="calc-btn number" onclick="appendToDisplay('2')">2</button>
+                        <button class="calc-btn number" onclick="appendToDisplay('3')">3</button>
+                        <button class="calc-btn equals" onclick="calculate()" rowspan="2">=</button>
+                        
+                        <button class="calc-btn number" onclick="appendToDisplay('0')" style="grid-column: span 2;">0</button>
+                        <button class="calc-btn number" onclick="appendToDisplay('.')">.</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GST Calculator -->
+        <div id="gst" class="tab-content">
+            <div class="business-calculator">
+                <h2 class="calculator-title">GST Calculator</h2>
+                <div class="form-group">
+                    <label for="gstAmount">Amount (₹)</label>
+                    <input type="number" id="gstAmount" placeholder="Enter amount">
+                </div>
+                <div class="form-group">
+                    <label for="gstRate">GST Rate (%)</label>
+                    <select id="gstRate">
+                        <option value="0">0% GST</option>
+                        <option value="5">5% GST</option>
+                        <option value="12">12% GST</option>
+                        <option value="18" selected>18% GST</option>
+                        <option value="28">28% GST</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="gstType">Calculation Type</label>
+                    <select id="gstType">
+                        <option value="exclusive">Add GST to Amount</option>
+                        <option value="inclusive">Remove GST from Amount</option>
+                    </select>
+                </div>
+                <button class="calculate-btn" onclick="calculateGST()">Calculate GST</button>
+                <div id="gstResult" class="result" style="display: none;">
+                    <h3>GST Calculation Result</h3>
+                    <p id="gstResultText"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Income Tax Calculator -->
+        <div id="income" class="tab-content">
+            <div class="business-calculator">
+                <h2 class="calculator-title">Income Tax Calculator (AY 2024-25)</h2>
+                <div class="form-group">
+                    <label for="annualIncome">Annual Income (₹)</label>
+                    <input type="number" id="annualIncome" placeholder="Enter annual income">
+                </div>
+                <div class="form-group">
+                    <label for="taxRegime">Tax Regime</label>
+                    <select id="taxRegime">
+                        <option value="old">Old Tax Regime</option>
+                        <option value="new">New Tax Regime</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age Category</label>
+                    <select id="age">
+                        <option value="below60">Below 60 years</option>
+                        <option value="60to80">60-80 years</option>
+                        <option value="above80">Above 80 years</option>
+                    </select>
+                </div>
+                <button class="calculate-btn" onclick="calculateIncomeTax()">Calculate Income Tax</button>
+                <div id="incomeResult" class="result" style="display: none;">
+                    <h3>Income Tax Calculation Result</h3>
+                    <p id="incomeResultText"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Basic Calculator Functions
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function deleteLast() {
+            let display = document.getElementById('display');
+            display.value = display.value.slice(0, -1);
+        }
+
+        function calculate() {
+            try {
+                let result = eval(document.getElementById('display').value);
+                document.getElementById('display').value = result;
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+
+        // Tab Switching
+        function switchTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab content and mark tab as active
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // GST Calculator
+        function calculateGST() {
+            const amount = parseFloat(document.getElementById('gstAmount').value);
+            const rate = parseFloat(document.getElementById('gstRate').value);
+            const type = document.getElementById('gstType').value;
+            
+            if (!amount || amount <= 0) {
+                alert('Please enter a valid amount');
+                return;
+            }
+            
+            let result = '';
+            
+            if (type === 'exclusive') {
+                const gstAmount = (amount * rate) / 100;
+                const totalAmount = amount + gstAmount;
+                result = `
+                    <strong>Original Amount:</strong> ₹${amount.toFixed(2)}<br>
+                    <strong>GST Amount (${rate}%):</strong> ₹${gstAmount.toFixed(2)}<br>
+                    <strong>Total Amount:</strong> ₹${totalAmount.toFixed(2)}
+                `;
+            } else {
+                const baseAmount = (amount * 100) / (100 + rate);
+                const gstAmount = amount - baseAmount;
+                result = `
+                    <strong>Total Amount:</strong> ₹${amount.toFixed(2)}<br>
+                    <strong>Base Amount:</strong> ₹${baseAmount.toFixed(2)}<br>
+                    <strong>GST Amount (${rate}%):</strong> ₹${gstAmount.toFixed(2)}
+                `;
+            }
+            
+            document.getElementById('gstResultText').innerHTML = result;
+            document.getElementById('gstResult').style.display = 'block';
+        }
+
+        // Income Tax Calculator
+        function calculateIncomeTax() {
+            const income = parseFloat(document.getElementById('annualIncome').value);
+            const regime = document.getElementById('taxRegime').value;
+            const age = document.getElementById('age').value;
+            
+            if (!income || income <= 0) {
+                alert('Please enter a valid income');
+                return;
+            }
+            
+            let exemption = 250000; // Default for below 60
+            if (age === '60to80') exemption = 300000;
+            if (age === 'above80') exemption = 500000;
+            
+            let tax = 0;
+            let taxableIncome = income;
+            
+            if (regime === 'old') {
+                // Old tax regime calculation
+                if (income > exemption) {
+                    taxableIncome = income - exemption;
+                    
+                    if (taxableIncome > 0 && taxableIncome <= 250000) {
+                        tax += taxableIncome * 0.05;
+                    }
+                    if (taxableIncome > 250000 && taxableIncome <= 500000) {
+                        tax += 250000 * 0.05;
+                        tax += (taxableIncome - 250000) * 0.20;
+                    }
+                    if (taxableIncome > 500000) {
+                        tax += 250000 * 0.05;
+                        tax += 250000 * 0.20;
+                        tax += (taxableIncome - 500000) * 0.30;
+                    }
+                }
+            } else {
+                // New tax regime calculation (simplified)
+                exemption = 300000;
+                if (income > exemption) {
+                    taxableIncome = income - exemption;
+                    
+                    if (taxableIncome > 0 && taxableIncome <= 300000) {
+                        tax += taxableIncome * 0.05;
+                    }
+                    if (taxableIncome > 300000 && taxableIncome <= 300000) {
+                        tax += 300000 * 0.05;
+                        tax += (taxableIncome - 300000) * 0.10;
+                    }
+                    if (taxableIncome > 600000) {
+                        tax += 300000 * 0.05;
+                        tax += 300000 * 0.10;
+                        tax += (taxableIncome - 600000) * 0.15;
+                    }
+                }
+            }
+            
+            // Add cess
+            const cess = tax * 0.04;
+            const totalTax = tax + cess;
+            const netIncome = income - totalTax;
+            
+            const result = `
+                <strong>Annual Income:</strong> ₹${income.toLocaleString()}<br>
+                <strong>Tax Regime:</strong> ${regime === 'old' ? 'Old' : 'New'}<br>
+                <strong>Exemption Limit:</strong> ₹${exemption.toLocaleString()}<br>
+                <strong>Taxable Income:</strong> ₹${Math.max(0, income - exemption).toLocaleString()}<br>
+                <strong>Income Tax:</strong> ₹${tax.toFixed(2)}<br>
+                <strong>Cess (4%):</strong> ₹${cess.toFixed(2)}<br>
+                <strong>Total Tax:</strong> ₹${totalTax.toFixed(2)}<br>
+                <strong>Net Income:</strong> ₹${netIncome.toFixed(2)}
+            `;
+            
+            document.getElementById('incomeResultText').innerHTML = result;
+            document.getElementById('incomeResult').style.display = 'block';
+        }
+
+        // Keyboard support for basic calculator
+        document.addEventListener('keydown', function(event) {
+            const display = document.getElementById('display');
+            
+            if (event.target === display || document.getElementById('basic').classList.contains('active')) {
+                if (event.key >= '0' && event.key <= '9' || event.key === '.') {
+                    appendToDisplay(event.key);
+                    event.preventDefault();
+                } else if (event.key === '+' || event.key === '-' || event.key === '*' || event.key === '/') {
+                    appendToDisplay(event.key);
+                    event.preventDefault();
+                } else if (event.key === 'Enter') {
+                    calculate();
+                    event.preventDefault();
+                } else if (event.key === 'Escape') {
+                    clearDisplay();
+                    event.preventDefault();
+                } else if (event.key === 'Backspace') {
+                    deleteLast();
+                    event.preventDefault();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
