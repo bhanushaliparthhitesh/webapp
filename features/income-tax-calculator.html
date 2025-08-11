@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Tax Calculator - FY 2025-2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary-color: #4F46E5;
+            --secondary-color: #3B82F6;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #F9FAFB;
+            --border-color: #E5E7EB;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: #FFF;
+        }
+        .header-banner {
+            background-color: var(--primary-color);
+        }
+        .tab-active {
+            border-bottom-color: var(--primary-color) !important;
+            color: var(--primary-color) !important;
+            font-weight: 600;
+        }
+        .faq-item[open] summary svg {
+            transform: rotate(180deg);
+        }
+        #results-card.show {
+            display: block;
+            animation: slideIn 0.5s ease-out;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="header-banner text-white text-center py-2">
+            <p class="text-sm font-semibold">Get Maximum Tax Refund! <span class="ml-4 bg-white text-blue-600 rounded-full px-4 py-1 text-xs">File Now</span></p>
+        </div>
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-gray-800">
+                <a href="#">cleartax</a>
+            </div>
+            <ul class="hidden md:flex items-center space-x-8">
+                <li><a href="#" class="text-gray-600 hover:text-primary-color">Products</a></li>
+                <li><a href="#" class="text-gray-600 hover:text-primary-color">Resources</a></li>
+                <li><a href="#" class="text-gray-600 hover:text-primary-color">Company</a></li>
+            </ul>
+            <div class="flex items-center space-x-4">
+                <button class="hidden md:block bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-semibold">Login/Signup</button>
+                <button class="md:hidden text-gray-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-8">
+        <div class="text-sm text-gray-500 mb-4">
+            <span>Home</span> &gt; <span>Calculators</span> &gt; <span class="font-semibold">Income Tax Calculator</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Content -->
+            <div class="lg:col-span-2">
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">Income Tax Calculator - FY 2025-2026</h1>
+                <p class="text-sm text-gray-500 mb-8">Last updated on 5 August 2025 - Union Budget</p>
+
+                <!-- Calculator Card -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-md mb-12">
+                    <div class="border-b border-gray-200 mb-6">
+                        <nav class="flex space-x-8 -mb-px" id="calculator-tabs">
+                            <button data-tab="basic-details" class="tab-active py-4 px-1 inline-flex items-center text-sm font-medium text-center text-gray-500 border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300">Basic details</button>
+                            <button data-tab="income-details" class="py-4 px-1 inline-flex items-center text-sm font-medium text-center text-gray-500 border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300">Income details</button>
+                            <button data-tab="deduction" class="py-4 px-1 inline-flex items-center text-sm font-medium text-center text-gray-500 border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300">Deduction</button>
+                        </nav>
+                    </div>
+
+                    <!-- Tab Content -->
+                    <form id="taxForm">
+                        <div id="tab-content">
+                            <div id="basic-details" class="tab-pane">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="financialYear" class="block text-sm font-medium text-gray-700 mb-1">Financial Year</label>
+                                        <select id="financialYear" class="w-full p-2 border border-gray-300 rounded-md">
+                                            <option value="2025-26">FY 2025-26</option>
+                                            <option value="2024-25">FY 2024-25</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="age" class="block text-sm font-medium text-gray-700 mb-1">Age Category</label>
+                                        <select id="age" class="w-full p-2 border border-gray-300 rounded-md">
+                                            <option value="below60">Below 60 years</option>
+                                            <option value="senior">Senior Citizen (60-80 years)</option>
+                                            <option value="superSenior">Super Senior Citizen (Above 80 years)</option>
+                                        </select>
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label for="taxRegime" class="block text-sm font-medium text-gray-700 mb-1">Tax Regime</label>
+                                        <select id="taxRegime" class="w-full p-2 border border-gray-300 rounded-md">
+                                            <option value="new">New Tax Regime</option>
+                                            <option value="old">Old Tax Regime (with deductions)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="income-details" class="tab-pane hidden">
+                                <div>
+                                    <label for="income" class="block text-sm font-medium text-gray-700 mb-1">Annual Income (₹)</label>
+                                    <input type="number" id="income" placeholder="Enter your annual income" class="w-full p-2 border border-gray-300 rounded-md" min="0" step="1000">
+                                </div>
+                            </div>
+                            <div id="deduction" class="tab-pane hidden">
+                                <div>
+                                    <label for="deductions" class="block text-sm font-medium text-gray-700 mb-1">Total Deductions (₹)</label>
+                                    <input type="number" id="deductions" placeholder="e.g., 80C, 80D, HRA" class="w-full p-2 border border-gray-300 rounded-md" min="0" step="500" value="0">
+                                    <small class="text-xs text-gray-500">Only applicable for the Old Tax Regime.</small>
+                                </div>
+                                <div class="mt-6">
+                                    <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700">Calculate Tax</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Results Card -->
+                <div id="results-card" class="hidden bg-white border border-gray-200 rounded-lg p-6 shadow-md mb-12">
+                    <h2 class="text-2xl font-semibold mb-4 text-center">Tax Calculation Summary</h2>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-medium text-gray-600">Gross Income:</span>
+                            <span class="font-bold text-lg text-gray-800" id="grossIncome">₹0</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-medium text-gray-600">Total Deductions:</span>
+                            <span class="font-bold text-lg text-gray-800" id="totalDeductions">₹0</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-medium text-gray-600">Taxable Income:</span>
+                            <span class="font-bold text-lg text-gray-800" id="taxableIncome">₹0</span>
+                        </div>
+                        <hr class="my-3">
+                        <div class="flex justify-between items-center p-4 bg-blue-100 rounded-lg">
+                            <span class="font-semibold text-blue-800">Income Tax Payable:</span>
+                            <span class="font-extrabold text-xl text-blue-900" id="incomeTax">₹0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Informational Content -->
+                <div class="space-y-10 text-gray-700">
+                    <!-- ... existing informational content ... -->
+                </div>
+            </div>
+
+            <!-- Right Sidebar -->
+            <aside>
+                <!-- ... existing sidebar ... -->
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <!-- ... existing footer ... -->
+    </footer>
+
+    <script>
+        // --- Tab Navigation --- 
+        const tabs = document.querySelectorAll('[data-tab]');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('tab-active'));
+                tab.classList.add('tab-active');
+                tabPanes.forEach(pane => pane.classList.add('hidden'));
+                const paneId = tab.getAttribute('data-tab');
+                document.getElementById(paneId).classList.remove('hidden');
+            });
+        });
+
+        // --- Tax Calculation Logic ---
+        const taxSlabs = {
+            '2024-25': {
+                old: {
+                    below60: [{ max: 250000, rate: 0.00 }, { max: 500000, rate: 0.05 }, { max: 1000000, rate: 0.20 }, { max: Infinity, rate: 0.30 }],
+                    senior: [{ max: 300000, rate: 0.00 }, { max: 500000, rate: 0.05 }, { max: 1000000, rate: 0.20 }, { max: Infinity, rate: 0.30 }],
+                    superSenior: [{ max: 500000, rate: 0.00 }, { max: 1000000, rate: 0.20 }, { max: Infinity, rate: 0.30 }]
+                },
+                new: {
+                    below60: [{ max: 300000, rate: 0.00 }, { max: 700000, rate: 0.05 }, { max: 1000000, rate: 0.10 }, { max: 1200000, rate: 0.15 }, { max: 1500000, rate: 0.20 }, { max: Infinity, rate: 0.30 }],
+                    senior: [{ max: 300000, rate: 0.00 }, { max: 700000, rate: 0.05 }, { max: 1000000, rate: 0.10 }, { max: 1200000, rate: 0.15 }, { max: 1500000, rate: 0.20 }, { max: Infinity, rate: 0.30 }],
+                    superSenior: [{ max: 300000, rate: 0.00 }, { max: 700000, rate: 0.05 }, { max: 1000000, rate: 0.10 }, { max: 1200000, rate: 0.15 }, { max: 1500000, rate: 0.20 }, { max: Infinity, rate: 0.30 }]
+                }
+            },
+            '2025-26': {
+                old: {
+                    below60: [{ max: 250000, rate: 0.00 }, { max: 500000, rate: 0.05 }, { max: 1000000, rate: 0.20 }, { max: Infinity, rate: 0.30 }],
+                    senior: [{ max: 300000, rate: 0.00 }, { max: 500000, rate: 0.05 }, { max: 1000000, rate: 0.20 }, { max: Infinity, rate: 0.30 }],
+                    superSenior: [{ max: 500000, rate: 0.00 }, { max: 1000000, rate: 0.20 }, { max: Infinity, rate: 0.30 }]
+                },
+                new: {
+                    below60: [{ max: 400000, rate: 0.00 }, { max: 800000, rate: 0.05 }, { max: 1200000, rate: 0.10 }, { max: 1600000, rate: 0.15 }, { max: 2000000, rate: 0.20 }, { max: 2400000, rate: 0.25 }, { max: Infinity, rate: 0.30 }],
+                    senior: [{ max: 400000, rate: 0.00 }, { max: 800000, rate: 0.05 }, { max: 1200000, rate: 0.10 }, { max: 1600000, rate: 0.15 }, { max: 2000000, rate: 0.20 }, { max: 2400000, rate: 0.25 }, { max: Infinity, rate: 0.30 }],
+                    superSenior: [{ max: 400000, rate: 0.00 }, { max: 800000, rate: 0.05 }, { max: 1200000, rate: 0.10 }, { max: 1600000, rate: 0.15 }, { max: 2000000, rate: 0.20 }, { max: 2400000, rate: 0.25 }, { max: Infinity, rate: 0.30 }]
+                }
+            }
+        };
+
+        function calculateTax(taxableIncome, financialYear, regime, ageCategory) {
+            const slabs = taxSlabs[financialYear][regime][ageCategory];
+            let tax = 0;
+            let lastMax = 0;
+
+            for (const slab of slabs) {
+                if (taxableIncome > lastMax) {
+                    const taxableInSlab = Math.min(taxableIncome - lastMax, slab.max - lastMax);
+                    tax += taxableInSlab * slab.rate;
+                }
+                lastMax = slab.max;
+            }
+
+            const cess = tax * 0.04; // 4% Health and Education Cess
+            return tax + cess;
+        }
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(amount);
+        }
+
+        document.getElementById('taxRegime').addEventListener('change', function() {
+            const deductionsInput = document.getElementById('deductions');
+            if (this.value === 'new') {
+                deductionsInput.disabled = true;
+                deductionsInput.value = 0;
+                deductionsInput.parentElement.classList.add('opacity-50');
+            } else {
+                deductionsInput.disabled = false;
+                deductionsInput.parentElement.classList.remove('opacity-50');
+            }
+        });
+
+        document.getElementById('taxForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const income = parseFloat(document.getElementById('income').value) || 0;
+            const financialYear = document.getElementById('financialYear').value;
+            const regime = document.getElementById('taxRegime').value;
+            const ageCategory = document.getElementById('age').value;
+            const deductions = regime === 'old' ? (parseFloat(document.getElementById('deductions').value) || 0) : 0;
+
+            const taxableIncome = Math.max(0, income - deductions);
+            const incomeTax = calculateTax(taxableIncome, financialYear, regime, ageCategory);
+
+            // Update results card
+            document.getElementById('grossIncome').textContent = formatCurrency(income);
+            document.getElementById('totalDeductions').textContent = formatCurrency(deductions);
+            document.getElementById('taxableIncome').textContent = formatCurrency(taxableIncome);
+            document.getElementById('incomeTax').textContent = formatCurrency(incomeTax);
+
+            // Show results
+            const resultsCard = document.getElementById('results-card');
+            resultsCard.classList.remove('hidden');
+            resultsCard.classList.add('show');
+            resultsCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+
+        // Initialize deduction field state
+        document.getElementById('taxRegime').dispatchEvent(new Event('change'));
+
+    </script>
+
+</body>
+</html>
