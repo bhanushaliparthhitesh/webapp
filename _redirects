@@ -1,0 +1,20 @@
+# Redirect all traffic to index.html for SPA routing
+/*    /index.html   200
+
+# Custom redirects for better SEO
+/home    /index.html   200
+/services    /index.html   200
+
+# Handle trailing slashes
+/about-us/    /about-us.html   301
+/contact/    /contactus.html   301
+/career/    /carrer.html   301
+
+# Blog redirects
+/blog/llp    /Blog/llp.html   301
+/blog/opc    /Blog/opc.html   301
+/blog/private-limited    /Blog/pvt-ltd.html   301
+
+# Feature redirects
+/calculator    /features/calculator.html   301
+/tax-calculator    /features/income-tax-calculator.html   301

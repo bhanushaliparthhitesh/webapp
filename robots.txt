@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Disallow sensitive areas
+Disallow: /tests/
+Disallow: /node_modules/
+Disallow: /*.spec.js
+Disallow: /*.test.js
+
+# Allow important pages
+Allow: /index.html
+Allow: /about-us.html
+Allow: /contactus.html
+Allow: /gst.html
+Allow: /Income-Taxes.html
+Allow: /business-incorporation.html
+Allow: /compliance.html
+Allow: /mca.html
+Allow: /trademark.html
+Allow: /registration-services.html
+Allow: /Blog/
+Allow: /features/
+Allow: /images/
+
+# Sitemap location
+Sitemap: https://your-domain.vercel.app/sitemap.xml

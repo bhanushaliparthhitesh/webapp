@@ -1,0 +1,44 @@
+<!-- 
+FAVICON SETUP INSTRUCTIONS
+
+1. Create a favicon for your website:
+   - Use tools like favicon.io or realfavicongenerator.net
+   - Generate multiple sizes (16x16, 32x32, 180x180, 192x192, 512x512)
+   - Create favicon.ico file
+
+2. Add these files to your root directory:
+   - favicon.ico
+   - apple-touch-icon.png (180x180)
+   - favicon-16x16.png
+   - favicon-32x32.png
+   - android-chrome-192x192.png
+   - android-chrome-512x512.png
+
+3. Add these meta tags to all HTML files in the <head> section:
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
+4. Create a site.webmanifest file for PWA support (optional):
+{
+    "name": "Big4India",
+    "short_name": "Big4India",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#f97316",
+    "background_color": "#ffffff",
+    "display": "standalone"
+}
+-->

@@ -1,13 +1,36 @@
 {
-  "name": "project-name",
+  "name": "big4india-webapp",
   "version": "1.0.0",
+  "description": "Big4India - Professional Tax and Business Services Website",
+  "main": "index.html",
   "scripts": {
-    "test": "playwright test"
+    "dev": "npx serve .",
+    "build": "echo 'Static site - no build needed'",
+    "start": "npx serve .",
+    "test": "playwright test",
+    "preview": "npx serve .",
+    "deploy": "node deploy.js",
+    "deploy:vercel": "vercel --prod"
   },
+  "keywords": [
+    "tax-services",
+    "business-incorporation",
+    "gst",
+    "income-tax",
+    "compliance",
+    "mca",
+    "trademark"
+  ],
+  "author": "Big4India",
+  "license": "ISC",
   "dependencies": {
     "playwright": "^1.0.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.54.2"
+    "@playwright/test": "^1.54.2",
+    "serve": "^14.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
