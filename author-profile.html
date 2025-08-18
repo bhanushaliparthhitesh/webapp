@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Authors - Big4India</title>
+    <meta name="description" content="Meet our expert authors at Big4India who provide in-depth insights on business incorporation, GST, taxation, and compliance.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'b-orange': '#f97316',
+                        'b-blue': '#3b82f6',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <!-- Custom Styles -->
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #f97316, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card {
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .author-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        .article-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(229, 231, 235, 0.8);
+        }
+        
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+            border-color: #f97316;
+        }
+        
+        .read-time {
+            background: rgba(249, 115, 22, 0.1);
+            color: #f97316;
+        }
+        
+        .category-tag {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen">
+    
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <img src="/images/big4india_no_bg7.png" alt="Big4India Logo" class="h-10" onerror="this.onerror=null; this.src='https://placehold.co/180x50/3A86FF/ffffff?text=Big4India';">
+                    <div class="text-2xl font-bold text-gray-800">Expert Authors</div>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-gray-600 hover:text-b-orange transition-colors">Home</a>
+                    <a href="about-us.html" class="text-gray-600 hover:text-b-orange transition-colors">About</a>
+                    <a href="#" class="text-gray-600 hover:text-b-orange transition-colors">Articles</a>
+                    <a href="contactus.html" class="text-gray-600 hover:text-b-orange transition-colors">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="container mx-auto px-4 py-6">
+        <nav class="flex items-center space-x-2 text-sm text-gray-600">
+            <a href="index.html" class="hover:text-b-orange transition-colors">Home</a>
+            <i data-feather="chevron-right" class="w-4 h-4"></i>
+            <a href="#" class="hover:text-b-orange transition-colors">Authors</a>
+            <i data-feather="chevron-right" class="w-4 h-4"></i>
+            <span class="text-gray-800">Rajesh Kumar</span>
+        </nav>
+    </div>
+
+    <!-- Author Profile Section -->
+    <div class="container mx-auto px-4 pb-12">
+        <div class="grid lg:grid-cols-4 gap-8">
+            
+            <!-- Author Info Sidebar -->
+            <div class="lg:col-span-1">
+                <div class="author-card rounded-2xl p-6 shadow-xl sticky top-24">
+                    <!-- Author Avatar -->
+                    <div class="text-center mb-6">
+                        <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-b-orange to-orange-500 flex items-center justify-center text-white text-2xl font-bold">
+                            RK
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-800">Rajesh Kumar</h2>
+                        <p class="text-gray-600 text-sm">CA & Tax Expert</p>
+                    </div>
+                    
+                    <!-- Author Bio -->
+                    <div class="mb-6">
+                        <p class="text-gray-700 text-sm leading-relaxed">
+                            Rajesh Kumar is a Chartered Accountant and founder of Big4India. He writes in-depth 
+                            articles on business incorporation, GST compliance, and taxation strategies.
+                        </p>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-2 gap-4 mb-6 text-center">
+                        <div class="bg-gray-50 rounded-lg p-3">
+                            <div class="text-2xl font-bold text-b-orange">25</div>
+                            <div class="text-xs text-gray-600">Articles</div>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-3">
+                            <div class="text-2xl font-bold text-b-orange">50K+</div>
+                            <div class="text-xs text-gray-600">Readers</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact CTA -->
+                    <div class="text-center">
+                        <a href="contactus.html" class="w-full bg-gradient-to-r from-b-orange to-orange-500 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 inline-block text-sm">
+                            Contact Expert
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Articles Section -->
+            <div class="lg:col-span-3">
+                <div class="mb-8">
+                    <h1 class="text-3xl font-bold text-gray-800 mb-2">
+                        Articles by <span class="gradient-text">Rajesh Kumar</span>
+                    </h1>
+                    <p class="text-gray-600">Expert insights on business incorporation, taxation, and compliance</p>
+                </div>
+                
+                <!-- Article Grid -->
+                <div class="space-y-6">
+                    
+                    <!-- Article 1 -->
+                    <article class="article-card bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="md:w-48 flex-shrink-0">
+                                <img src="/images/b-1.png" alt="GST Registration Guide" class="w-full h-32 object-cover rounded-xl" onerror="this.onerror=null; this.src='https://placehold.co/300x200/10B981/ffffff?text=GST+Registration';">
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <span class="category-tag px-3 py-1 rounded-full text-xs font-medium">GST</span>
+                                    <span class="read-time px-3 py-1 rounded-full text-xs font-medium">5 min read</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-3 hover:text-b-orange transition-colors cursor-pointer">
+                                    Complete Guide to GST Registration: Requirements and Process
+                                </h3>
+                                <p class="text-gray-600 mb-4 leading-relaxed">
+                                    Understanding GST registration requirements, eligibility criteria, and step-by-step process for new businesses. Learn about mandatory registration thresholds and exemptions.
+                                </p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2 text-sm text-gray-500">
+                                        <i data-feather="calendar" class="w-4 h-4"></i>
+                                        <span>2 days ago</span>
+                                    </div>
+                                    <a href="#" class="text-b-orange font-semibold hover:text-orange-700 transition-colors text-sm">
+                                        Read More →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Article 2 -->
+                    <article class="article-card bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="md:w-48 flex-shrink-0">
+                                <img src="/images/it-1.png" alt="Income Tax Planning" class="w-full h-32 object-cover rounded-xl" onerror="this.onerror=null; this.src='https://placehold.co/300x200/3B82F6/ffffff?text=Income+Tax';">
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <span class="category-tag px-3 py-1 rounded-full text-xs font-medium">Income Tax</span>
+                                    <span class="read-time px-3 py-1 rounded-full text-xs font-medium">7 min read</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-3 hover:text-b-orange transition-colors cursor-pointer">
+                                    Smart Income Tax Planning Strategies for FY 2024-25
+                                </h3>
+                                <p class="text-gray-600 mb-4 leading-relaxed">
+                                    Maximize your tax savings with these proven strategies. Learn about Section 80C, 80D investments, and new tax regime benefits for optimal tax planning.
+                                </p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2 text-sm text-gray-500">
+                                        <i data-feather="calendar" class="w-4 h-4"></i>
+                                        <span>1 week ago</span>
+                                    </div>
+                                    <a href="#" class="text-b-orange font-semibold hover:text-orange-700 transition-colors text-sm">
+                                        Read More →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Article 3 -->
+                    <article class="article-card bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="md:w-48 flex-shrink-0">
+                                <img src="/images/b-2.png" alt="Private Limited Company" class="w-full h-32 object-cover rounded-xl" onerror="this.onerror=null; this.src='https://placehold.co/300x200/8B5CF6/ffffff?text=Pvt+Ltd';">
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <span class="category-tag px-3 py-1 rounded-full text-xs font-medium">Business</span>
+                                    <span class="read-time px-3 py-1 rounded-full text-xs font-medium">6 min read</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-3 hover:text-b-orange transition-colors cursor-pointer">
+                                    Private Limited Company vs OPC: Which is Right for You?
+                                </h3>
+                                <p class="text-gray-600 mb-4 leading-relaxed">
+                                    Compare the benefits and limitations of Private Limited Company and One Person Company structures. Make an informed decision for your business setup.
+                                </p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2 text-sm text-gray-500">
+                                        <i data-feather="calendar" class="w-4 h-4"></i>
+                                        <span>2 weeks ago</span>
+                                    </div>
+                                    <a href="#" class="text-b-orange font-semibold hover:text-orange-700 transition-colors text-sm">
+                                        Read More →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Article 4 -->
+                    <article class="article-card bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="md:w-48 flex-shrink-0">
+                                <img src="/images/mca-1.png" alt="MCA Compliance" class="w-full h-32 object-cover rounded-xl" onerror="this.onerror=null; this.src='https://placehold.co/300x200/EF4444/ffffff?text=MCA+Compliance';">
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <span class="category-tag px-3 py-1 rounded-full text-xs font-medium">Compliance</span>
+                                    <span class="read-time px-3 py-1 rounded-full text-xs font-medium">8 min read</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-3 hover:text-b-orange transition-colors cursor-pointer">
+                                    Annual MCA Compliance Checklist for Companies in 2024
+                                </h3>
+                                <p class="text-gray-600 mb-4 leading-relaxed">
+                                    Stay compliant with MCA requirements. Complete checklist of annual filings, board resolutions, and statutory compliances for Indian companies.
+                                </p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2 text-sm text-gray-500">
+                                        <i data-feather="calendar" class="w-4 h-4"></i>
+                                        <span>3 weeks ago</span>
+                                    </div>
+                                    <a href="#" class="text-b-orange font-semibold hover:text-orange-700 transition-colors text-sm">
+                                        Read More →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Article 5 -->
+                    <article class="article-card bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="md:w-48 flex-shrink-0">
+                                <img src="/images/t-1.png" alt="Trademark Registration" class="w-full h-32 object-cover rounded-xl" onerror="this.onerror=null; this.src='https://placehold.co/300x200/F59E0B/ffffff?text=Trademark';">
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <span class="category-tag px-3 py-1 rounded-full text-xs font-medium">IP Rights</span>
+                                    <span class="read-time px-3 py-1 rounded-full text-xs font-medium">10 min read</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-3 hover:text-b-orange transition-colors cursor-pointer">
+                                    Trademark Registration: Protecting Your Brand Identity
+                                </h3>
+                                <p class="text-gray-600 mb-4 leading-relaxed">
+                                    Learn the importance of trademark registration, application process, and how to protect your brand from infringement. Essential guide for business owners.
+                                </p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2 text-sm text-gray-500">
+                                        <i data-feather="calendar" class="w-4 h-4"></i>
+                                        <span>1 month ago</span>
+                                    </div>
+                                    <a href="#" class="text-b-orange font-semibold hover:text-orange-700 transition-colors text-sm">
+                                        Read More →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Article 6 -->
+                    <article class="article-card bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="md:w-48 flex-shrink-0">
+                                <img src="/images/r-1.png" alt="FSSAI Registration" class="w-full h-32 object-cover rounded-xl" onerror="this.onerror=null; this.src='https://placehold.co/300x200/10B981/ffffff?text=FSSAI';">
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <span class="category-tag px-3 py-1 rounded-full text-xs font-medium">Registration</span>
+                                    <span class="read-time px-3 py-1 rounded-full text-xs font-medium">6 min read</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-3 hover:text-b-orange transition-colors cursor-pointer">
+                                    FSSAI Registration: Complete Guide for Food Businesses
+                                </h3>
+                                <p class="text-gray-600 mb-4 leading-relaxed">
+                                    Everything you need to know about FSSAI registration, licensing requirements, and food safety compliance for restaurants and food businesses.
+                                </p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2 text-sm text-gray-500">
+                                        <i data-feather="calendar" class="w-4 h-4"></i>
+                                        <span>1 month ago</span>
+                                    </div>
+                                    <a href="#" class="text-b-orange font-semibold hover:text-orange-700 transition-colors text-sm">
+                                        Read More →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                </div>
+                
+                <!-- Load More Button -->
+                <div class="text-center mt-12">
+                    <button class="bg-gradient-to-r from-b-orange to-orange-500 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
+                        Load More Articles
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl lg:text-4xl font-bold mb-6">Need Expert Consultation?</h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">Get personalized advice from our experienced professionals for your business needs.</p>
+            <a href="contactus.html" class="bg-gradient-to-r from-b-orange to-orange-500 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg inline-block">
+                Schedule Consultation
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <img src="/images/big4india_no_bg7.png" alt="Big4India Logo" class="h-12 mb-4" onerror="this.onerror=null; this.src='https://placehold.co/180x50/ffffff/3A86FF?text=Big4India';">
+                    <p class="text-gray-400">Your trusted partner for business incorporation, taxation, and compliance solutions.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="business-incorporation.html" class="text-gray-400 hover:text-b-orange transition-colors">Business Incorporation</a></li>
+                        <li><a href="gst.html" class="text-gray-400 hover:text-b-orange transition-colors">GST Services</a></li>
+                        <li><a href="Income-Taxes.html" class="text-gray-400 hover:text-b-orange transition-colors">Income Tax</a></li>
+                        <li><a href="compliance.html" class="text-gray-400 hover:text-b-orange transition-colors">Compliance</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-b-orange transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-b-orange transition-colors">Guides</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-b-orange transition-colors">FAQs</a></li>
+                        <li><a href="about-us.html" class="text-gray-400 hover:text-b-orange transition-colors">About Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <div class="space-y-2">
+                        <p class="text-gray-400">+91 98765 43210</p>
+                        <p class="text-gray-400">hello@big4india.com</p>
+                        <p class="text-gray-400">Mumbai, Maharashtra</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 Big4India. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add loading animation for Load More button
+        const loadMoreBtn = document.querySelector('button');
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', function() {
+                this.innerHTML = '<svg class="animate-spin w-5 h-5 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="3" stroke-dasharray="31.416" stroke-dashoffset="31.416"></circle></svg>Loading...';
+                this.disabled = true;
+                
+                // Simulate loading
+                setTimeout(() => {
+                    this.innerHTML = 'Load More Articles';
+                    this.disabled = false;
+                }, 2000);
+            });
+        }
+        
+        // Add scroll animation to articles
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.article-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease-out';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
