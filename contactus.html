@@ -3,9 +3,358 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+    <title>Contact Us - Big4India</title>
+    <meta name="description" content="Get in touch with Big4India for all your business incorporation, GST, taxation, and compliance needs. Expert support available.">
     
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <!-- Mobile Optimization Styles -->
+    <link rel="stylesheet" href="css/mobile-optimizations.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'b-orange': '#F97316',
+                        'b-blue': '#4F46E5',
+                        'b-lblue': '#F0F5FF',
+                        'b-gray': '#F3F4F6',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            padding-top: 80px;
+        }
+        
+        @media (max-width: 1023px) {
+            body {
+                padding-top: 60px;
+            }
+        }
+        
+        .contact-card {
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+        
+        .form-input {
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(249, 115, 22, 0.2);
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen">
+    
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 lg:py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <img src="/images/big4india_no_bg7.png" alt="Big4India Logo" class="h-8 lg:h-10" onerror="this.onerror=null; this.src='https://placehold.co/180x50/3A86FF/ffffff?text=Big4India';">
+                    <div class="text-xl lg:text-2xl font-bold text-gray-800">Contact Us</div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-gray-600 hover:text-b-orange transition-colors">Home</a>
+                    <a href="about-us.html" class="text-gray-600 hover:text-b-orange transition-colors">About</a>
+                    <a href="#" class="text-gray-600 hover:text-b-orange transition-colors">Services</a>
+                    <a href="#" class="text-gray-600 hover:text-b-orange transition-colors">Contact</a>
+                </nav>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="mobile-menu-btn text-gray-700 hover:text-b-orange transition-colors p-2 border border-gray-200 rounded-lg">
+                        <i data-feather="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu md:hidden" aria-hidden="true">
+                <div class="px-4 py-6 space-y-4">
+                    <a href="index.html" class="block p-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">Home</a>
+                    <a href="about-us.html" class="block p-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">About</a>
+                    <a href="#" class="block p-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">Services</a>
+                    <a href="#" class="block p-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-8 lg:py-12">
+        <div class="container mx-auto px-4">
+            
+            <!-- Hero Section -->
+            <div class="text-center mb-12 lg:mb-16">
+                <h1 class="text-3xl lg:text-5xl font-bold text-gray-800 mb-4">Get in Touch</h1>
+                <p class="text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto">
+                    Ready to start your business journey? Our experts are here to help you every step of the way.
+                </p>
+            </div>
+            
+            <!-- Contact Grid -->
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
+                
+                <!-- Contact Form -->
+                <div class="bg-white rounded-2xl shadow-xl p-6 lg:p-8 contact-card">
+                    <h2 class="text-2xl lg:text-3xl font-bold text-gray-800 mb-6">Send us a Message</h2>
+                    <form class="space-y-6">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                                <input type="text" id="firstName" name="firstName" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-b-orange focus:border-b-orange text-base" required>
+                            </div>
+                            <div>
+                                <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-b-orange focus:border-b-orange text-base" required>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-b-orange focus:border-b-orange text-base" required>
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-b-orange focus:border-b-orange text-base">
+                        </div>
+                        
+                        <div>
+                            <label for="service" class="block text-sm font-medium text-gray-700 mb-2">Service Interested In</label>
+                            <select id="service" name="service" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-b-orange focus:border-b-orange text-base">
+                                <option value="">Select a service</option>
+                                <option value="business-incorporation">Business Incorporation</option>
+                                <option value="gst-services">GST Services</option>
+                                <option value="income-tax">Income Tax</option>
+                                <option value="trademark">Trademark Registration</option>
+                                <option value="compliance">Compliance Services</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-b-orange focus:border-b-orange text-base" placeholder="Tell us about your requirements..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-gradient-to-r from-b-orange to-orange-600 text-white font-semibold py-4 px-6 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105 text-base">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="space-y-6">
+                    <!-- Office Info Card -->
+                    <div class="bg-white rounded-2xl shadow-xl p-6 lg:p-8 contact-card">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-b-orange bg-opacity-10 rounded-lg flex items-center justify-center mr-4">
+                                <i data-feather="map-pin" class="w-6 h-6 text-b-orange"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Our Office</h3>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">
+                            123 Business District<br>
+                            New Delhi, India 110001<br>
+                            Near Metro Station
+                        </p>
+                    </div>
+                    
+                    <!-- Contact Details Card -->
+                    <div class="bg-white rounded-2xl shadow-xl p-6 lg:p-8 contact-card">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                                <i data-feather="phone" class="w-6 h-6 text-green-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Contact Details</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i data-feather="phone" class="w-5 h-5 text-gray-400 mr-3"></i>
+                                <a href="tel:+911234567890" class="text-gray-600 hover:text-b-orange transition-colors">+91 12345 67890</a>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-feather="mail" class="w-5 h-5 text-gray-400 mr-3"></i>
+                                <a href="mailto:info@big4india.com" class="text-gray-600 hover:text-b-orange transition-colors">info@big4india.com</a>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-feather="clock" class="w-5 h-5 text-gray-400 mr-3"></i>
+                                <span class="text-gray-600">Mon - Fri: 9:00 AM - 6:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Media Card -->
+                    <div class="bg-white rounded-2xl shadow-xl p-6 lg:p-8 contact-card">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                <i data-feather="share-2" class="w-6 h-6 text-blue-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Follow Us</h3>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+                                <i data-feather="linkedin" class="w-5 h-5 text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
+                                <i data-feather="twitter" class="w-5 h-5 text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-blue-900 transition-colors">
+                                <i data-feather="facebook" class="w-5 h-5 text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center hover:bg-red-700 transition-colors">
+                                <i data-feather="youtube" class="w-5 h-5 text-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ Section -->
+            <div class="bg-white rounded-2xl shadow-xl p-6 lg:p-8">
+                <h2 class="text-2xl lg:text-3xl font-bold text-gray-800 mb-8 text-center">Frequently Asked Questions</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="border-b border-gray-200 pb-4">
+                            <h4 class="font-semibold text-gray-800 mb-2">How long does business registration take?</h4>
+                            <p class="text-gray-600 text-sm">Typically 7-14 business days depending on the type of business and documentation.</p>
+                        </div>
+                        <div class="border-b border-gray-200 pb-4">
+                            <h4 class="font-semibold text-gray-800 mb-2">What documents do I need?</h4>
+                            <p class="text-gray-600 text-sm">ID proof, address proof, PAN card, and passport-size photographs are basic requirements.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="border-b border-gray-200 pb-4">
+                            <h4 class="font-semibold text-gray-800 mb-2">Do you provide ongoing support?</h4>
+                            <p class="text-gray-600 text-sm">Yes, we provide comprehensive post-registration support and compliance services.</p>
+                        </div>
+                        <div class="border-b border-gray-200 pb-4">
+                            <h4 class="font-semibold text-gray-800 mb-2">What are your charges?</h4>
+                            <p class="text-gray-600 text-sm">Our pricing is transparent and competitive. Contact us for a detailed quote.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 lg:py-12">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <img src="/images/big4india_no_bg7.png" alt="Big4India Logo" class="h-12 mx-auto mb-4" onerror="this.onerror=null; this.src='https://placehold.co/180x50/ffffff/333333?text=Big4India';">
+                <p class="text-gray-400 mb-4">Your trusted partner for business growth and compliance.</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a>
+                    <a href="about-us.html" class="text-gray-400 hover:text-white transition-colors">About</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Services</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy</a>
+                </div>
+                <div class="mt-6 pt-6 border-t border-gray-700">
+                    <p class="text-gray-500 text-sm">© 2024 Big4India. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation JavaScript -->
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            let isOpen = false;
+            
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    isOpen = !isOpen;
+                    
+                    if (isOpen) {
+                        mobileMenu.classList.add('open');
+                        mobileMenu.setAttribute('aria-hidden', 'false');
+                        const icon = mobileMenuBtn.querySelector('[data-feather]');
+                        if (icon) {
+                            icon.setAttribute('data-feather', 'x');
+                            feather.replace();
+                        }
+                    } else {
+                        mobileMenu.classList.remove('open');
+                        mobileMenu.setAttribute('aria-hidden', 'true');
+                        const icon = mobileMenuBtn.querySelector('[data-feather]');
+                        if (icon) {
+                            icon.setAttribute('data-feather', 'menu');
+                            feather.replace();
+                        }
+                    }
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (isOpen && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                        isOpen = false;
+                        mobileMenu.classList.remove('open');
+                        mobileMenu.setAttribute('aria-hidden', 'true');
+                        const icon = mobileMenuBtn.querySelector('[data-feather]');
+                        if (icon) {
+                            icon.setAttribute('data-feather', 'menu');
+                            feather.replace();
+                        }
+                    }
+                });
+            }
+            
+            // Initialize Feather icons
+            feather.replace();
+            
+            // Form enhancement for mobile
+            const formInputs = document.querySelectorAll('.form-input');
+            formInputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.classList.remove('focused');
+                });
+            });
+            
+            // Prevent iOS zoom on input focus
+            if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+                formInputs.forEach(input => {
+                    if (parseFloat(getComputedStyle(input).fontSize) < 16) {
+                        input.style.fontSize = '16px';
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

@@ -24,6 +24,9 @@
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
     
+    <!-- Mobile Optimization Styles -->
+    <link rel="stylesheet" href="css/mobile-optimizations.css">
+    
     <!-- Custom Styles -->
     <style>
         .gradient-text {
@@ -74,18 +77,37 @@
     
     <!-- Header -->
     <header class="bg-white shadow-lg sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4">
+        <div class="container mx-auto px-4 py-3 lg:py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-4">
-                    <img src="/images/big4india_no_bg7.png" alt="Big4India Logo" class="h-10" onerror="this.onerror=null; this.src='https://placehold.co/180x50/3A86FF/ffffff?text=Big4India';">
-                    <div class="text-2xl font-bold text-gray-800">Expert Authors</div>
+                    <img src="/images/big4india_no_bg7.png" alt="Big4India Logo" class="h-8 lg:h-10" onerror="this.onerror=null; this.src='https://placehold.co/180x50/3A86FF/ffffff?text=Big4India';">
+                    <div class="text-xl lg:text-2xl font-bold text-gray-800">Expert Authors</div>
                 </div>
+                
+                <!-- Desktop Navigation -->
                 <nav class="hidden md:flex space-x-6">
                     <a href="index.html" class="text-gray-600 hover:text-b-orange transition-colors">Home</a>
                     <a href="about-us.html" class="text-gray-600 hover:text-b-orange transition-colors">About</a>
                     <a href="#" class="text-gray-600 hover:text-b-orange transition-colors">Articles</a>
                     <a href="contactus.html" class="text-gray-600 hover:text-b-orange transition-colors">Contact</a>
                 </nav>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="mobile-menu-btn text-gray-700 hover:text-b-orange transition-colors p-2 border border-gray-200 rounded-lg">
+                        <i data-feather="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu md:hidden" aria-hidden="true">
+                <div class="px-4 py-6 space-y-4">
+                    <a href="index.html" class="block p-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">Home</a>
+                    <a href="about-us.html" class="block p-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">About</a>
+                    <a href="#" class="block p-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">Articles</a>
+                    <a href="contactus.html" class="block p-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">Contact</a>
+                </div>
             </div>
         </div>
     </header>
@@ -454,6 +476,57 @@
             card.style.transform = 'translateY(20px)';
             card.style.transition = 'all 0.6s ease-out';
             observer.observe(card);
+        });
+    </script>
+    
+    <!-- Mobile Navigation JavaScript -->
+    <script>
+        // Simple mobile menu toggle for author profile page
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            let isOpen = false;
+            
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    isOpen = !isOpen;
+                    
+                    if (isOpen) {
+                        mobileMenu.classList.add('open');
+                        mobileMenu.setAttribute('aria-hidden', 'false');
+                        const icon = mobileMenuBtn.querySelector('[data-feather]');
+                        if (icon) {
+                            icon.setAttribute('data-feather', 'x');
+                            feather.replace();
+                        }
+                    } else {
+                        mobileMenu.classList.remove('open');
+                        mobileMenu.setAttribute('aria-hidden', 'true');
+                        const icon = mobileMenuBtn.querySelector('[data-feather]');
+                        if (icon) {
+                            icon.setAttribute('data-feather', 'menu');
+                            feather.replace();
+                        }
+                    }
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (isOpen && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                        isOpen = false;
+                        mobileMenu.classList.remove('open');
+                        mobileMenu.setAttribute('aria-hidden', 'true');
+                        const icon = mobileMenuBtn.querySelector('[data-feather]');
+                        if (icon) {
+                            icon.setAttribute('data-feather', 'menu');
+                            feather.replace();
+                        }
+                    }
+                });
+            }
+            
+            // Initialize Feather icons
+            feather.replace();
         });
     </script>
 </body>
