@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -243,7 +243,6 @@
             }
         }
     </style>
-    <link rel="stylesheet" href="css/mobile-optimizations.css">
 </head>
 <body>
 
@@ -384,10 +383,10 @@
                             </div>
                             <div id="income-details" class="tab-pane hidden">
                                 <div>
-                                    <label for="income" class="block text-sm font-semibold text-gray-700 mb-2">Annual Income (â‚¹)</label>
+                                    <label for="income" class="block text-sm font-semibold text-gray-700 mb-2">Annual Income (₹)</label>
                                     <div class="relative">
                                         <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                            <span class="text-gray-500 text-lg">â‚¹</span>
+                                            <span class="text-gray-500 text-lg">₹</span>
                                         </div>
                                         <input type="number" id="income" placeholder="Enter your annual income" class="form-input w-full pl-10 pr-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-b-orange/50 focus:border-b-orange" min="0" step="1000">
                                     </div>
@@ -396,15 +395,15 @@
                             </div>
                             <div id="deduction" class="tab-pane hidden">
                                 <div>
-                                    <label for="deductions" class="block text-sm font-semibold text-gray-700 mb-2">Total Deductions (â‚¹)</label>
+                                    <label for="deductions" class="block text-sm font-semibold text-gray-700 mb-2">Total Deductions (₹)</label>
                                     <div class="relative">
                                         <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                            <span class="text-gray-500 text-lg">â‚¹</span>
+                                            <span class="text-gray-500 text-lg">₹</span>
                                         </div>
                                         <input type="number" id="deductions" placeholder="e.g., 80C, 80D, HRA" class="form-input w-full pl-10 pr-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-b-orange/50 focus:border-b-orange" min="0" step="500" value="0">
                                     </div>
                                     <div class="mt-3 p-4 bg-amber-50 border border-amber-200 rounded-xl">
-                                        <p class="text-sm text-amber-800 font-medium">ðŸ’¡ Important Note</p>
+                                        <p class="text-sm text-amber-800 font-medium">💡 Important Note</p>
                                         <p class="text-sm text-amber-700 mt-1">Deductions are only applicable for the Old Tax Regime. The New Tax Regime offers lower rates without deduction benefits.</p>
                                     </div>
                                 </div>
@@ -443,21 +442,21 @@
                                 <div class="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
                                 <span class="font-semibold text-gray-700">Gross Annual Income:</span>
                             </div>
-                            <span class="font-bold text-xl text-gray-800" id="grossIncome">â‚¹0</span>
+                            <span class="font-bold text-xl text-gray-800" id="grossIncome">₹0</span>
                         </div>
                         <div class="result-item flex justify-between items-center p-5 rounded-xl transition-all duration-200">
                             <div class="flex items-center">
                                 <div class="w-3 h-3 bg-purple-500 rounded-full mr-3"></div>
                                 <span class="font-semibold text-gray-700">Total Deductions:</span>
                             </div>
-                            <span class="font-bold text-xl text-gray-800" id="totalDeductions">â‚¹0</span>
+                            <span class="font-bold text-xl text-gray-800" id="totalDeductions">₹0</span>
                         </div>
                         <div class="result-item flex justify-between items-center p-5 rounded-xl transition-all duration-200">
                             <div class="flex items-center">
                                 <div class="w-3 h-3 bg-yellow-500 rounded-full mr-3"></div>
                                 <span class="font-semibold text-gray-700">Taxable Income:</span>
                             </div>
-                            <span class="font-bold text-xl text-gray-800" id="taxableIncome">â‚¹0</span>
+                            <span class="font-bold text-xl text-gray-800" id="taxableIncome">₹0</span>
                         </div>
                         <hr class="my-6 border-gray-300">
                         <div class="tax-result flex justify-between items-center p-6 rounded-2xl">
@@ -468,7 +467,7 @@
                                     <p class="text-sm text-green-600 mt-1">Including 4% Health & Education Cess</p>
                                 </div>
                             </div>
-                            <span class="font-extrabold text-3xl text-green-900" id="incomeTax">â‚¹0</span>
+                            <span class="font-extrabold text-3xl text-green-900" id="incomeTax">₹0</span>
                         </div>
                         
                         <!-- Action buttons -->
@@ -607,7 +606,5 @@
 
     </script>
 
-    <script src="js/mobile-navigation.js"></script>
 </body>
 </html>
-

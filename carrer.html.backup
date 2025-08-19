@@ -1,16 +1,23 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GST Services - Big4India</title>
+    <title>Contact Us - Big4India</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Feather Icons for UI elements -->
     <script src="https://unpkg.com/feather-icons"></script>
 
     <script>
+        // Custom Tailwind CSS Configuration
         tailwind.config = {
           theme: {
             extend: {
@@ -26,7 +33,6 @@
     </script>
 
     <style>
-        html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #ffffff;
@@ -38,14 +44,246 @@
                 padding-top: 72px; /* Mobile header height */
             }
         }
+        /* --- New Elastic Loading Animation --- */
+        .reveal-elastic {
+            /* The cubic-bezier function creates the elastic "overshoot" effect */
+            transition: opacity 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition-delay: var(--delay);
+        }
 
-        .gradient-text { background: linear-gradient(135deg, #F97316 0%, #EA580C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
-        .feature-list li { position: relative; padding-left: 1.5rem; }
-        .feature-list li::before { content: "âœ“"; position: absolute; left: 0; color: #F97316; font-weight: bold; }
+        /* Initial state of elements before they animate in */
+        .is-loading .reveal-elastic {
+            opacity: 0;
+            transform: scale(0.9) translateY(20px);
+        }
+        /* --- End of New Animation Styles --- */
+
+        .hero {
+            background-color: #F9FAFB;
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .b-logo {
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        .b-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        /* Animation for the hero illustration */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+        .h-anim {
+            animation: float 6s ease-in-out infinite;
+        }
+        /* Enhanced Message Popup Styles */
+        .msg-pop {
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: translateY(30px) scale(0.8) rotate(-2deg);
+            position: absolute;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            padding: 1.25rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            font-size: 0.875rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            max-width: 280px;
+            z-index: 10;
+        }
         
-        /* Enhanced Navigation Styles */
+
+        
+        .msg-pop::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 2rem;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid #ffffff;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+        
+        .msg-pop.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotate(0deg);
+        }
+        
+        .msg-pop.hide {
+            opacity: 0;
+            transform: translateY(-20px) scale(0.9) rotate(2deg);
+        }
+        
+        /* Message popup content styles */
+        .msg-pop-content {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .msg-pop-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.25rem;
+        }
+        
+        .msg-pop-text {
+            flex: 1;
+        }
+        
+        .msg-pop-title {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+            font-size: 0.875rem;
+        }
+        
+        .msg-pop-subtitle {
+            color: #6b7280;
+            font-size: 0.75rem;
+            line-height: 1.3;
+        }
+        
+        /* Message popup types */
+        .msg-pop.success .msg-pop-icon {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+        
+        .msg-pop.info .msg-pop-icon {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+        }
+        
+        .msg-pop.warning .msg-pop-icon {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+        }
+        
+        .msg-pop.complete .msg-pop-icon {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+        }
+        /* Scroll animation styles */
+         .slide-in {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .slide-in.active {
+            opacity: 1;
+            transform: translateX(0);}
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .product-card .content {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.3s ease-in-out;
+        }
+        .product-card:hover .content {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .product-card:hover .footer {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        .Indian-c{width: 8rem;height: 7rem;}
+        .four-card{padding-left: 40px;padding-right: 40px;}
+        .mobile{
+            padding-left: 100px;
+            padding-right: 20px;
+            
+        }
+        /* --- Infinite Image Slider Styles --- */
+        .slider-container {
+            padding: 4rem 0;
+            background-color: #F9FAFB;
+            overflow-x: hidden; /* Use overflow-x to prevent horizontal scrollbars */
+        }
+
+        .infinite-slider-row {
+            white-space: nowrap;
+            display: block;
+        }
+
+        .infinite-slider-row:last-child {
+            margin-top: 1rem;
+        }
+
+        .slide-content {
+            display: inline-block;
+            font-size: clamp(1rem, 4vw, 3rem); /* Responsive font size */
+            font-weight: 700;
+            color: #757575; /* gray-700 */
+            
+            animation-duration: 90s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        .infinite-slider-row:first-child .slide-content {
+            color: #00C853;
+        }
+
+        .infinite-slider-row:last-child .slide-content {
+            color: #D50000;
+        }
+
+        .slide-content span {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .animate-slide-left {
+            animation-name: slide-left;
+        }
+
+        .animate-slide-right {
+            animation-name: slide-right;
+        }
+
+        @keyframes slide-left {
+            from { transform: translateX(0%); }
+            to { transform: translateX(-100%); }
+        }
+
+        @keyframes slide-right {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0%); }
+        }
+        .hero{
+            padding-bottom: 10px;
+            padding-top: 30px;
+        }
+        /* --- Enhanced Navigation Styles --- */
         /* Prevent layout shift and ensure smooth transitions */
         * {
             box-sizing: border-box;
@@ -68,7 +306,142 @@
             }
         }
         
-        /* Header Styles */
+        /* --- Steps to Get Started Animation Styles --- */
+        .step-card {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .step-card:nth-child(1) { transition-delay: 0.1s; }
+        .step-card:nth-child(2) { transition-delay: 0.2s; }
+        .step-card:nth-child(3) { transition-delay: 0.3s; }
+        .step-card:nth-child(4) { transition-delay: 0.4s; }
+
+        .step-card.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Connection line animation */
+        .connection-line {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .connection-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+            animation: slide-line 2s ease-in-out infinite;
+        }
+
+        @keyframes slide-line {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Step number badge pulse animation */
+        .step-card:hover .absolute.-top-4.-right-4 {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+                transform: scale(1.05);
+            }
+        }
+
+        /* Image hover effects */
+        .step-card .relative.h-48 img {
+            transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .step-card:hover .relative.h-48 img {
+            transform: scale(1.1) rotate(2deg);
+        }
+
+        /* Icon overlay animation */
+        .step-card .absolute.top-4.left-4 {
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover .absolute.top-4.left-4 {
+            transform: rotate(360deg) scale(1.1);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Feature list item animation */
+        .step-card ul li {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .step-card.active ul li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .step-card.active ul li:nth-child(1) { transition-delay: 0.1s; }
+        .step-card.active ul li:nth-child(2) { transition-delay: 0.2s; }
+        .step-card.active ul li:nth-child(3) { transition-delay: 0.3s; }
+
+        /* CTA button hover effects */
+        .step-card button {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-card button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .step-card button:hover::before {
+            left: 100%;
+        }
+
+        /* Bottom CTA section animation */
+        .bottom-cta {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition-delay: 0.5s;
+        }
+
+        .bottom-cta.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1023px) {
+            .step-card {
+                margin-bottom: 2rem;
+            }
+            
+            .connection-line {
+                display: none;
+            }
+        }
+        
+        /* Smooth header transitions */
         .header {
             position: fixed;
             top: 0;
@@ -77,6 +450,7 @@
             z-index: 1000;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.8);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             will-change: transform, background-color, box-shadow;
             transform: translateZ(0); /* Force hardware acceleration */
@@ -286,55 +660,401 @@
         body.menu-open {
             overflow: hidden;
         }
-
-        /* Sub-navigation bar */
-        .sub-nav {
-            position: sticky;
-            top: 80px; /* Height of the main header */
-            background: white;
-            z-index: 900;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            transition: top 0.3s;
-        }
+        
+        /* Responsive adjustments */
         @media (max-width: 1023px) {
-            .sub-nav { top: 72px; }
+            .search-container {
+                width: 100%;
+            }
+            
+            .mega-menu {
+                width: calc(100vw - 2rem);
+                max-width: none;
+                left: 1rem;
+                right: 1rem;
+                transform: translateY(8px);
+                padding: 1.5rem;
+            }
+            
+            .mega-menu.open {
+                transform: translateY(0);
+            }
+            
+            .mega-menu .grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
         }
-        .sub-nav-link {
-            color: #4B5563;
-            font-weight: 600;
-            padding: 1rem 1.5rem;
-            border-bottom: 3px solid transparent;
+        
+        /* Ensure mega menu doesn't go off-screen on medium screens */
+        @media (max-width: 1200px) {
+            .mega-menu {
+                width: 600px;
+                max-width: calc(100vw - 2rem);
+            }
+        }
+        
+        /* --- Products Slider Styles --- */
+        .slider-viewport {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .slider-viewport::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100px;
+            z-index: 5;
+            pointer-events: none;
+            right: 0;
+            background: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 50%, transparent 100%);
+        }
+        
+        .service-card {
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
             transition: all 0.3s ease;
         }
-        .sub-nav-link:hover {
-            color: #F97316;
-            border-bottom-color: #F97316;
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
         }
-        .sub-nav-link.active {
-            color: #F97316;
-            border-bottom-color: #F97316;
+        
+        .service-card:hover::before {
+            left: 100%;
+        }
+        
+        .service-card.active {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .service-card.inactive {
+            opacity: 0.7;
+            transform: scale(0.95);
+            filter: grayscale(20%);
+        }
+        
+        .dot-indicator.active {
+            background-color: #F97316;
+            transform: scale(1.2);
+        }
+        
+        /* Responsive adjustments for slider */
+        @media (max-width: 1024px) {
+            .slider-viewport {
+                max-width: 900px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .slider-viewport {
+                max-width: 600px;
+            }
+            .service-card {
+                width: 280px;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .slider-viewport {
+                max-width: 320px;
+            }
         }
 
-        /* FAQ Accordion */
-        .faq-item {
-            border-bottom: 1px solid #e5e7eb;
+        /* --- Steps to Get Started Animation Styles --- */
+        .step-card {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-        .faq-question {
-            cursor: pointer;
-            padding: 1.5rem 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+
+        .step-card:nth-child(1) { transition-delay: 0.1s; }
+        .step-card:nth-child(2) { transition-delay: 0.2s; }
+        .step-card:nth-child(3) { transition-delay: 0.3s; }
+        .step-card:nth-child(4) { transition-delay: 0.4s; }
+
+        .step-card.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
-        .faq-answer {
-            max-height: 0;
+
+        /* Connection line animation */
+        .connection-line {
+            position: relative;
             overflow: hidden;
-            transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
         }
+
+        .connection-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+            animation: slide-line 2s ease-in-out infinite;
+        }
+
+        @keyframes slide-line {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Step number badge pulse animation */
+        .step-card:hover .absolute.-top-4.-right-4 {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+                transform: scale(1.05);
+            }
+        }
+
+        /* Image hover effects */
+        .step-card .relative.h-48 img {
+            transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .step-card:hover .relative.h-48 img {
+            transform: scale(1.1) rotate(2deg);
+        }
+
+        /* Icon overlay animation */
+        .step-card .absolute.top-4.left-4 {
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover .absolute.top-4.left-4 {
+            transform: rotate(360deg) scale(1.1);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Feature list item animation */
+        .step-card ul li {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .step-card.active ul li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .step-card.active ul li:nth-child(1) { transition-delay: 0.1s; }
+        .step-card.active ul li:nth-child(2) { transition-delay: 0.2s; }
+        .step-card.active ul li:nth-child(3) { transition-delay: 0.3s; }
+
+        /* CTA button hover effects */
+        .step-card button {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-card button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .step-card button:hover::before {
+            left: 100%;
+        }
+
+        /* Bottom CTA section animation */
+        .bottom-cta {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition-delay: 0.5s;
+        }
+
+        .bottom-cta.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1023px) {
+            .step-card {
+                margin-bottom: 2rem;
+            }
+            
+            .connection-line {
+                display: none;
+            }
+        }
+
+        /* Wave Path Specific Styles */
+        .step-wave-item {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .step-wave-item:nth-child(1) { transition-delay: 0.1s; }
+        .step-wave-item:nth-child(2) { transition-delay: 0.2s; }
+        .step-wave-item:nth-child(3) { transition-delay: 0.3s; }
+        .step-wave-item:nth-child(4) { transition-delay: 0.4s; }
+
+        .step-wave-item.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Enhanced Wave connection points animation */
+        .step-wave-item .absolute.-left-12,
+        .step-wave-item .absolute.-right-12 {
+            opacity: 0;
+            transform: scale(0.5) rotate(180deg);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .step-wave-item.active .absolute.-left-12,
+        .step-wave-item.active .absolute.-right-12 {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        /* Connection lines animation */
+        .step-wave-item .absolute.-left-12 + div,
+        .step-wave-item .absolute.-right-12 + div {
+            opacity: 0;
+            transform: scaleX(0);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition-delay: 0.3s;
+        }
+
+        .step-wave-item.active .absolute.-left-12 + div,
+        .step-wave-item.active .absolute.-right-12 + div {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+
+        /* Enhanced Wave path line animation */
+        .bg-gradient-to-b.animate-pulse {
+            animation: wave-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes wave-pulse {
+            0%, 100% { 
+                opacity: 0.4;
+                transform: scaleY(1);
+            }
+            50% { 
+                opacity: 0.8;
+                transform: scaleY(1.2);
+            }
+        }
+
+        /* Connection point glow animation */
+        .step-wave-item .absolute.-left-12 .absolute,
+        .step-wave-item .absolute.-right-12 .absolute {
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% { 
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.6;
+                transform: scale(1.1);
+            }
+        }
+
+        /* Step card hover effects */
+        .step-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Image hover effects with enhanced animation */
+        .step-wave-item .relative.h-72 img,
+        .step-wave-item .relative.h-96 img {
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .step-wave-item:hover .relative.h-72 img,
+        .step-wave-item:hover .relative.h-96 img {
+            transform: scale(1.08) rotate(2deg);
+        }
+
+        /* Image container hover effects for wave design */
+        .step-wave-item .relative.h-72 img,
+        .step-wave-item .relative.h-96 img {
+            transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .step-wave-item:hover .relative.h-72 img,
+        .step-wave-item:hover .relative.h-96 img {
+            transform: scale(1.05) rotate(1deg);
+        }
+
+        /* Ensure step cards are visible by default */
+        .step-card {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Ensure step wave items are visible by default */
+        .step-wave-item {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Animation classes for when they should animate in */
+        .step-card.animate-in {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .step-card.animate-in.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .step-wave-item.animate-in {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .step-wave-item.animate-in.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        
     </style>
-    <link rel="stylesheet" href="css/mobile-optimizations.css">
 </head>
-<body>
+<body class="is-loading">
+
     <!-- Header Section -->
     <header class="header" id="header">
         <div class="container mx-auto px-4">
@@ -396,6 +1116,7 @@
                                     <!-- Tax Services Card -->
                                     <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 flex flex-col items-start hover:shadow-lg transition-all duration-300">
                                         <div class="flex items-center mb-4">
+                                            <!-- Updated icon background for better visual balance -->
                                             <div class="w-10 h-10 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center mr-3">
                                                 <i data-feather="file-text" class="w-5 h-5 text-white"></i>
                                             </div>
@@ -445,6 +1166,8 @@
                                                     <span class="font-medium text-gray-700">Regulatory Compliance</span>
                                                 </a>
                                             </li>
+                                            
+                                            
                                         </ul>
                                     </div>
                                 </div>
@@ -465,7 +1188,7 @@
                                             </div>
                                         </div>
                                         <div class="text-right">
-                                            <div class="text-2xl font-bold text-orange-600">â‚¹4,999</div>
+                                            <div class="text-2xl font-bold text-orange-600">₹4,999</div>
                                             <div class="text-sm text-gray-500">One-time setup</div>
                                         </div>
                                     </div>
@@ -583,7 +1306,7 @@
                         </div>
                         <input type="text" placeholder="Search services..." class="search-input">
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                            <kbd class="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">âŒ˜K</kbd>
+                            <kbd class="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">⌘K</kbd>
                         </div>
                     </div>
 
@@ -636,11 +1359,11 @@
                         <div class="mobile-dropdown-content hidden pl-4 space-y-2 mt-2">
                             <a href="business-incorporation.html" class="block p-2 text-gray-600 hover:text-b-orange">Business Incorporation</a>
                             <a href="business-incorporation.html" class="block p-2 text-gray-600 hover:text-b-orange">Registration Services</a>
-                            <a href="gst.html" class="block p-2 text-gray-600 hover:text-b-orange">GST Services</a>
-                            <a href="Income-Taxes.html" class="block p-2 text-gray-600 hover:text-b-orange">Income Tax</a>
-                            <a href="trademark.html" class="block p-2 text-gray-600 hover:text-b-orange">Trademark</a>
-                            <a href="mca.html" class="block p-2 text-gray-600 hover:text-b-orange">MCA Services</a>
-                            <a href="compliance.html" class="block p-2 text-gray-600 hover:text-b-orange">Compliance</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">GST Services</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Income Tax</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Trademark</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">MCA Services</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Compliance</a>
                         </div>
                     </div>
 
@@ -684,314 +1407,84 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="py-20 lg:py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <div class="inline-block bg-gradient-to-r from-b-orange to-orange-500 text-white font-bold px-6 py-3 rounded-full text-sm mb-6 shadow-lg">
-                        ðŸ“Š End-to-End GST Services
-                    </div>
-                    <h1 class="text-4xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">
-                        Total GST Compliance, <span class="gradient-text">Simplified</span>
-                    </h1>
-                    <p class="text-gray-600 text-lg lg:text-xl mb-8 leading-relaxed">
-                        From registration and filing to e-invoicing and notice management, our comprehensive GST services cover every aspect of your compliance needs.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="index.html#contact" class="bg-gradient-to-r from-b-orange to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg inline-block">
-                            Get Expert GST Help
-                        </a>
-                        <a href="#pricing" class="border-2 border-gray-300 hover:border-b-orange text-gray-700 hover:text-b-orange font-bold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 text-lg inline-block">
-                            View Service Pricing
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <video src="/video/gst.mp4" autoplay loop muted class="w-[600px] h-[600px] object-cover mx-auto rounded-2xl shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/600x600/4F46E5/ffffff?text=GST+Services';"></video>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sub-navigation Bar -->
-    <nav class="sub-nav">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-center overflow-x-auto">
-                <a href="#gst-registration" class="sub-nav-link">Registration</a>
-                <a href="#gst-filing" class="sub-nav-link">Return Filing</a>
-                <a href="#gst-annual" class="sub-nav-link">Annual Return</a>
-                <a href="#gst-einvoicing" class="sub-nav-link">e-Invoicing</a>
-                <a href="#gst-cancellation" class="sub-nav-link">Cancellation</a>
-                <a href="#gst-notice" class="sub-nav-link">Notice Reply</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Services Grid Section -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl lg:text-5xl font-bold text-gray-800 mb-6">
-                    A Full Suite of <span class="gradient-text">GST Services</span>
-                </h2>
-                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-                    We handle every GST requirement for your business, ensuring you stay compliant and can focus on growth.
+    <main>
+        <!-- Contact Us Hero Section -->
+        <section class="py-20 bg-b-lblue text-center">
+            <div class="container mx-auto px-4">
+                <h1 class="text-5xl font-extrabold text-gray-800 mb-4">Get in Touch</h1>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    We'd love to hear from you! Whether you have a question about our services, need support, or just want to say hello, our team is ready to assist.
                 </p>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- GST Registration Card -->
-                <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-b-orange to-orange-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="file-plus" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">GST Registration</h3>
-                    <p class="text-gray-600 mb-6">Get your GSTIN quickly and without hassle. We manage the entire application process for you.</p>
-                    <a href="#gst-registration" class="font-semibold text-b-orange hover:underline">Learn More &rarr;</a>
-                </div>
-                <!-- GST Return Filing Card -->
-                <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="file-text" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">GST Return Filing</h3>
-                    <p class="text-gray-600 mb-6">Timely and accurate filing of GSTR-1, GSTR-3B, and other returns to avoid penalties.</p>
-                    <a href="#gst-filing" class="font-semibold text-green-600 hover:underline">Learn More &rarr;</a>
-                </div>
-                <!-- GST Annual Return Card -->
-                <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-b-blue to-indigo-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="calendar" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">GST Annual Return (GSTR-9)</h3>
-                    <p class="text-gray-600 mb-6">Comprehensive preparation and filing of your annual GSTR-9 and reconciliation statement GSTR-9C.</p>
-                    <a href="#gst-annual" class="font-semibold text-b-blue hover:underline">Learn More &rarr;</a>
-                </div>
-                <!-- GST e-Invoicing Card -->
-                <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="printer" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">GST e-Invoicing</h3>
-                    <p class="text-gray-600 mb-6">Seamlessly implement and manage e-invoicing for your business to comply with the latest regulations.</p>
-                    <a href="#gst-einvoicing" class="font-semibold text-purple-600 hover:underline">Learn More &rarr;</a>
-                </div>
-                <!-- GST Cancellation Card -->
-                <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-rose-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="x-circle" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">GST Cancellation</h3>
-                    <p class="text-gray-600 mb-6">Properly file for GST registration cancellation or surrender when your business no longer requires it.</p>
-                    <a href="#gst-cancellation" class="font-semibold text-red-600 hover:underline">Learn More &rarr;</a>
-                </div>
-                <!-- GST Notice Card -->
-                <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="alert-triangle" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">GST Notice Reply</h3>
-                    <p class="text-gray-600 mb-6">Expert assistance in understanding and replying to notices from the GST department.</p>
-                    <a href="#gst-notice" class="font-semibold text-yellow-600 hover:underline">Learn More &rarr;</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Detailed Service Sections -->
-    <div id="gst-registration" class="pt-20">
-        <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-            <div class="container mx-auto px-4">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">GST Registration</h2>
-                        <p class="text-gray-600 text-lg mb-8">Any business with an annual turnover exceeding the threshold limit must register for GST. We make this process simple and fast, ensuring you receive your Goods and Services Tax Identification Number (GSTIN) without any complications. Our experts handle document verification and application filing, keeping you informed at every step.</p>
-                        <ul class="space-y-4 text-gray-700">
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>For businesses with turnover > â‚¹40 Lakhs (Goods) or â‚¹20 Lakhs (Services).</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Mandatory for e-commerce sellers and interstate suppliers.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Receive your GSTIN in as little as 3-7 working days.</li>
-                        </ul>
-                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-b-orange to-orange-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Start Your Registration</a>
-                    </div>
-                    <img src="/images/gstregistrationf.png" alt="GST Registration" class="w-full h-auto rounded-2xl shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F97316/ffffff?text=GST+Registration';">
-                </div>
-            </div>
         </section>
-    </div>
 
-    <div id="gst-filing" class="pt-20">
-        <section class="py-20 bg-white">
+        <!-- Contact Form and Info Section -->
+        <section class="py-16 bg-white">
             <div class="container mx-auto px-4">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <img src="/images/gst registration.png" alt="GST Return Filing" class="w-full h-auto rounded-2xl shadow-xl lg:order-last" onerror="this.onerror=null; this.src='https://placehold.co/600x400/10B981/ffffff?text=GST+Return+Filing';">
-                    <div>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">GST Return Filing</h2>
-                        <p class="text-gray-600 text-lg mb-8">Stay compliant by filing your GST returns on time. We handle the preparation and filing of your monthly (GSTR-1, GSTR-3B), quarterly (QRMP), and other applicable returns. Our meticulous process ensures accuracy in ITC claims and tax calculations, helping you avoid penalties and interest.</p>
-                        <ul class="space-y-4 text-gray-700">
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Accurate filing of GSTR-1 (Outward Supplies) & GSTR-3B (Summary Return).</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Proper reconciliation with GSTR-2A/2B to maximize Input Tax Credit.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Timely reminders and filing to avoid late fees.</li>
-                        </ul>
-                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">File Your GST Return</a>
+                <div class="grid lg:grid-cols-2 gap-12 items-start">
+                    <!-- Contact Form -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Send Us a Message</h2>
+                        <form class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-b-orange focus:border-b-orange transition-all duration-300" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Your Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-b-orange focus:border-b-orange transition-all duration-300" placeholder="john.doe@example.com">
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                                <input type="text" id="subject" name="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-b-orange focus:border-b-orange transition-all duration-300" placeholder="Inquiry about services">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Your Message</label>
+                                <textarea id="message" name="message" rows="6" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-b-orange focus:border-b-orange transition-all duration-300" placeholder="Type your message here..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-gradient-to-r from-b-orange to-orange-600 text-white font-semibold py-3 px-6 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="space-y-8">
+                        <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Our Office</h3>
+                            <div class="flex items-start space-x-4 mb-4">
+                                <i data-feather="map-pin" class="w-6 h-6 text-b-orange flex-shrink-0 mt-1"></i>
+                                <p class="text-gray-600 text-lg">
+                                    123 Business District,<br>
+                                    Mumbai, Maharashtra 400001, India
+                                </p>
+                            </div>
+                            <div class="flex items-center space-x-4 mb-4">
+                                <i data-feather="phone" class="w-6 h-6 text-b-orange flex-shrink-0"></i>
+                                <p class="text-gray-600 text-lg">+91 98765 43210</p>
+                            </div>
+                            <div class="flex items-center space-x-4 mb-4">
+                                <i data-feather="mail" class="w-6 h-6 text-b-orange flex-shrink-0"></i>
+                                <p class="text-gray-600 text-lg">hello@big4india.com</p>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <i data-feather="clock" class="w-6 h-6 text-b-orange flex-shrink-0"></i>
+                                <p class="text-gray-600 text-lg">Mon - Fri: 9:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+
+                        <!-- Map Section -->
+                        <div class="bg-white p-4 rounded-2xl shadow-lg border border-gray-100">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Find Us on Map</h3>
+                            <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.104834766378!2d72.8352921149009!3d19.07598498709708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da2ed8f8d648769!2sMumbai%2C%20Maharashtra%2C%20India!5e0!3m2!1sen!2sus!4v1678901234567!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-    </div>
-
-    <div id="gst-annual" class="pt-20">
-        <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-            <div class="container mx-auto px-4">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">GST Annual Return (GSTR-9)</h2>
-                        <p class="text-gray-600 text-lg mb-8">GSTR-9 is an annual return to be filed by all registered taxpayers. It's a consolidation of all your monthly/quarterly returns. For larger businesses, GSTR-9C (a reconciliation statement) is also required. We provide expert assistance in preparing and filing these complex annual returns accurately.</p>
-                        <ul class="space-y-4 text-gray-700">
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Mandatory for taxpayers with turnover above â‚¹2 Crore.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Detailed reconciliation of your entire year's financial data.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Preparation and certification of GSTR-9C by a professional.</li>
-                        </ul>
-                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-b-blue to-indigo-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">File GSTR-9 / 9C</a>
-                    </div>
-                    <img src="/images/GST Annual Return (GSTR- 9).png" alt="GST Annual Return" class="w-full h-auto rounded-2xl shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/600x400/4F46E5/ffffff?text=GSTR-9+Filing';">
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <div id="gst-einvoicing" class="pt-20">
-        <section class="py-20 bg-white">
-            <div class="container mx-auto px-4">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <img src="/images/GST e-Invoicing.png" alt="GST e-Invoicing" class="w-full h-auto rounded-2xl shadow-xl lg:order-last" onerror="this.onerror=null; this.src='https://placehold.co/600x400/8B5CF6/ffffff?text=GST+e-Invoicing';">
-                    <div>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">GST e-Invoicing</h2>
-                        <p class="text-gray-600 text-lg mb-8">e-Invoicing is mandatory for businesses with a specified turnover, where B2B invoices are authenticated electronically by GSTN for further use on the common GST portal. We help you integrate your billing system with the Invoice Registration Portal (IRP) and ensure a smooth, compliant e-invoicing process.</p>
-                        <ul class="space-y-4 text-gray-700">
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Currently applicable for businesses with turnover > â‚¹5 Crore.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Real-time generation of Invoice Reference Number (IRN) and QR codes.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Automates tax return filing and e-way bill generation.</li>
-                        </ul>
-                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-purple-500 to-pink-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Implement e-Invoicing</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <div id="gst-cancellation" class="pt-20">
-        <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-            <div class="container mx-auto px-4">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">GST Cancellation</h2>
-                        <p class="text-gray-600 text-lg mb-8">If you are closing your business or if your turnover has fallen below the threshold limit, you may need to cancel your GST registration. We provide a hassle-free service to file the final returns and submit the cancellation application (Form GST REG-16), ensuring a clean exit without future liabilities.</p>
-                        <ul class="space-y-4 text-gray-700">
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Filing of final return in Form GSTR-10.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Proper clearance of all tax liabilities.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Guidance on the complete legal procedure for closure.</li>
-                        </ul>
-                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-red-500 to-rose-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Cancel GST Registration</a>
-                    </div>
-                    <img src="/images/GST Cancellation.png" alt="GST Cancellation" class="w-full h-auto rounded-2xl shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/600x400/EF4444/ffffff?text=GST+Cancellation';">
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <div id="gst-notice" class="pt-20">
-        <section class="py-20 bg-white">
-            <div class="container mx-auto px-4">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <img src="/images/GST Notice.png" alt="GST Notice Reply" class="w-full h-auto max-w-md mx-auto rounded-2xl shadow-xl lg:order-last" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F59E0B/ffffff?text=GST+Notice+Reply';">
-                    <div>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">GST Notice Reply</h2>
-                        <p class="text-gray-600 text-lg mb-8">Receiving a notice from the GST department can be stressful. Our team of tax experts will help you understand the notice, prepare a detailed and factual reply, and represent you before the authorities if needed. We handle notices related to discrepancies in returns, ITC claims, audits, and more.</p>
-                        <ul class="space-y-4 text-gray-700">
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Analysis of the notice and its implications.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Drafting and filing of a legally sound reply.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Liaison with the GST department on your behalf.</li>
-                        </ul>
-                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-yellow-500 to-amber-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Get Help With a Notice</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl lg:text-5xl font-bold text-gray-800 mb-6">
-                    Transparent <span class="gradient-text">Pricing for GST Services</span>
-                </h2>
-                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-                    Choose the specific service you need. No hidden fees, just straightforward pricing for expert work.
-                </p>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Registration Plan -->
-                <div class="card bg-white rounded-3xl shadow-lg p-8 border border-gray-100 flex flex-col">
-                    <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">GST Registration</h3>
-                        <div class="text-4xl font-bold text-b-orange mb-2">â‚¹1,499</div>
-                        <p class="text-gray-600">One-time fee</p>
-                    </div>
-                    <ul class="feature-list space-y-4 mb-8 flex-grow">
-                        <li>New GSTIN Application</li>
-                        <li>Document Verification</li>
-                        <li>Application Tracking</li>
-                    </ul>
-                    <a href="index.html#contact" class="w-full bg-gray-100 text-gray-700 font-semibold py-3 rounded-xl hover:bg-gray-200 transition-all duration-300 block text-center">Get Started</a>
-                </div>
-                <!-- Filing Plan -->
-                <div class="card bg-gradient-to-br from-b-orange to-orange-600 text-white rounded-3xl shadow-xl p-8 border-4 border-orange-200 relative flex flex-col">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2"><span class="bg-gradient-to-r from-b-orange to-orange-500 text-white px-6 py-2 rounded-full text-sm font-semibold">Most Popular</span></div>
-                    <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold mb-4">GST Return Filing</h3>
-                        <div class="text-4xl font-bold mb-2">â‚¹999</div>
-                        <p>per month</p>
-                    </div>
-                    <ul class="feature-list space-y-4 mb-8 flex-grow text-white">
-                        <li>GSTR-1 & GSTR-3B Filing</li>
-                        <li>ITC Reconciliation Advice</li>
-                        <li>Compliance Reminders</li>
-                        <li>Dedicated Support</li>
-                    </ul>
-                    <a href="index.html#contact" class="w-full bg-white text-b-orange font-semibold py-3 rounded-xl hover:bg-gray-50 transition-all duration-300 block text-center">Choose Filing</a>
-                </div>
-                <!-- Annual Return Plan -->
-                <div class="card bg-white rounded-3xl shadow-lg p-8 border border-gray-100 flex flex-col">
-                    <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Annual Return (GSTR-9)</h3>
-                        <div class="text-4xl font-bold text-b-orange mb-2">â‚¹4,999</div>
-                        <p>Starting price</p>
-                    </div>
-                    <ul class="feature-list space-y-4 mb-8 flex-grow">
-                        <li>GSTR-9 Preparation</li>
-                        <li>Full-Year Data Reconciliation</li>
-                        <li>GSTR-9C Support (if applicable)</li>
-                    </ul>
-                    <a href="index.html#contact" class="w-full bg-gray-100 text-gray-700 font-semibold py-3 rounded-xl hover:bg-gray-200 transition-all duration-300 block text-center">File Annual Return</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl lg:text-5xl font-bold text-gray-800 mb-6">
-                    Frequently Asked <span class="gradient-text">Questions</span>
-                </h2>
-                <p class="text-gray-600 text-lg">
-                    Find answers to common questions about our GST services.
-                </p>
-            </div>
-            <div id="faq-container">
-                <!-- FAQ items will be injected here by script -->
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl lg:text-5xl font-bold mb-6">Ready to Master Your GST Compliance?</h2>
-            <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">Let our experts handle the complexities of GST so you can focus on what you do bestâ€”growing your business.</p>
-            <a href="index.html#contact" class="bg-gradient-to-r from-b-orange to-orange-500 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-10 py-5 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg inline-block">Talk to a GST Expert Today</a>
-        </div>
-    </section>
+    </main>
 
     <!-- Modern Footer Section -->
     <footer class="relative bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white overflow-hidden">
@@ -1101,25 +1594,33 @@
                                     Our Services
                                 </h5>
                                 <ul class="space-y-3">
-                                    <li><a href="#" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                    <li><a href="/html/business-incorporation.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
-                                        Income Tax Returns
+                                        Business Incorporation
                                     </a></li>
-                                    <li><a href="gst.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                    <li><a href="/html/gst.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
-                                        GST Registration
+                                        GST Services
                                     </a></li>
-                                    <li><a href="#" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                    <li><a href="/html/Income-Taxes.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
-                                        Tax Planning
+                                        Income Tax Planning
                                     </a></li>
-                                    <li><a href="business-incorporation.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                    <li><a href="/html/registration-services.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
-                                        Business Registration
+                                        Registration Services
                                     </a></li>
-                                    <li><a href="#" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                    <li><a href="/html/compliance.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
-                                        Audit & Compliance
+                                        Compliance
+                                    </a></li>
+                                    <li><a href="/html/mca.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                        <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
+                                        MCA Services
+                                    </a></li>
+                                    <li><a href="/html/trademark.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                        <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
+                                        Trademark Services
                                     </a></li>
                         </ul>
                     </div>
@@ -1133,7 +1634,7 @@
                                     Quick Links
                                 </h5>
                                 <ul class="space-y-3">
-                                    <li><a href="#" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                    <li><a href="about-us.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
                                         About Us
                                     </a></li>
@@ -1145,7 +1646,7 @@
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
                                         Pricing Plans
                                     </a></li>
-                                    <li><a href="#" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                    <li><a href="#faq-item" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
                                         FAQ
                                     </a></li>
@@ -1231,9 +1732,9 @@
                             <p>&copy; 2024 Big4India. All rights reserved.</p>
                             <div class="flex items-center space-x-4">
                                 <a href="#" class="hover:text-b-orange transition-colors duration-300">Privacy Policy</a>
-                                <span class="text-slate-400">â€¢</span>
+                                <span class="text-slate-400">•</span>
                                 <a href="#" class="hover:text-b-orange transition-colors duration-300">Terms of Service</a>
-                                <span class="text-slate-400">â€¢</span>
+                                <span class="text-slate-400">•</span>
                                 <a href="#" class="hover:text-b-orange transition-colors duration-300">Cookie Policy</a>
                             </div>
                         </div>
@@ -1272,6 +1773,15 @@
     </footer>
 
     <script>
+         // --- New Simplified Script for Elastic Loading ---
+        // This function will run once all page content (images, etc.) is fully loaded.
+        window.onload = () => {
+            // Removing this class triggers the CSS transition for the reveal animation.
+            document.body.classList.remove('is-loading');
+        };
+
+
+             // Feather Icons initialization
         feather.replace();
 
         // Mobile Menu Toggle
@@ -1279,14 +1789,111 @@
         const mobileMenu = document.getElementById('m-menu');
         if(mobileMenuButton) {
             mobileMenuButton.addEventListener('click', () => {
-                if (mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.remove('hidden');
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    mobileMenu.classList.add('hidden');
-                    document.body.style.overflow = 'auto';
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Enhanced Message Popup Animation
+        const popupsContainer = document.getElementById('popups');
+        if (popupsContainer) {
+            const popups = Array.from(popupsContainer.children);
+            let currentPopup = 0;
+            let isAnimating = false;
+            
+            if (popups.length > 0) {
+                // Initialize popups
+                popups.forEach((popup, index) => {
+                    popup.style.zIndex = 10 - index; // Stack order
+                });
+                
+                // Start popup animation after the main page has loaded
+                setTimeout(() => {
+                    const heroImage = document.querySelector('.h-anim');
+                    if (heroImage) {
+                        heroImage.classList.add('active');
+                    }
+                    
+                    // Show first popup
+                    showPopup(currentPopup);
+                    
+                    // Start the rotation
+                    setInterval(() => {
+                        if (!isAnimating) {
+                            hidePopup(currentPopup);
+                            currentPopup = (currentPopup + 1) % popups.length;
+                            setTimeout(() => {
+                                showPopup(currentPopup);
+                            }, 300);
+                        }
+                    }, 3500);
+                }, 1500); // Delay popups from starting immediately
+                
+                // Functions to show/hide popups with smooth transitions
+                function showPopup(index) {
+                    isAnimating = true;
+                    const popup = popups[index];
+                    
+                    // Reset any previous states
+                    popup.classList.remove('hide');
+                    
+                    // Add entrance animation
+                    popup.classList.add('visible');
+                    
+                    // Add subtle bounce effect
+                    setTimeout(() => {
+                        popup.style.transform = 'translateY(-5px) scale(1.02) rotate(0deg)';
+                        setTimeout(() => {
+                            popup.style.transform = 'translateY(0) scale(1) rotate(0deg)';
+                            isAnimating = false;
+                        }, 200);
+                    }, 100);
+                }
+                
+                function hidePopup(index) {
+                    isAnimating = true;
+                    const popup = popups[index];
+                    
+                    // Add exit animation
+                    popup.classList.add('hide');
+                    
+                    setTimeout(() => {
+                        popup.classList.remove('visible', 'hide');
+                        isAnimating = false;
+                    }, 300);
+                }
+                
+                // Add hover effects for better interactivity
+                popups.forEach(popup => {
+                    popup.addEventListener('mouseenter', () => {
+                        if (popup.classList.contains('visible')) {
+                            popup.style.transform = 'translateY(-2px) scale(1.02) rotate(0deg)';
+                            popup.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+                        }
+                    });
+                    
+                    popup.addEventListener('mouseleave', () => {
+                        if (popup.classList.contains('visible')) {
+                            popup.style.transform = 'translateY(0) scale(1) rotate(0deg)';
+                            popup.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
+                        }
+                    });
+                });
+            }
+        }
+        
+
+        // Scroll Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
                 }
             });
+        }, { threshold: 0.5 });
+
+        const revealElements = document.querySelectorAll('.slide-in, .reveal-elastic');
+        if (revealElements.length > 0) {
+            revealElements.forEach(el => observer.observe(el));
         }
 
         // Enhanced Navigation Functionality
@@ -1445,69 +2052,365 @@
             }, 250);
         });
 
-        // Sub-nav active state on scroll
-        const sections = document.querySelectorAll('div[id^="gst-"]');
-        const navLinks = document.querySelectorAll('.sub-nav-link');
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 150) {
-                    current = section.getAttribute('id');
-                }
+        // --- Products Slider Functionality ---
+        const sliderTrack = document.getElementById('sliderTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotIndicators = document.querySelectorAll('.dot-indicator');
+        const serviceCards = document.querySelectorAll('.service-card');
+        
+        let currentSlide = 0;
+        const cardWidth = 320; // 320px (card width) + 24px (gap)
+        const maxSlides = 7; // Updated to 7 services
+        const cardsPerView = 3; // Show 3 cards at once
+        
+        // Initialize slider
+        function initSlider() {
+            updateDots();
+            updateNavigationButtons();
+        }
+        
+        // Update dot indicators
+        function updateDots() {
+            dotIndicators.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
             });
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // FAQ Data
-        const faqs = [
-            { q: "Who needs to register for GST?", a: "Any business providing goods with a turnover of over â‚¹40 lakhs or services with a turnover of over â‚¹20 lakhs is required to register for GST. It is also mandatory for e-commerce sellers, businesses making interstate sales, and casual taxable persons." },
-            { q: "What are the different types of GST returns?", a: "The most common returns are GSTR-1 (for outward supplies), GSTR-3B (a monthly summary return), and GSTR-9 (the annual return). Businesses under the QRMP scheme file returns quarterly." },
-            { q: "What happens if I miss a GST filing deadline?", a: "Missing a GST filing deadline results in a late fee of â‚¹50 per day (â‚¹20 for nil returns) per return, up to a maximum of â‚¹10,000. Interest at 18% per annum is also levied on the outstanding tax amount." },
-            { q: "What is GST e-invoicing?", a: "e-Invoicing is a system where B2B invoices are electronically authenticated by the GST Network (GSTN). It is mandatory for businesses with an aggregate turnover exceeding â‚¹5 crores in any preceding financial year." },
-            { q: "When can I cancel my GST registration?", a: "You can apply for GST cancellation if your business has been discontinued, transferred, or if your turnover falls below the threshold limit and you are no longer required to be registered." }
-        ];
-
-        // FAQ Accordion functionality
-        const faqContainer = document.getElementById('faq-container');
-        faqs.forEach((faq, index) => {
-            const faqItem = document.createElement('div');
-            faqItem.className = 'faq-item';
-            faqItem.innerHTML = `
-                <div class="faq-question">
-                    <h4 class="text-lg font-semibold text-gray-800">${faq.q}</h4>
-                    <i data-feather="chevron-down" class="w-6 h-6 text-b-orange transition-transform duration-300"></i>
-                </div>
-                <div class="faq-answer">
-                    <p class="text-gray-600 pb-6">${faq.a}</p>
-                </div>
-            `;
-            faqContainer.appendChild(faqItem);
-        });
-
-        document.querySelectorAll('.faq-question').forEach(item => {
-            item.addEventListener('click', event => {
-                const answer = item.nextElementSibling;
-                const icon = item.querySelector('i');
-                
-                if (answer.style.maxHeight) {
-                    answer.style.maxHeight = null;
-                    answer.style.paddingBottom = '0px';
-                    icon.style.transform = 'rotate(0deg)';
+        }
+        
+        // Update navigation buttons
+        function updateNavigationButtons() {
+            prevBtn.style.opacity = currentSlide === 0 ? '0.5' : '1';
+            nextBtn.style.opacity = currentSlide >= maxSlides - cardsPerView ? '0.5' : '1';
+        }
+        
+        // Update card states (active/inactive)
+        function updateCardStates() {
+            serviceCards.forEach((card, index) => {
+                if (index >= currentSlide && index < currentSlide + cardsPerView) {
+                    card.classList.add('active');
+                    card.classList.remove('inactive');
                 } else {
-                    answer.style.maxHeight = answer.scrollHeight + "px";
-                    answer.style.paddingBottom = '1.5rem';
-                    icon.style.transform = 'rotate(180deg)';
-                } 
+                    card.classList.remove('active');
+                    card.classList.add('inactive');
+                }
+            });
+        }
+        
+        // Slide to specific index
+        function slideTo(index) {
+            currentSlide = Math.max(0, Math.min(index, maxSlides - cardsPerView));
+            const translateX = -currentSlide * cardWidth;
+            sliderTrack.style.transform = `translateX(${translateX}px)`;
+            updateDots();
+            updateNavigationButtons();
+            updateCardStates();
+        }
+        
+        // Next slide
+        function nextSlide() {
+            if (currentSlide < maxSlides - cardsPerView) {
+                slideTo(currentSlide + 1);
+            }
+        }
+        
+        // Previous slide
+        function prevSlide() {
+            if (currentSlide > 0) {
+                slideTo(currentSlide - 1);
+            }
+        }
+        
+        // Event listeners
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+        }
+        
+        // Dot indicator clicks
+        dotIndicators.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                slideTo(index);
+            });
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+            }
+        });
+        
+        // Touch/swipe support for mobile
+        let startX = 0;
+        let endX = 0;
+        
+        if (sliderTrack) {
+            sliderTrack.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+            
+            sliderTrack.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+                
+                if (Math.abs(diff) > 50) { // Minimum swipe distance
+                    if (diff > 0) {
+                        nextSlide(); // Swipe left
+                    } else {
+                        prevSlide(); // Swipe right
+                    }
+                }
+            });
+        }
+        
+        // Auto-play functionality (optional)
+        let autoPlayInterval;
+        
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                if (currentSlide < maxSlides - cardsPerView) {
+                    nextSlide();
+                } else {
+                    slideTo(0); // Reset to first slide
+                }
+            }, 5000); // Change slide every 5 seconds
+        }
+        
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+        
+        // Pause auto-play on hover
+        if (sliderTrack) {
+            sliderTrack.addEventListener('mouseenter', stopAutoPlay);
+            sliderTrack.addEventListener('mouseleave', startAutoPlay);
+        }
+        
+        // Initialize slider when page loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                initSlider();
+                updateCardStates(); // Initialize card states
+            }, 1000); // Delay to ensure all elements are loaded
+            startAutoPlay();
+            
+            // Ensure steps section elements are visible
+            const stepWaveItems = document.querySelectorAll('.step-wave-item');
+            const stepCards = document.querySelectorAll('.step-card');
+            const bottomCTA = document.querySelector('.bottom-cta');
+            
+            stepWaveItems.forEach(item => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0) scale(1)';
+            });
+            
+            stepCards.forEach(card => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+            
+            if (bottomCTA) {
+                bottomCTA.style.opacity = '1';
+                bottomCTA.style.transform = 'translateY(0)';
+            }
+        });
+
+        // --- Steps to Get Started Animation ---
+        const stepsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add active class to step wave items with staggered delay
+                    const stepWaveItems = entry.target.querySelectorAll('.step-wave-item');
+                    stepWaveItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('active');
+                            
+                            // Add active class to step cards within each wave item
+                            const stepCard = item.querySelector('.step-card');
+                            if (stepCard) {
+                                setTimeout(() => {
+                                    stepCard.classList.add('active');
+                                }, 200);
+                            }
+                        }, index * 300); // 300ms delay between each wave item
+                    });
+
+                    // Add active class to bottom CTA section
+                    const bottomCTA = entry.target.querySelector('.bottom-cta');
+                    if (bottomCTA) {
+                        setTimeout(() => {
+                            bottomCTA.classList.add('active');
+                        }, 1500); // Delay after all wave items are animated
+                    }
+
+                    // Add wave path line animation class
+                    const wavePathLine = entry.target.querySelector('.bg-gradient-to-b.animate-pulse');
+                    if (wavePathLine) {
+                        wavePathLine.style.animation = 'wave-pulse 2s ease-in-out infinite';
+                    }
+
+                    // Stop observing after animation is triggered
+                    stepsObserver.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.1, // Trigger when 10% of the section is visible
+            rootMargin: '0px 0px -50px 0px' // Trigger earlier
+        });
+
+        // Observe the steps section
+        const stepsSection = document.querySelector('.py-24.bg-gradient-to-br');
+        if (stepsSection) {
+            stepsObserver.observe(stepsSection);
+        }
+
+        // Fallback: Ensure elements are visible if observer doesn't trigger
+        setTimeout(() => {
+            const stepWaveItems = document.querySelectorAll('.step-wave-item');
+            const stepCards = document.querySelectorAll('.step-card');
+            const bottomCTA = document.querySelector('.bottom-cta');
+            
+            // Make sure all elements are visible
+            stepWaveItems.forEach(item => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0) scale(1)';
+            });
+            
+            stepCards.forEach(card => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+            
+            if (bottomCTA) {
+                bottomCTA.style.opacity = '1';
+                bottomCTA.style.transform = 'translateY(0)';
+            }
+        }, 2000); // Fallback after 2 seconds
+
+        // Add hover effects for step cards
+        const stepCards = document.querySelectorAll('.step-card');
+        stepCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Add subtle glow effect
+                card.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                // Remove glow effect
+                card.style.boxShadow = '';
+            });
+        });
+
+        // Add click handlers for CTA buttons
+        const ctaButtons = document.querySelectorAll('.step-card button');
+        ctaButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Add ripple effect
+                const ripple = document.createElement('span');
+                const rect = button.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                button.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple effect CSS dynamically
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.3);
+                transform: scale(0);
+                animation: ripple-animation 0.6s linear;
+                pointer-events: none;
+            }
+            
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+
+        // FAQ Accordion Functionality
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.closest('.faq-item');
+                const answer = faqItem.querySelector('.faq-answer');
+                const icon = faqItem.querySelector('.faq-icon');
+                
+                // Close all other FAQ items
+                faqQuestions.forEach(otherQuestion => {
+                    if (otherQuestion !== question) {
+                        const otherItem = otherQuestion.closest('.faq-item');
+                        const otherAnswer = otherItem.querySelector('.faq-answer');
+                        const otherIcon = otherItem.querySelector('.faq-icon');
+                        
+                        otherAnswer.classList.add('hidden');
+                        otherIcon.style.transform = 'rotate(0deg)';
+                        otherItem.classList.remove('ring-2', 'ring-b-orange/20');
+                    }
+                });
+                
+                // Toggle current FAQ item
+                answer.classList.toggle('hidden');
+                icon.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+                faqItem.classList.toggle('ring-2', 'ring-b-orange/20');
+            });
+        });
+
+        // Add smooth scroll for FAQ CTA buttons
+        const faqCTAButtons = document.querySelectorAll('.faq-item button, .faq-section button');
+        faqCTAButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Add ripple effect
+                const ripple = document.createElement('span');
+                const rect = button.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                button.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+                
+                // Scroll to contact section or trigger contact modal
+                const contactSection = document.querySelector('#contact') || document.querySelector('.contact-section');
+                if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
             });
         });
     </script>
-    <script src="js/mobile-navigation.js"></script>
+
+
 </body>
 </html>
-

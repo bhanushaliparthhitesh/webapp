@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Income Tax Services - Big4India</title>
+    <title>Registration Services - Big4India</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,11 +39,11 @@
             }
         }
 
-        .gradient-text { background: linear-gradient(135deg, #F97316 0%, #EA580C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-text { background: linear-gradient(135deg, #4F46E5 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
         .feature-list li { position: relative; padding-left: 1.5rem; }
-        .feature-list li::before { content: "âœ“"; position: absolute; left: 0; color: #F97316; font-weight: bold; }
+        .feature-list li::before { content: "✓"; position: absolute; left: 0; color: #4F46E5; font-weight: bold; }
         
         /* Header Styles */
         .header {
@@ -57,7 +57,7 @@
             border-bottom: 1px solid rgba(229, 231, 235, 0.8);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             will-change: transform, background-color, box-shadow;
-            transform: translateZ(0);
+            transform: translateZ(0); /* Force hardware acceleration */
         }
         
         .header.header-scrolled {
@@ -66,47 +66,22 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
 
-        /* --- Enhanced Navigation Styles --- */
+        /* Navigation Container */
         .header-container {
-            height: 80px;
+            height: 80px; /* Fixed height for desktop */
             min-height: 80px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-        
+
         @media (max-width: 1023px) {
             .header-container {
                 height: 72px;
-                min-height: 72px;
             }
         }
-        
-        .nav-link {
-            color: #4B5563;
-            font-weight: 500;
-            font-size: 0.875rem;
-            line-height: 1.25rem;
-            padding: 0.5rem 0.75rem;
-            border-radius: 0.375rem;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            white-space: nowrap;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-        
-        .nav-link:hover {
-            color: #F97316;
-            background-color: rgba(249, 115, 22, 0.05);
-        }
-        
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        
+
+        /* Mega Menu Styles */
         .mega-menu {
             position: absolute;
             top: 100%;
@@ -126,19 +101,14 @@
             will-change: transform, opacity, visibility;
             z-index: 1001;
         }
-        
-        .mega-menu.open {
+
+        .dropdown:hover .mega-menu {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
-        
-        .group:hover .mega-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
+
+        /* Dropdown Menu Styles */
         .dropdown-menu {
             position: absolute;
             top: 100%;
@@ -157,159 +127,157 @@
             will-change: transform, opacity, visibility;
             z-index: 1001;
         }
-        
-        .dropdown-menu.open {
+
+        .dropdown:hover .dropdown-menu {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
-        
-        .group:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
+
+        /* Dropdown container with stable positioning */
+        .dropdown {
+            position: relative;
+            display: inline-block;
         }
-        
+
+        /* Logo Container */
         .logo-container {
             flex-shrink: 0;
             display: flex;
             align-items: center;
         }
-        
+
         .logo-image {
             height: 48px;
             width: auto;
             transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        @media (min-width: 1024px) {
-            .logo-image {
-                height: 64px;
-            }
-        }
-        
+
         .logo-container:hover .logo-image {
             transform: scale(1.05);
         }
-        
+
+        /* Navigation Links */
+        .nav-link {
+            color: #4B5563;
+            font-weight: 500;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            text-decoration: none;
+        }
+
+        .nav-link:hover {
+            color: #F97316;
+            background-color: rgba(249, 115, 22, 0.05);
+        }
+
+        /* Search Container */
         .search-container {
             position: relative;
             width: 256px;
             flex-shrink: 0;
         }
-        
+
         .search-input {
             width: 100%;
-            padding: 0.5rem 2.5rem 0.5rem 2.5rem;
-            background-color: #F9FAFB;
+            padding: 12px 16px 12px 44px;
             border: 1px solid #E5E7EB;
-            border-radius: 0.5rem;
-            font-size: 0.875rem;
+            border-radius: 12px;
+            background: #F9FAFB;
+            font-size: 14px;
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
+
         .search-input:focus {
             outline: none;
             border-color: #F97316;
             box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
-            background-color: #FFFFFF;
         }
-        
+
+        /* Button Styles */
         .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
             color: white;
             font-weight: 600;
-            font-size: 0.875rem;
-            padding: 0.5rem 1.5rem;
-            border-radius: 0.5rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            white-space: nowrap;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            padding: 12px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
         }
-        
+
         .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
         }
-        
+
+        /* Mobile Menu Styles */
         .mobile-menu {
             position: fixed;
-            top: 72px;
+            top: 80px;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(229, 231, 235, 0.8);
+            background: white;
             transform: translateY(-100%);
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 999;
-            max-height: calc(100vh - 72px);
+            max-height: calc(100vh - 80px);
             overflow-y: auto;
         }
-        
-        .mobile-menu.open {
+
+        .mobile-menu.active {
             transform: translateY(0);
             opacity: 1;
             visibility: visible;
         }
-        
-        .mobile-dropdown-btn {
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .mobile-dropdown-btn.active i {
-            transform: rotate(180deg);
-            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .mobile-dropdown-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .mobile-dropdown-content.open {
-            max-height: 500px;
-        }
-        
-        body.menu-open {
-            overflow: hidden;
-        }
-        
+
         @media (max-width: 1023px) {
-            .search-container {
-                width: 100%;
-            }
-            
-            .mega-menu {
-                width: calc(100vw - 2rem);
-                max-width: none;
-                left: 1rem;
-                right: 1rem;
-                transform: translateY(8px);
-                padding: 1.5rem;
-            }
-            
-            .mega-menu.open {
-                transform: translateY(0);
-            }
-            
-            .mega-menu .grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+            .mobile-menu {
+                top: 72px;
+                max-height: calc(100vh - 72px);
             }
         }
-        
+
+        .mobile-dropdown-btn {
+            transition: all 0.2s ease;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-btn i {
+            transform: rotate(180deg);
+        }
+
+        .mobile-dropdown-content {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-content {
+            display: block !important;
+        }
+
+        /* Ensure mega menu doesn't go off-screen on medium screens */
         @media (max-width: 1200px) {
             .mega-menu {
+                width: 700px;
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .mega-menu {
                 width: 600px;
-                max-width: calc(100vw - 2rem);
             }
         }
 
@@ -331,14 +299,15 @@
             padding: 1rem 1.5rem;
             border-bottom: 3px solid transparent;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
         .sub-nav-link:hover {
-            color: #F97316;
-            border-bottom-color: #F97316;
+            color: #4F46E5;
+            border-bottom-color: #4F46E5;
         }
         .sub-nav-link.active {
-            color: #F97316;
-            border-bottom-color: #F97316;
+            color: #4F46E5;
+            border-bottom-color: #4F46E5;
         }
 
         /* FAQ Accordion */
@@ -358,7 +327,6 @@
             transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
         }
     </style>
-    <link rel="stylesheet" href="css/mobile-optimizations.css">
 </head>
 <body>
     <!-- Header Section -->
@@ -402,11 +370,11 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="registration-services.html" class="flex items-center group hover:bg-blue-50 rounded-lg p-2 transition">
+                                                <a href="registration-services.html" class="flex items-center group hover:bg-blue-50 rounded-lg p-2 transition bg-blue-50 border-blue-200 border">
                                                     <div class="w-8 h-8 bg-blue-100 rounded-md flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
                                                         <i data-feather="file-plus" class="w-4 h-4 text-blue-600"></i>
                                                     </div>
-                                                    <span class="font-medium text-gray-700">Registration Services</span>
+                                                    <span class="font-medium text-blue-700">Registration Services</span>
                                                 </a>
                                             </li>
                                             <li>
@@ -492,7 +460,7 @@
                                             </div>
                                         </div>
                                         <div class="text-right">
-                                            <div class="text-2xl font-bold text-orange-600">â‚¹4,999</div>
+                                            <div class="text-2xl font-bold text-orange-600">₹4,999</div>
                                             <div class="text-sm text-gray-500">One-time setup</div>
                                         </div>
                                     </div>
@@ -610,7 +578,7 @@
                         </div>
                         <input type="text" placeholder="Search services..." class="search-input">
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                            <kbd class="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">âŒ˜K</kbd>
+                            <kbd class="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">⌘K</kbd>
                         </div>
                     </div>
 
@@ -641,33 +609,104 @@
                 </div>
             </nav>
         </div>
+
+        <!-- Mobile Menu -->
+        <div id="m-menu" class="mobile-menu">
+            <div class="px-4 py-6 space-y-4">
+                <!-- Mobile Search -->
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i data-feather="search" class="w-5 h-5 text-gray-400"></i>
+                    </div>
+                    <input type="text" placeholder="Search services..." class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-b-orange/50">
+                </div>
+
+                <!-- Mobile Navigation Links -->
+                <div class="space-y-2">
+                    <div class="mobile-dropdown">
+                        <button class="mobile-dropdown-btn w-full flex items-center justify-between p-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+                            <span class="font-medium">Products</span>
+                            <i data-feather="chevron-down" class="w-5 h-5 transition-transform"></i>
+                        </button>
+                        <div class="mobile-dropdown-content hidden pl-4 space-y-2 mt-2">
+                            <a href="business-incorporation.html" class="block p-2 text-gray-600 hover:text-b-orange">Business Incorporation</a>
+                            <a href="registration-services.html" class="block p-2 text-b-orange font-semibold">Registration Services</a>
+                            <a href="gst.html" class="block p-2 text-gray-600 hover:text-b-orange">GST Services</a>
+                            <a href="Income-Taxes.html" class="block p-2 text-gray-600 hover:text-b-orange">Income Tax</a>
+                            <a href="trademark.html" class="block p-2 text-gray-600 hover:text-b-orange">Trademark</a>
+                            <a href="mca.html" class="block p-2 text-gray-600 hover:text-b-orange">MCA Services</a>
+                            <a href="compliance.html" class="block p-2 text-gray-600 hover:text-b-orange">Compliance</a>
+                        </div>
+                    </div>
+
+                    <div class="mobile-dropdown">
+                        <button class="mobile-dropdown-btn w-full flex items-center justify-between p-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+                            <span class="font-medium">Resources</span>
+                            <i data-feather="chevron-down" class="w-5 h-5 transition-transform"></i>
+                        </button>
+                        <div class="mobile-dropdown-content hidden pl-4 space-y-2 mt-2">
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Blog</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Tax Guides</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Calculators</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Video Tutorials</a>
+                        </div>
+                    </div>
+
+                    <div class="mobile-dropdown">
+                        <button class="mobile-dropdown-btn w-full flex items-center justify-between p-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+                            <span class="font-medium">Company</span>
+                            <i data-feather="chevron-down" class="w-5 h-5 transition-transform"></i>
+                        </button>
+                        <div class="mobile-dropdown-content hidden pl-4 space-y-2 mt-2">
+                            <a href="about-us.html" class="block p-2 text-gray-600 hover:text-b-orange">About Us</a>
+                            <a href="carrer.html" class="block p-2 text-gray-600 hover:text-b-orange">Careers</a>
+                            <a href="contactus.html" class="block p-2 text-gray-600 hover:text-b-orange">Contact Us</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Awards</a>
+                        </div>
+                    </div>
+
+                    <a href="#pricing" class="block p-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">Pricing</a>
+                </div>
+
+                <!-- Mobile CTA -->
+                <div class="pt-4 border-t border-gray-200 space-y-3">
+                    <a href="#" class="block text-center text-gray-600 hover:text-b-orange font-medium">Login</a>
+                    <a href="index.html#contact" class="block text-center bg-gradient-to-r from-b-orange to-orange-600 text-white font-semibold py-3 px-6 rounded-lg hover:shadow-lg transition-all duration-300">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (Re-styled from registration-services.html) -->
     <section class="py-20 lg:py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
         <div class="container mx-auto px-4 relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
-                    <div class="inline-block bg-gradient-to-r from-b-orange to-orange-500 text-white font-bold px-6 py-3 rounded-full text-sm mb-6 shadow-lg">
-                        ðŸ’° Income Tax Services
+                    <div class="inline-block bg-gradient-to-r from-b-blue to-indigo-500 text-white font-bold px-6 py-3 rounded-full text-sm mb-6 shadow-lg">
+                        <i data-feather="file-plus" class="inline-block w-4 h-4 mr-2"></i> End-to-End Registration Services
                     </div>
                     <h1 class="text-4xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">
-                        Maximize Your Savings, <span class="gradient-text">Minimize Your Stress</span>
+                        Complete Registration <span class="gradient-text">Solutions</span>
                     </h1>
                     <p class="text-gray-600 text-lg lg:text-xl mb-8 leading-relaxed">
-                        Expert income tax filing and advisory services for individuals and businesses. We ensure accuracy, compliance, and maximum tax refunds.
+                        Streamline your business compliance with our comprehensive registration services. From MSME to FSSAI, we handle all your registration needs efficiently and professionally.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="index.html#contact" class="bg-gradient-to-r from-b-orange to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg inline-block">
-                            File Your ITR Now
+                        <a href="index.html#contact" class="bg-gradient-to-r from-b-blue to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg inline-block">
+                            Get Expert Help
                         </a>
-                        <a href="#pricing" class="border-2 border-gray-300 hover:border-b-orange text-gray-700 hover:text-b-orange font-bold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 text-lg inline-block">
-                            View Tax Plans
+                        <a href="#pricing" class="border-2 border-gray-300 hover:border-b-blue text-gray-700 hover:text-b-blue font-bold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 text-lg inline-block">
+                            View Service Pricing
                         </a>
                     </div>
                 </div>
                 <div>
-                    <video src="/video/it file.mov" autoplay loop muted class="w-[600px] h-[600px] object-cover mx-auto rounded-2xl shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/600x600/4F46E5/ffffff?text=Income+Tax+Services';"></video>
+                    <video class="w-full max-w-2xl mx-auto rounded-xl shadow-lg" autoplay muted loop playsinline>
+                        <source src="video/regis.mp4" type="video/mp4">
+                        <img src="images/enterprise.png" alt="Registration Services" class="w-full h-auto max-w-xl mx-auto" onerror="this.onerror=null; this.src='https://placehold.co/600x400/4F46E5/ffffff?text=Registration+Services';">
+                    </video>
                 </div>
             </div>
         </div>
@@ -677,12 +716,12 @@
     <nav class="sub-nav">
         <div class="container mx-auto px-4">
             <div class="flex justify-center overflow-x-auto">
-                <a href="#pan-card" class="sub-nav-link">PAN Card</a>
-                <a href="#itr-filing" class="sub-nav-link">ITR Filing</a>
-                <a href="#tds-filing" class="sub-nav-link">TDS Filing</a>
-                <a href="#tan-registration" class="sub-nav-link">TAN Registration</a>
-                <a href="#15ca-15cb" class="sub-nav-link">15CA-15CB Filing</a>
-                <a href="#tax-notice" class="sub-nav-link">Income Tax Notice</a>
+                <a href="#msme" class="sub-nav-link">MSME / Udyam</a>
+                <a href="#startup-india" class="sub-nav-link">Startup India</a>
+                <a href="#fssai" class="sub-nav-link">FSSAI</a>
+                <a href="#iec" class="sub-nav-link">Import Export Code</a>
+                <a href="#pf" class="sub-nav-link">PF Registration</a>
+                <a href="#esi" class="sub-nav-link">ESI Registration</a>
             </div>
         </div>
     </nav>
@@ -692,174 +731,174 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl lg:text-5xl font-bold text-gray-800 mb-6">
-                    Complete <span class="gradient-text">Income Tax Solutions</span>
+                    A Full Suite of <span class="gradient-text">Registration Services</span>
                 </h2>
                 <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-                    From individual ITR filing to corporate tax planning, we offer a full range of services to manage your tax obligations efficiently.
+                    We handle every registration requirement for your business, ensuring you stay compliant and can focus on growth.
                 </p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- PAN Card Card -->
+                <!-- MSME Card -->
                 <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-b-orange to-orange-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="credit-card" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">PAN Card</h3>
-                    <p class="text-gray-600 mb-6">Apply for a new PAN card or get corrections done quickly and easily with our assistance.</p>
-                    <a href="#pan-card" class="font-semibold text-b-orange hover:underline">Learn More &rarr;</a>
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="award" class="w-8 h-8 text-white"></i></div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">MSME / Udyam Registration</h3>
+                    <p class="text-gray-600 mb-6">Register your business under the MSME scheme to avail government benefits and subsidies.</p>
+                    <a href="#msme" class="font-semibold text-green-600 hover:underline">Learn More &rarr;</a>
                 </div>
-                <!-- ITR Filing Card -->
+                <!-- Startup India Card -->
                 <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="file-text" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Income Tax Return Filing</h3>
-                    <p class="text-gray-600 mb-6">Accurate and timely filing of Income Tax Returns for individuals and businesses.</p>
-                    <a href="#itr-filing" class="font-semibold text-green-600 hover:underline">Learn More &rarr;</a>
+                    <div class="w-16 h-16 bg-gradient-to-r from-b-blue to-indigo-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="zap" class="w-8 h-8 text-white"></i></div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Startup India Registration</h3>
+                    <p class="text-gray-600 mb-6">Get recognized as a startup to access tax exemptions and funding opportunities.</p>
+                    <a href="#startup-india" class="font-semibold text-b-blue hover:underline">Learn More &rarr;</a>
                 </div>
-                <!-- TDS Filing Card -->
+                <!-- FSSAI Card -->
                 <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-b-blue to-indigo-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="percent" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">TDS Return Filing</h3>
-                    <p class="text-gray-600 mb-6">Hassle-free preparation and filing of TDS returns for businesses.</p>
-                    <a href="#tds-filing" class="font-semibold text-b-blue hover:underline">Learn More &rarr;</a>
+                    <div class="w-16 h-16 bg-gradient-to-r from-b-orange to-orange-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="shield" class="w-8 h-8 text-white"></i></div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">FSSAI Registration</h3>
+                    <p class="text-gray-600 mb-6">Mandatory food safety license for all food business operators in India.</p>
+                    <a href="#fssai" class="font-semibold text-b-orange hover:underline">Learn More &rarr;</a>
                 </div>
-                <!-- TAN Registration Card -->
+                <!-- IEC Card -->
                 <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="user-plus" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">TAN Registration</h3>
-                    <p class="text-gray-600 mb-6">Get your Tax Deduction and Collection Account Number (TAN) required for TDS deduction.</p>
-                    <a href="#tan-registration" class="font-semibold text-purple-600 hover:underline">Learn More &rarr;</a>
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="globe" class="w-8 h-8 text-white"></i></div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Import Export Code (IEC)</h3>
+                    <p class="text-gray-600 mb-6">Essential 10-digit code for businesses looking to import or export goods.</p>
+                    <a href="#iec" class="font-semibold text-purple-600 hover:underline">Learn More &rarr;</a>
                 </div>
-                <!-- 15CA-15CB Filing Card -->
+                <!-- PF Card -->
                 <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-rose-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="globe" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">15CA - 15CB Filing</h3>
-                    <p class="text-gray-600 mb-6">Certification for foreign remittances to ensure compliance with income tax regulations.</p>
-                    <a href="#15ca-15cb" class="font-semibold text-red-600 hover:underline">Learn More &rarr;</a>
+                    <div class="w-16 h-16 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="users" class="w-8 h-8 text-white"></i></div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">PF Registration</h3>
+                    <p class="text-gray-600 mb-6">Mandatory for businesses with 20+ employees to ensure employee welfare.</p>
+                    <a href="#pf" class="font-semibold text-teal-600 hover:underline">Learn More &rarr;</a>
                 </div>
-                <!-- Income Tax Notice Card -->
+                <!-- ESI Card -->
                 <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="alert-triangle" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Income Tax Notice</h3>
-                    <p class="text-gray-600 mb-6">Expert assistance in understanding and replying to notices from the Income Tax department.</p>
-                    <a href="#tax-notice" class="font-semibold text-yellow-600 hover:underline">Learn More &rarr;</a>
+                    <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-rose-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="heart" class="w-8 h-8 text-white"></i></div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">ESI Registration</h3>
+                    <p class="text-gray-600 mb-6">Provide health insurance and medical benefits to your employees.</p>
+                    <a href="#esi" class="font-semibold text-red-600 hover:underline">Learn More &rarr;</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Detailed Service Sections -->
-    <div id="pan-card" class="pt-20">
+    <div id="msme" class="pt-20">
         <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
             <div class="container mx-auto px-4">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">PAN Card Services</h2>
-                        <p class="text-gray-600 text-lg mb-8">The Permanent Account Number (PAN) is a unique ten-digit alphanumeric number issued by the Income Tax Department. It is mandatory for all financial transactions. We assist in applying for a new PAN card and making corrections to existing ones.</p>
+                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">MSME / Udyam Registration</h2>
+                        <p class="text-gray-600 text-lg mb-8">Registering your business as a Micro, Small, and Medium Enterprise (MSME) through the Udyam portal unlocks numerous government benefits. This includes access to collateral-free bank loans, subsidies on patents and trademarks, protection against delayed payments, and eligibility for various government schemes and tenders.</p>
                         <ul class="space-y-4 text-gray-700">
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Application for new PAN for individuals and businesses.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Correction of details like name, date of birth, etc.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Track the status of your PAN card application.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Access to government subsidies & benefits.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Eligibility for priority sector lending from banks.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Receive your Udyam certificate in 1-2 working days.</li>
                         </ul>
-                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-b-orange to-orange-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Apply for PAN</a>
+                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Register as MSME</a>
                     </div>
-                    <img src="/images/it-1.png" alt="PAN Card" class="w-full h-auto max-w-md mx-auto rounded-2xl shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F97316/ffffff?text=PAN+Card';">
+                    <img src="/images/r-1.png" alt="MSME Registration" class="w-full h-auto rounded-2xl shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/600x400/10B981/ffffff?text=MSME+Registration';">
                 </div>
             </div>
         </section>
     </div>
 
-    <div id="itr-filing" class="pt-20">
+    <div id="startup-india" class="pt-20">
         <section class="py-20 bg-white">
             <div class="container mx-auto px-4">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <img src="/images/it-2.png" alt="ITR Filing" class="w-full h-auto max-w-md mx-auto rounded-2xl shadow-xl lg:order-last" onerror="this.onerror=null; this.src='https://placehold.co/600x400/10B981/ffffff?text=ITR+Filing';">
+                    <img src="/images/r-2.png" alt="Startup India Registration" class="w-full h-auto rounded-2xl shadow-xl lg:order-last" onerror="this.onerror=null; this.src='https://placehold.co/600x400/4F46E5/ffffff?text=Startup+India';">
                     <div>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">Income Tax Return Filing</h2>
-                        <p class="text-gray-600 text-lg mb-8">Filing your Income Tax Return (ITR) is a legal obligation. We simplify this process for salaried individuals, freelancers, and businesses. Our experts ensure all your income sources, deductions, and exemptions are correctly reported to maximize your refund and ensure compliance.</p>
+                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">Startup India Registration</h2>
+                        <p class="text-gray-600 text-lg mb-8">The Startup India initiative provides a platform for innovative startups to grow. By getting recognized under this scheme, your business can avail a 3-year tax holiday, access to a Fund of Funds for capital, simplified compliance, and opportunities to network and participate in government projects.</p>
                         <ul class="space-y-4 text-gray-700">
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>For Salaried, Freelancers, and Business Owners.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Claim all eligible deductions under Section 80C, 80D, etc.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Accurate computation of capital gains and other incomes.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Enjoy a 3-year income tax holiday on profits.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Access to government funds and venture capital networks.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Fast-tracked patent applications and IPR protection.</li>
                         </ul>
-                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">File Your ITR</a>
+                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-b-blue to-indigo-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Get Startup Recognition</a>
                     </div>
                 </div>
             </div>
         </section>
     </div>
 
-    <div id="tds-filing" class="pt-20">
+    <div id="fssai" class="pt-20">
         <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
             <div class="container mx-auto px-4">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">TDS Return Filing</h2>
-                        <p class="text-gray-600 text-lg mb-8">If you are a business owner, you are required to deduct tax at source (TDS) on certain payments and file TDS returns. We manage the entire TDS compliance process, from calculating TDS and depositing it on time to filing quarterly returns (Form 24Q for salaries, Form 26Q for other payments) and issuing TDS certificates.</p>
+                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">FSSAI Registration</h2>
+                        <p class="text-gray-600 text-lg mb-8">A Food Safety and Standard Authority of India (FSSAI) license is mandatory for any business involved in the manufacturing, processing, storage, distribution, or sale of food products. It ensures food quality and safety, building consumer trust and legal compliance. We help you get the right FSSAI license—Basic, State, or Central—based on your business scale.</p>
                         <ul class="space-y-4 text-gray-700">
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Timely filing of quarterly TDS returns.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Accurate calculation and deposit of TDS.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Generation and issuance of Form 16/16A to deductees.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Mandatory for all food business operators.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Builds credibility and customer trust.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Ensures legal compliance and avoids penalties.</li>
                         </ul>
-                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-b-blue to-indigo-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">File TDS Returns</a>
+                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-b-orange to-orange-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Get FSSAI License</a>
                     </div>
-                    <img src="/images/it-3.png" alt="TDS Filing" class="w-full h-auto max-w-md mx-auto rounded-2xl shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/600x400/4F46E5/ffffff?text=TDS+Filing';">
+                    <img src="/images/r-3.png" alt="FSSAI Registration" class="w-full h-auto rounded-2xl shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F97316/ffffff?text=FSSAI+License';">
                 </div>
             </div>
         </section>
     </div>
 
-    <div id="tan-registration" class="pt-20">
+    <div id="iec" class="pt-20">
         <section class="py-20 bg-white">
             <div class="container mx-auto px-4">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <img src="/images/it-4.png" alt="TAN Registration" class="w-full h-auto max-w-md mx-auto rounded-2xl shadow-xl lg:order-last" onerror="this.onerror=null; this.src='https://placehold.co/600x400/8B5CF6/ffffff?text=TAN+Registration';">
+                    <img src="/images/r-4.png" alt="Import Export Code" class="w-full h-auto rounded-2xl shadow-xl lg:order-last" onerror="this.onerror=null; this.src='https://placehold.co/600x400/8B5CF6/ffffff?text=Import+Export+Code';">
                     <div>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">TAN Registration</h2>
-                        <p class="text-gray-600 text-lg mb-8">Tax Deduction and Collection Account Number (TAN) is a 10-digit alphanumeric number required for all persons who are responsible for deducting or collecting tax. We assist you in obtaining your TAN registration quickly and efficiently, so you can comply with TDS regulations.</p>
+                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">Import Export Code (IEC)</h2>
+                        <p class="text-gray-600 text-lg mb-8">The Import Export Code (IEC) is a mandatory 10-digit code for any business engaged in the import or export of goods and services from India. Issued by the DGFT, this code has lifetime validity and is essential for clearing customs, shipping goods, and processing bank transactions for foreign trade.</p>
                         <ul class="space-y-4 text-gray-700">
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Mandatory for all tax deductors.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Hassle-free application process.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Get your TAN within 7-10 working days.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Enables global market access for your products.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Lifetime validity with no need for renewal.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Quick online application process.</li>
                         </ul>
-                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-purple-500 to-pink-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Get Your TAN</a>
+                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-purple-500 to-pink-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Get Your IEC</a>
                     </div>
                 </div>
             </div>
         </section>
     </div>
 
-    <div id="15ca-15cb" class="pt-20">
+    <div id="pf" class="pt-20">
         <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
             <div class="container mx-auto px-4">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">15CA - 15CB Filing</h2>
-                        <p class="text-gray-600 text-lg mb-8">When making payments to a non-resident, a declaration in Form 15CA and a certificate from a Chartered Accountant in Form 15CB are required. We provide expert services for the preparation and filing of these forms to ensure your foreign remittances are compliant with the Income Tax Act.</p>
+                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">PF Registration</h2>
+                        <p class="text-gray-600 text-lg mb-8">Provident Fund (PF) registration is mandatory for businesses employing 20 or more people. It is a social security scheme that provides retirement benefits to employees. Compliance with EPF regulations is crucial for employee welfare and avoiding legal penalties. We handle the complete registration and guide you on monthly compliance.</p>
                         <ul class="space-y-4 text-gray-700">
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>For payments made to non-residents.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Certification by a qualified Chartered Accountant.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Ensures compliance with international tax regulations.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Ensures compliance with employee welfare laws.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Provides a retirement fund for your employees.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Hassle-free online registration process.</li>
                         </ul>
-                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-red-500 to-rose-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">File 15CA-15CB</a>
+                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Register for PF</a>
                     </div>
-                    <img src="/images/it-5.png" alt="15CA-15CB Filing" class="w-full h-auto max-w-md mx-auto rounded-2xl shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/600x400/EF4444/ffffff?text=15CA-15CB+Filing';">
+                    <img src="/images/r-5.png" alt="PF Registration" class="w-full h-auto rounded-2xl shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/600x400/14B8A6/ffffff?text=PF+Registration';">
                 </div>
             </div>
         </section>
     </div>
 
-    <div id="tax-notice" class="pt-20">
+    <div id="esi" class="pt-20">
         <section class="py-20 bg-white">
             <div class="container mx-auto px-4">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <img src="/images/it-6.png" alt="Income Tax Notice" class="w-full h-auto max-w-md mx-auto rounded-2xl shadow-xl lg:order-last" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F59E0B/ffffff?text=Income+Tax+Notice';">
+                    <img src="/images/r-6.png" alt="ESI Registration" class="w-full h-auto rounded-2xl shadow-xl lg:order-last" onerror="this.onerror=null; this.src='https://placehold.co/600x400/EF4444/ffffff?text=ESI+Registration';">
                     <div>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">Income Tax Notice Reply</h2>
-                        <p class="text-gray-600 text-lg mb-8">Receiving a notice from the Income Tax Department can be daunting. Our team of experts helps you understand the reason for the notice, gathers the necessary information, and drafts a comprehensive and accurate response. We ensure your reply is filed within the due date to avoid further complications.</p>
+                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">ESI Registration</h2>
+                        <p class="text-gray-600 text-lg mb-8">Employee State Insurance (ESI) is a health insurance scheme for Indian workers. It is mandatory for establishments with 10 or more employees (20 in some states). ESI provides medical, sickness, maternity, and disability benefits to employees and their families, ensuring their well-being and security.</p>
                         <ul class="space-y-4 text-gray-700">
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Expert analysis of tax notices (e.g., u/s 143(1), 139(9), 148).</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Preparation and submission of a legally sound reply.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Representation before tax authorities if required.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Comprehensive health insurance coverage for employees.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Fulfills legal requirements for employee benefits.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Access to a wide network of ESI hospitals and dispensaries.</li>
                         </ul>
-                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-yellow-500 to-amber-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Respond to a Notice</a>
+                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-red-500 to-rose-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Register for ESI</a>
                     </div>
                 </div>
             </div>
@@ -871,59 +910,56 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl lg:text-5xl font-bold text-gray-800 mb-6">
-                    Transparent <span class="gradient-text">Pricing for Income Tax</span>
+                    Transparent <span class="gradient-text">Pricing for Registrations</span>
                 </h2>
                 <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-                    Choose a plan that fits your needs. Simple, upfront pricing with no surprises.
+                    Choose the specific service you need. No hidden fees, just straightforward pricing for expert work.
                 </p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Basic Plan -->
+                <!-- MSME Plan -->
                 <div class="card bg-white rounded-3xl shadow-lg p-8 border border-gray-100 flex flex-col">
                     <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Salaried Individuals</h3>
-                        <div class="text-4xl font-bold text-b-orange mb-2">â‚¹799</div>
-                        <p class="text-gray-600">Per Assessment Year</p>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">MSME / Udyam</h3>
+                        <div class="text-4xl font-bold text-b-blue mb-2">₹999</div>
+                        <p class="text-gray-600">One-time fee</p>
                     </div>
                     <ul class="feature-list space-y-4 mb-8 flex-grow">
-                        <li>ITR-1/ITR-2 Filing</li>
-                        <li>Salary & House Property Income</li>
-                        <li>Deduction Claims (80C, 80D)</li>
-                        <li>Tax Computation Summary</li>
+                        <li>Udyam Registration Certificate</li>
+                        <li>Document Verification</li>
+                        <li>Application Tracking</li>
                     </ul>
                     <a href="index.html#contact" class="w-full bg-gray-100 text-gray-700 font-semibold py-3 rounded-xl hover:bg-gray-200 transition-all duration-300 block text-center">Get Started</a>
                 </div>
-                <!-- Professional Plan -->
-                <div class="card bg-gradient-to-br from-b-orange to-orange-600 text-white rounded-3xl shadow-xl p-8 border-4 border-orange-200 relative flex flex-col">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2"><span class="bg-gradient-to-r from-b-orange to-orange-500 text-white px-6 py-2 rounded-full text-sm font-semibold">Most Popular</span></div>
+                <!-- Startup India Plan -->
+                <div class="card bg-gradient-to-br from-b-blue to-indigo-600 text-white rounded-3xl shadow-xl p-8 border-4 border-indigo-200 relative flex flex-col">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2"><span class="bg-gradient-to-r from-b-blue to-indigo-500 text-white px-6 py-2 rounded-full text-sm font-semibold">Most Popular</span></div>
                     <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold mb-4">Business & Professionals</h3>
-                        <div class="text-4xl font-bold mb-2">â‚¹2,499</div>
-                        <p>Starting price</p>
+                        <h3 class="text-2xl font-bold mb-4">Startup India</h3>
+                        <div class="text-4xl font-bold mb-2">₹1,499</div>
+                        <p>One-time fee</p>
                     </div>
                     <ul class="feature-list space-y-4 mb-8 flex-grow text-white">
-                        <li>ITR-3/ITR-4 Filing</li>
-                        <li>Presumptive Taxation</li>
-                        <li>Profit & Loss Statement</li>
-                        <li>Balance Sheet Preparation</li>
-                        <li>Dedicated Expert Support</li>
+                        <li>DPIIT Recognition</li>
+                        <li>Tax Exemption Advisory</li>
+                        <li>Application Filing</li>
+                        <li>Dedicated Support</li>
                     </ul>
-                    <a href="index.html#contact" class="w-full bg-white text-b-orange font-semibold py-3 rounded-xl hover:bg-gray-50 transition-all duration-300 block text-center">Choose Pro</a>
+                    <a href="index.html#contact" class="w-full bg-white text-b-blue font-semibold py-3 rounded-xl hover:bg-gray-50 transition-all duration-300 block text-center">Choose Startup</a>
                 </div>
-                <!-- Premium Plan -->
+                <!-- FSSAI Plan -->
                 <div class="card bg-white rounded-3xl shadow-lg p-8 border border-gray-100 flex flex-col">
                     <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Capital Gains & F&O</h3>
-                        <div class="text-4xl font-bold text-b-orange mb-2">â‚¹4,999</div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">FSSAI License</h3>
+                        <div class="text-4xl font-bold text-b-blue mb-2">₹799</div>
                         <p>Starting price</p>
                     </div>
                     <ul class="feature-list space-y-4 mb-8 flex-grow">
-                        <li>For Traders and Investors</li>
-                        <li>Stocks, Mutual Funds, Crypto</li>
-                        <li>Futures & Options Income</li>
-                        <li>Portfolio Reconciliation</li>
+                        <li>Basic Registration</li>
+                        <li>Business Type Consultation</li>
+                        <li>Application Support</li>
                     </ul>
-                    <a href="index.html#contact" class="w-full bg-gray-100 text-gray-700 font-semibold py-3 rounded-xl hover:bg-gray-200 transition-all duration-300 block text-center">Choose Premium</a>
+                    <a href="index.html#contact" class="w-full bg-gray-100 text-gray-700 font-semibold py-3 rounded-xl hover:bg-gray-200 transition-all duration-300 block text-center">Get FSSAI License</a>
                 </div>
             </div>
         </div>
@@ -934,10 +970,10 @@
         <div class="container mx-auto px-4 max-w-4xl">
             <div class="text-center mb-16">
                 <h2 class="text-3xl lg:text-5xl font-bold text-gray-800 mb-6">
-                    Income Tax <span class="gradient-text">FAQs</span>
+                    Frequently Asked <span class="gradient-text">Questions</span>
                 </h2>
                 <p class="text-gray-600 text-lg">
-                    Your common questions about income tax, answered by our experts.
+                    Find answers to common questions about our registration services.
                 </p>
             </div>
             <div id="faq-container">
@@ -949,9 +985,9 @@
     <!-- CTA Section -->
     <section class="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl lg:text-5xl font-bold mb-6">Ready to Sort Out Your Taxes?</h2>
-            <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">Don't let tax season stress you out. Let our experts handle the complexities so you can be confident and compliant.</p>
-            <a href="index.html#contact" class="bg-gradient-to-r from-b-orange to-orange-500 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-10 py-5 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg inline-block">Talk to a Tax Expert Today</a>
+            <h2 class="text-3xl lg:text-5xl font-bold mb-6">Ready to Secure Your Business Registrations?</h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">Let our experts handle the complexities of business registrations so you can focus on what you do best—growing your business.</p>
+            <a href="index.html#contact" class="bg-gradient-to-r from-b-orange to-orange-500 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-10 py-5 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg inline-block">Talk to a Registration Expert Today</a>
         </div>
     </section>
 
@@ -1063,25 +1099,25 @@
                                     Our Services
                                 </h5>
                                 <ul class="space-y-3">
-                                    <li><a href="/html/Income-Taxes.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                    <li><a href="Income-Taxes.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
                                         Income Tax Returns
                                     </a></li>
-                                    <li><a href="/html/gst.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                    <li><a href="gst.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
-                                        GST Registration
+                                        GST Services
                                     </a></li>
-                                    <li><a href="/html/Income-Taxes.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                    <li><a href="trademark.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
-                                        Tax Planning
+                                        Trademark
                                     </a></li>
-                                    <li><a href="/html/business-incorporation.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                    <li><a href="business-incorporation.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
                                         Business Registration
                                     </a></li>
-                                    <li><a href="#" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                    <li><a href="compliance.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
-                                        Audit & Compliance
+                                        Compliance
                                     </a></li>
                         </ul>
                     </div>
@@ -1193,9 +1229,9 @@
                             <p>&copy; 2024 Big4India. All rights reserved.</p>
                             <div class="flex items-center space-x-4">
                                 <a href="#" class="hover:text-b-orange transition-colors duration-300">Privacy Policy</a>
-                                <span class="text-slate-400">â€¢</span>
+                                <span class="text-slate-400">•</span>
                                 <a href="#" class="hover:text-b-orange transition-colors duration-300">Terms of Service</a>
-                                <span class="text-slate-400">â€¢</span>
+                                <span class="text-slate-400">•</span>
                                 <a href="#" class="hover:text-b-orange transition-colors duration-300">Cookie Policy</a>
                             </div>
                         </div>
@@ -1247,7 +1283,7 @@
         });
 
         // Sub-nav active state on scroll
-        const sections = document.querySelectorAll('div[id^="tax-"], div[id^="itr-"], div[id^="tds-"], div[id^="pan-"], div[id^="15ca-15cb"]');
+        const sections = document.querySelectorAll('div[id]');
         const navLinks = document.querySelectorAll('.sub-nav-link');
         window.addEventListener('scroll', () => {
             let current = '';
@@ -1267,11 +1303,11 @@
 
         // FAQ Data
         const faqs = [
-            { q: "What is the due date for filing ITR?", a: "For individuals and non-audit cases, the due date is usually 31st July of the assessment year. For businesses requiring an audit, the due date is 31st October." },
-            { q: "What is Form 16?", a: "Form 16 is a certificate issued by your employer that provides details of the salary paid to you and the TDS deducted. It is a crucial document for filing your income tax return." },
-            { q: "What is the difference between PAN and TAN?", a: "PAN (Permanent Account Number) is required for all financial transactions and for filing income tax returns. TAN (Tax Deduction and Collection Account Number) is required for those who deduct or collect tax at source (TDS)." },
-            { q: "What is Form 15CA-15CB?", a: "Form 15CA is a declaration by the person remitting money abroad, and Form 15CB is a certificate from a Chartered Accountant. These are required for making payments to non-residents to ensure tax compliance." },
-            { q: "What should I do if I receive an income tax notice?", a: "Do not panic. Read the notice carefully to understand the reason. It is advisable to seek professional help to draft and file a timely and accurate response to avoid further complications." }
+            { q: "What is the main benefit of MSME registration?", a: "The primary benefit is access to government schemes like collateral-free loans, subsidies, and preference in government tenders, which helps small businesses grow." },
+            { q: "Who is eligible for Startup India registration?", a: "An entity is eligible if it's incorporated as a Private Limited Company, a Partnership Firm or an LLP, has been in existence for less than 10 years, and has an annual turnover not exceeding ₹100 crore. It must also be working towards innovation or improvement of products or services." },
+            { q: "Is FSSAI registration mandatory for home bakers?", a: "Yes, all food business operators, including home bakers and small-scale food businesses, are required to have an FSSAI registration or license, depending on their turnover." },
+            { q: "What is an Import Export Code (IEC)?", a: "IEC is a unique 10-digit code required by any person or company looking to start an import/export business in India. It is issued by the Directorate General of Foreign Trade (DGFT)." },
+            { q: "What is the difference between PF and ESI registration?", a: "Provident Fund (PF) is a retirement benefits scheme for employees, mandatory for establishments with 20 or more employees. Employee State Insurance (ESI) is a social security and health insurance scheme, mandatory for non-seasonal factories with 10 or more employees and other establishments depending on the state." }
         ];
 
         // FAQ Accordion functionality
@@ -1282,7 +1318,7 @@
             faqItem.innerHTML = `
                 <div class="faq-question">
                     <h4 class="text-lg font-semibold text-gray-800">${faq.q}</h4>
-                    <i data-feather="chevron-down" class="w-6 h-6 text-b-orange transition-transform duration-300"></i>
+                    <i data-feather="chevron-down" class="w-6 h-6 text-b-blue transition-transform duration-300"></i>
                 </div>
                 <div class="faq-answer">
                     <p class="text-gray-600 pb-6">${faq.a}</p>
@@ -1307,8 +1343,114 @@
                 } 
             });
         });
+        
+        // Mobile menu (basic toggle)
+        const mobileMenuBtn = document.getElementById('m-btn');
+        const mobileMenu = document.getElementById('m-menu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                mobileMenu.classList.toggle('active');
+                
+                // Update button icon
+                const icon = mobileMenuBtn.querySelector('i');
+                if (mobileMenu.classList.contains('active')) {
+                    icon.setAttribute('data-feather', 'x');
+                } else {
+                    icon.setAttribute('data-feather', 'menu');
+                }
+                feather.replace();
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    mobileMenu.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.setAttribute('data-feather', 'menu');
+                    feather.replace();
+                }
+            });
+        }
+
+        // Mobile dropdown functionality
+        document.querySelectorAll('.mobile-dropdown-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const dropdown = btn.parentElement;
+                const content = dropdown.querySelector('.mobile-dropdown-content');
+                const icon = btn.querySelector('i[data-feather="chevron-down"]');
+                
+                if (content) {
+                    const isHidden = content.classList.contains('hidden');
+                    
+                    // Close all other dropdowns
+                    document.querySelectorAll('.mobile-dropdown-content').forEach(otherContent => {
+                        if (otherContent !== content) {
+                            otherContent.classList.add('hidden');
+                            const otherIcon = otherContent.parentElement.querySelector('.mobile-dropdown-btn i[data-feather]');
+                            if (otherIcon) {
+                                otherIcon.style.transform = 'rotate(0deg)';
+                            }
+                        }
+                    });
+                    
+                    // Toggle current dropdown
+                    if (isHidden) {
+                        content.classList.remove('hidden');
+                        if (icon) icon.style.transform = 'rotate(180deg)';
+                    } else {
+                        content.classList.add('hidden');
+                        if (icon) icon.style.transform = 'rotate(0deg)';
+                    }
+                }
+            });
+        });
+
+        // Initialize Feather icons
+        feather.replace();
+
+        // Search functionality (Ctrl+K shortcut)
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                const searchInput = document.querySelector('.search-input');
+                if (searchInput) {
+                    searchInput.focus();
+                }
+            }
+        });
+
+        // Header scroll effect
+        let lastScrollTop = 0;
+        const headerElement = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                headerElement.classList.add('scrolled');
+            } else {
+                headerElement.classList.remove('scrolled');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
     </script>
-    <script src="js/mobile-navigation.js"></script>
 </body>
 </html>
-

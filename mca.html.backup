@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Income Tax Services - Big4India</title>
+    <title>MCA Services - Big4India</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,7 +43,7 @@
         .card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
         .feature-list li { position: relative; padding-left: 1.5rem; }
-        .feature-list li::before { content: "âœ“"; position: absolute; left: 0; color: #F97316; font-weight: bold; }
+        .feature-list li::before { content: "✓"; position: absolute; left: 0; color: #F97316; font-weight: bold; }
         
         /* Header Styles */
         .header {
@@ -358,7 +358,6 @@
             transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
         }
     </style>
-    <link rel="stylesheet" href="css/mobile-optimizations.css">
 </head>
 <body>
     <!-- Header Section -->
@@ -492,7 +491,7 @@
                                             </div>
                                         </div>
                                         <div class="text-right">
-                                            <div class="text-2xl font-bold text-orange-600">â‚¹4,999</div>
+                                            <div class="text-2xl font-bold text-orange-600">₹4,999</div>
                                             <div class="text-sm text-gray-500">One-time setup</div>
                                         </div>
                                     </div>
@@ -610,7 +609,7 @@
                         </div>
                         <input type="text" placeholder="Search services..." class="search-input">
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                            <kbd class="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">âŒ˜K</kbd>
+                            <kbd class="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">⌘K</kbd>
                         </div>
                     </div>
 
@@ -641,6 +640,74 @@
                 </div>
             </nav>
         </div>
+
+        <!-- Mobile Menu -->
+        <div id="m-menu" class="mobile-menu">
+            <div class="px-4 py-6 space-y-4">
+                <!-- Mobile Search -->
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i data-feather="search" class="w-5 h-5 text-gray-400"></i>
+                    </div>
+                    <input type="text" placeholder="Search services..." class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-b-orange/50">
+                </div>
+
+                <!-- Mobile Navigation Links -->
+                <div class="space-y-2">
+                    <div class="mobile-dropdown">
+                        <button class="mobile-dropdown-btn w-full flex items-center justify-between p-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+                            <span class="font-medium">Products</span>
+                            <i data-feather="chevron-down" class="w-5 h-5 transition-transform"></i>
+                        </button>
+                        <div class="mobile-dropdown-content hidden pl-4 space-y-2 mt-2">
+                            <a href="business-incorporation.html" class="block p-2 text-gray-600 hover:text-b-orange">Business Incorporation</a>
+                            <a href="registration-services.html" class="block p-2 text-gray-600 hover:text-b-orange">Registration Services</a>
+                            <a href="gst.html" class="block p-2 text-gray-600 hover:text-b-orange">GST Services</a>
+                            <a href="Income-Taxes.html" class="block p-2 text-gray-600 hover:text-b-orange">Income Tax</a>
+                            <a href="trademark.html" class="block p-2 text-gray-600 hover:text-b-orange">Trademark</a>
+                            <a href="mca.html" class="block p-2 text-b-orange font-semibold">MCA Services</a>
+                            <a href="compliance.html" class="block p-2 text-gray-600 hover:text-b-orange">Compliance</a>
+                        </div>
+                    </div>
+
+                    <div class="mobile-dropdown">
+                        <button class="mobile-dropdown-btn w-full flex items-center justify-between p-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+                            <span class="font-medium">Resources</span>
+                            <i data-feather="chevron-down" class="w-5 h-5 transition-transform"></i>
+                        </button>
+                        <div class="mobile-dropdown-content hidden pl-4 space-y-2 mt-2">
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Blog</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Tax Guides</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Calculators</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Video Tutorials</a>
+                        </div>
+                    </div>
+
+                    <div class="mobile-dropdown">
+                        <button class="mobile-dropdown-btn w-full flex items-center justify-between p-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+                            <span class="font-medium">Company</span>
+                            <i data-feather="chevron-down" class="w-5 h-5 transition-transform"></i>
+                        </button>
+                        <div class="mobile-dropdown-content hidden pl-4 space-y-2 mt-2">
+                            <a href="about-us.html" class="block p-2 text-gray-600 hover:text-b-orange">About Us</a>
+                            <a href="carrer.html" class="block p-2 text-gray-600 hover:text-b-orange">Careers</a>
+                            <a href="contactus.html" class="block p-2 text-gray-600 hover:text-b-orange">Contact Us</a>
+                            <a href="#" class="block p-2 text-gray-600 hover:text-b-orange">Awards</a>
+                        </div>
+                    </div>
+
+                    <a href="#pricing" class="block p-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">Pricing</a>
+                </div>
+
+                <!-- Mobile CTA -->
+                <div class="pt-4 border-t border-gray-200 space-y-3">
+                    <a href="#" class="block text-center text-gray-600 hover:text-b-orange font-medium">Login</a>
+                    <a href="index.html#contact" class="block text-center bg-gradient-to-r from-b-orange to-orange-600 text-white font-semibold py-3 px-6 rounded-lg hover:shadow-lg transition-all duration-300">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -649,25 +716,25 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
                     <div class="inline-block bg-gradient-to-r from-b-orange to-orange-500 text-white font-bold px-6 py-3 rounded-full text-sm mb-6 shadow-lg">
-                        ðŸ’° Income Tax Services
+                        🏢 End-to-End MCA Services
                     </div>
                     <h1 class="text-4xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">
-                        Maximize Your Savings, <span class="gradient-text">Minimize Your Stress</span>
+                        Total MCA Compliance, <span class="gradient-text">Simplified</span>
                     </h1>
                     <p class="text-gray-600 text-lg lg:text-xl mb-8 leading-relaxed">
-                        Expert income tax filing and advisory services for individuals and businesses. We ensure accuracy, compliance, and maximum tax refunds.
+                        From company incorporation and annual filings to director changes and compliance management, our comprehensive MCA services cover every aspect of your corporate legal needs.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="index.html#contact" class="bg-gradient-to-r from-b-orange to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg inline-block">
-                            File Your ITR Now
+                            Get Expert MCA Help
                         </a>
                         <a href="#pricing" class="border-2 border-gray-300 hover:border-b-orange text-gray-700 hover:text-b-orange font-bold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 text-lg inline-block">
-                            View Tax Plans
+                            View Service Pricing
                         </a>
                     </div>
                 </div>
                 <div>
-                    <video src="/video/it file.mov" autoplay loop muted class="w-[600px] h-[600px] object-cover mx-auto rounded-2xl shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/600x600/4F46E5/ffffff?text=Income+Tax+Services';"></video>
+                    <img src="images/constitution.png" alt="MCA Services" class="w-full h-auto max-w-lg mx-auto" onerror="this.onerror=null; this.src='https://placehold.co/600x400/4F46E5/ffffff?text=MCA+Compliance';">
                 </div>
             </div>
         </div>
@@ -677,12 +744,10 @@
     <nav class="sub-nav">
         <div class="container mx-auto px-4">
             <div class="flex justify-center overflow-x-auto">
-                <a href="#pan-card" class="sub-nav-link">PAN Card</a>
-                <a href="#itr-filing" class="sub-nav-link">ITR Filing</a>
-                <a href="#tds-filing" class="sub-nav-link">TDS Filing</a>
-                <a href="#tan-registration" class="sub-nav-link">TAN Registration</a>
-                <a href="#15ca-15cb" class="sub-nav-link">15CA-15CB Filing</a>
-                <a href="#tax-notice" class="sub-nav-link">Income Tax Notice</a>
+                <a href="#annual-compliance" class="sub-nav-link">Annual Compliance</a>
+                <a href="#company-director-changes" class="sub-nav-link">Company & Director Changes</a>
+                <a href="#din-kyc" class="sub-nav-link">DIN & KYC</a>
+                <a href="#setup-closure" class="sub-nav-link">Setup & Closure</a>
             </div>
         </div>
     </nav>
@@ -692,174 +757,126 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl lg:text-5xl font-bold text-gray-800 mb-6">
-                    Complete <span class="gradient-text">Income Tax Solutions</span>
+                    A Full Suite of <span class="gradient-text">MCA Services</span>
                 </h2>
                 <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-                    From individual ITR filing to corporate tax planning, we offer a full range of services to manage your tax obligations efficiently.
+                    We handle every MCA requirement for your business, ensuring you stay compliant and can focus on growth.
                 </p>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- PAN Card Card -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Annual Compliance Card -->
                 <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-b-orange to-orange-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="credit-card" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">PAN Card</h3>
-                    <p class="text-gray-600 mb-6">Apply for a new PAN card or get corrections done quickly and easily with our assistance.</p>
-                    <a href="#pan-card" class="font-semibold text-b-orange hover:underline">Learn More &rarr;</a>
+                    <div class="w-16 h-16 bg-gradient-to-r from-b-orange to-orange-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="file-text" class="w-8 h-8 text-white"></i></div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Annual Compliance</h3>
+                    <p class="text-gray-600 mb-6">Private Limited, OPC, and LLP Annual Compliance, including Form 11 and DPT-3 filings.</p>
+                    <a href="#annual-compliance" class="font-semibold text-b-orange hover:underline">Learn More &rarr;</a>
                 </div>
-                <!-- ITR Filing Card -->
+                <!-- Company & Director Changes Card -->
                 <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="file-text" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Income Tax Return Filing</h3>
-                    <p class="text-gray-600 mb-6">Accurate and timely filing of Income Tax Returns for individuals and businesses.</p>
-                    <a href="#itr-filing" class="font-semibold text-green-600 hover:underline">Learn More &rarr;</a>
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="edit" class="w-8 h-8 text-white"></i></div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Company & Director Changes</h3>
+                    <p class="text-gray-600 mb-6">Company Name/Address Change, Director Changes, Auditor Appointment, and MOA/AOA Amendments.</p>
+                    <a href="#company-director-changes" class="font-semibold text-green-600 hover:underline">Learn More &rarr;</a>
                 </div>
-                <!-- TDS Filing Card -->
+                <!-- DIN & KYC Card -->
                 <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-b-blue to-indigo-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="percent" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">TDS Return Filing</h3>
-                    <p class="text-gray-600 mb-6">Hassle-free preparation and filing of TDS returns for businesses.</p>
-                    <a href="#tds-filing" class="font-semibold text-b-blue hover:underline">Learn More &rarr;</a>
+                    <div class="w-16 h-16 bg-gradient-to-r from-b-blue to-indigo-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="user-check" class="w-8 h-8 text-white"></i></div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">DIN & KYC</h3>
+                    <p class="text-gray-600 mb-6">Services for Director Identification Number (DIN) eKYC and reactivation.</p>
+                    <a href="#din-kyc" class="font-semibold text-b-blue hover:underline">Learn More &rarr;</a>
                 </div>
-                <!-- TAN Registration Card -->
+                <!-- Setup & Closure Card -->
                 <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="user-plus" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">TAN Registration</h3>
-                    <p class="text-gray-600 mb-6">Get your Tax Deduction and Collection Account Number (TAN) required for TDS deduction.</p>
-                    <a href="#tan-registration" class="font-semibold text-purple-600 hover:underline">Learn More &rarr;</a>
-                </div>
-                <!-- 15CA-15CB Filing Card -->
-                <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-rose-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="globe" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">15CA - 15CB Filing</h3>
-                    <p class="text-gray-600 mb-6">Certification for foreign remittances to ensure compliance with income tax regulations.</p>
-                    <a href="#15ca-15cb" class="font-semibold text-red-600 hover:underline">Learn More &rarr;</a>
-                </div>
-                <!-- Income Tax Notice Card -->
-                <div class="card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                    <div class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="alert-triangle" class="w-8 h-8 text-white"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Income Tax Notice</h3>
-                    <p class="text-gray-600 mb-6">Expert assistance in understanding and replying to notices from the Income Tax department.</p>
-                    <a href="#tax-notice" class="font-semibold text-yellow-600 hover:underline">Learn More &rarr;</a>
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6"><i data-feather="power" class="w-8 h-8 text-white"></i></div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Setup & Closure</h3>
+                    <p class="text-gray-600 mb-6">Business Commencement Certificate (INC-20A) and winding up services for all company types.</p>
+                    <a href="#setup-closure" class="font-semibold text-purple-600 hover:underline">Learn More &rarr;</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Detailed Service Sections -->
-    <div id="pan-card" class="pt-20">
+    <div id="annual-compliance" class="pt-20">
         <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
             <div class="container mx-auto px-4">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">PAN Card Services</h2>
-                        <p class="text-gray-600 text-lg mb-8">The Permanent Account Number (PAN) is a unique ten-digit alphanumeric number issued by the Income Tax Department. It is mandatory for all financial transactions. We assist in applying for a new PAN card and making corrections to existing ones.</p>
+                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">Annual Compliance</h2>
+                        <p class="text-gray-600 text-lg mb-8">We handle all annual compliance requirements for Private Limited Companies, One Person Companies (OPC), and Limited Liability Partnerships (LLP). This includes filing annual returns, financial statements, and other necessary forms to keep your business compliant.</p>
                         <ul class="space-y-4 text-gray-700">
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Application for new PAN for individuals and businesses.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Correction of details like name, date of birth, etc.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Track the status of your PAN card application.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Private Limited Annual Compliance</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>One Person Company (OPC) Annual Compliance</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>LLP Annual Compliance</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>LLP Annual Return (Form 11)</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>DPT-3 Filing</li>
                         </ul>
-                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-b-orange to-orange-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Apply for PAN</a>
+                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-b-orange to-orange-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Ensure Compliance</a>
                     </div>
-                    <img src="/images/it-1.png" alt="PAN Card" class="w-full h-auto max-w-md mx-auto rounded-2xl shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F97316/ffffff?text=PAN+Card';">
+                    <img src="/images/mca-1.png" alt="Annual Compliance" class="w-full h-auto rounded-2xl shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F97316/ffffff?text=Annual+Compliance';">
                 </div>
             </div>
         </section>
     </div>
 
-    <div id="itr-filing" class="pt-20">
+    <div id="company-director-changes" class="pt-20">
         <section class="py-20 bg-white">
             <div class="container mx-auto px-4">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <img src="/images/it-2.png" alt="ITR Filing" class="w-full h-auto max-w-md mx-auto rounded-2xl shadow-xl lg:order-last" onerror="this.onerror=null; this.src='https://placehold.co/600x400/10B981/ffffff?text=ITR+Filing';">
+                    <img src="/images/mca-2.png" alt="Company & Director Changes" class="w-full h-auto rounded-2xl shadow-xl lg:order-last" onerror="this.onerror=null; this.src='https://placehold.co/600x400/10B981/ffffff?text=Company+Changes';">
                     <div>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">Income Tax Return Filing</h2>
-                        <p class="text-gray-600 text-lg mb-8">Filing your Income Tax Return (ITR) is a legal obligation. We simplify this process for salaried individuals, freelancers, and businesses. Our experts ensure all your income sources, deductions, and exemptions are correctly reported to maximize your refund and ensure compliance.</p>
+                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">Company & Director Changes</h2>
+                        <p class="text-gray-600 text-lg mb-8">As your business evolves, so do its needs. We assist with all types of company and director changes, including name and address updates, amendments to your MOA and AOA, and changes in directorship.</p>
                         <ul class="space-y-4 text-gray-700">
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>For Salaried, Freelancers, and Business Owners.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Claim all eligible deductions under Section 80C, 80D, etc.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Accurate computation of capital gains and other incomes.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Company Name Change</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Company Address Change</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Change Director</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Remove Director</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Appointment of Auditor (ADT-1) Filing</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>MOA Amendment</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>AOA Amendment</li>
                         </ul>
-                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">File Your ITR</a>
+                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Make Changes</a>
                     </div>
                 </div>
             </div>
         </section>
     </div>
 
-    <div id="tds-filing" class="pt-20">
+    <div id="din-kyc" class="pt-20">
         <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
             <div class="container mx-auto px-4">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">TDS Return Filing</h2>
-                        <p class="text-gray-600 text-lg mb-8">If you are a business owner, you are required to deduct tax at source (TDS) on certain payments and file TDS returns. We manage the entire TDS compliance process, from calculating TDS and depositing it on time to filing quarterly returns (Form 24Q for salaries, Form 26Q for other payments) and issuing TDS certificates.</p>
+                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">DIN & KYC Services</h2>
+                        <p class="text-gray-600 text-lg mb-8">We provide services for Director Identification Number (DIN) eKYC and reactivation. It is mandatory for all directors to file their KYC details with the MCA annually.</p>
                         <ul class="space-y-4 text-gray-700">
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Timely filing of quarterly TDS returns.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Accurate calculation and deposit of TDS.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Generation and issuance of Form 16/16A to deductees.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>DIN eKYC</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>DIN Reactivation</li>
                         </ul>
-                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-b-blue to-indigo-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">File TDS Returns</a>
+                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-b-blue to-indigo-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Manage DIN & KYC</a>
                     </div>
-                    <img src="/images/it-3.png" alt="TDS Filing" class="w-full h-auto max-w-md mx-auto rounded-2xl shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/600x400/4F46E5/ffffff?text=TDS+Filing';">
+                    <img src="/images/mca-3.png" alt="DIN & KYC Services" class="w-full h-auto rounded-2xl shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/600x400/4F46E5/ffffff?text=DIN+Services';">
                 </div>
             </div>
         </section>
     </div>
 
-    <div id="tan-registration" class="pt-20">
+    <div id="setup-closure" class="pt-20">
         <section class="py-20 bg-white">
             <div class="container mx-auto px-4">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <img src="/images/it-4.png" alt="TAN Registration" class="w-full h-auto max-w-md mx-auto rounded-2xl shadow-xl lg:order-last" onerror="this.onerror=null; this.src='https://placehold.co/600x400/8B5CF6/ffffff?text=TAN+Registration';">
+                    <img src="/images/mca-4.png" alt="Setup & Closure" class="w-full h-auto rounded-2xl shadow-xl lg:order-last" onerror="this.onerror=null; this.src='https://placehold.co/600x400/8B5CF6/ffffff?text=Setup+and+Closure';">
                     <div>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">TAN Registration</h2>
-                        <p class="text-gray-600 text-lg mb-8">Tax Deduction and Collection Account Number (TAN) is a 10-digit alphanumeric number required for all persons who are responsible for deducting or collecting tax. We assist you in obtaining your TAN registration quickly and efficiently, so you can comply with TDS regulations.</p>
+                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">Setup & Closure</h2>
+                        <p class="text-gray-600 text-lg mb-8">From starting your business with the required Commencement of Business Certificate (INC-20A) to the winding up of your company, we provide end-to-end services for the entire business lifecycle.</p>
                         <ul class="space-y-4 text-gray-700">
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Mandatory for all tax deductors.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Hassle-free application process.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Get your TAN within 7-10 working days.</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Business Commencement Certificate (INC-20A)</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Winding up - Company</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Winding up - One Person Company</li>
+                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Winding up - LLP</li>
                         </ul>
-                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-purple-500 to-pink-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Get Your TAN</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <div id="15ca-15cb" class="pt-20">
-        <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-            <div class="container mx-auto px-4">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">15CA - 15CB Filing</h2>
-                        <p class="text-gray-600 text-lg mb-8">When making payments to a non-resident, a declaration in Form 15CA and a certificate from a Chartered Accountant in Form 15CB are required. We provide expert services for the preparation and filing of these forms to ensure your foreign remittances are compliant with the Income Tax Act.</p>
-                        <ul class="space-y-4 text-gray-700">
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>For payments made to non-residents.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Certification by a qualified Chartered Accountant.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Ensures compliance with international tax regulations.</li>
-                        </ul>
-                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-red-500 to-rose-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">File 15CA-15CB</a>
-                    </div>
-                    <img src="/images/it-5.png" alt="15CA-15CB Filing" class="w-full h-auto max-w-md mx-auto rounded-2xl shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/600x400/EF4444/ffffff?text=15CA-15CB+Filing';">
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <div id="tax-notice" class="pt-20">
-        <section class="py-20 bg-white">
-            <div class="container mx-auto px-4">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <img src="/images/it-6.png" alt="Income Tax Notice" class="w-full h-auto max-w-md mx-auto rounded-2xl shadow-xl lg:order-last" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F59E0B/ffffff?text=Income+Tax+Notice';">
-                    <div>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">Income Tax Notice Reply</h2>
-                        <p class="text-gray-600 text-lg mb-8">Receiving a notice from the Income Tax Department can be daunting. Our team of experts helps you understand the reason for the notice, gathers the necessary information, and drafts a comprehensive and accurate response. We ensure your reply is filed within the due date to avoid further complications.</p>
-                        <ul class="space-y-4 text-gray-700">
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Expert analysis of tax notices (e.g., u/s 143(1), 139(9), 148).</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Preparation and submission of a legally sound reply.</li>
-                            <li class="flex items-center"><i data-feather="check" class="w-5 h-5 text-green-500 mr-3"></i>Representation before tax authorities if required.</li>
-                        </ul>
-                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-yellow-500 to-amber-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Respond to a Notice</a>
+                        <a href="index.html#contact" class="mt-8 inline-block bg-gradient-to-r from-purple-500 to-pink-600 text-white font-bold px-8 py-3 rounded-lg hover:shadow-xl transition-all">Manage Setup & Closure</a>
                     </div>
                 </div>
             </div>
@@ -871,59 +888,56 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl lg:text-5xl font-bold text-gray-800 mb-6">
-                    Transparent <span class="gradient-text">Pricing for Income Tax</span>
+                    Transparent <span class="gradient-text">Pricing for MCA Services</span>
                 </h2>
                 <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-                    Choose a plan that fits your needs. Simple, upfront pricing with no surprises.
+                    Choose the specific service you need. No hidden fees, just straightforward pricing for expert work.
                 </p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Basic Plan -->
+                <!-- Annual Compliance Plan -->
                 <div class="card bg-white rounded-3xl shadow-lg p-8 border border-gray-100 flex flex-col">
                     <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Salaried Individuals</h3>
-                        <div class="text-4xl font-bold text-b-orange mb-2">â‚¹799</div>
-                        <p class="text-gray-600">Per Assessment Year</p>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Annual Compliance</h3>
+                        <div class="text-4xl font-bold text-b-orange mb-2">₹7,999</div>
+                        <p class="text-gray-600">per year</p>
                     </div>
                     <ul class="feature-list space-y-4 mb-8 flex-grow">
-                        <li>ITR-1/ITR-2 Filing</li>
-                        <li>Salary & House Property Income</li>
-                        <li>Deduction Claims (80C, 80D)</li>
-                        <li>Tax Computation Summary</li>
+                        <li>Private Limited / OPC / LLP</li>
+                        <li>AOC-4, MGT-7, Form 11</li>
+                        <li>DPT-3 Filing</li>
                     </ul>
                     <a href="index.html#contact" class="w-full bg-gray-100 text-gray-700 font-semibold py-3 rounded-xl hover:bg-gray-200 transition-all duration-300 block text-center">Get Started</a>
                 </div>
-                <!-- Professional Plan -->
+                <!-- Company Changes Plan -->
                 <div class="card bg-gradient-to-br from-b-orange to-orange-600 text-white rounded-3xl shadow-xl p-8 border-4 border-orange-200 relative flex flex-col">
                     <div class="absolute -top-4 left-1/2 transform -translate-x-1/2"><span class="bg-gradient-to-r from-b-orange to-orange-500 text-white px-6 py-2 rounded-full text-sm font-semibold">Most Popular</span></div>
                     <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold mb-4">Business & Professionals</h3>
-                        <div class="text-4xl font-bold mb-2">â‚¹2,499</div>
-                        <p>Starting price</p>
+                        <h3 class="text-2xl font-bold mb-4">Company Changes</h3>
+                        <div class="text-4xl font-bold mb-2">₹2,999</div>
+                        <p>starting from</p>
                     </div>
                     <ul class="feature-list space-y-4 mb-8 flex-grow text-white">
-                        <li>ITR-3/ITR-4 Filing</li>
-                        <li>Presumptive Taxation</li>
-                        <li>Profit & Loss Statement</li>
-                        <li>Balance Sheet Preparation</li>
-                        <li>Dedicated Expert Support</li>
+                        <li>Name / Address Change</li>
+                        <li>MOA / AOA Amendment</li>
+                        <li>Director Changes</li>
+                        <li>Dedicated Support</li>
                     </ul>
-                    <a href="index.html#contact" class="w-full bg-white text-b-orange font-semibold py-3 rounded-xl hover:bg-gray-50 transition-all duration-300 block text-center">Choose Pro</a>
+                    <a href="index.html#contact" class="w-full bg-white text-b-orange font-semibold py-3 rounded-xl hover:bg-gray-50 transition-all duration-300 block text-center">Choose Service</a>
                 </div>
-                <!-- Premium Plan -->
+                <!-- Winding Up Plan -->
                 <div class="card bg-white rounded-3xl shadow-lg p-8 border border-gray-100 flex flex-col">
                     <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Capital Gains & F&O</h3>
-                        <div class="text-4xl font-bold text-b-orange mb-2">â‚¹4,999</div>
-                        <p>Starting price</p>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Company Closure</h3>
+                        <div class="text-4xl font-bold text-b-orange mb-2">₹9,999</div>
+                        <p>starting price</p>
                     </div>
                     <ul class="feature-list space-y-4 mb-8 flex-grow">
-                        <li>For Traders and Investors</li>
-                        <li>Stocks, Mutual Funds, Crypto</li>
-                        <li>Futures & Options Income</li>
-                        <li>Portfolio Reconciliation</li>
+                        <li>Company / OPC / LLP</li>
+                        <li>Filing of Final Returns</li>
+                        <li>ROC Coordination</li>
                     </ul>
-                    <a href="index.html#contact" class="w-full bg-gray-100 text-gray-700 font-semibold py-3 rounded-xl hover:bg-gray-200 transition-all duration-300 block text-center">Choose Premium</a>
+                    <a href="index.html#contact" class="w-full bg-gray-100 text-gray-700 font-semibold py-3 rounded-xl hover:bg-gray-200 transition-all duration-300 block text-center">Start Closure</a>
                 </div>
             </div>
         </div>
@@ -934,10 +948,10 @@
         <div class="container mx-auto px-4 max-w-4xl">
             <div class="text-center mb-16">
                 <h2 class="text-3xl lg:text-5xl font-bold text-gray-800 mb-6">
-                    Income Tax <span class="gradient-text">FAQs</span>
+                    Frequently Asked <span class="gradient-text">Questions</span>
                 </h2>
                 <p class="text-gray-600 text-lg">
-                    Your common questions about income tax, answered by our experts.
+                    Find answers to common questions about our MCA services.
                 </p>
             </div>
             <div id="faq-container">
@@ -949,9 +963,9 @@
     <!-- CTA Section -->
     <section class="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl lg:text-5xl font-bold mb-6">Ready to Sort Out Your Taxes?</h2>
-            <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">Don't let tax season stress you out. Let our experts handle the complexities so you can be confident and compliant.</p>
-            <a href="index.html#contact" class="bg-gradient-to-r from-b-orange to-orange-500 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-10 py-5 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg inline-block">Talk to a Tax Expert Today</a>
+            <h2 class="text-3xl lg:text-5xl font-bold mb-6">Ready to Master Your Corporate Compliance?</h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">Let our experts handle the complexities of MCA so you can focus on what you do best—growing your business.</p>
+            <a href="index.html#contact" class="bg-gradient-to-r from-b-orange to-orange-500 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-10 py-5 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg inline-block">Talk to a Corporate Law Expert Today</a>
         </div>
     </section>
 
@@ -1063,19 +1077,19 @@
                                     Our Services
                                 </h5>
                                 <ul class="space-y-3">
-                                    <li><a href="/html/Income-Taxes.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                    <li><a href="#" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
                                         Income Tax Returns
                                     </a></li>
-                                    <li><a href="/html/gst.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                    <li><a href="gst.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
                                         GST Registration
                                     </a></li>
-                                    <li><a href="/html/Income-Taxes.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                    <li><a href="#" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
                                         Tax Planning
                                     </a></li>
-                                    <li><a href="/html/business-incorporation.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
+                                    <li><a href="business-incorporation.html" class="text-slate-300 hover:text-b-orange transition-colors duration-300 flex items-center group">
                                         <span class="w-2 h-2 bg-b-orange rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
                                         Business Registration
                                     </a></li>
@@ -1193,9 +1207,9 @@
                             <p>&copy; 2024 Big4India. All rights reserved.</p>
                             <div class="flex items-center space-x-4">
                                 <a href="#" class="hover:text-b-orange transition-colors duration-300">Privacy Policy</a>
-                                <span class="text-slate-400">â€¢</span>
+                                <span class="text-slate-400">•</span>
                                 <a href="#" class="hover:text-b-orange transition-colors duration-300">Terms of Service</a>
-                                <span class="text-slate-400">â€¢</span>
+                                <span class="text-slate-400">•</span>
                                 <a href="#" class="hover:text-b-orange transition-colors duration-300">Cookie Policy</a>
                             </div>
                         </div>
@@ -1247,7 +1261,7 @@
         });
 
         // Sub-nav active state on scroll
-        const sections = document.querySelectorAll('div[id^="tax-"], div[id^="itr-"], div[id^="tds-"], div[id^="pan-"], div[id^="15ca-15cb"]');
+        const sections = document.querySelectorAll('div[id]');
         const navLinks = document.querySelectorAll('.sub-nav-link');
         window.addEventListener('scroll', () => {
             let current = '';
@@ -1267,11 +1281,11 @@
 
         // FAQ Data
         const faqs = [
-            { q: "What is the due date for filing ITR?", a: "For individuals and non-audit cases, the due date is usually 31st July of the assessment year. For businesses requiring an audit, the due date is 31st October." },
-            { q: "What is Form 16?", a: "Form 16 is a certificate issued by your employer that provides details of the salary paid to you and the TDS deducted. It is a crucial document for filing your income tax return." },
-            { q: "What is the difference between PAN and TAN?", a: "PAN (Permanent Account Number) is required for all financial transactions and for filing income tax returns. TAN (Tax Deduction and Collection Account Number) is required for those who deduct or collect tax at source (TDS)." },
-            { q: "What is Form 15CA-15CB?", a: "Form 15CA is a declaration by the person remitting money abroad, and Form 15CB is a certificate from a Chartered Accountant. These are required for making payments to non-residents to ensure tax compliance." },
-            { q: "What should I do if I receive an income tax notice?", a: "Do not panic. Read the notice carefully to understand the reason. It is advisable to seek professional help to draft and file a timely and accurate response to avoid further complications." }
+            { q: "What is the first step to incorporate a company?", a: "The first step is to apply for the name of the proposed company. A minimum of one name and a maximum of two names can be submitted for approval." },
+            { q: "What is a Director Identification Number (DIN)?", a: "DIN is a unique identification number assigned to an individual who is an existing director of a company or intends to be appointed as a director of a company." },
+            { q: "What are the annual compliance requirements for a private limited company?", a: "A private limited company is required to file its annual return (Form MGT-7) and financial statements (Form AOC-4) with the Registrar of Companies (ROC) every year." },
+            { q: "Can a foreign national be a director in an Indian company?", a: "Yes, a foreign national can be a director in an Indian company. They must obtain a valid DIN to be appointed as a director." },
+            { q: "What is the procedure for closing a company?", a: "A company can be closed by filing an application with the ROC for striking off the name of the company from the Register of Companies. The company must have been inoperative for a certain period to be eligible for strike-off." }
         ];
 
         // FAQ Accordion functionality
@@ -1308,7 +1322,5 @@
             });
         });
     </script>
-    <script src="js/mobile-navigation.js"></script>
 </body>
 </html>
-
