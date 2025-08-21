@@ -130,6 +130,35 @@
             box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.1);
         }
         
+        /* Search Highlight Styles */
+        mark {
+            background: linear-gradient(135deg, #fef3c7, #fbbf24);
+            color: #92400e;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        /* Search Results Animation */
+        .search-result-enter {
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+        }
+        
+        .search-result-enter-active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition: all 0.3s ease;
+        }
+        
+        /* Active Category Filter */
+        .category-filter.active {
+            background: linear-gradient(135deg, #f97316, #fb923c) !important;
+            color: white !important;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+        }
+        
         /* Mobile Menu Enhancements */
         .mobile-menu {
             background: rgba(255, 255, 255, 0.95);
@@ -286,9 +315,39 @@
                                 placeholder="Search articles, topics, or keywords..." 
                                 class="flex-1 px-4 py-3 bg-transparent text-slate-700 placeholder-slate-400 focus:outline-none"
                             >
-                            <button class="bg-gradient-to-r from-b-orange to-orange-500 text-white px-6 py-3 rounded-xl font-medium hover:from-orange-600 hover:to-orange-700 transition-all">
+                            <button 
+                                id="search-btn"
+                                class="bg-gradient-to-r from-b-orange to-orange-500 text-white px-6 py-3 rounded-xl font-medium hover:from-orange-600 hover:to-orange-700 transition-all"
+                            >
                                 Search
                             </button>
+                            <button 
+                                id="clear-search"
+                                class="ml-2 p-3 text-slate-400 hover:text-slate-600 transition-colors hidden"
+                                title="Clear search"
+                            >
+                                <i data-feather="x" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Search Results Info -->
+                    <div id="search-results-info" class="mt-4 text-center text-slate-600 text-sm hidden">
+                        <span id="results-count"></span>
+                        <span id="search-term"></span>
+                    </div>
+                    
+                    <!-- Search Suggestions -->
+                    <div id="search-suggestions" class="mt-2 bg-white rounded-xl shadow-lg border border-slate-200 hidden">
+                        <div class="p-4">
+                            <p class="text-sm text-slate-600 mb-2">Popular searches:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="search-suggestion bg-slate-100 hover:bg-slate-200 px-3 py-1 rounded-full text-xs transition-colors" data-term="GST registration">GST registration</button>
+                                <button class="search-suggestion bg-slate-100 hover:bg-slate-200 px-3 py-1 rounded-full text-xs transition-colors" data-term="income tax">Income tax</button>
+                                <button class="search-suggestion bg-slate-100 hover:bg-slate-200 px-3 py-1 rounded-full text-xs transition-colors" data-term="private limited">Private limited</button>
+                                <button class="search-suggestion bg-slate-100 hover:bg-slate-200 px-3 py-1 rounded-full text-xs transition-colors" data-term="compliance">Compliance</button>
+                                <button class="search-suggestion bg-slate-100 hover:bg-slate-200 px-3 py-1 rounded-full text-xs transition-colors" data-term="trademark">Trademark</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -472,6 +531,20 @@
                     
                     <!-- Articles Grid -->
                     <div id="articles-grid" class="space-y-8">
+                        
+                        <!-- No Results Message -->
+                        <div id="no-results" class="hidden text-center py-16">
+                            <div class="max-w-md mx-auto">
+                                <div class="w-24 h-24 mx-auto mb-6 bg-slate-100 rounded-full flex items-center justify-center">
+                                    <i data-feather="search" class="w-12 h-12 text-slate-400"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-slate-800 mb-3">No articles found</h3>
+                                <p class="text-slate-600 mb-6">We couldn't find any articles matching your search criteria. Try adjusting your search terms or browse by category.</p>
+                                <button id="clear-filters-btn" class="bg-gradient-to-r from-b-orange to-orange-500 text-white px-6 py-3 rounded-xl font-medium hover:from-orange-600 hover:to-orange-700 transition-all">
+                                    Clear Filters
+                                </button>
+                            </div>
+                        </div>
                         <!-- Article 1 -->
                         <article class="modern-card rounded-2xl overflow-hidden article-item" data-category="gst">
                             <div class="grid md:grid-cols-3 gap-0">
@@ -840,17 +913,40 @@
                 this.articles = document.querySelectorAll('.article-item');
                 this.categoryFilters = document.querySelectorAll('.category-filter');
                 this.searchInput = document.getElementById('search-input');
+                this.searchBtn = document.getElementById('search-btn');
+                this.clearSearchBtn = document.getElementById('clear-search');
+                this.searchResultsInfo = document.getElementById('search-results-info');
+                this.searchSuggestions = document.getElementById('search-suggestions');
                 this.currentCategory = 'all';
+                this.currentSearchTerm = '';
+                this.originalArticlesData = [];
                 
                 this.init();
             }
             
             init() {
+                this.storeOriginalData();
                 this.setupCategoryFilters();
                 this.setupSearch();
                 this.setupAnimations();
                 this.setupMobileMenu();
                 this.setupNewsletterForm();
+            }
+            
+            storeOriginalData() {
+                // Store original article data for search highlighting
+                this.articles.forEach(article => {
+                    const title = article.querySelector('h3');
+                    const content = article.querySelector('p');
+                    const tags = Array.from(article.querySelectorAll('.tag'));
+                    
+                    this.originalArticlesData.push({
+                        element: article,
+                        originalTitle: title.innerHTML,
+                        originalContent: content.innerHTML,
+                        originalTags: tags.map(tag => tag.innerHTML)
+                    });
+                });
             }
             
             setupCategoryFilters() {
@@ -859,24 +955,286 @@
                         e.preventDefault();
                         
                         // Update active filter
-                        this.categoryFilters.forEach(f => f.classList.remove('active'));
+                        this.categoryFilters.forEach(f => {
+                            f.classList.remove('active');
+                            f.classList.remove('bg-b-orange', 'text-white');
+                            f.classList.add('text-b-blue');
+                        });
+                        
                         filter.classList.add('active');
+                        filter.classList.add('bg-b-orange', 'text-white');
+                        filter.classList.remove('text-b-blue');
                         
                         // Filter articles
                         this.currentCategory = filter.dataset.category;
-                        this.filterArticles();
+                        
+                        // If there's an active search, reapply it with new category
+                        if (this.currentSearchTerm) {
+                            this.performSearch(this.currentSearchTerm);
+                        } else {
+                            this.filterArticles();
+                        }
                     });
                 });
+                
+                // Set initial active state
+                const allFilter = document.querySelector('[data-category="all"]');
+                if (allFilter) {
+                    allFilter.classList.add('active', 'bg-b-orange', 'text-white');
+                    allFilter.classList.remove('text-b-blue');
+                }
             }
             
             setupSearch() {
                 let searchTimeout;
+                
+                // Input event for real-time search
                 this.searchInput.addEventListener('input', (e) => {
                     clearTimeout(searchTimeout);
+                    const query = e.target.value.trim();
+                    
+                    // Show/hide clear button
+                    if (query.length > 0) {
+                        this.clearSearchBtn.classList.remove('hidden');
+                        this.searchSuggestions.classList.add('hidden');
+                    } else {
+                        this.clearSearchBtn.classList.add('hidden');
+                        this.restoreOriginalContent();
+                        this.showAllArticles();
+                    }
+                    
+                    // Debounced search
                     searchTimeout = setTimeout(() => {
-                        this.searchArticles(e.target.value);
+                        this.performSearch(query);
                     }, 300);
                 });
+                
+                // Search button click
+                this.searchBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.performSearch(this.searchInput.value.trim());
+                });
+                
+                // Clear search button
+                this.clearSearchBtn.addEventListener('click', () => {
+                    this.clearSearch();
+                });
+                
+                // Enter key support
+                this.searchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        this.performSearch(this.searchInput.value.trim());
+                    }
+                });
+                
+                // Focus events for suggestions
+                this.searchInput.addEventListener('focus', () => {
+                    if (this.searchInput.value.trim() === '') {
+                        this.searchSuggestions.classList.remove('hidden');
+                    }
+                });
+                
+                this.searchInput.addEventListener('blur', () => {
+                    // Delay hiding suggestions to allow clicking
+                    setTimeout(() => {
+                        this.searchSuggestions.classList.add('hidden');
+                    }, 200);
+                });
+                
+                // Search suggestions
+                const suggestions = document.querySelectorAll('.search-suggestion');
+                suggestions.forEach(suggestion => {
+                    suggestion.addEventListener('click', () => {
+                        const term = suggestion.dataset.term;
+                        this.searchInput.value = term;
+                        this.performSearch(term);
+                        this.searchSuggestions.classList.add('hidden');
+                    });
+                });
+            }
+            
+            performSearch(query) {
+                this.currentSearchTerm = query;
+                
+                if (!query) {
+                    this.showAllArticles();
+                    this.hideSearchResults();
+                    return;
+                }
+                
+                this.restoreOriginalContent();
+                this.searchAndHighlight(query);
+                this.showSearchResults(query);
+            }
+            
+            searchAndHighlight(query) {
+                const searchTerm = query.toLowerCase();
+                let visibleCount = 0;
+                
+                this.originalArticlesData.forEach((articleData, index) => {
+                    const article = articleData.element;
+                    const title = articleData.originalTitle.toLowerCase();
+                    const content = articleData.originalContent.toLowerCase();
+                    const tags = articleData.originalTags.map(tag => tag.toLowerCase());
+                    
+                    const matchesSearch = 
+                        title.includes(searchTerm) || 
+                        content.includes(searchTerm) ||
+                        tags.some(tag => tag.includes(searchTerm));
+                        
+                    const matchesCategory = this.currentCategory === 'all' || 
+                        article.dataset.category === this.currentCategory;
+                    
+                    if (matchesSearch && matchesCategory) {
+                        // Show article with highlighting
+                        article.style.display = 'block';
+                        this.highlightText(article, query);
+                        visibleCount++;
+                        
+                        // Add search result animation
+                        article.style.animation = 'none';
+                        setTimeout(() => {
+                            article.style.animation = 'fadeIn 0.5s ease';
+                        }, index * 50);
+                    } else {
+                        article.style.display = 'none';
+                    }
+                });
+                
+                this.updateResultsCount(visibleCount, query);
+            }
+            
+            highlightText(article, query) {
+                const title = article.querySelector('h3');
+                const content = article.querySelector('p');
+                
+                if (title && content) {
+                    title.innerHTML = this.addHighlight(title.innerHTML, query);
+                    content.innerHTML = this.addHighlight(content.innerHTML, query);
+                }
+            }
+            
+            addHighlight(text, query) {
+                if (!query) return text;
+                
+                const regex = new RegExp(`(${this.escapeRegex(query)})`, 'gi');
+                return text.replace(regex, '<mark class="bg-yellow-200 px-1 rounded">$1</mark>');
+            }
+            
+            escapeRegex(string) {
+                return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            }
+            
+            restoreOriginalContent() {
+                this.originalArticlesData.forEach(articleData => {
+                    const title = articleData.element.querySelector('h3');
+                    const content = articleData.element.querySelector('p');
+                    
+                    if (title && content) {
+                        title.innerHTML = articleData.originalTitle;
+                        content.innerHTML = articleData.originalContent;
+                    }
+                });
+            }
+            
+            showAllArticles() {
+                this.articles.forEach(article => {
+                    const matchesCategory = this.currentCategory === 'all' || 
+                        article.dataset.category === this.currentCategory;
+                    
+                    if (matchesCategory) {
+                        article.style.display = 'block';
+                    } else {
+                        article.style.display = 'none';
+                    }
+                });
+                
+                this.updateResultsCount();
+            }
+            
+            clearSearch() {
+                this.searchInput.value = '';
+                this.currentSearchTerm = '';
+                this.clearSearchBtn.classList.add('hidden');
+                this.restoreOriginalContent();
+                this.showAllArticles();
+                this.hideSearchResults();
+                this.searchInput.focus();
+            }
+            
+            showSearchResults(query) {
+                const resultsInfo = document.getElementById('search-results-info');
+                const searchTerm = document.getElementById('search-term');
+                
+                resultsInfo.classList.remove('hidden');
+                searchTerm.textContent = `for "${query}"`;
+            }
+            
+            hideSearchResults() {
+                const resultsInfo = document.getElementById('search-results-info');
+                resultsInfo.classList.add('hidden');
+            }
+            
+            updateResultsCount(count = null, searchTerm = '') {
+                const resultsCount = document.getElementById('results-count');
+                const noResults = document.getElementById('no-results');
+                const articlesGrid = document.getElementById('articles-grid');
+                
+                if (count === null) {
+                    const visibleArticles = Array.from(this.articles).filter(
+                        article => article.style.display !== 'none'
+                    );
+                    count = visibleArticles.length;
+                }
+                
+                if (resultsCount) {
+                    if (searchTerm) {
+                        resultsCount.textContent = `Found ${count} article${count !== 1 ? 's' : ''} `;
+                    } else {
+                        resultsCount.textContent = `Showing ${count} article${count !== 1 ? 's' : ''}`;
+                    }
+                }
+                
+                // Show/hide no results message
+                if (count === 0 && (searchTerm || this.currentCategory !== 'all')) {
+                    noResults.classList.remove('hidden');
+                    
+                    // Setup clear filters button
+                    const clearFiltersBtn = document.getElementById('clear-filters-btn');
+                    if (clearFiltersBtn) {
+                        clearFiltersBtn.onclick = () => {
+                            this.clearAllFilters();
+                        };
+                    }
+                } else {
+                    noResults.classList.add('hidden');
+                }
+            }
+            
+            clearAllFilters() {
+                // Clear search
+                this.searchInput.value = '';
+                this.currentSearchTerm = '';
+                this.clearSearchBtn.classList.add('hidden');
+                
+                // Reset category to all
+                this.currentCategory = 'all';
+                this.categoryFilters.forEach(f => {
+                    f.classList.remove('active', 'bg-b-orange', 'text-white');
+                    f.classList.add('text-b-blue');
+                });
+                
+                const allFilter = document.querySelector('[data-category="all"]');
+                if (allFilter) {
+                    allFilter.classList.add('active', 'bg-b-orange', 'text-white');
+                    allFilter.classList.remove('text-b-blue');
+                }
+                
+                // Restore content and show all articles
+                this.restoreOriginalContent();
+                this.showAllArticles();
+                this.hideSearchResults();
             }
             
             filterArticles() {
@@ -893,40 +1251,6 @@
                 });
                 
                 this.updateResultsCount();
-            }
-            
-            searchArticles(query) {
-                const searchTerm = query.toLowerCase().trim();
-                
-                this.articles.forEach(article => {
-                    const title = article.querySelector('h3').textContent.toLowerCase();
-                    const content = article.querySelector('p').textContent.toLowerCase();
-                    const tags = Array.from(article.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase());
-                    
-                    const matchesSearch = !searchTerm || 
-                        title.includes(searchTerm) || 
-                        content.includes(searchTerm) ||
-                        tags.some(tag => tag.includes(searchTerm));
-                        
-                    const matchesCategory = this.currentCategory === 'all' || article.dataset.category === this.currentCategory;
-                    
-                    if (matchesSearch && matchesCategory) {
-                        article.style.display = 'block';
-                        article.style.animation = 'fadeIn 0.5s ease';
-                    } else {
-                        article.style.display = 'none';
-                    }
-                });
-                
-                this.updateResultsCount();
-            }
-            
-            updateResultsCount() {
-                const visibleArticles = Array.from(this.articles).filter(article => article.style.display !== 'none');
-                const count = visibleArticles.length;
-                
-                // Update results count (you can add this element to show search results)
-                console.log(`Showing ${count} articles`);
             }
             
             setupAnimations() {

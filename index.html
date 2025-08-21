@@ -610,6 +610,102 @@
             background-color: #FFFFFF;
         }
         
+        /* Search Suggestions Styles */
+        #search-suggestions, #mobile-search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 4px;
+        }
+        
+        #search-suggestions::-webkit-scrollbar,
+        #mobile-search-suggestions::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        #search-suggestions::-webkit-scrollbar-track,
+        #mobile-search-suggestions::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+        
+        #search-suggestions::-webkit-scrollbar-thumb,
+        #mobile-search-suggestions::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        
+        #search-suggestions::-webkit-scrollbar-thumb:hover,
+        #mobile-search-suggestions::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        
+        .search-suggestion-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: #374151;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            margin: 2px 4px;
+        }
+        
+        .search-suggestion-item:hover,
+        .search-suggestion-item:focus {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            outline: none;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+        }
+        
+        .search-suggestion-item .icon {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            opacity: 0.7;
+        }
+        
+        .search-suggestion-item:hover .icon,
+        .search-suggestion-item:focus .icon {
+            opacity: 1;
+        }
+        
+        .search-highlight {
+            background: rgba(255, 235, 59, 0.6);
+            padding: 1px 2px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        
+        .search-suggestion-item:hover .search-highlight,
+        .search-suggestion-item:focus .search-highlight {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+        
+        /* Search container positioning */
+        .search-container {
+            position: relative;
+        }
+        
+        /* Focus states for search inputs */
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
         /* Button styles with consistent sizing */
         .btn-primary {
             background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
@@ -1304,9 +1400,23 @@
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-10">
                             <i data-feather="search" class="w-5 h-5 text-gray-400 group-focus-within:text-b-orange transition-colors"></i>
                         </div>
-                        <input type="text" placeholder="Search services..." class="search-input">
+                        <input 
+                            type="text" 
+                            id="desktop-search" 
+                            placeholder="Search services..." 
+                            class="search-input"
+                            autocomplete="off"
+                        >
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                             <kbd class="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">⌘K</kbd>
+                        </div>
+                        
+                        <!-- Search Suggestions Dropdown -->
+                        <div id="search-suggestions" class="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg z-50 hidden">
+                            <div class="p-2">
+                                <div class="text-xs text-gray-500 px-3 py-2 font-medium">Quick Links</div>
+                                <div id="suggestions-list" class="space-y-1"></div>
+                            </div>
                         </div>
                     </div>
 
@@ -1346,7 +1456,21 @@
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <i data-feather="search" class="w-5 h-5 text-gray-400"></i>
                     </div>
-                    <input type="text" placeholder="Search services..." class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-b-orange/50">
+                    <input 
+                        type="text" 
+                        id="mobile-search"
+                        placeholder="Search services..." 
+                        class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-b-orange/50"
+                        autocomplete="off"
+                    >
+                    
+                    <!-- Mobile Search Suggestions -->
+                    <div id="mobile-search-suggestions" class="mt-2 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
+                        <div class="p-2">
+                            <div class="text-xs text-gray-500 px-3 py-2 font-medium">Quick Links</div>
+                            <div id="mobile-suggestions-list" class="space-y-1"></div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Mobile Navigation Links -->
@@ -2626,29 +2750,284 @@
             });
         });
 
-        // Search functionality with improved focus handling
-        const searchInput = document.querySelector('.search-input');
-        if (searchInput) {
-            // Keyboard shortcut for search
-            document.addEventListener('keydown', (e) => {
-                if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-                    e.preventDefault();
-                    searchInput.focus();
-                }
-            });
+        // Enhanced Search functionality
+        class NavigationSearch {
+            constructor() {
+                this.desktopInput = document.getElementById('desktop-search');
+                this.mobileInput = document.getElementById('mobile-search');
+                this.desktopSuggestions = document.getElementById('search-suggestions');
+                this.mobileSuggestions = document.getElementById('mobile-search-suggestions');
+                this.desktopSuggestionsList = document.getElementById('suggestions-list');
+                this.mobileSuggestionsList = document.getElementById('mobile-suggestions-list');
+                
+                // Search data
+                this.searchData = [
+                    {
+                        title: 'Business Incorporation',
+                        description: 'Register your Private Limited, LLP, or OPC',
+                        url: 'business-incorporation.html',
+                        icon: 'briefcase',
+                        keywords: ['business', 'incorporation', 'company', 'register', 'private limited', 'llp', 'opc', 'pvt ltd']
+                    },
+                    {
+                        title: 'GST Registration',
+                        description: 'Complete GST registration and compliance',
+                        url: 'gst.html',
+                        icon: 'file-text',
+                        keywords: ['gst', 'goods', 'services', 'tax', 'registration', 'compliance', 'filing']
+                    },
+                    {
+                        title: 'Income Tax',
+                        description: 'ITR filing and tax planning services',
+                        url: 'Income-Taxes.html',
+                        icon: 'calculator',
+                        keywords: ['income', 'tax', 'itr', 'filing', 'returns', 'planning', 'refund']
+                    },
+                    {
+                        title: 'Trademark Registration',
+                        description: 'Protect your brand with trademark registration',
+                        url: 'trademark.html',
+                        icon: 'shield',
+                        keywords: ['trademark', 'brand', 'protection', 'logo', 'intellectual', 'property', 'ip']
+                    },
+                    {
+                        title: 'MCA Services',
+                        description: 'Ministry of Corporate Affairs compliance',
+                        url: 'mca.html',
+                        icon: 'book',
+                        keywords: ['mca', 'ministry', 'corporate', 'affairs', 'compliance', 'annual', 'filing']
+                    },
+                    {
+                        title: 'Registration Services',
+                        description: 'FSSAI, Shop Act, and other registrations',
+                        url: 'registration-services.html',
+                        icon: 'clipboard',
+                        keywords: ['fssai', 'shop act', 'license', 'registration', 'permit', 'food', 'business']
+                    },
+                    {
+                        title: 'Compliance Services',
+                        description: 'Stay compliant with all regulations',
+                        url: 'compliance.html',
+                        icon: 'check-circle',
+                        keywords: ['compliance', 'regulations', 'legal', 'audit', 'statutory']
+                    },
+                    {
+                        title: 'Tax Calculator',
+                        description: 'Calculate your income tax',
+                        url: 'features/income-tax-calculator.html',
+                        icon: 'calculator',
+                        keywords: ['calculator', 'tax', 'income', 'calculate', 'estimate']
+                    },
+                    {
+                        title: 'About Us',
+                        description: 'Learn more about Big4India',
+                        url: 'about-us.html',
+                        icon: 'info',
+                        keywords: ['about', 'company', 'team', 'story', 'mission']
+                    },
+                    {
+                        title: 'Contact Us',
+                        description: 'Get in touch with our experts',
+                        url: 'contactus.html',
+                        icon: 'phone',
+                        keywords: ['contact', 'support', 'help', 'phone', 'email', 'chat']
+                    }
+                ];
+                
+                this.init();
+            }
             
-            // Focus search on mobile menu open
-            if (mobileMenu) {
-                const mobileSearchInput = mobileMenu.querySelector('input[placeholder*="Search"]');
-                if (mobileSearchInput) {
-                    mobileMenu.addEventListener('transitionend', () => {
-                        if (mobileMenu.classList.contains('open')) {
-                            mobileSearchInput.focus();
+            init() {
+                this.setupEventListeners();
+                this.setupKeyboardShortcuts();
+            }
+            
+            setupEventListeners() {
+                // Desktop search
+                if (this.desktopInput) {
+                    this.desktopInput.addEventListener('input', (e) => this.handleSearch(e, 'desktop'));
+                    this.desktopInput.addEventListener('focus', () => this.showSuggestions('desktop'));
+                    this.desktopInput.addEventListener('blur', () => this.hideSuggestions('desktop'));
+                    this.desktopInput.addEventListener('keydown', (e) => this.handleKeyNavigation(e, 'desktop'));
+                }
+                
+                // Mobile search
+                if (this.mobileInput) {
+                    this.mobileInput.addEventListener('input', (e) => this.handleSearch(e, 'mobile'));
+                    this.mobileInput.addEventListener('focus', () => this.showSuggestions('mobile'));
+                    this.mobileInput.addEventListener('blur', () => this.hideSuggestions('mobile'));
+                    this.mobileInput.addEventListener('keydown', (e) => this.handleKeyNavigation(e, 'mobile'));
+                }
+                
+                // Click outside to close suggestions
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('.search-container') && !e.target.closest('#mobile-search')) {
+                        this.hideSuggestions('desktop');
+                        this.hideSuggestions('mobile');
+                    }
+                });
+            }
+            
+            setupKeyboardShortcuts() {
+                document.addEventListener('keydown', (e) => {
+                    // Cmd/Ctrl + K to focus search
+                    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                        e.preventDefault();
+                        if (this.desktopInput) {
+                            this.desktopInput.focus();
                         }
+                    }
+                    
+                    // Escape to close suggestions
+                    if (e.key === 'Escape') {
+                        this.hideSuggestions('desktop');
+                        this.hideSuggestions('mobile');
+                        this.desktopInput?.blur();
+                        this.mobileInput?.blur();
+                    }
+                });
+            }
+            
+            handleSearch(event, type) {
+                const query = event.target.value.trim().toLowerCase();
+                
+                if (query.length === 0) {
+                    this.showDefaultSuggestions(type);
+                    return;
+                }
+                
+                const results = this.searchData.filter(item => {
+                    return item.title.toLowerCase().includes(query) ||
+                           item.description.toLowerCase().includes(query) ||
+                           item.keywords.some(keyword => keyword.includes(query));
+                }).slice(0, 8); // Limit to 8 results
+                
+                this.displayResults(results, type, query);
+                this.showSuggestions(type);
+            }
+            
+            showDefaultSuggestions(type) {
+                const popularItems = this.searchData.slice(0, 6); // Show first 6 as popular
+                this.displayResults(popularItems, type);
+            }
+            
+            displayResults(results, type, query = '') {
+                const list = type === 'desktop' ? this.desktopSuggestionsList : this.mobileSuggestionsList;
+                
+                if (!list) return;
+                
+                list.innerHTML = '';
+                
+                if (results.length === 0) {
+                    list.innerHTML = `
+                        <div class="px-3 py-4 text-center text-gray-500 text-sm">
+                            <i data-feather="search" class="w-5 h-5 mx-auto mb-2"></i>
+                            <div>No results found for "${query}"</div>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                results.forEach((item, index) => {
+                    const highlightedTitle = this.highlightText(item.title, query);
+                    const highlightedDescription = this.highlightText(item.description, query);
+                    
+                    const resultItem = document.createElement('a');
+                    resultItem.href = item.url;
+                    resultItem.className = 'search-suggestion-item';
+                    resultItem.innerHTML = `
+                        <i data-feather="${item.icon}" class="icon"></i>
+                        <div class="flex-1">
+                            <div class="font-medium text-sm">${highlightedTitle}</div>
+                            <div class="text-xs text-gray-500">${highlightedDescription}</div>
+                        </div>
+                    `;
+                    
+                    resultItem.addEventListener('click', () => {
+                        this.selectResult(item, type);
                     });
+                    
+                    list.appendChild(resultItem);
+                });
+                
+                // Re-initialize feather icons
+                feather.replace();
+            }
+            
+            highlightText(text, query) {
+                if (!query) return text;
+                
+                const regex = new RegExp(`(${this.escapeRegex(query)})`, 'gi');
+                return text.replace(regex, '<span class="search-highlight">$1</span>');
+            }
+            
+            escapeRegex(string) {
+                return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            }
+            
+            selectResult(item, type) {
+                const input = type === 'desktop' ? this.desktopInput : this.mobileInput;
+                if (input) {
+                    input.value = item.title;
+                }
+                
+                this.hideSuggestions(type);
+                
+                // Navigate to the selected page
+                window.location.href = item.url;
+            }
+            
+            showSuggestions(type) {
+                const suggestions = type === 'desktop' ? this.desktopSuggestions : this.mobileSuggestions;
+                if (suggestions) {
+                    suggestions.classList.remove('hidden');
+                }
+            }
+            
+            hideSuggestions(type) {
+                setTimeout(() => {
+                    const suggestions = type === 'desktop' ? this.desktopSuggestions : this.mobileSuggestions;
+                    if (suggestions) {
+                        suggestions.classList.add('hidden');
+                    }
+                }, 150); // Small delay to allow click events
+            }
+            
+            handleKeyNavigation(event, type) {
+                const suggestions = type === 'desktop' ? this.desktopSuggestions : this.mobileSuggestions;
+                if (!suggestions || suggestions.classList.contains('hidden')) return;
+                
+                const items = suggestions.querySelectorAll('.search-suggestion-item');
+                const currentFocus = suggestions.querySelector('.search-suggestion-item:focus');
+                let index = Array.from(items).indexOf(currentFocus);
+                
+                switch (event.key) {
+                    case 'ArrowDown':
+                        event.preventDefault();
+                        index = index < items.length - 1 ? index + 1 : 0;
+                        items[index]?.focus();
+                        break;
+                        
+                    case 'ArrowUp':
+                        event.preventDefault();
+                        index = index > 0 ? index - 1 : items.length - 1;
+                        items[index]?.focus();
+                        break;
+                        
+                    case 'Enter':
+                        if (currentFocus) {
+                            event.preventDefault();
+                            currentFocus.click();
+                        }
+                        break;
                 }
             }
         }
+        
+        // Initialize search when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new NavigationSearch();
+        });
         
         // Prevent layout shift by preloading images
         const logoImage = document.querySelector('.logo-image');
