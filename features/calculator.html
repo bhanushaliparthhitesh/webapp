@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -239,9 +239,7 @@
                 padding: 20px;
             }
         }
-    </style>
-    <link rel="stylesheet" href="css/mobile-optimizations.css">
-</head>
+    </style></head>
 <body>
     <div class="container">
         <div class="header">
@@ -263,9 +261,9 @@
                     <input type="text" class="calculator-display" id="display" readonly>
                     <div class="calculator-buttons">
                         <button class="calc-btn clear" onclick="clearDisplay()">C</button>
-                        <button class="calc-btn clear" onclick="deleteLast()">âŒ«</button>
+                        <button class="calc-btn clear" onclick="deleteLast()">⌫</button>
                         <button class="calc-btn operator" onclick="appendToDisplay('/')">/</button>
-                        <button class="calc-btn operator" onclick="appendToDisplay('*')">Ã—</button>
+                        <button class="calc-btn operator" onclick="appendToDisplay('*')">×</button>
                         
                         <button class="calc-btn number" onclick="appendToDisplay('7')">7</button>
                         <button class="calc-btn number" onclick="appendToDisplay('8')">8</button>
@@ -294,7 +292,7 @@
             <div class="business-calculator">
                 <h2 class="calculator-title">GST Calculator</h2>
                 <div class="form-group">
-                    <label for="gstAmount">Amount (â‚¹)</label>
+                    <label for="gstAmount">Amount (₹)</label>
                     <input type="number" id="gstAmount" placeholder="Enter amount">
                 </div>
                 <div class="form-group">
@@ -327,7 +325,7 @@
             <div class="business-calculator">
                 <h2 class="calculator-title">Income Tax Calculator (AY 2024-25)</h2>
                 <div class="form-group">
-                    <label for="annualIncome">Annual Income (â‚¹)</label>
+                    <label for="annualIncome">Annual Income (₹)</label>
                     <input type="number" id="annualIncome" placeholder="Enter annual income">
                 </div>
                 <div class="form-group">
@@ -410,17 +408,17 @@
                 const gstAmount = (amount * rate) / 100;
                 const totalAmount = amount + gstAmount;
                 result = `
-                    <strong>Original Amount:</strong> â‚¹${amount.toFixed(2)}<br>
-                    <strong>GST Amount (${rate}%):</strong> â‚¹${gstAmount.toFixed(2)}<br>
-                    <strong>Total Amount:</strong> â‚¹${totalAmount.toFixed(2)}
+                    <strong>Original Amount:</strong> ₹${amount.toFixed(2)}<br>
+                    <strong>GST Amount (${rate}%):</strong> ₹${gstAmount.toFixed(2)}<br>
+                    <strong>Total Amount:</strong> ₹${totalAmount.toFixed(2)}
                 `;
             } else {
                 const baseAmount = (amount * 100) / (100 + rate);
                 const gstAmount = amount - baseAmount;
                 result = `
-                    <strong>Total Amount:</strong> â‚¹${amount.toFixed(2)}<br>
-                    <strong>Base Amount:</strong> â‚¹${baseAmount.toFixed(2)}<br>
-                    <strong>GST Amount (${rate}%):</strong> â‚¹${gstAmount.toFixed(2)}
+                    <strong>Total Amount:</strong> ₹${amount.toFixed(2)}<br>
+                    <strong>Base Amount:</strong> ₹${baseAmount.toFixed(2)}<br>
+                    <strong>GST Amount (${rate}%):</strong> ₹${gstAmount.toFixed(2)}
                 `;
             }
             
@@ -491,14 +489,14 @@
             const netIncome = income - totalTax;
             
             const result = `
-                <strong>Annual Income:</strong> â‚¹${income.toLocaleString()}<br>
+                <strong>Annual Income:</strong> ₹${income.toLocaleString()}<br>
                 <strong>Tax Regime:</strong> ${regime === 'old' ? 'Old' : 'New'}<br>
-                <strong>Exemption Limit:</strong> â‚¹${exemption.toLocaleString()}<br>
-                <strong>Taxable Income:</strong> â‚¹${Math.max(0, income - exemption).toLocaleString()}<br>
-                <strong>Income Tax:</strong> â‚¹${tax.toFixed(2)}<br>
-                <strong>Cess (4%):</strong> â‚¹${cess.toFixed(2)}<br>
-                <strong>Total Tax:</strong> â‚¹${totalTax.toFixed(2)}<br>
-                <strong>Net Income:</strong> â‚¹${netIncome.toFixed(2)}
+                <strong>Exemption Limit:</strong> ₹${exemption.toLocaleString()}<br>
+                <strong>Taxable Income:</strong> ₹${Math.max(0, income - exemption).toLocaleString()}<br>
+                <strong>Income Tax:</strong> ₹${tax.toFixed(2)}<br>
+                <strong>Cess (4%):</strong> ₹${cess.toFixed(2)}<br>
+                <strong>Total Tax:</strong> ₹${totalTax.toFixed(2)}<br>
+                <strong>Net Income:</strong> ₹${netIncome.toFixed(2)}
             `;
             
             document.getElementById('incomeResultText').innerHTML = result;
@@ -528,8 +526,6 @@
                 }
             }
         });
-    </script>
-    <script src="js/mobile-navigation.js"></script>
-</body>
+    </script></body>
 </html>
 
