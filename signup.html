@@ -81,6 +81,8 @@
             border-radius: 28px;
             position: relative;
             overflow: hidden;
+            contain: layout style paint;
+            transform: translateZ(0);
         }
 
         .illustration-card::before {
@@ -96,6 +98,7 @@
             will-change: transform;
         }
 
+        /* Reduce animation complexity for better performance */
         .illustration-card::after {
             content: '';
             position: absolute;
@@ -103,8 +106,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.05) 50%, transparent 70%);
-            animation: shimmer 4s ease-in-out infinite;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.03) 50%, transparent 70%);
+            animation: shimmer 6s ease-in-out infinite;
+            will-change: opacity;
         }
 
         @keyframes shimmer {
@@ -355,6 +359,7 @@
             bottom: 0;
             overflow: hidden;
             z-index: 1;
+            contain: layout style paint;
         }
 
         .shape {
@@ -433,18 +438,20 @@
             }
         }
 
+        /* Performance enhancements */
         .fade-in {
-            animation: fadeIn 1.2s ease-out;
+            animation: fadeIn 0.8s ease-out;
+            transform: translateZ(0);
         }
 
         @keyframes fadeIn {
             from { 
                 opacity: 0; 
-                transform: translateY(30px) scale(0.95); 
+                transform: translateY(20px) translateZ(0); 
             }
             to { 
                 opacity: 1; 
-                transform: translateY(0) scale(1); 
+                transform: translateY(0) translateZ(0); 
             }
         }
 
@@ -576,7 +583,11 @@
                     <div class="text-center mb-10">
                         <div class="text-right mb-6">
                             <span class="text-gray-600 font-medium">Already have an account? </span>
-                                                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-b-orange to-orange-600 font-bold hover:from-orange-600 hover:to-red-600 transition-all duration-300">Sign In</a>
+                            <a href="login.html">
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-b-orange to-orange-600 font-bold hover:from-orange-600 hover:to-red-600 transition-all duration-300">
+                                Sign In
+                            </span>
+                        </a>
                         </div>
                         <div class="space-y-2">
                             <h1 class="text-2xl font-bold text-gray-700 tracking-wide">Welcome to Big4India!</h1>
