@@ -6,11 +6,10 @@
   "scripts": {
     "dev": "npx serve .",
     "build": "echo 'Static site - no build needed'",
-    "start": "npx serve .",
+    "start": "npx serve public",
     "test": "playwright test",
-    "preview": "npx serve .",
-    "deploy": "node deploy.js",
-    "deploy:vercel": "vercel --prod"
+    "preview": "npx serve public",
+    "deploy": "vercel --prod"
   },
   "keywords": [
     "tax-services",
